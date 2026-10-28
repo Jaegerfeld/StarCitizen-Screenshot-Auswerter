@@ -35,7 +35,7 @@ Die eingebaute Windows-OCR liest etwas genauer als die Browser-Erkennung, brauch
 
 ## Grenzen (Stand 0.2.0)
 
-- **Schräg aufgenommene Konsolen** (Blick von der Seite) liest die Texterkennung schlecht. Frontal davorstellen hilft am meisten.
+- **Schräg aufgenommene Konsolen** (bis etwa 30° Verkantung): Die Seite entzerrt das rechte Panel über vier Ecken (automatisch gefunden oder von dir angeklickt) und stellt den Text per Schwellwert frei. Das liest spürbar schlechter als frontal; der Standort wird dabei oft nicht erkannt, dann den Shop von Hand wählen. Frontal davorstellen bleibt der beste Weg.
 - Deutscher Spiel-Client. Englische Konsolentexte folgen, sobald Screenshots vorliegen.
 - Einzelne Preise bleiben unlesbar (z. B. wenn ein Icon in die Zahl ragt); sie sind markiert, nicht geraten.
 

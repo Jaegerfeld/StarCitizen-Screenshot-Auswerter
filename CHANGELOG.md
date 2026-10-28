@@ -2,6 +2,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [0.4.0] – 2026-10-28
+
+### Hinzugefügt
+- **Schräge Aufnahmen** (bis etwa 30° Verkantung): Findet die grobe Lesung keine Reiter, wird das rechte Panel entzerrt (Homographie aus vier Ecken) und der helle Text per Schwellwert freigestellt, bevor Tesseract liest. Die Ecken sucht die Seite zuerst automatisch (größte helle Glasfläche); klappt das nicht, bittet sie um vier Klicks auf die Panel-Ecken. Gesetzte Ecken gelten für die folgenden Bilder gleicher Größe weiter, solange sie passen. Schräg gelesene Bilder sind in der Dateiliste markiert.
+
 ## [0.3.0] – 2026-10-28
 
 ### Hinzugefügt

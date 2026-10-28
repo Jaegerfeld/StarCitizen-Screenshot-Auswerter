@@ -37,7 +37,7 @@ The built-in Windows OCR reads slightly better than the browser engine but needs
 
 ## Limits (0.2.0)
 
-- **Terminals captured at an angle** read poorly. Standing square in front helps most.
+- **Terminals captured at an angle** (up to about 30°): the page straightens the right panel from four corners (found automatically or clicked by you) and isolates the text by threshold. Still noticeably worse than a square shot; the place is often not recognised then, so pick the shop by hand. Standing square in front remains best.
 - German game client only for now; English terminal texts follow once screenshots are available.
 - Single prices may stay unreadable (e.g. an icon touching the number); they are flagged, not guessed.
 
