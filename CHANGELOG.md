@@ -2,6 +2,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [0.2.1] – 2026-10-28
+
+### Behoben
+- `auswerter_bauen.py --referenz` reichte die Kommandozeile an `referenz_aktualisieren` durch; der Pages-Build brach mit „No such file: --referenz“ ab. Außerdem verträgt die Referenz jetzt das zehnte Feld (Quelle) in der `data.json` des Handels-Planers ab 1.3.0.
+
 ## [0.2.0] – 2026-10-28
 
 ### Hinzugefügt

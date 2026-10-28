@@ -19,7 +19,7 @@ OUT = HERE / "SC_Screenshot_Auswerter.html"
 def main(argv):
     if "--referenz" in argv:
         import referenz_aktualisieren
-        referenz_aktualisieren.main()
+        referenz_aktualisieren.main([])
     ref = json.loads(REF.read_text(encoding="utf-8"))
     payload = json.dumps(ref, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     html = TEMPLATE.read_text(encoding="utf-8").replace("/*__REF__*/{}", payload).replace("{{VERSION}}", VERSION)
