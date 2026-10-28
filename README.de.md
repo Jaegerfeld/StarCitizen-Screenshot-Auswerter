@@ -14,7 +14,7 @@ Gedacht für zwei Dinge:
 1. **Vor dem Screenshot im Spiel:** links unter „Deine Inventare" den **Standort auswählen**. Dann steht der Ort im Bild und wird zugeordnet. Ohne Auswahl zeigt das Feld nur „Standort wählen".
 2. **Frontal auf die Konsole schauen** und per SC-Screenshot-Taste (Standard **F12**, Datei `ScreenShot-JJJJ-MM-TT_hh-mm-ss-xxx.jpg` im Ordner `StarCitizen\LIVE\screenshots`) oder einem beliebigen Tool aufnehmen. Lange Listen: scrollen und mehrere Screenshots machen, die Auswertung führt sie zusammen.
 3. **Seite öffnen** (online oder `SC_Screenshot_Auswerter.html` per Doppelklick) und die Bilder hineinziehen – einzeln oder ein ganzer Ordner. Je Bild dauert die Erkennung etwa 15 Sekunden; die Serien erscheinen, sobald sie gelesen sind.
-4. **Prüfen:** Gelb markierte Zeilen gegen den Screenshot prüfen (Link in der Spalte „Bild") und direkt in der Tabelle korrigieren. Ware, Preis und Bestand sind editierbar, Zeilen lassen sich entfernen. Bei mehrdeutigem Ort (z. B. Orison: TDD oder Municipal Services) den Shop im Kopf der Serie wählen.
+4. **Prüfen:** Gelb markierte Zeilen gegen den Screenshot prüfen (Link in der Spalte „Bild"). Passen die Werte: **✓** klicken (oder „Alle offenen in dieser Serie bestätigen"). Passen sie nicht: Ware, Preis oder Bestand direkt in der Zelle korrigieren. Ist die Zeile keine Ware (Icon-Müll): **✕** entfernt sie aus dem Export. Der Zähler „noch zu prüfen" zeigt, wann alles durchgesehen ist; beim Export fragt die Seite nach, wenn noch gelbe Zeilen offen sind. Bei mehrdeutigem Ort (z. B. Orison: TDD oder Municipal Services) den Shop im Kopf der Serie wählen.
 5. **Herunterladen:** „JSON" oder „CSV" – die Datei enthält die geprüften Werte.
 
 ## Was erkannt wird
@@ -41,7 +41,7 @@ Die eingebaute Windows-OCR liest etwas genauer als die Browser-Erkennung, brauch
 
 ## Dateiformat
 
-`auswertung.json` / `auswertung.csv` (Semikolon, UTF-8): `system`, `ort`, `shop`, `standort_im_bild`, `art` (Kauf/Verkauf, aus Sicht des Spielers), `ware`, `preis_auec_scu`, `bestand_scu` (nur Kauf), `status`, `stand` (Zeitpunkt des Screenshots), `bild`, `konfidenz` (`ok`, `pruefen`, nach Korrektur `korrigiert`), `hinweise`. Schema-Kennung `sc-konsole-export/1`. Das Format ist ein Vorschlag und wird angepasst, sobald star-head ein Einreichformat festlegt.
+`auswertung.json` / `auswertung.csv` (Semikolon, UTF-8): `system`, `ort`, `shop`, `standort_im_bild`, `art` (Kauf/Verkauf, aus Sicht des Spielers), `ware`, `preis_auec_scu`, `bestand_scu` (nur Kauf), `status`, `stand` (Zeitpunkt des Screenshots), `bild`, `konfidenz` (`ok` = Erkennung ohne Zweifel, `bestaetigt` = vom Menschen geprüft, `korrigiert` = vom Menschen geändert, `pruefen` = noch ungeprüft), `hinweise`. Schema-Kennung `sc-konsole-export/1`. Das Format ist ein Vorschlag und wird angepasst, sobald star-head ein Einreichformat festlegt.
 
 ## Selbst bauen
 

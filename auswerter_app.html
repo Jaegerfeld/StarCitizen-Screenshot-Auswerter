@@ -71,7 +71,9 @@
   .empty{padding:24px;text-align:center;color:var(--muted)}
   .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-family:var(--disp);font-weight:600;letter-spacing:.04em;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}
   .toast.show{opacity:1}
-  .rm{background:none;border:1px solid var(--line);color:var(--muted);border-radius:6px;min-height:28px;padding:2px 8px;cursor:pointer;font-size:12px} .rm:hover{color:var(--bad);border-color:var(--bad)}
+  .rm,.okb{background:none;border:1px solid var(--line);color:var(--muted);border-radius:6px;min-height:28px;min-width:28px;padding:2px 8px;cursor:pointer;font-size:12px;margin-right:4px} .rm:hover{color:var(--bad);border-color:var(--bad)} .okb{color:var(--ok);border-color:var(--ok)} .okb:hover{background:var(--ok);color:#fff}
+  tr.confirmed .okb{background:var(--ok);color:#fff;cursor:default} .ok-mark{display:none;font-family:var(--disp);font-size:11px;color:var(--ok);letter-spacing:.06em} tr.confirmed .ok-mark{display:inline}
+  .btn.small{min-height:30px;padding:4px 10px;font-size:13px}
   .hide{display:none!important}
   .thumb{max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:8px}
 </style>
@@ -135,13 +137,13 @@ const fmt=n=>n==null||n===''?'':Number(n).toLocaleString('de-DE');
 let lang=localStorage.getItem('sca_lang')||'de', theme=localStorage.getItem('sca_theme')||'dark';
 const T={de:{ware:'Ware',preis:'Preis ¤/SCU',bestand:'Bestand SCU',status:'Status',stand:'Stand',bild:'Bild',hinweis:'Hinweise',pruefen:'PRÜFEN',edited:'geändert',
   shop:'Shop (star-head)',noloc:'Standort nicht erkannt – Shop bitte wählen. Tipp: Vor dem Screenshot im Feld „Deine Inventare“ den Standort auswählen.',
-  pics:'Bilder',rows:'Zeilen',chk:'zu prüfen',none:'Keine Waren erkannt – ist das ein Screenshot der Handelskonsole (Reiter Kaufen / Lokaler Marktwert)?',del:'Zeile entfernen',dl:'heruntergeladen',unknown:'unbekannt',series:'Serien',
+  pics:'Bilder',rows:'Zeilen',chk:'noch zu prüfen',okb:'Zeile bestätigen (Werte passen)',okAll:'Alle offenen in dieser Serie bestätigen',confirmed:'bestätigt',exportAsk:'Zeilen sind noch nicht geprüft (gelb). Trotzdem exportieren?',none:'Keine Waren erkannt – ist das ein Screenshot der Handelskonsole (Reiter Kaufen / Lokaler Marktwert)?',del:'Zeile entfernen',dl:'heruntergeladen',unknown:'unbekannt',series:'Serien',
   loading:'Texterkennung wird geladen …',reading:'Lese',of:'von',pass:'Lesung',done:'Fertig',ref:'Referenz',refOk:'Referenz aktualisiert.',refSame:'Referenz ist schon aktuell.',refErr:'GitHub nicht erreichbar – eingebaute Referenz bleibt.',
   notext:'kein Konsolentext gefunden',imgErr:'Bild nicht lesbar',jsonErr:'JSON ohne OCR-Wörter',kaufen:'KAUFEN · Shop verkauft',markt:'LOKALER MARKTWERT · Shop kauft',read:'gelesen',waren:'Waren',shops:'Shops',patch:'Patch',
   n_ware:'Ware nicht erkannt',n_unsure:'Name unsicher',n_price:'Preis nicht lesbar',n_dev:'Preis weicht stark vom letzten star-head-Wert ab',n_new:'neu für diesen Shop',n_stock:'Bestand nicht lesbar',n_two:'zwei Lesungen',n_diff:'unterschiedlich in',n_prefix:'Preis ohne/mit Vorziffer unklar'},
  en:{ware:'Commodity',preis:'Price ¤/SCU',bestand:'Stock SCU',status:'Status',stand:'As of',bild:'Image',hinweis:'Notes',pruefen:'CHECK',edited:'edited',
   shop:'Shop (star-head)',noloc:'Location not recognised – please pick the shop. Tip: select the location in “Your inventories” before the screenshot.',
-  pics:'images',rows:'rows',chk:'to check',none:'No commodities recognised – is this a screenshot of the trade terminal (tab Buy / Local market value)?',del:'Remove row',dl:'downloaded',unknown:'unknown',series:'series',
+  pics:'images',rows:'rows',chk:'still to check',okb:'Confirm row (values are right)',okAll:'Confirm all open rows in this series',confirmed:'confirmed',exportAsk:'rows are still unchecked (yellow). Export anyway?',none:'No commodities recognised – is this a screenshot of the trade terminal (tab Buy / Local market value)?',del:'Remove row',dl:'downloaded',unknown:'unknown',series:'series',
   loading:'Loading OCR …',reading:'Reading',of:'of',pass:'pass',done:'Done',ref:'Reference',refOk:'Reference updated.',refSame:'Reference already up to date.',refErr:'GitHub unreachable – built-in reference kept.',
   notext:'no terminal text found',imgErr:'image unreadable',jsonErr:'JSON without OCR words',kaufen:'BUY · shop sells',markt:'LOCAL MARKET VALUE · shop buys',read:'read',waren:'commodities',shops:'shops',patch:'patch',
   n_ware:'commodity not recognised',n_unsure:'name uncertain',n_price:'price unreadable',n_dev:'price far from last star-head value',n_new:'new for this shop',n_stock:'stock unreadable',n_two:'two readings',n_diff:'differs in',n_prefix:'price with/without leading digit unclear'}};
@@ -432,18 +434,24 @@ function render(){
       <td class="num preis" contenteditable="true">${fmt(r.preis)}</td>
       ${kauf?`<td class="num bestand" contenteditable="true">${fmt(r.bestand_scu)}</td>`:''}
       <td>${esc(r.status)}</td><td>${esc(r.stand).replace('T',' ')}</td><td>${img(s.bilder.find(b=>b.datei===r.bild)||{datei:r.bild})}</td>
-      <td class="flag">${r.konfidenz==='pruefen'?`<span class="tag">${t('pruefen')}</span>`:''}${esc(r.hinweise.join(' · '))} <span class="edited-mark">✓ ${t('edited')}</span></td>
-      <td><button class="rm" type="button" title="${t('del')}" data-rm>✕</button></td></tr>`).join('');
+      <td class="flag">${r.konfidenz==='pruefen'?`<span class="tag">${t('pruefen')}</span>`:''}${esc(r.hinweise.join(' · '))} <span class="edited-mark">✓ ${t('edited')}</span><span class="ok-mark">✓ ${t('confirmed')}</span></td>
+      <td style="white-space:nowrap"><button class="okb" type="button" title="${t('okb')}" data-ok>✓</button><button class="rm" type="button" title="${t('del')}" data-rm>✕</button></td></tr>`).join('');
     main.insertAdjacentHTML('beforeend',`<section class="panel">
       <div class="head"><div><h2>${esc(s.ort||s.standort||'?')}${s.ort&&s.standort&&s.ort.toUpperCase()!==s.standort.toUpperCase()?` <small style="color:var(--muted);font-weight:400">(${t('read')}: ${esc(s.standort)})</small>`:''}<span class="pill ${kauf?'kauf':'verkauf'}">${kauf?t('kaufen'):s.art==='Verkauf'?t('markt'):'?'}</span></h2>
-        <div class="meta">${s.bilder.length} ${t('pics')} · ${s.zeilen.length} ${t('rows')} · <b>${s.zeilen.filter(r=>r.konfidenz==='pruefen').length}</b> ${t('chk')}</div></div>${sel}</div>
+        <div class="meta">${s.bilder.length} ${t('pics')} · ${s.zeilen.length} ${t('rows')} · <b data-chk="${si}">${s.zeilen.filter(r=>r.konfidenz==='pruefen').length}</b> ${t('chk')} ${s.zeilen.some(r=>r.konfidenz==='pruefen')?`<button class="btn small" type="button" data-okall="${si}">✓ ${t('okAll')}</button>`:''}</div></div>${sel}</div>
       ${!s.standort?`<div class="warn"><b>⚠</b> ${t('noloc')}${s.standort_hinweis?' ('+esc(s.standort_hinweis)+')':''}</div>`:''}
       ${s.zeilen.length?`<div class="tablewrap"><table><thead><tr><th>${t('ware')}</th><th class="num">${t('preis')}</th>${kauf?`<th class="num">${t('bestand')}</th>`:''}<th>${t('status')}</th><th>${t('stand')}</th><th>${t('bild')}</th><th>${t('hinweis')}</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`:`<div class="empty">${t('none')}</div>`}
       <details><summary>${t('pics')}</summary><ul>${s.bilder.map(b=>`<li>${img(b)} · ${esc(b.stand).replace('T',' ')} · ${b.n} ${t('rows')}</li>`).join('')}</ul></details>
     </section>`);
   });
-  if(has)$('#stat').innerHTML=`<b>${SERIEN.length}</b> ${t('series')} · <b>${total}</b> ${t('rows')} · <b>${chk}</b> ${t('chk')}`;
+  if(has)updateCounts();
 }
+function updateCounts(){
+  const rows=$$('tbody tr').length,chk=$$('tbody tr.chk').length;
+  $('#stat').innerHTML=`<b>${SERIEN.length}</b> ${t('series')} · <b>${rows}</b> ${t('rows')} · <b>${chk}</b> ${t('chk')}`;
+  $$('[data-chk]').forEach(b=>{const n=$$(`tbody tr.chk[data-si="${b.dataset.chk}"]`).length;b.textContent=n;const ba=$(`[data-okall="${b.dataset.chk}"]`);if(ba)ba.classList.toggle('hide',n===0);});
+}
+function confirmRow(tr){tr.classList.remove('chk');tr.classList.add('confirmed');}
 function collect(){
   const out=[];
   $$('tbody tr').forEach(tr=>{
@@ -452,11 +460,12 @@ function collect(){
     const num=td=>{const v=(td?.textContent||'').replace(/[^0-9]/g,'');return v?+v:null;};
     out.push({system:shop?.system||'',ort:shop?.ort||s.ort||s.standort||'',shop:shop?.shop||'',standort_im_bild:s.standort||'',art:s.art,
       ware:tr.querySelector('.ware').textContent.trim(),preis_auec_scu:num(tr.querySelector('.preis')),bestand_scu:s.art==='Kauf'?num(tr.querySelector('.bestand')):null,
-      status:r.status,stand:r.stand,bild:r.bild,konfidenz:tr.classList.contains('edited')?'korrigiert':r.konfidenz,hinweise:r.hinweise.join('; ')});
+      status:r.status,stand:r.stand,bild:r.bild,konfidenz:tr.classList.contains('edited')?'korrigiert':tr.classList.contains('confirmed')?'bestaetigt':r.konfidenz,hinweise:r.hinweise.join('; ')});
   });
   return out;
 }
 function download(kind){
+  const open=$$('tbody tr.chk').length; if(open&&!confirm(`${open} ${t('exportAsk')}`))return;
   const rows=collect(),meta={schema:SCHEMA,generator:`SC Screenshot-Auswerter ${VERSION} (Browser)`,generated:new Date().toISOString().slice(0,19),client:'de',ocr:'tesseract.js deu+eng',referenz_stand:REF.stand,patch:REF.patch};
   let blob,name;
   if(kind==='json'){blob=new Blob([JSON.stringify(Object.assign(meta,{eintraege:rows}),null,1)],{type:'application/json'});name='auswertung.json';}
@@ -480,7 +489,9 @@ async function refreshRef(){
 let tt;function toast(m){const e=$('#toast');e.textContent=m;e.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('show'),2500);}
 document.addEventListener('click',e=>{
   const dl=e.target.closest('[data-dl]');if(dl){download(dl.dataset.dl);return;}
-  if(e.target.closest('[data-rm]')){e.target.closest('tr').remove();toast(t('del'));return;}
+  if(e.target.closest('[data-rm]')){e.target.closest('tr').remove();updateCounts();toast(t('del'));return;}
+  if(e.target.closest('[data-ok]')){confirmRow(e.target.closest('tr'));updateCounts();return;}
+  const oa=e.target.closest('[data-okall]');if(oa){$$(`tbody tr.chk[data-si="${oa.dataset.okall}"]`).forEach(confirmRow);updateCounts();toast(t('confirmed'));return;}
   if(e.target.closest('#langBtn')){lang=lang==='de'?'en':'de';localStorage.setItem('sca_lang',lang);render();}
   if(e.target.closest('#themeBtn')){theme=theme==='dark'?'light':'dark';localStorage.setItem('sca_theme',theme);document.documentElement.dataset.theme=theme;}
   if(e.target.closest('#refBtn'))refreshRef();
@@ -489,7 +500,7 @@ document.addEventListener('click',e=>{
   if(e.target.closest('#resetBtn')){PAGES=[];SERIEN=[];$('#fileList').innerHTML='';$('#prog').classList.add('hide');render();}
   if(e.target===$('#drop')||($('#drop').contains(e.target)&&!e.target.closest('button')))$('#fileIn').click();
 });
-document.addEventListener('input',e=>{const tr=e.target.closest('tr');if(tr){tr.classList.add('edited');tr.classList.remove('chk');}});
+document.addEventListener('input',e=>{const tr=e.target.closest('tr');if(tr){tr.classList.add('edited');tr.classList.remove('chk','confirmed');updateCounts();}});
 $('#fileIn').addEventListener('change',e=>{handleFiles(e.target.files);e.target.value='';});
 $('#dirIn').addEventListener('change',e=>{handleFiles(e.target.files);e.target.value='';});
 const drop=$('#drop');
