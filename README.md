@@ -16,7 +16,7 @@ Two purposes:
 1. **Before the screenshot:** in the left panel "Your inventories" **select the location**. The place is then visible in the image and can be matched.
 2. **Face the terminal squarely** and capture with the SC screenshot key (default **F12**, file `ScreenShot-YYYY-MM-DD_hh-mm-ss-xxx.jpg` in `StarCitizen\LIVE\screenshots`) or any tool. Long lists: scroll and take several screenshots, they are merged.
 3. **Open the page** (online or `SC_Screenshot_Auswerter.html` by double-click) and drop the images – single files or a whole folder. About 15 seconds per image; series appear as soon as they are read.
-4. **Review:** check highlighted rows against the screenshot (link in the "Image" column) and correct in place. Commodity, price and stock are editable, rows can be removed. If the place is ambiguous (e.g. Orison: TDD or Municipal Services) pick the shop in the series header.
+4. **Review:** check highlighted rows against the screenshot (link in the "Image" column). Values right: click **✓** (or "Confirm all open rows in this series"). Values wrong: edit commodity, price or stock in place. Not a commodity at all (icon noise): **✕** removes the row from the export. The counter "still to check" shows when you are done; the export asks before leaving yellow rows in. If the place is ambiguous (e.g. Orison: TDD or Municipal Services) pick the shop in the series header.
 5. **Download:** "JSON" or "CSV" – with the reviewed values.
 
 ## What is recognised
@@ -43,7 +43,7 @@ The built-in Windows OCR reads slightly better than the browser engine but needs
 
 ## File format
 
-`auswertung.json` / `auswertung.csv` (semicolon, UTF-8): `system`, `ort`, `shop`, `standort_im_bild`, `art` (Kauf/Verkauf from the player's view), `ware`, `preis_auec_scu`, `bestand_scu` (buy only), `status`, `stand`, `bild`, `konfidenz` (`ok`, `pruefen`, after editing `korrigiert`), `hinweise`. Schema id `sc-konsole-export/1`; a proposal until star-head defines a submission format.
+`auswertung.json` / `auswertung.csv` (semicolon, UTF-8): `system`, `ort`, `shop`, `standort_im_bild`, `art` (Kauf/Verkauf from the player's view), `ware`, `preis_auec_scu`, `bestand_scu` (buy only), `status`, `stand`, `bild`, `konfidenz` (`ok` = recognised without doubt, `bestaetigt` = confirmed by a person, `korrigiert` = edited by a person, `pruefen` = still unchecked), `hinweise`. Schema id `sc-konsole-export/1`; a proposal until star-head defines a submission format.
 
 ## Build it yourself
 

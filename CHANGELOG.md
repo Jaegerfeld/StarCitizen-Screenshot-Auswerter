@@ -2,6 +2,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [0.3.0] – 2026-10-28
+
+### Hinzugefügt
+- **Bestätigen:** ✓ je Zeile (Werte geprüft, passen) und „Alle offenen in dieser Serie bestätigen“. Bestätigte Zeilen verlieren die Markierung und gehen mit `konfidenz = bestaetigt` in den Export; der Zähler „noch zu prüfen“ zählt je Serie und gesamt herunter. Beim Export fragt die Seite nach, wenn noch gelbe Zeilen offen sind.
+
 ## [0.2.1] – 2026-10-28
 
 ### Behoben
