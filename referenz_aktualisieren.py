@@ -23,7 +23,8 @@ ART = {0: "Kauf", 1: "Verkauf"}
 def build(d):
     wares = [w["w"] for w in d["wares"]]
     shops, angebot = {}, {}
-    for idx, art, preis, shop, ort, system, _inv, _cont, stand in d["rows"]:
+    for row in d["rows"]:
+        idx, art, preis, shop, ort, system, _inv, _cont, stand = row[:9]   # ab Handels-Planer 1.3 folgt ein 10. Feld (Quelle)
         shops[(shop, ort)] = system
         angebot.setdefault(f"{shop}|{ort}", {}).setdefault(ART[art], {})[wares[idx]] = [preis, stand]
     return {
@@ -37,9 +38,10 @@ def build(d):
     }
 
 
-def main():
-    if len(sys.argv) > 1:
-        raw = pathlib.Path(sys.argv[1]).read_text(encoding="utf-8")
+def main(argv=None):
+    argv = sys.argv[1:] if argv is None else argv
+    if argv:
+        raw = pathlib.Path(argv[0]).read_text(encoding="utf-8")
     else:
         req = urllib.request.Request(URL, headers={"User-Agent": "SC-Screenshot-Auswerter"})
         with urllib.request.urlopen(req, timeout=60) as r:
