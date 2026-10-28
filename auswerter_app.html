@@ -75,6 +75,8 @@
   tr.confirmed .okb{background:var(--ok);color:#fff;cursor:default} .ok-mark{display:none;font-family:var(--disp);font-size:11px;color:var(--ok);letter-spacing:.06em} tr.confirmed .ok-mark{display:inline}
   .btn.small{min-height:30px;padding:4px 10px;font-size:13px}
   .hide{display:none!important}
+  #cornerWrap{position:relative;display:inline-block;max-width:100%} #cornerCanvas{max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;cursor:crosshair;display:block}
+  .corner-steps{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0} .corner-steps span{font-family:var(--disp);font-size:12px;letter-spacing:.06em;border:1px solid var(--line);border-radius:20px;padding:2px 10px;color:var(--muted)} .corner-steps span.done{color:var(--ok);border-color:var(--ok)} .corner-steps span.next{color:var(--accent2);border-color:var(--accent2)}
   .thumb{max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:8px}
 </style>
 </head>
@@ -113,6 +115,13 @@
     <div class="progress"><i id="progBar"></i></div>
     <ul class="files" id="fileList"></ul>
   </div>
+  <div id="corner" class="hide">
+    <h3><span class="de">Konsole schräg aufgenommen – bitte die vier Ecken des rechten Panels anklicken</span><span class="en">Terminal captured at an angle – please click the four corners of the right panel</span></h3>
+    <p class="lede"><span class="de">Das Panel mit den Reitern „Kaufen / Lokaler Marktwert“: Reihenfolge oben links → oben rechts → unten rechts → unten links. Die Ecken gelten auch für die folgenden Bilder, solange sie passen.</span><span class="en">The panel with the tabs “Buy / Local market value”: order top-left → top-right → bottom-right → bottom-left. The corners are reused for the following images as long as they fit.</span></p>
+    <div class="corner-steps" id="cornerSteps"></div>
+    <div id="cornerWrap"><canvas id="cornerCanvas"></canvas></div>
+    <div class="toolbar"><button class="btn primary" type="button" id="cornerGo" disabled><span class="de">Entzerren und lesen</span><span class="en">Straighten and read</span></button><button class="btn" type="button" id="cornerReset"><span class="de">Ecken löschen</span><span class="en">Clear corners</span></button><button class="btn" type="button" id="cornerSkip"><span class="de">Bild überspringen</span><span class="en">Skip image</span></button></div>
+  </div>
 </section>
 
 <div id="resultHead" class="toolbar hide">
@@ -139,13 +148,13 @@ const T={de:{ware:'Ware',preis:'Preis ¤/SCU',bestand:'Bestand SCU',status:'Stat
   shop:'Shop (star-head)',noloc:'Standort nicht erkannt – Shop bitte wählen. Tipp: Vor dem Screenshot im Feld „Deine Inventare“ den Standort auswählen.',
   pics:'Bilder',rows:'Zeilen',chk:'noch zu prüfen',okb:'Zeile bestätigen (Werte passen)',okAll:'Alle offenen in dieser Serie bestätigen',confirmed:'bestätigt',exportAsk:'Zeilen sind noch nicht geprüft (gelb). Trotzdem exportieren?',none:'Keine Waren erkannt – ist das ein Screenshot der Handelskonsole (Reiter Kaufen / Lokaler Marktwert)?',del:'Zeile entfernen',dl:'heruntergeladen',unknown:'unbekannt',series:'Serien',
   loading:'Texterkennung wird geladen …',reading:'Lese',of:'von',pass:'Lesung',done:'Fertig',ref:'Referenz',refOk:'Referenz aktualisiert.',refSame:'Referenz ist schon aktuell.',refErr:'GitHub nicht erreichbar – eingebaute Referenz bleibt.',
-  notext:'kein Konsolentext gefunden',imgErr:'Bild nicht lesbar',jsonErr:'JSON ohne OCR-Wörter',kaufen:'KAUFEN · Shop verkauft',markt:'LOKALER MARKTWERT · Shop kauft',read:'gelesen',waren:'Waren',shops:'Shops',patch:'Patch',
+  notext:'kein Konsolentext gefunden',skewed:'schräg – entzerrt gelesen',skipped:'übersprungen',cornerAsk:'Bitte vier Ecken anklicken',cTL:'oben links',cTR:'oben rechts',cBR:'unten rechts',cBL:'unten links',imgErr:'Bild nicht lesbar',jsonErr:'JSON ohne OCR-Wörter',kaufen:'KAUFEN · Shop verkauft',markt:'LOKALER MARKTWERT · Shop kauft',read:'gelesen',waren:'Waren',shops:'Shops',patch:'Patch',
   n_ware:'Ware nicht erkannt',n_unsure:'Name unsicher',n_price:'Preis nicht lesbar',n_dev:'Preis weicht stark vom letzten star-head-Wert ab',n_new:'neu für diesen Shop',n_stock:'Bestand nicht lesbar',n_two:'zwei Lesungen',n_diff:'unterschiedlich in',n_prefix:'Preis ohne/mit Vorziffer unklar'},
  en:{ware:'Commodity',preis:'Price ¤/SCU',bestand:'Stock SCU',status:'Status',stand:'As of',bild:'Image',hinweis:'Notes',pruefen:'CHECK',edited:'edited',
   shop:'Shop (star-head)',noloc:'Location not recognised – please pick the shop. Tip: select the location in “Your inventories” before the screenshot.',
   pics:'images',rows:'rows',chk:'still to check',okb:'Confirm row (values are right)',okAll:'Confirm all open rows in this series',confirmed:'confirmed',exportAsk:'rows are still unchecked (yellow). Export anyway?',none:'No commodities recognised – is this a screenshot of the trade terminal (tab Buy / Local market value)?',del:'Remove row',dl:'downloaded',unknown:'unknown',series:'series',
   loading:'Loading OCR …',reading:'Reading',of:'of',pass:'pass',done:'Done',ref:'Reference',refOk:'Reference updated.',refSame:'Reference already up to date.',refErr:'GitHub unreachable – built-in reference kept.',
-  notext:'no terminal text found',imgErr:'image unreadable',jsonErr:'JSON without OCR words',kaufen:'BUY · shop sells',markt:'LOCAL MARKET VALUE · shop buys',read:'read',waren:'commodities',shops:'shops',patch:'patch',
+  notext:'no terminal text found',skewed:'angled – read after straightening',skipped:'skipped',cornerAsk:'Please click four corners',cTL:'top-left',cTR:'top-right',cBR:'bottom-right',cBL:'bottom-left',imgErr:'image unreadable',jsonErr:'JSON without OCR words',kaufen:'BUY · shop sells',markt:'LOCAL MARKET VALUE · shop buys',read:'read',waren:'commodities',shops:'shops',patch:'patch',
   n_ware:'commodity not recognised',n_unsure:'name uncertain',n_price:'price unreadable',n_dev:'price far from last star-head value',n_new:'new for this shop',n_stock:'stock unreadable',n_two:'two readings',n_diff:'differs in',n_prefix:'price with/without leading digit unclear'}};
 const t=k=>T[lang][k];
 
@@ -158,8 +167,8 @@ const STATUS=['AUSVERKAUFT','SEHR NIEDRIGE BESTÄNDE','NIEDRIGE BESTÄNDE','MITT
 const NO_LOCATION=['STANDORT WÄHLEN','WÄHLE EINE UNTERKATEGORIE'];
 const KAUF_SECTIONS=new Set(['lager','nicht_vorraetig']);
 const D='0-9OoIlS';
-const PRICE_RE=new RegExp(`[¤#nmNMa]?\\s*([${D}][${D} .,]*)\\s*/\\s*[S58]`);
-const SCU_TAIL_RE=new RegExp(`([${D}][${D} .,]*)\\s*[S5][CG][UJ]\\s*$`,'i');
+const PRICE_RE=new RegExp(`[¤#nmNMa]?\\s*([${D}][${D} .,]*)\\s*/\\s*[S58936]`);
+const SCU_TAIL_RE=new RegExp(`([${D}][${D} .,]*)\\s*[S53][CG][UJYH]\\s*$`,'i');
 const PREFIX_RE=new RegExp(`^[¤nmNM]?\\s*[${D}]{1,3}\\s*[,.]?\\s*$`), TAIL_PREFIX_RE=new RegExp(`[¤nmNM]\\s*[${D}]{1,3}\\s*[,.]?\\s*$`);
 const DIGIT_FIX={O:'0',o:'0',I:'1',l:'1',S:'5'};
 const norm=s=>String(s||'').toUpperCase().replace(/ß|ẞ/g,'SS').replace(/[^A-Z0-9ÄÖÜ&'\- ]+/g,' ').replace(/\s+/g,' ').trim();
@@ -209,7 +218,7 @@ function classify(text){
   m=PRICE_RE.exec(text); if(m&&text.includes('/'))return['price',{v:toInt(m[1]),raw:m[0].trim()}];
   return['text',text];
 }
-const garbage=roh=>{const n=norm(roh);return n.replace(/[^A-Z]/g,'').length<5||/\bS?CU\b|^\W/.test(n);};
+const garbage=roh=>{const n=norm(roh);const L=n.replace(/[^A-Z]/g,'');return L.length<5||/\bS?CU\b|^\W/.test(n)||n.split(' ').filter(w=>/^[A-Z]{3,}$/.test(w)).length===0;};
 function parseItems(words,wares){
   const items=[];let section=null,cur=null,bestandSeen=false;
   for(const ln of linesOf(words)){
@@ -352,7 +361,7 @@ async function ocrWords(wk,canvas,x0,y0,scale){
     let text=w.text.trim();
     // Währungszeichen ¤ vor dem Preis: Tesseract liest es als 1, 5, n, m … – die Glyphe ist aber fast quadratisch
     // und niedriger als eine Ziffer; ein verschmolzenes "¤1" ist doppelt so breit (dann bleibt die 1).
-    if(/^[0-9OoIlSnmNMa#][0-9OoIlS .,]*\/[S58]/.test(text)&&w.symbols&&w.symbols.length>3){
+    if(/^[0-9OoIlSnmNMa#][0-9OoIlS .,]*\/[S58936]/.test(text)&&w.symbols&&w.symbols.length>3){
       const s0=w.symbols[0],s1=w.symbols[1],a=(s0.bbox.x1-s0.bbox.x0)/Math.max(1,s0.bbox.y1-s0.bbox.y0),h1=s1.bbox.y1-s1.bbox.y0;
       if(a>=0.8&&a<1.3&&((s0.bbox.y1-s0.bbox.y0)<h1*0.95||a>=0.9))text='¤'+text.slice(1);
       else if(a>=1.3)text='¤'+text;
@@ -373,6 +382,21 @@ async function ocrImage(file,idx,total){
   step(1);const rx=Math.floor(W*0.55);
   const rough=await ocrWords(wk,cropCanvas(img,rx,0,W-rx,H,2,1.3),rx,0,2);
   const kf=rough.find(w=>/^KAUF/i.test(w.text)), mk=rough.find(w=>/^(LOKAL|MARKT|MRKT)/i.test(w.text));
+  if(!kf&&!mk&&vocabScore(rough)<3){   // frontal nichts gefunden -> schräge Aufnahme: entzerren
+    step(2,t('skewed'));
+    let res=null,quad=null;
+    const dims=W+'x'+H;
+    for(const cand of [lastDims===dims?lastQuad:null,autoQuad(img,'R')]){if(!cand)continue;const r=await readWarped(wk,img,cand);if(r.score>=3){res=r;quad=cand;break;}}
+    if(!res){setProg(`${t('reading')} ${idx+1} ${t('of')} ${total}: ${file.name} · ${t('cornerAsk')}`,idx/total);
+      const q=await askCorners(img,file);if(!q){img.close&&img.close();throw new Error(t('skipped'));}
+      res=await readWarped(wk,img,q);quad=q;}
+    lastQuad=quad;lastDims=dims;
+    step(4);const lq=autoQuad(img,'L');let L=[];
+    if(lq){const lc=warpQuad(img,lq,2.5);L=await ocrWords(wk,thresholdCanvas(lc,205),0,0,1);}
+    else{const lx=Math.floor(W*0.45);L=await ocrWords(wk,cropCanvas(img,0,0,lx,H,2,1.3),0,0,2);}
+    img.close&&img.close();
+    return{file:file.name,url:URL.createObjectURL(file),imgW:W,imgH:H,mtime:new Date(file.lastModified).toISOString(),ocr:'tesseract',skewed:true,tabs:res.tabs,variants:[{tag:'L',words:L},{tag:'R',words:res.R},{tag:'RB',words:res.RB}]};
+  }
   const tabs={kaufen:kf?meanBrightness(img,kf.x-kf.w*0.3,kf.y-kf.h*0.3,kf.w*1.6,kf.h*1.6):null,markt:mk?meanBrightness(img,mk.x-mk.w*0.3,mk.y-mk.h*0.3,mk.w*1.6,mk.h*1.6):null};
   let px0=rx,px1=W,py0=0;
   if(kf){px0=Math.max(0,kf.x-W*0.02);py0=Math.max(0,kf.y-kf.h*0.5);px1=Math.min(W,Math.max(mk?mk.x+mk.w+W*0.03:0,kf.x+W*0.22));}
@@ -397,6 +421,82 @@ async function ocrImage(file,idx,total){
   return{file:file.name,url:URL.createObjectURL(file),imgW:W,imgH:H,mtime:new Date(file.lastModified).toISOString(),ocr:'tesseract',tabs,variants:[{tag:'L',words:L},{tag:'R',words:R},{tag:'RB',words:RB}]};
 }
 
+
+// =====================================================================
+// Schräge Aufnahmen: Panel-Ecken finden (automatisch oder per Klick), entzerren, Text per Schwellwert freistellen
+// =====================================================================
+function homography(src,dst){ // src = H * dst (4 Punktpaare), Gauss-Elimination
+  const A=[],b=[];for(let i=0;i<4;i++){const [x,y]=dst[i],[u,v]=src[i];A.push([x,y,1,0,0,0,-u*x,-u*y]);b.push(u);A.push([0,0,0,x,y,1,-v*x,-v*y]);b.push(v);}
+  for(let c=0;c<8;c++){let p=c;for(let r=c+1;r<8;r++)if(Math.abs(A[r][c])>Math.abs(A[p][c]))p=r;[A[c],A[p]]=[A[p],A[c]];[b[c],b[p]]=[b[p],b[c]];
+    for(let r=0;r<8;r++){if(r===c)continue;const f=A[r][c]/A[c][c];for(let k=c;k<8;k++)A[r][k]-=f*A[c][k];b[r]-=f*b[c];}}
+  return [...b.map((v,i)=>v/A[i][i]),1];
+}
+function warpQuad(img,quad,scale){ // quad TL,TR,BR,BL (Bildkoordinaten) -> frontales Canvas
+  const d=(p,q)=>Math.hypot(p[0]-q[0],p[1]-q[1]);const [tl,tr,br,bl]=quad;
+  const W_=Math.max(8,Math.round((d(tl,tr)+d(bl,br))/2*scale)),H_=Math.max(8,Math.round((d(tl,bl)+d(tr,br))/2*scale));
+  const H=homography(quad,[[0,0],[W_,0],[W_,H_],[0,H_]]);
+  const sc=document.createElement('canvas');sc.width=img.width;sc.height=img.height;const sg=sc.getContext('2d',{willReadFrequently:true});sg.drawImage(img,0,0);const sp=sg.getImageData(0,0,img.width,img.height).data;
+  const out=document.createElement('canvas');out.width=W_;out.height=H_;const og=out.getContext('2d',{willReadFrequently:true});const od=og.createImageData(W_,H_),op=od.data;
+  for(let y=0;y<H_;y++)for(let x=0;x<W_;x++){const w=H[6]*x+H[7]*y+1,ui=Math.round((H[0]*x+H[1]*y+H[2])/w),vi=Math.round((H[3]*x+H[4]*y+H[5])/w);const o=(y*W_+x)*4;
+    if(ui>=0&&ui<img.width&&vi>=0&&vi<img.height){const i=(vi*img.width+ui)*4;op[o]=sp[i];op[o+1]=sp[i+1];op[o+2]=sp[i+2];}op[o+3]=255;}
+  og.putImageData(od,0,0);return out;
+}
+function thresholdCanvas(c,th){ // helle Textpixel (Rot-Kanal > th) als schwarz auf weiß
+  const g=c.getContext('2d',{willReadFrequently:true});const d=g.getImageData(0,0,c.width,c.height),p=d.data;
+  for(let i=0;i<p.length;i+=4){const v=p[i]>th?0:255;p[i]=p[i+1]=p[i+2]=v;}
+  const o=document.createElement('canvas');o.width=c.width;o.height=c.height;o.getContext('2d').putImageData(d,0,0);return o;
+}
+function autoQuad(img,side){ // größte grau-helle Fläche (Glas-Panel) in einer Bildhälfte -> Eckpunkte
+  const k=4,w=Math.floor(img.width/k),h=Math.floor(img.height/k);
+  const c=document.createElement('canvas');c.width=w;c.height=h;const g=c.getContext('2d',{willReadFrequently:true});g.drawImage(img,0,0,w,h);const p=g.getImageData(0,0,w,h).data;
+  const m=new Uint8Array(w*h);const x0=side==='R'?Math.floor(w/2):0,x1=side==='R'?w:Math.floor(w/2);
+  for(let y=0;y<h;y++)for(let x=x0;x<x1;x++){const i=(y*w+x)*4;if(Math.min(p[i],p[i+1],p[i+2])>110)m[y*w+x]=1;}
+  const e=new Uint8Array(w*h);     // Erosion 5x5: dünne Verbindungen kappen
+  for(let y=2;y<h-2;y++)for(let x=2;x<w-2;x++){let ok=1;for(let dy=-2;dy<=2&&ok;dy++)for(let dx=-2;dx<=2;dx++)if(!m[(y+dy)*w+x+dx]){ok=0;break;}e[y*w+x]=ok;}
+  const seen=new Uint8Array(w*h);let best=[];
+  for(let s=0;s<w*h;s++){if(!e[s]||seen[s])continue;const comp=[];const st=[s];seen[s]=1;
+    while(st.length){const i=st.pop();comp.push(i);const x=i%w,y=(i-x)/w;for(const [nx,ny] of [[x+1,y],[x-1,y],[x,y+1],[x,y-1]]){if(nx<0||ny<0||nx>=w||ny>=h)continue;const j=ny*w+nx;if(e[j]&&!seen[j]){seen[j]=1;st.push(j);}}}
+    if(comp.length>best.length)best=comp;}
+  if(best.length<w*h*0.03)return null;
+  const pt=i=>[i%w,(i-i%w)/w];let tl,tr,br,bl,a=1e9,b=-1e9,cc=-1e9,d=1e9;
+  for(const i of best){const [x,y]=pt(i);if(x+y<a){a=x+y;tl=[x,y];}if(x+y>b){b=x+y;br=[x,y];}if(x-y>cc){cc=x-y;tr=[x,y];}if(x-y<d){d=x-y;bl=[x,y];}}
+  const q=[tl,tr,br,bl].map(([x,y])=>[x*k,y*k]);
+  const wq=(Math.hypot(q[1][0]-q[0][0],q[1][1]-q[0][1])+Math.hypot(q[2][0]-q[3][0],q[2][1]-q[3][1]))/2,hq=(Math.hypot(q[3][0]-q[0][0],q[3][1]-q[0][1])+Math.hypot(q[2][0]-q[1][0],q[2][1]-q[1][1]))/2;
+  if(!(wq>0&&hq>0)||wq/hq<0.3||wq/hq>1.4)return null;
+  return q;
+}
+const VOCAB=()=>[...REF.waren,...Object.keys(HEADERS),...STATUS,'INVENTAR','KAUFEN','LOKALER','MARKTWERT','BESTAND','VERFÜGBARE','CONTAINERGRÖSSE','SCU'];
+function vocabScore(words){const v=VOCAB();let n=0;for(const w of words){if(w.text.length<3)continue;const [m]=best(w.text,v,0.75);if(m)n++;}return n;}
+async function readWarped(wk,img,quad){ // entzerrtes Panel in zwei Schwellwert-Lesungen; Reiter-Helligkeit aus dem entzerrten Farbbild
+  const wc=warpQuad(img,quad,2.5);
+  const R=await ocrWords(wk,thresholdCanvas(wc,205),0,0,1),RB=await ocrWords(wk,thresholdCanvas(wc,225),0,0,1);
+  const all=[...R,...RB],kf=all.find(w=>/^KAUF/i.test(w.text)),mk=all.find(w=>/^(LOKAL|MARKT|MRKT)/i.test(w.text));
+  const mb=(w)=>meanBrightness(wc,w.x-w.w*0.3,w.y-w.h*0.3,w.w*1.6,w.h*1.6);
+  return{R,RB,tabs:{kaufen:kf?mb(kf):null,markt:mk?mb(mk):null},score:vocabScore(R)+vocabScore(RB)};
+}
+let lastQuad=null,lastDims='';
+function askCorners(img,file){ // Ecken-Wähler: löst mit Quad (TL,TR,BR,BL) oder null (überspringen) auf
+  return new Promise(resolve=>{
+    const box=$('#corner'),cv=$('#cornerCanvas'),maxW=Math.min(1100,document.documentElement.clientWidth-64);
+    const sc=Math.min(1,maxW/img.width);cv.width=Math.round(img.width*sc);cv.height=Math.round(img.height*sc);
+    const g=cv.getContext('2d');let pts=[];
+    const labels=[t('cTL'),t('cTR'),t('cBR'),t('cBL')];
+    const draw=()=>{g.drawImage(img,0,0,cv.width,cv.height);g.lineWidth=3;g.strokeStyle='#3fd0dd';g.fillStyle='#f0a94a';
+      pts.forEach((p,i)=>{g.beginPath();g.arc(p[0]*sc,p[1]*sc,7,0,7);g.fill();g.font='bold 14px sans-serif';g.fillText(String(i+1),p[0]*sc+10,p[1]*sc-8);});
+      if(pts.length>1){g.beginPath();g.moveTo(pts[0][0]*sc,pts[0][1]*sc);for(const p of pts.slice(1))g.lineTo(p[0]*sc,p[1]*sc);if(pts.length===4)g.closePath();g.stroke();}
+      $('#cornerSteps').innerHTML=labels.map((l,i)=>`<span class="${i<pts.length?'done':i===pts.length?'next':''}">${i+1} · ${l}</span>`).join('');
+      $('#cornerGo').disabled=pts.length!==4;};
+    const onClick=e=>{if(pts.length>=4)return;const r=cv.getBoundingClientRect();pts.push([(e.clientX-r.left)*cv.width/r.width/sc,(e.clientY-r.top)*cv.height/r.height/sc]);draw();};
+    const finish=q=>{cv.removeEventListener('click',onClick);$('#cornerGo').onclick=$('#cornerReset').onclick=$('#cornerSkip').onclick=null;box.classList.add('hide');resolve(q);};
+    cv.addEventListener('click',onClick);
+    $('#cornerGo').onclick=()=>finish(pts.map(p=>[Math.round(p[0]),Math.round(p[1])]));
+    $('#cornerReset').onclick=()=>{pts=[];draw();};
+    $('#cornerSkip').onclick=()=>finish(null);
+    box.classList.remove('hide');draw();box.scrollIntoView({behavior:'smooth',block:'start'});
+    window.__cornerResolve=finish;   // für Tests
+  });
+}
+
 // =====================================================================
 // Ablauf: Dateien -> Seiten -> Serien -> Tabelle
 // =====================================================================
@@ -412,7 +512,7 @@ async function handleFiles(list){
       if(/\.json$/i.test(f.name)){const d=JSON.parse(await f.text());if(!d.pages)throw new Error(t('jsonErr'));
         for(const p of d.pages)PAGES.push(Object.assign({url:'',ocr:'windows'},p));li.innerHTML=`<span class="ok">✓</span> ${esc(f.name)} (${d.pages.length} ${t('pics')})`;}
       else{const page=await ocrImage(f,i,files.length);PAGES.push(page);
-        const n=page.variants.find(v=>v.tag==='R').words.length;li.innerHTML=`<span class="${n?'ok':'bad'}">${n?'✓':'✗'}</span> ${esc(f.name)}${n?'':' – '+t('notext')}`;}
+        const n=page.variants.find(v=>v.tag==='R').words.length;li.innerHTML=`<span class="${n?'ok':'bad'}">${n?'✓':'✗'}</span> ${esc(f.name)}${n?(page.skewed?' – '+t('skewed'):''):' – '+t('notext')}`;}
     }catch(e){li.innerHTML=`<span class="bad">✗</span> ${esc(f.name)} – ${esc(e.message)}`;}
     SERIEN=evaluate(PAGES);render();
   }
