@@ -1,0 +1,12446 @@
+{
+"schema": "sc-auswerter-referenz/1",
+"quelle": "build",
+"stand": "2026-10-25 13:56 UTC",
+"patch": "4.10.2-LIVE",
+"waren": [
+"Agricium",
+"Agricultural Supplies",
+"Altruciatoxin",
+"Aluminum",
+"Amioshi Plague",
+"Ammonia",
+"Aphorite",
+"Argon",
+"Aslarite",
+"Aslarite (Raw)",
+"Astatine",
+"Atlasium",
+"Audio Visual Equipment",
+"Beradom",
+"Beryl",
+"Bexalite",
+"Bioplastic",
+"Blue Bilva",
+"Borase",
+"Borase (Ore)",
+"Carbon",
+"Carbon-Silk",
+"Carinite",
+"Chlorine",
+"CK13-GID Seed Blend",
+"Cobalt",
+"Compboard",
+"Construction Materials",
+"Copper",
+"Copper (Ore)",
+"Corundum",
+"DCSR2",
+"Degnous Root",
+"Diamond",
+"Diamond Laminate",
+"Distilled Spirits",
+"Dolivine",
+"Dymantium",
+"DynaFlex",
+"Elespo",
+"E'tam",
+"Feynmaline",
+"Fluorine",
+"Fresh Food",
+"Gasping Weevil Eggs",
+"Glacosite",
+"Gold",
+"Golden Medmon",
+"Hadanite",
+"Heart of the Woods",
+"Helium",
+"Hephaestanite",
+"HexaPolyMesh Coating",
+"Human Food Bars",
+"Hydrogen",
+"Hydrogen Fuel",
+"Inert Material",
+"Iodine",
+"Iron",
+"Iron (Ore)",
+"Jaclium",
+"Jaclium (Ore)",
+"Janalite",
+"Jumping Limes",
+"Kopion Horn",
+"Laranite",
+"LifeCure Medsticks",
+"Lindinium",
+"Luminalia Gift",
+"Lunes",
+"Marok Gem",
+"Maze",
+"Medical Supplies",
+"Mercury",
+"Methane",
+"Neograph",
+"Neon",
+"Nitrogen",
+"Omnapoxy",
+"Organics",
+"Osoian Hides",
+"Ouratite",
+"Oza",
+"Partillium",
+"Party Favors",
+"Pitambu",
+"Potassium",
+"Pressurized Ice",
+"Processed Food",
+"Prota",
+"Quantainium",
+"Quantum Fuel",
+"Quartz",
+"Ranta Dung",
+"Recycled Material Composite",
+"Revenant Pod",
+"Revenant Tree Pollen",
+"Riccite",
+"Sadaryx",
+"Saldynium",
+"Saldynium (Ore)",
+"Savrilium",
+"Scrap",
+"Ship Ammunition",
+"Ship Ammunition - Size 1",
+"Ship Ammunition - Size 2",
+"Ship Ammunition - Size 3",
+"Ship Ammunition - Size 4",
+"Ship Ammunition - Size 5",
+"Ship Ammunition - Size 6",
+"Ship Ammunition - Size 7",
+"Ship Decoy Countermeasures",
+"Ship Decoy Countermeasures",
+"Ship Decoy Countermeasures",
+"Ship Noise Countermeasures",
+"Ship Noise Countermeasures",
+"Silicon",
+"SLAM",
+"Souvenirs",
+"Steel",
+"Stileron",
+"Stims",
+"Sunset Berries",
+"Taranite",
+"Thermalfoam",
+"Tin",
+"Titanium",
+"Torite",
+"Tritium",
+"Tungsten",
+"Waste",
+"Watermelon",
+"WiDoW",
+"Xa'Pyen",
+"Year of the Pig Envelope",
+"Year of the rooster envelope",
+"Zeta-Prolanide"
+],
+"shops": [
+{
+"shop": "Admin Office",
+"ort": "ARC-L1 Wide Forest Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "ARC-L2 Lively Pathway Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "ARC-L3 Modern Express Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "ARC-L4 Faint Glen Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "ARC-L5 Yellow Core Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "Baijini Point",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "CRU-L1 Ambitious Dream Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "CRU-L4 Shallow Fields Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "CRU-L5 Beautiful Glen Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "Checkmate Station",
+"system": "Pyro"
+},
+{
+"shop": "Admin Office",
+"ort": "Dudley & Daughters",
+"system": "Pyro"
+},
+{
+"shop": "Admin Office",
+"ort": "Endgame",
+"system": "Pyro"
+},
+{
+"shop": "Admin Office",
+"ort": "Everus Harbor",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "Gaslight",
+"system": "Pyro"
+},
+{
+"shop": "Admin Office",
+"ort": "Grim HEX",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "HUR-L1 Green Glade Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "HUR-L2 Faithful Dream Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "HUR-L3 Thundering Express Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "HUR-L4 Melodic Fields Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "HUR-L5 High Course Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "Lorville",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "MIC-L1 Shallow Frontier Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "MIC-L2 Long Forest Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "MIC-L3 Endless Odyssey Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "MIC-L4 Red Crossroads Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "MIC-L5 Modern Icarus Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "Megumi Refueling",
+"system": "Pyro"
+},
+{
+"shop": "Admin Office",
+"ort": "Nyx Gateway (Pyro)",
+"system": "Pyro"
+},
+{
+"shop": "Admin Office",
+"ort": "Nyx Gateway (Stanton)",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "Orbituary",
+"system": "Pyro"
+},
+{
+"shop": "Admin Office",
+"ort": "Patch City",
+"system": "Pyro"
+},
+{
+"shop": "Admin Office",
+"ort": "Port Tressler",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "Pyro Gateway (Nyx)",
+"system": "Nyx"
+},
+{
+"shop": "Admin Office",
+"ort": "Pyro Gateway (Stanton)",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "Rat´s Nest",
+"system": "Pyro"
+},
+{
+"shop": "Admin Office",
+"ort": "Rod´s Fuel ´N Supplies",
+"system": "Pyro"
+},
+{
+"shop": "Admin Office",
+"ort": "Ruin Station",
+"system": "Pyro"
+},
+{
+"shop": "Admin Office",
+"ort": "Seraphim Station",
+"system": "Stanton"
+},
+{
+"shop": "Admin Office",
+"ort": "Stanton Gateway (Nyx)",
+"system": "Nyx"
+},
+{
+"shop": "Admin Office",
+"ort": "Stanton Gateway (Pyro)",
+"system": "Pyro"
+},
+{
+"shop": "Admin Office",
+"ort": "Starlight Service Station",
+"system": "Pyro"
+},
+{
+"shop": "Admin Office",
+"ort": "Terra Gateway (Stanton)",
+"system": "Stanton"
+},
+{
+"shop": "ArcCorp Mining Area 045",
+"ort": "ArcCorpMining Area 045",
+"system": "Stanton"
+},
+{
+"shop": "ArcCorp Mining Area 048",
+"ort": "ArcCorpMining Area 048",
+"system": "Stanton"
+},
+{
+"shop": "ArcCorp Mining Area 056",
+"ort": "ArcCorp Mining Area 056",
+"system": "Stanton"
+},
+{
+"shop": "ArcCorp Mining Area 061",
+"ort": "ArcCorpMining Area 061",
+"system": "Stanton"
+},
+{
+"shop": "ArcCorp Mining Area 141",
+"ort": "ArcCorp Mining Area 141",
+"system": "Stanton"
+},
+{
+"shop": "ArcCorp Mining Area 157",
+"ort": "ArcCorp Mining Area 157",
+"system": "Stanton"
+},
+{
+"shop": "Ashland",
+"ort": "Ashland",
+"system": "Pyro"
+},
+{
+"shop": "Brio's Breaker Yard",
+"ort": "Brio's Breaker Yard",
+"system": "Stanton"
+},
+{
+"shop": "Bueno Ravine",
+"ort": "Bueno Ravine",
+"system": "Pyro"
+},
+{
+"shop": "Canard View",
+"ort": "Canard View",
+"system": "Pyro"
+},
+{
+"shop": "Chawla´s Beach",
+"ort": "Chawla´s Beach",
+"system": "Pyro"
+},
+{
+"shop": "Commodity Shop",
+"ort": "Levski",
+"system": "Nyx"
+},
+{
+"shop": "Deakins Research Outpost",
+"ort": "Deakins Research Outpost",
+"system": "Stanton"
+},
+{
+"shop": "Devlin Scrap & Salvage",
+"ort": "Devlin Scrap & Salvage",
+"system": "Stanton"
+},
+{
+"shop": "Dumper´s Depot",
+"ort": "Area 18",
+"system": "Stanton"
+},
+{
+"shop": "Dumper´s Depot",
+"ort": "Grim HEX",
+"system": "Stanton"
+},
+{
+"shop": "Dunboro",
+"ort": "Dunboro",
+"system": "Stanton"
+},
+{
+"shop": "Fallow Field",
+"ort": "Fallow Field",
+"system": "Pyro"
+},
+{
+"shop": "HDMS-Anderson",
+"ort": "HDMS-Anderson",
+"system": "Stanton"
+},
+{
+"shop": "HDMS-Bezdek",
+"ort": "HDMS-Bezdek",
+"system": "Stanton"
+},
+{
+"shop": "HDMS-Edmond",
+"ort": "HDMS-Edmond",
+"system": "Stanton"
+},
+{
+"shop": "HDMS-Hadley",
+"ort": "HDMS-Hadley",
+"system": "Stanton"
+},
+{
+"shop": "HDMS-Hahn",
+"ort": "HDMS-Hahn",
+"system": "Stanton"
+},
+{
+"shop": "HDMS-Lathan",
+"ort": "HDMS-Lathan",
+"system": "Stanton"
+},
+{
+"shop": "HDMS-Norgaard",
+"ort": "HDMS-Norgaard",
+"system": "Stanton"
+},
+{
+"shop": "HDMS-Oparei",
+"ort": "HDMS-Oparei",
+"system": "Stanton"
+},
+{
+"shop": "HDMS-Perlman",
+"ort": "HDMS-Perlman",
+"system": "Stanton"
+},
+{
+"shop": "HDMS-Pinewood",
+"ort": "HDMS-Pinewood",
+"system": "Stanton"
+},
+{
+"shop": "HDMS-Ryder",
+"ort": "HDMS-Ryder",
+"system": "Stanton"
+},
+{
+"shop": "HDMS-Stanhope",
+"ort": "HDMS-Stanhope",
+"system": "Stanton"
+},
+{
+"shop": "HDMS-Thedus",
+"ort": "HDMS-Thedus",
+"system": "Stanton"
+},
+{
+"shop": "HDMS-Woodruff",
+"ort": "HDMS-Woodruff",
+"system": "Stanton"
+},
+{
+"shop": "Hickes Research Outpost",
+"ort": "Hickes Research Outpost",
+"system": "Stanton"
+},
+{
+"shop": "IO North Tower",
+"ort": "Area 18",
+"system": "Stanton"
+},
+{
+"shop": "Jackson´s Swap",
+"ort": "Jackson´s Swap",
+"system": "Pyro"
+},
+{
+"shop": "Last Landings",
+"ort": "Last Landings",
+"system": "Pyro"
+},
+{
+"shop": "MT Planetary Services",
+"ort": "New Babbage",
+"system": "Stanton"
+},
+{
+"shop": "Orison Municipal Services",
+"ort": "Orison",
+"system": "Stanton"
+},
+{
+"shop": "Platinum Bay",
+"ort": "ARC-L1 Wide Forest Station",
+"system": "Stanton"
+},
+{
+"shop": "Platinum Bay",
+"ort": "Baijini Point",
+"system": "Stanton"
+},
+{
+"shop": "Platinum Bay",
+"ort": "CRU-L1 Ambitious Dream Station",
+"system": "Stanton"
+},
+{
+"shop": "Platinum Bay",
+"ort": "CRU-L4 Shallow Fields Station",
+"system": "Stanton"
+},
+{
+"shop": "Platinum Bay",
+"ort": "CRU-L5 Beautiful Glen Station",
+"system": "Stanton"
+},
+{
+"shop": "Platinum Bay",
+"ort": "Everus Harbor",
+"system": "Stanton"
+},
+{
+"shop": "Platinum Bay",
+"ort": "HUR-L2 Faithful Dream Station",
+"system": "Stanton"
+},
+{
+"shop": "Platinum Bay",
+"ort": "HUR-L3 Thundering Express Station",
+"system": "Stanton"
+},
+{
+"shop": "Platinum Bay",
+"ort": "HUR-L5 High Course Station",
+"system": "Stanton"
+},
+{
+"shop": "Platinum Bay",
+"ort": "Nyx Gateway (Pyro)",
+"system": "Pyro"
+},
+{
+"shop": "Platinum Bay",
+"ort": "Nyx Gateway (Stanton)",
+"system": "Stanton"
+},
+{
+"shop": "Platinum Bay",
+"ort": "Port Tressler",
+"system": "Stanton"
+},
+{
+"shop": "Platinum Bay",
+"ort": "Pyro Gateway (Nyx)",
+"system": "Nyx"
+},
+{
+"shop": "Platinum Bay",
+"ort": "Pyro Gateway (Stanton)",
+"system": "Stanton"
+},
+{
+"shop": "Platinum Bay",
+"ort": "Stanton Gateway (Nyx)",
+"system": "Nyx"
+},
+{
+"shop": "Platinum Bay",
+"ort": "Stanton Gateway (Pyro)",
+"system": "Pyro"
+},
+{
+"shop": "Platinum Bay",
+"ort": "Terra Gateway (Stanton)",
+"system": "Stanton"
+},
+{
+"shop": "Rappel",
+"ort": "Rappel",
+"system": "Stanton"
+},
+{
+"shop": "Rayari Anvik Research Outpost",
+"ort": "Rayari Anvik Research Outpost",
+"system": "Stanton"
+},
+{
+"shop": "Rayari Cantwell Research Outpost",
+"ort": "Rayari Cantwell Research Outpost",
+"system": "Stanton"
+},
+{
+"shop": "Rayari Deltana Research Outpost",
+"ort": "Rayari Deltana Research Outpost",
+"system": "Stanton"
+},
+{
+"shop": "Rayari Kaltag Research Outpost",
+"ort": "Rayari Kaltag Research Outpost",
+"system": "Stanton"
+},
+{
+"shop": "Rayari McGrath Research Outpost",
+"ort": "Rayari McGrath Research Outpost",
+"system": "Stanton"
+},
+{
+"shop": "Rustville",
+"ort": "Rustville",
+"system": "Pyro"
+},
+{
+"shop": "Sacren´s Plot",
+"ort": "Sacren´s Plot",
+"system": "Pyro"
+},
+{
+"shop": "Samson & Son's Salvage Center",
+"ort": "Samson & Son's Salvage Center",
+"system": "Stanton"
+},
+{
+"shop": "Scarper´s Turn",
+"ort": "Scarper´s Turn",
+"system": "Pyro"
+},
+{
+"shop": "Seer´s Canyon",
+"ort": "Seer´s Canyon",
+"system": "Pyro"
+},
+{
+"shop": "Sheperd´s Rest",
+"ort": "Sheperd´s Rest",
+"system": "Pyro"
+},
+{
+"shop": "Shubin Mining Facility SAL-2",
+"ort": "Shubin Mining Facility SAL-2",
+"system": "Stanton"
+},
+{
+"shop": "Shubin Mining Facility SAL-5",
+"ort": "Shubin Mining Facility SAL-5",
+"system": "Stanton"
+},
+{
+"shop": "Shubin Mining Facility SCD-1",
+"ort": "Shubin Mining Facility SCD-1",
+"system": "Stanton"
+},
+{
+"shop": "Shubin Mining Facility SM0-10",
+"ort": "Shubin Mining Facility SM0-10",
+"system": "Stanton"
+},
+{
+"shop": "Shubin Mining Facility SM0-13",
+"ort": "Shubin Mining Facility SM0-13",
+"system": "Stanton"
+},
+{
+"shop": "Shubin Mining Facility SM0-18",
+"ort": "Shubin Mining Facility SM0-18",
+"system": "Stanton"
+},
+{
+"shop": "Shubin Mining Facility SM0-22",
+"ort": "Shubin Mining Facility SM0-22",
+"system": "Stanton"
+},
+{
+"shop": "Shubin Mining Facility SMCa-6",
+"ort": "Shubin Mining Facility SMCa-6",
+"system": "Stanton"
+},
+{
+"shop": "Shubin Mining Facility SMCa-8",
+"ort": "Shubin Mining Facility SMCa-8",
+"system": "Stanton"
+},
+{
+"shop": "Station Administration",
+"ort": "People's Service Station Alpha",
+"system": "Nyx"
+},
+{
+"shop": "Station Administration",
+"ort": "People's Service Station Delta",
+"system": "Nyx"
+},
+{
+"shop": "Station Administration",
+"ort": "People's Service Station Lambda",
+"system": "Nyx"
+},
+{
+"shop": "Station Administration",
+"ort": "People's Service Station Thetha",
+"system": "Nyx"
+},
+{
+"shop": "Sunset Mesa",
+"ort": "Sunset Mesa",
+"system": "Pyro"
+},
+{
+"shop": "Terra Mills HydroFarm",
+"ort": "Terra Mills HydroFarm",
+"system": "Stanton"
+},
+{
+"shop": "The Golden Riviera",
+"ort": "The Golden Riviera",
+"system": "Pyro"
+},
+{
+"shop": "Trade & Development Division",
+"ort": "Area 18",
+"system": "Stanton"
+},
+{
+"shop": "Trade & Development Division",
+"ort": "New Babbage",
+"system": "Stanton"
+},
+{
+"shop": "Trade & Development Division",
+"ort": "Orison",
+"system": "Stanton"
+},
+{
+"shop": "Trading Console",
+"ort": "Reclamation & Disposal Orinth",
+"system": "Stanton"
+},
+{
+"shop": "Trading Konsole",
+"ort": "Picker´s Field",
+"system": "Stanton"
+},
+{
+"shop": "Transfers Commodity Exchange",
+"ort": "Lorville",
+"system": "Stanton"
+},
+{
+"shop": "Versteckte Handelskonsole",
+"ort": "CRU-L4 Shallow Fields Station",
+"system": "Stanton"
+},
+{
+"shop": "Versteckte Handelskonsole",
+"ort": "CRU-L5 Beautiful Glen Station",
+"system": "Stanton"
+}
+],
+"angebot": {
+"Shubin Mining Facility SMCa-8|Shubin Mining Facility SMCa-8": {
+"Kauf": {
+"Agricium": [
+8721.0,
+"2026-10-22"
+],
+"Cobalt": [
+19140.0,
+"2026-10-22"
+],
+"Corundum": [
+2640.0,
+"2026-10-22"
+],
+"Iron": [
+3000,
+"2026-10-05"
+],
+"Quartz": [
+3120.0,
+"2026-10-22"
+],
+"Tungsten": [
+8265.0,
+"2026-10-22"
+],
+"Waste": [
+229.0,
+"2026-10-22"
+]
+},
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-22"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-22"
+],
+"Dolivine": [
+150000,
+"2026-10-22"
+],
+"Hadanite": [
+600000,
+"2026-10-22"
+],
+"Processed Food": [
+1400,
+"2026-10-22"
+],
+"Stims": [
+5600,
+"2026-10-22"
+]
+}
+},
+"ArcCorp Mining Area 141|ArcCorp Mining Area 141": {
+"Kauf": {
+"Agricium": [
+8892.0,
+"2026-10-19"
+],
+"Waste": [
+187.0,
+"2026-10-19"
+]
+},
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-19"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-19"
+],
+"Dolivine": [
+160000,
+"2026-10-19"
+],
+"Hadanite": [
+590000,
+"2026-10-19"
+],
+"Janalite": [
+1800000,
+"2026-10-19"
+],
+"Processed Food": [
+1500,
+"2026-10-19"
+],
+"Quantainium": [
+170000,
+"2026-10-19"
+],
+"Riccite": [
+91000,
+"2026-10-19"
+],
+"Stileron": [
+140000,
+"2026-10-19"
+],
+"Stims": [
+5800,
+"2026-10-19"
+]
+}
+},
+"Admin Office|Endgame": {
+"Kauf": {
+"Agricium": [
+6840.0,
+"2026-10-20"
+],
+"Human Food Bars": [
+416.0,
+"2026-10-20"
+],
+"Hydrogen": [
+752.0,
+"2026-10-20"
+],
+"Nitrogen": [
+2242.0,
+"2026-10-21"
+]
+},
+"Verkauf": {
+"Altruciatoxin": [
+6400,
+"2026-10-20"
+],
+"Aluminum": [
+3600,
+"2026-10-20"
+],
+"Beryl": [
+21000,
+"2026-10-20"
+],
+"Bexalite": [
+30000,
+"2026-10-20"
+],
+"Borase": [
+27000,
+"2026-10-20"
+],
+"Carbon-Silk": [
+21000,
+"2026-10-20"
+],
+"Corundum": [
+3500,
+"2026-10-20"
+],
+"DynaFlex": [
+2100,
+"2026-10-21"
+],
+"E'tam": [
+23000,
+"2026-10-20"
+],
+"Helium": [
+1000,
+"2026-10-20"
+],
+"Hephaestanite": [
+4600,
+"2026-10-20"
+],
+"Iron": [
+3900,
+"2026-10-20"
+],
+"Laranite": [
+8700,
+"2026-10-20"
+],
+"Medical Supplies": [
+5200,
+"2026-10-20"
+],
+"Methane": [
+3500,
+"2026-10-20"
+],
+"Neon": [
+19000,
+"2026-10-20"
+],
+"Pressurized Ice": [
+5700,
+"2026-10-20"
+],
+"Processed Food": [
+1400,
+"2026-10-20"
+],
+"Quartz": [
+4200,
+"2026-10-20"
+],
+"Recycled Material Composite": [
+7700,
+"2026-10-11"
+],
+"Riccite": [
+67000,
+"2026-10-20"
+],
+"Scrap": [
+3400,
+"2026-10-22"
+],
+"Silicon": [
+2300,
+"2026-10-20"
+],
+"SLAM": [
+36000,
+"2026-10-20"
+],
+"Steel": [
+2500,
+"2026-10-21"
+],
+"Stims": [
+5000,
+"2026-10-20"
+],
+"Tin": [
+3800,
+"2026-10-20"
+],
+"Titanium": [
+8300,
+"2026-10-20"
+],
+"Tritium": [
+35000,
+"2026-10-20"
+]
+}
+},
+"Shubin Mining Facility SMCa-6|Shubin Mining Facility SMCa-6": {
+"Kauf": {
+"Agricium": [
+8721.0,
+"2026-10-19"
+],
+"Cobalt": [
+19140.0,
+"2026-10-19"
+],
+"Corundum": [
+2640.0,
+"2026-10-19"
+],
+"Iron": [
+3000,
+"2026-10-07"
+],
+"Quartz": [
+3120.0,
+"2026-10-19"
+],
+"Tungsten": [
+8265.0,
+"2026-10-19"
+],
+"Waste": [
+229.0,
+"2026-10-19"
+]
+},
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-19"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-19"
+],
+"Dolivine": [
+150000,
+"2026-10-19"
+],
+"Hadanite": [
+600000,
+"2026-10-19"
+],
+"Processed Food": [
+1400,
+"2026-10-19"
+],
+"Stims": [
+5600,
+"2026-10-11"
+]
+}
+},
+"Commodity Shop|Levski": {
+"Kauf": {
+"Agricium": [
+8379.0,
+"2026-10-20"
+],
+"Beryl": [
+15390.0,
+"2026-10-08"
+],
+"Construction Materials": [
+8640.0,
+"2026-10-21"
+],
+"Corundum": [
+2822.0,
+"2026-10-21"
+],
+"Hydrogen": [
+196.0,
+"2026-07-06"
+],
+"Hydrogen Fuel": [
+782.0,
+"2026-10-21"
+],
+"Iron": [
+2700,
+"2026-10-08"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-21"
+],
+"Ship Ammunition": [
+6868.0,
+"2026-09-06"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-21"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-21"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-21"
+]
+},
+"Verkauf": {
+"Agricultural Supplies": [
+1600,
+"2026-10-21"
+],
+"Aluminum": [
+3200,
+"2026-10-22"
+],
+"Ammonia": [
+1000,
+"2026-10-21"
+],
+"Aphorite": [
+85000,
+"2026-10-21"
+],
+"Argon": [
+490.0,
+"2026-10-21"
+],
+"Aslarite": [
+5100,
+"2026-10-21"
+],
+"Astatine": [
+3500,
+"2026-10-21"
+],
+"Atlasium": [
+91000,
+"2026-10-22"
+],
+"Audio Visual Equipment": [
+39000,
+"2026-05-31"
+],
+"Beradom": [
+120000,
+"2026-10-21"
+],
+"Bexalite": [
+27000,
+"2026-10-21"
+],
+"Bioplastic": [
+8500,
+"2026-10-21"
+],
+"Borase": [
+24000,
+"2026-10-21"
+],
+"Carbon": [
+370.0,
+"2026-10-21"
+],
+"Carbon-Silk": [
+20000,
+"2026-10-21"
+],
+"Chlorine": [
+1500,
+"2026-10-21"
+],
+"Cobalt": [
+22000,
+"2026-10-21"
+],
+"Compboard": [
+34000,
+"2026-10-21"
+],
+"Copper": [
+3400,
+"2026-10-21"
+],
+"Degnous Root": [
+53000,
+"2026-10-21"
+],
+"Diamond": [
+7700,
+"2026-10-21"
+],
+"Diamond Laminate": [
+99000,
+"2026-10-22"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-22"
+],
+"Dolivine": [
+110000,
+"2026-10-22"
+],
+"Dymantium": [
+25000,
+"2026-10-22"
+],
+"DynaFlex": [
+1900,
+"2026-10-22"
+],
+"Feynmaline": [
+270000,
+"2026-10-21"
+],
+"Fluorine": [
+1200,
+"2026-10-21"
+],
+"Fresh Food": [
+26000,
+"2026-10-21"
+],
+"Glacosite": [
+80000,
+"2026-10-21"
+],
+"Gold": [
+26000,
+"2026-10-21"
+],
+"Golden Medmon": [
+54000,
+"2026-10-21"
+],
+"Hadanite": [
+410000,
+"2026-10-21"
+],
+"Heart of the Woods": [
+35000,
+"2026-10-21"
+],
+"Helium": [
+1100,
+"2026-10-21"
+],
+"Hephaestanite": [
+4100,
+"2026-10-21"
+],
+"Hydrogen": [
+1000,
+"2026-10-21"
+],
+"Iodine": [
+12000,
+"2026-10-21"
+],
+"Janalite": [
+1300000,
+"2026-10-21"
+],
+"Kopion Horn": [
+32000,
+"2026-10-21"
+],
+"Laranite": [
+7800,
+"2026-10-21"
+],
+"Lindinium": [
+43000,
+"2026-10-21"
+],
+"Marok Gem": [
+40000,
+"2026-10-21"
+],
+"Medical Supplies": [
+5000,
+"2026-10-21"
+],
+"Mercury": [
+1000,
+"2026-10-21"
+],
+"Methane": [
+3600,
+"2026-10-21"
+],
+"Nitrogen": [
+3000,
+"2026-10-21"
+],
+"Omnapoxy": [
+4800,
+"2026-10-21"
+],
+"Ouratite": [
+45000,
+"2026-10-21"
+],
+"Party Favors": [
+4600,
+"2026-10-21"
+],
+"Potassium": [
+700,
+"2026-10-21"
+],
+"Pressurized Ice": [
+4600,
+"2026-10-21"
+],
+"Processed Food": [
+1500,
+"2026-10-21"
+],
+"Prota": [
+76000,
+"2026-10-21"
+],
+"Quantainium": [
+140000,
+"2026-10-21"
+],
+"Quartz": [
+3500,
+"2026-10-21"
+],
+"Ranta Dung": [
+39000,
+"2026-10-21"
+],
+"Recycled Material Composite": [
+6500,
+"2026-10-21"
+],
+"Revenant Tree Pollen": [
+1400,
+"2026-10-21"
+],
+"Riccite": [
+76000,
+"2026-10-21"
+],
+"Savrilium": [
+110000,
+"2026-10-21"
+],
+"Scrap": [
+3700,
+"2026-10-21"
+],
+"Ship Ammunition": [
+12.0,
+"2026-10-21"
+],
+"Silicon": [
+2400,
+"2026-10-21"
+],
+"Souvenirs": [
+16000,
+"2026-10-21"
+],
+"Steel": [
+2200,
+"2026-10-21"
+],
+"Stileron": [
+140000,
+"2026-10-21"
+],
+"Stims": [
+5300,
+"2026-10-21"
+],
+"Sunset Berries": [
+79000,
+"2026-10-21"
+],
+"Taranite": [
+28000,
+"2026-10-21"
+],
+"Thermalfoam": [
+6400,
+"2026-10-21"
+],
+"Tin": [
+4000,
+"2026-10-21"
+],
+"Titanium": [
+7400,
+"2026-10-21"
+],
+"Torite": [
+6600,
+"2026-10-21"
+],
+"Tungsten": [
+9200,
+"2026-10-21"
+],
+"Waste": [
+240.0,
+"2026-10-21"
+],
+"Xa'Pyen": [
+4800,
+"2026-10-21"
+]
+}
+},
+"Admin Office|HUR-L1 Green Glade Station": {
+"Kauf": {
+"Agricium": [
+8978.0,
+"2026-10-21"
+],
+"Scrap": [
+2990.0,
+"2026-10-21"
+],
+"Waste": [
+229.0,
+"2026-10-21"
+]
+},
+"Verkauf": {
+"Beryl": [
+22000,
+"2026-10-21"
+],
+"Compboard": [
+32000,
+"2026-10-21"
+],
+"Construction Materials": [
+12000,
+"2026-10-21"
+],
+"Diamond": [
+7100,
+"2026-10-21"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-21"
+],
+"Dolivine": [
+150000,
+"2026-10-21"
+],
+"Hydrogen": [
+1100,
+"2026-10-21"
+],
+"Laranite": [
+8500,
+"2026-10-21"
+],
+"Marok Gem": [
+60000,
+"2026-10-21"
+],
+"Medical Supplies": [
+5400,
+"2026-10-21"
+],
+"Omnapoxy": [
+5000,
+"2026-10-21"
+],
+"Party Favors": [
+5000,
+"2026-10-21"
+],
+"Processed Food": [
+1500,
+"2026-10-21"
+],
+"Stims": [
+5600,
+"2026-10-21"
+],
+"Thermalfoam": [
+6300,
+"2026-10-21"
+]
+}
+},
+"Transfers Commodity Exchange|Lorville": {
+"Verkauf": {
+"Agricium": [
+10000,
+"2026-10-20"
+],
+"Agricultural Supplies": [
+1300,
+"2026-10-20"
+],
+"Aluminum": [
+3800,
+"2026-10-20"
+],
+"Ammonia": [
+1000,
+"2026-10-20"
+],
+"Aphorite": [
+80000,
+"2026-10-20"
+],
+"Argon": [
+440.0,
+"2026-10-20"
+],
+"Aslarite": [
+5100,
+"2026-10-18"
+],
+"Astatine": [
+3500,
+"2026-10-20"
+],
+"Atlasium": [
+89000,
+"2026-10-20"
+],
+"Audio Visual Equipment": [
+30000,
+"2026-06-04"
+],
+"Beradom": [
+120000,
+"2026-10-20"
+],
+"Beryl": [
+20000,
+"2026-10-20"
+],
+"Bexalite": [
+29000,
+"2026-10-20"
+],
+"Bioplastic": [
+7300,
+"2026-10-20"
+],
+"Borase": [
+28000,
+"2026-10-20"
+],
+"Carbon": [
+350.0,
+"2026-10-20"
+],
+"Carbon-Silk": [
+20000,
+"2026-10-20"
+],
+"Chlorine": [
+1500,
+"2026-10-20"
+],
+"Cobalt": [
+20000,
+"2026-10-20"
+],
+"Compboard": [
+28000,
+"2026-10-20"
+],
+"Construction Materials": [
+12000,
+"2026-10-20"
+],
+"Copper": [
+3700,
+"2026-10-20"
+],
+"Corundum": [
+3700,
+"2026-10-20"
+],
+"Degnous Root": [
+53000,
+"2026-10-20"
+],
+"Diamond": [
+7700,
+"2026-10-20"
+],
+"Diamond Laminate": [
+80000,
+"2026-10-20"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-20"
+],
+"Dolivine": [
+110000,
+"2026-10-20"
+],
+"Dymantium": [
+23000,
+"2026-10-20"
+],
+"DynaFlex": [
+1900,
+"2026-10-20"
+],
+"Feynmaline": [
+270000,
+"2026-10-20"
+],
+"Fluorine": [
+1200,
+"2026-10-20"
+],
+"Fresh Food": [
+24000,
+"2026-10-20"
+],
+"Glacosite": [
+80000,
+"2026-10-20"
+],
+"Gold": [
+30000,
+"2026-10-20"
+],
+"Golden Medmon": [
+54000,
+"2026-10-20"
+],
+"Hadanite": [
+520000,
+"2026-10-20"
+],
+"Heart of the Woods": [
+35000,
+"2026-10-20"
+],
+"Helium": [
+1100,
+"2026-10-20"
+],
+"Hephaestanite": [
+4800,
+"2026-10-20"
+],
+"Hydrogen": [
+1000,
+"2026-10-20"
+],
+"Iodine": [
+11000,
+"2026-10-20"
+],
+"Iron": [
+3400,
+"2026-10-20"
+],
+"Janalite": [
+1300000,
+"2026-10-20"
+],
+"Kopion Horn": [
+32000,
+"2026-10-20"
+],
+"Laranite": [
+8600,
+"2026-10-20"
+],
+"Luminalia Gift": [
+5000000,
+"2026-10-20"
+],
+"Marok Gem": [
+40000,
+"2026-10-20"
+],
+"Medical Supplies": [
+5500,
+"2026-10-20"
+],
+"Mercury": [
+1000,
+"2026-10-20"
+],
+"Methane": [
+3700,
+"2026-10-20"
+],
+"Nitrogen": [
+3000,
+"2026-10-20"
+],
+"Omnapoxy": [
+4500,
+"2026-10-20"
+],
+"Organics": [
+12000,
+"2026-10-18"
+],
+"Ouratite": [
+46000,
+"2026-10-20"
+],
+"Party Favors": [
+4100,
+"2026-10-20"
+],
+"Potassium": [
+560.0,
+"2026-10-20"
+],
+"Pressurized Ice": [
+5100,
+"2026-10-20"
+],
+"Processed Food": [
+1500,
+"2026-10-20"
+],
+"Prota": [
+54000,
+"2026-10-20"
+],
+"Quantainium": [
+150000,
+"2026-10-20"
+],
+"Quartz": [
+4400,
+"2026-10-20"
+],
+"Ranta Dung": [
+33000,
+"2026-10-20"
+],
+"Recycled Material Composite": [
+6000,
+"2026-10-20"
+],
+"Revenant Tree Pollen": [
+1300,
+"2026-10-20"
+],
+"Riccite": [
+66000,
+"2026-10-20"
+],
+"Sadaryx": [
+500000,
+"2026-10-18"
+],
+"Scrap": [
+3600,
+"2026-10-20"
+],
+"Silicon": [
+2400,
+"2026-10-20"
+],
+"Souvenirs": [
+16000,
+"2026-10-20"
+],
+"Steel": [
+1500,
+"2026-10-20"
+],
+"Stileron": [
+140000,
+"2026-10-20"
+],
+"Stims": [
+5100,
+"2026-10-20"
+],
+"Sunset Berries": [
+79000,
+"2026-10-20"
+],
+"Taranite": [
+26000,
+"2026-10-20"
+],
+"Thermalfoam": [
+6100,
+"2026-10-20"
+],
+"Tin": [
+4000,
+"2026-10-18"
+],
+"Titanium": [
+8300,
+"2026-10-20"
+],
+"Tungsten": [
+10000,
+"2026-10-20"
+],
+"Waste": [
+199.0,
+"2026-08-23"
+],
+"Xa'Pyen": [
+4800,
+"2026-10-20"
+],
+"Year of the Pig Envelope": [
+120000,
+"2026-01-27"
+]
+},
+"Kauf": {
+"Waste": [
+199.0,
+"2026-10-20"
+]
+}
+},
+"Trade & Development Division|New Babbage": {
+"Verkauf": {
+"Agricium": [
+10000,
+"2026-10-22"
+],
+"Agricultural Supplies": [
+1300,
+"2026-10-22"
+],
+"Aluminum": [
+3800,
+"2026-10-22"
+],
+"Ammonia": [
+1000,
+"2026-10-22"
+],
+"Aphorite": [
+80000,
+"2026-10-22"
+],
+"Argon": [
+440.0,
+"2026-10-22"
+],
+"Aslarite": [
+5100,
+"2026-10-22"
+],
+"Astatine": [
+3500,
+"2026-10-22"
+],
+"Atlasium": [
+89000,
+"2026-10-22"
+],
+"Audio Visual Equipment": [
+30000,
+"2026-06-04"
+],
+"Beradom": [
+120000,
+"2026-10-22"
+],
+"Beryl": [
+20000,
+"2026-10-22"
+],
+"Bexalite": [
+29000,
+"2026-10-22"
+],
+"Bioplastic": [
+7300,
+"2026-10-22"
+],
+"Borase": [
+28000,
+"2026-10-22"
+],
+"Carbon": [
+350.0,
+"2026-10-22"
+],
+"Carbon-Silk": [
+20000,
+"2026-10-22"
+],
+"Chlorine": [
+1500,
+"2026-10-22"
+],
+"Cobalt": [
+20000,
+"2026-10-22"
+],
+"Compboard": [
+28000,
+"2026-10-22"
+],
+"Construction Materials": [
+12000,
+"2026-10-22"
+],
+"Copper": [
+3700,
+"2026-10-22"
+],
+"Corundum": [
+3700,
+"2026-10-22"
+],
+"Degnous Root": [
+53000,
+"2026-10-22"
+],
+"Diamond": [
+7700,
+"2026-10-22"
+],
+"Diamond Laminate": [
+80000,
+"2026-10-22"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-22"
+],
+"Dolivine": [
+110000,
+"2026-10-22"
+],
+"Dymantium": [
+23000,
+"2026-10-22"
+],
+"DynaFlex": [
+1900,
+"2026-10-22"
+],
+"Feynmaline": [
+270000,
+"2026-10-22"
+],
+"Fluorine": [
+1200,
+"2026-10-22"
+],
+"Fresh Food": [
+24000,
+"2026-10-22"
+],
+"Glacosite": [
+80000,
+"2026-10-22"
+],
+"Gold": [
+30000,
+"2026-10-22"
+],
+"Golden Medmon": [
+54000,
+"2026-10-22"
+],
+"Hadanite": [
+410000,
+"2026-10-22"
+],
+"Heart of the Woods": [
+35000,
+"2026-10-22"
+],
+"Helium": [
+1100,
+"2026-10-22"
+],
+"Hephaestanite": [
+5203.0,
+"2026-10-24"
+],
+"Hydrogen": [
+1000,
+"2026-10-22"
+],
+"Iodine": [
+11000,
+"2026-10-22"
+],
+"Iron": [
+3400,
+"2026-10-22"
+],
+"Janalite": [
+1300000,
+"2026-10-22"
+],
+"Kopion Horn": [
+32000,
+"2026-10-22"
+],
+"Laranite": [
+8500,
+"2026-10-22"
+],
+"Lindinium": [
+51000,
+"2026-10-22"
+],
+"Luminalia Gift": [
+5500000,
+"2026-10-22"
+],
+"Marok Gem": [
+40000,
+"2026-10-22"
+],
+"Medical Supplies": [
+5500,
+"2026-10-22"
+],
+"Mercury": [
+1000,
+"2026-10-22"
+],
+"Methane": [
+3700,
+"2026-10-22"
+],
+"Nitrogen": [
+3000,
+"2026-10-22"
+],
+"Omnapoxy": [
+4500,
+"2026-10-22"
+],
+"Ouratite": [
+46000,
+"2026-10-22"
+],
+"Party Favors": [
+4100,
+"2026-10-22"
+],
+"Potassium": [
+560.0,
+"2026-10-22"
+],
+"Pressurized Ice": [
+5100,
+"2026-10-22"
+],
+"Processed Food": [
+1500,
+"2026-10-22"
+],
+"Prota": [
+54000,
+"2026-10-22"
+],
+"Quantainium": [
+150000,
+"2026-10-22"
+],
+"Quartz": [
+4400,
+"2026-10-22"
+],
+"Ranta Dung": [
+33000,
+"2026-10-22"
+],
+"Recycled Material Composite": [
+6000,
+"2026-10-22"
+],
+"Revenant Tree Pollen": [
+1400,
+"2026-10-22"
+],
+"Riccite": [
+66000,
+"2026-10-22"
+],
+"Sadaryx": [
+500000,
+"2026-10-22"
+],
+"Scrap": [
+3500,
+"2026-10-22"
+],
+"Ship Ammunition": [
+12.0,
+"2026-10-22"
+],
+"Silicon": [
+2400,
+"2026-10-22"
+],
+"Souvenirs": [
+16000,
+"2026-10-22"
+],
+"Steel": [
+1900,
+"2026-10-22"
+],
+"Stileron": [
+130000,
+"2026-10-22"
+],
+"Stims": [
+5200,
+"2026-10-22"
+],
+"Sunset Berries": [
+79000,
+"2026-10-22"
+],
+"Taranite": [
+28000,
+"2026-10-22"
+],
+"Thermalfoam": [
+6100,
+"2026-10-22"
+],
+"Tin": [
+4000,
+"2026-10-22"
+],
+"Titanium": [
+8300,
+"2026-10-22"
+],
+"Torite": [
+7700,
+"2026-10-22"
+],
+"Tungsten": [
+10000,
+"2026-10-22"
+],
+"Waste": [
+240.0,
+"2026-10-22"
+],
+"Xa'Pyen": [
+4800,
+"2026-10-22"
+],
+"Year of the Pig Envelope": [
+165000,
+"2026-01-23"
+]
+},
+"Kauf": {
+"Waste": [
+240.0,
+"2026-05-16"
+]
+}
+},
+"Trade & Development Division|Orison": {
+"Verkauf": {
+"Agricium": [
+10000,
+"2026-10-22"
+],
+"Agricultural Supplies": [
+1300,
+"2026-10-22"
+],
+"Aluminum": [
+3800,
+"2026-10-22"
+],
+"Ammonia": [
+1000,
+"2026-10-22"
+],
+"Aphorite": [
+80000,
+"2026-10-22"
+],
+"Argon": [
+440.0,
+"2026-10-22"
+],
+"Aslarite": [
+5100,
+"2026-10-22"
+],
+"Astatine": [
+3500,
+"2026-10-22"
+],
+"Atlasium": [
+89000,
+"2026-10-22"
+],
+"Audio Visual Equipment": [
+30000,
+"2026-06-04"
+],
+"Beradom": [
+120000,
+"2026-10-22"
+],
+"Beryl": [
+20000,
+"2026-10-22"
+],
+"Bexalite": [
+28000,
+"2026-10-22"
+],
+"Bioplastic": [
+7300,
+"2026-10-22"
+],
+"Borase": [
+25000,
+"2026-10-22"
+],
+"Carbon": [
+350.0,
+"2026-10-22"
+],
+"Carbon-Silk": [
+20000,
+"2026-10-22"
+],
+"Chlorine": [
+1500,
+"2026-10-22"
+],
+"Cobalt": [
+20000,
+"2026-10-22"
+],
+"Compboard": [
+28000,
+"2026-10-22"
+],
+"Construction Materials": [
+12000,
+"2026-10-22"
+],
+"Copper": [
+3700,
+"2026-10-22"
+],
+"Corundum": [
+3700,
+"2026-10-22"
+],
+"Degnous Root": [
+53000,
+"2026-10-22"
+],
+"Diamond": [
+7700,
+"2026-10-22"
+],
+"Diamond Laminate": [
+80000,
+"2026-10-22"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-22"
+],
+"Dolivine": [
+140000,
+"2026-10-22"
+],
+"Dymantium": [
+23000,
+"2026-10-22"
+],
+"DynaFlex": [
+1900,
+"2026-10-22"
+],
+"Feynmaline": [
+340000,
+"2026-10-22"
+],
+"Fluorine": [
+1200,
+"2026-10-22"
+],
+"Fresh Food": [
+24000,
+"2026-10-22"
+],
+"Glacosite": [
+100000,
+"2026-10-22"
+],
+"Gold": [
+30000,
+"2026-10-22"
+],
+"Golden Medmon": [
+54000,
+"2026-10-22"
+],
+"Hadanite": [
+530000,
+"2026-10-22"
+],
+"Heart of the Woods": [
+35000,
+"2026-10-22"
+],
+"Helium": [
+1000,
+"2026-10-22"
+],
+"Hephaestanite": [
+4800,
+"2026-10-22"
+],
+"Hydrogen": [
+1000,
+"2026-10-22"
+],
+"Iodine": [
+11000,
+"2026-10-22"
+],
+"Iron": [
+3400,
+"2026-10-22"
+],
+"Janalite": [
+1600000,
+"2026-10-22"
+],
+"Kopion Horn": [
+32000,
+"2026-10-22"
+],
+"Laranite": [
+8500,
+"2026-10-22"
+],
+"Lindinium": [
+51000,
+"2026-10-22"
+],
+"Luminalia Gift": [
+5500000,
+"2026-10-22"
+],
+"Marok Gem": [
+40000,
+"2026-10-22"
+],
+"Medical Supplies": [
+5500,
+"2026-10-22"
+],
+"Mercury": [
+1000,
+"2026-10-22"
+],
+"Methane": [
+3700,
+"2026-10-22"
+],
+"Nitrogen": [
+3000,
+"2026-10-22"
+],
+"Omnapoxy": [
+4500,
+"2026-10-22"
+],
+"Ouratite": [
+45000,
+"2026-10-22"
+],
+"Party Favors": [
+4100,
+"2026-10-22"
+],
+"Potassium": [
+560.0,
+"2026-10-22"
+],
+"Pressurized Ice": [
+5100,
+"2026-10-22"
+],
+"Processed Food": [
+1500,
+"2026-10-22"
+],
+"Prota": [
+54000,
+"2026-10-22"
+],
+"Quantainium": [
+170000,
+"2026-10-22"
+],
+"Quartz": [
+4400,
+"2026-10-22"
+],
+"Ranta Dung": [
+33000,
+"2026-10-22"
+],
+"Recycled Material Composite": [
+7700,
+"2026-10-22"
+],
+"Revenant Tree Pollen": [
+1300,
+"2026-10-22"
+],
+"Riccite": [
+66000,
+"2026-10-22"
+],
+"Sadaryx": [
+500000,
+"2026-10-22"
+],
+"Savrilium": [
+130000,
+"2026-10-22"
+],
+"Scrap": [
+3600,
+"2026-10-22"
+],
+"Ship Ammunition": [
+12.0,
+"2026-10-22"
+],
+"Silicon": [
+2400,
+"2026-10-22"
+],
+"Souvenirs": [
+16000,
+"2026-10-22"
+],
+"Steel": [
+1900,
+"2026-10-22"
+],
+"Stileron": [
+140000,
+"2026-10-22"
+],
+"Stims": [
+5300,
+"2026-10-22"
+],
+"Sunset Berries": [
+79000,
+"2026-10-22"
+],
+"Taranite": [
+29000,
+"2026-10-22"
+],
+"Thermalfoam": [
+6100,
+"2026-10-22"
+],
+"Tin": [
+4000,
+"2026-10-22"
+],
+"Titanium": [
+8300,
+"2026-10-22"
+],
+"Torite": [
+7700,
+"2026-10-22"
+],
+"Tungsten": [
+10000,
+"2026-10-22"
+],
+"Waste": [
+260.0,
+"2026-10-22"
+],
+"Xa'Pyen": [
+4800,
+"2026-10-22"
+],
+"Year of the Pig Envelope": [
+165000,
+"2026-01-25"
+]
+},
+"Kauf": {
+"Organics": [
+10232.0,
+"2026-10-22"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-07-19"
+]
+}
+},
+"Trade & Development Division|Area 18": {
+"Verkauf": {
+"Agricium": [
+10000,
+"2026-10-22"
+],
+"Agricultural Supplies": [
+1300,
+"2026-10-22"
+],
+"Aluminum": [
+3800,
+"2026-10-22"
+],
+"Ammonia": [
+1000,
+"2026-10-22"
+],
+"Aphorite": [
+80000,
+"2026-10-22"
+],
+"Argon": [
+440.0,
+"2026-10-22"
+],
+"Aslarite": [
+5100,
+"2026-10-22"
+],
+"Astatine": [
+3500,
+"2026-10-22"
+],
+"Atlasium": [
+87000,
+"2026-10-22"
+],
+"Audio Visual Equipment": [
+30000,
+"2026-06-04"
+],
+"Beradom": [
+120000,
+"2026-10-22"
+],
+"Beryl": [
+20000,
+"2026-10-22"
+],
+"Bexalite": [
+29000,
+"2026-10-22"
+],
+"Bioplastic": [
+7300,
+"2026-10-22"
+],
+"Borase": [
+28000,
+"2026-10-22"
+],
+"Carbon": [
+350.0,
+"2026-10-22"
+],
+"Carbon-Silk": [
+20000,
+"2026-10-22"
+],
+"Chlorine": [
+1500,
+"2026-10-22"
+],
+"Cobalt": [
+20000,
+"2026-10-22"
+],
+"Compboard": [
+28000,
+"2026-10-22"
+],
+"Construction Materials": [
+12000,
+"2026-10-22"
+],
+"Copper": [
+3700,
+"2026-10-22"
+],
+"Corundum": [
+3700,
+"2026-10-22"
+],
+"Degnous Root": [
+53000,
+"2026-10-22"
+],
+"Diamond": [
+7400,
+"2026-10-22"
+],
+"Diamond Laminate": [
+80000,
+"2026-10-22"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-22"
+],
+"Dolivine": [
+110000,
+"2026-10-22"
+],
+"Dymantium": [
+22000,
+"2026-10-22"
+],
+"DynaFlex": [
+1900,
+"2026-10-22"
+],
+"Feynmaline": [
+270000,
+"2026-10-22"
+],
+"Fluorine": [
+1200,
+"2026-10-22"
+],
+"Fresh Food": [
+24000,
+"2026-10-22"
+],
+"Glacosite": [
+80000,
+"2026-10-22"
+],
+"Gold": [
+31000,
+"2026-10-22"
+],
+"Golden Medmon": [
+54000,
+"2026-10-22"
+],
+"Hadanite": [
+410000,
+"2026-10-22"
+],
+"Heart of the Woods": [
+35000,
+"2026-10-22"
+],
+"Helium": [
+1100,
+"2026-10-22"
+],
+"Hephaestanite": [
+4800,
+"2026-10-22"
+],
+"Hydrogen": [
+1000,
+"2026-10-22"
+],
+"Iodine": [
+11000,
+"2026-10-22"
+],
+"Iron": [
+3400,
+"2026-10-22"
+],
+"Janalite": [
+1300000,
+"2026-10-22"
+],
+"Kopion Horn": [
+32000,
+"2026-10-22"
+],
+"Laranite": [
+8500,
+"2026-10-22"
+],
+"Lindinium": [
+51000,
+"2026-10-22"
+],
+"Luminalia Gift": [
+5500000,
+"2026-10-22"
+],
+"Marok Gem": [
+40000,
+"2026-10-22"
+],
+"Medical Supplies": [
+5400,
+"2026-10-22"
+],
+"Mercury": [
+1000,
+"2026-10-22"
+],
+"Methane": [
+3700,
+"2026-10-22"
+],
+"Neograph": [
+78000,
+"2026-10-22"
+],
+"Nitrogen": [
+3000,
+"2026-10-22"
+],
+"Omnapoxy": [
+4500,
+"2026-10-22"
+],
+"Ouratite": [
+46000,
+"2026-10-22"
+],
+"Party Favors": [
+4100,
+"2026-10-22"
+],
+"Potassium": [
+560.0,
+"2026-10-22"
+],
+"Pressurized Ice": [
+5100,
+"2026-10-22"
+],
+"Prota": [
+54000,
+"2026-10-22"
+],
+"Quantainium": [
+150000,
+"2026-10-22"
+],
+"Quartz": [
+4400,
+"2026-10-22"
+],
+"Ranta Dung": [
+33000,
+"2026-10-22"
+],
+"Recycled Material Composite": [
+6000,
+"2026-10-22"
+],
+"Revenant Tree Pollen": [
+1300,
+"2026-10-22"
+],
+"Riccite": [
+66000,
+"2026-10-22"
+],
+"Sadaryx": [
+500000,
+"2026-10-22"
+],
+"Scrap": [
+3600,
+"2026-10-22"
+],
+"Ship Ammunition": [
+11.0,
+"2026-10-22"
+],
+"Silicon": [
+2400,
+"2026-10-22"
+],
+"Souvenirs": [
+16000,
+"2026-10-22"
+],
+"Steel": [
+1900,
+"2026-10-22"
+],
+"Stileron": [
+140000,
+"2026-10-22"
+],
+"Stims": [
+5000,
+"2026-10-22"
+],
+"Sunset Berries": [
+79000,
+"2026-10-22"
+],
+"Taranite": [
+27000,
+"2026-10-22"
+],
+"Thermalfoam": [
+6100,
+"2026-10-22"
+],
+"Tin": [
+4000,
+"2026-10-22"
+],
+"Titanium": [
+8300,
+"2026-10-22"
+],
+"Torite": [
+7700,
+"2026-10-22"
+],
+"Tungsten": [
+10000,
+"2026-10-22"
+],
+"Waste": [
+240.0,
+"2026-10-22"
+],
+"Xa'Pyen": [
+4800,
+"2026-10-22"
+],
+"Year of the Pig Envelope": [
+165000,
+"2026-01-28"
+]
+},
+"Kauf": {
+"Processed Food": [
+1202.0,
+"2026-10-22"
+],
+"Waste": [
+240.0,
+"2026-05-14"
+]
+}
+},
+"Devlin Scrap & Salvage|Devlin Scrap & Salvage": {
+"Verkauf": {
+"Agricium": [
+7200,
+"2026-10-16"
+],
+"Altruciatoxin": [
+6900,
+"2026-10-14"
+],
+"Aphorite": [
+81000,
+"2026-10-16"
+],
+"Astatine": [
+2500,
+"2026-10-16"
+],
+"Borase": [
+18000,
+"2026-10-16"
+],
+"E'tam": [
+22000,
+"2026-10-16"
+],
+"Fluorine": [
+1000,
+"2026-10-16"
+],
+"Gasping Weevil Eggs": [
+71000,
+"2026-10-16"
+],
+"Maze": [
+230000,
+"2026-10-16"
+],
+"Neon": [
+19000,
+"2026-10-16"
+],
+"Osoian Hides": [
+870000,
+"2026-10-16"
+],
+"Party Favors": [
+3600,
+"2026-10-16"
+],
+"Recycled Material Composite": [
+5000,
+"2026-10-16"
+],
+"Revenant Tree Pollen": [
+1000,
+"2026-10-16"
+],
+"Scrap": [
+2500,
+"2026-10-16"
+],
+"SLAM": [
+46000,
+"2026-10-16"
+],
+"Titanium": [
+6200,
+"2026-10-16"
+],
+"WiDoW": [
+8800,
+"2026-10-16"
+]
+}
+},
+"Samson & Son's Salvage Center|Samson & Son's Salvage Center": {
+"Verkauf": {
+"Agricium": [
+7200,
+"2026-10-19"
+],
+"Altruciatoxin": [
+6900,
+"2026-10-19"
+],
+"Astatine": [
+2500,
+"2026-10-19"
+],
+"Borase": [
+18000,
+"2026-10-19"
+],
+"Chlorine": [
+1100,
+"2026-10-19"
+],
+"Dolivine": [
+110000,
+"2026-10-19"
+],
+"E'tam": [
+22000,
+"2026-10-19"
+],
+"Gasping Weevil Eggs": [
+65000,
+"2026-10-19"
+],
+"Gold": [
+23000,
+"2026-10-19"
+],
+"Hephaestanite": [
+3000,
+"2026-10-19"
+],
+"Maze": [
+230000,
+"2026-10-19"
+],
+"Neon": [
+19000,
+"2026-10-19"
+],
+"Recycled Material Composite": [
+6400,
+"2026-10-19"
+],
+"Revenant Pod": [
+6700,
+"2026-10-19"
+],
+"Revenant Tree Pollen": [
+1000,
+"2026-10-19"
+],
+"Scrap": [
+2600,
+"2026-10-19"
+],
+"SLAM": [
+46000,
+"2026-10-19"
+],
+"Souvenirs": [
+15000,
+"2026-10-19"
+],
+"Tin": [
+2500,
+"2026-10-19"
+],
+"Tungsten": [
+8200,
+"2026-10-19"
+],
+"WiDoW": [
+7600,
+"2026-10-19"
+]
+},
+"Kauf": {
+"Taranite": [
+18792.0,
+"2026-10-19"
+]
+}
+},
+"Admin Office|Grim HEX": {
+"Verkauf": {
+"Agricium": [
+8200,
+"2026-10-23"
+],
+"Agricultural Supplies": [
+1100,
+"2026-10-23"
+],
+"Altruciatoxin": [
+6500,
+"2026-10-23"
+],
+"Aluminum": [
+3100,
+"2026-10-23"
+],
+"Amioshi Plague": [
+23000,
+"2026-10-23"
+],
+"Ammonia": [
+810.0,
+"2026-10-23"
+],
+"Aphorite": [
+100000,
+"2026-10-23"
+],
+"Argon": [
+360.0,
+"2026-10-23"
+],
+"Aslarite": [
+5100,
+"2026-10-23"
+],
+"Astatine": [
+2800,
+"2026-10-23"
+],
+"Atlasium": [
+80000,
+"2026-10-23"
+],
+"Audio Visual Equipment": [
+30000,
+"2026-05-24"
+],
+"Beryl": [
+16000,
+"2026-10-23"
+],
+"Bexalite": [
+26000,
+"2026-10-23"
+],
+"Bioplastic": [
+6500,
+"2026-10-23"
+],
+"Borase": [
+25000,
+"2026-10-23"
+],
+"Carbon": [
+330.0,
+"2026-10-23"
+],
+"Carbon-Silk": [
+18000,
+"2026-10-23"
+],
+"Chlorine": [
+1200,
+"2026-10-23"
+],
+"Cobalt": [
+18000,
+"2026-10-23"
+],
+"Compboard": [
+28000,
+"2026-10-23"
+],
+"Construction Materials": [
+11000,
+"2026-10-23"
+],
+"Copper": [
+3200,
+"2026-10-23"
+],
+"Corundum": [
+3000,
+"2026-10-23"
+],
+"DCSR2": [
+1200,
+"2026-10-23"
+],
+"Degnous Root": [
+53000,
+"2026-10-23"
+],
+"Diamond": [
+6200,
+"2026-10-23"
+],
+"Diamond Laminate": [
+80000,
+"2026-10-23"
+],
+"Distilled Spirits": [
+1600,
+"2026-10-23"
+],
+"Dolivine": [
+120000,
+"2026-10-23"
+],
+"Dymantium": [
+21000,
+"2026-10-23"
+],
+"DynaFlex": [
+1600,
+"2026-10-23"
+],
+"E'tam": [
+21000,
+"2026-10-23"
+],
+"Fluorine": [
+1000,
+"2026-10-23"
+],
+"Fresh Food": [
+21000,
+"2026-10-23"
+],
+"Gasping Weevil Eggs": [
+59000,
+"2026-10-23"
+],
+"Gold": [
+26000,
+"2026-10-23"
+],
+"Golden Medmon": [
+54000,
+"2026-10-23"
+],
+"Hadanite": [
+440000,
+"2026-10-23"
+],
+"Heart of the Woods": [
+38000,
+"2026-10-23"
+],
+"Helium": [
+870.0,
+"2026-10-23"
+],
+"Hephaestanite": [
+3900,
+"2026-10-23"
+],
+"Hydrogen": [
+850.0,
+"2026-10-23"
+],
+"Iodine": [
+10000,
+"2026-10-23"
+],
+"Iron": [
+2700,
+"2026-10-23"
+],
+"Janalite": [
+1500000,
+"2026-10-23"
+],
+"Kopion Horn": [
+34000,
+"2026-10-23"
+],
+"Laranite": [
+7400,
+"2026-10-23"
+],
+"Luminalia Gift": [
+5000000,
+"2026-10-23"
+],
+"Marok Gem": [
+40000,
+"2026-10-23"
+],
+"Maze": [
+230000,
+"2026-10-23"
+],
+"Medical Supplies": [
+4500,
+"2026-10-23"
+],
+"Mercury": [
+900,
+"2026-10-23"
+],
+"Methane": [
+3000,
+"2026-10-23"
+],
+"Neon": [
+19000,
+"2026-10-23"
+],
+"Nitrogen": [
+2500,
+"2026-10-23"
+],
+"Omnapoxy": [
+3700,
+"2026-10-23"
+],
+"Ouratite": [
+46000,
+"2026-10-23"
+],
+"Partillium": [
+85000,
+"2026-10-23"
+],
+"Party Favors": [
+3800,
+"2026-10-23"
+],
+"Potassium": [
+450.0,
+"2026-10-23"
+],
+"Pressurized Ice": [
+4400,
+"2026-10-23"
+],
+"Processed Food": [
+1200,
+"2026-10-23"
+],
+"Prota": [
+58000,
+"2026-10-23"
+],
+"Quantainium": [
+130000,
+"2026-10-23"
+],
+"Quartz": [
+3500,
+"2026-10-23"
+],
+"Ranta Dung": [
+33000,
+"2026-10-23"
+],
+"Recycled Material Composite": [
+7200,
+"2026-10-23"
+],
+"Revenant Tree Pollen": [
+1000,
+"2026-10-23"
+],
+"Riccite": [
+59000,
+"2026-10-23"
+],
+"Scrap": [
+3000,
+"2026-10-23"
+],
+"Ship Ammunition": [
+10.0,
+"2026-10-11"
+],
+"Silicon": [
+2000,
+"2026-10-23"
+],
+"SLAM": [
+32000,
+"2026-10-23"
+],
+"Souvenirs": [
+17000,
+"2026-10-23"
+],
+"Steel": [
+1600,
+"2026-10-23"
+],
+"Stileron": [
+110000,
+"2026-10-23"
+],
+"Stims": [
+4300,
+"2026-10-23"
+],
+"Sunset Berries": [
+79000,
+"2026-10-23"
+],
+"Taranite": [
+22000,
+"2026-10-23"
+],
+"Thermalfoam": [
+5100,
+"2026-10-23"
+],
+"Tin": [
+3300,
+"2026-10-23"
+],
+"Titanium": [
+7000,
+"2026-10-23"
+],
+"Tritium": [
+21000,
+"2026-10-23"
+],
+"Tungsten": [
+8700,
+"2026-10-23"
+],
+"Waste": [
+200,
+"2026-10-23"
+],
+"WiDoW": [
+7200,
+"2026-10-23"
+],
+"Xa'Pyen": [
+4100,
+"2026-10-23"
+],
+"Year of the Pig Envelope": [
+127500,
+"2026-01-24"
+]
+},
+"Kauf": {
+"Human Food Bars": [
+324.0,
+"2026-10-23"
+],
+"Hydrogen Fuel": [
+782.0,
+"2026-10-23"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-23"
+],
+"Recycled Material Composite": [
+10710.0,
+"2026-02-08"
+],
+"Ship Ammunition": [
+7641.0,
+"2026-08-30"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-23"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-23"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-23"
+]
+}
+},
+"Brio's Breaker Yard|Brio's Breaker Yard": {
+"Verkauf": {
+"Agricium": [
+7200,
+"2026-10-17"
+],
+"Altruciatoxin": [
+6900,
+"2026-10-17"
+],
+"Astatine": [
+2500,
+"2026-10-17"
+],
+"Beradom": [
+120000,
+"2026-10-17"
+],
+"Bexalite": [
+27000,
+"2026-10-17"
+],
+"Borase": [
+18000,
+"2026-10-17"
+],
+"Copper": [
+2400,
+"2026-10-17"
+],
+"E'tam": [
+27000,
+"2026-10-17"
+],
+"Feynmaline": [
+280000,
+"2026-10-17"
+],
+"Fluorine": [
+1000,
+"2026-10-17"
+],
+"Gasping Weevil Eggs": [
+65000,
+"2026-10-02"
+],
+"Glacosite": [
+82000,
+"2026-10-17"
+],
+"Hadanite": [
+420000,
+"2026-10-17"
+],
+"Maze": [
+230000,
+"2026-10-17"
+],
+"Neon": [
+19000,
+"2026-10-17"
+],
+"Party Favors": [
+3600,
+"2026-10-17"
+],
+"Recycled Material Composite": [
+5500,
+"2026-10-17"
+],
+"Revenant Pod": [
+6700,
+"2026-10-17"
+],
+"Revenant Tree Pollen": [
+1300,
+"2026-10-17"
+],
+"Scrap": [
+2600,
+"2026-10-17"
+],
+"SLAM": [
+46000,
+"2026-10-17"
+],
+"Thermalfoam": [
+9745.0,
+"2026-01-25"
+],
+"Tin": [
+2500,
+"2026-10-17"
+],
+"Titanium": [
+6200,
+"2026-10-17"
+],
+"Tungsten": [
+4050.0,
+"2026-01-25"
+],
+"WiDoW": [
+8100,
+"2026-10-17"
+]
+},
+"Kauf": {
+"Atlasium": [
+131060.0,
+"2026-01-25"
+]
+}
+},
+"Admin Office|Megumi Refueling": {
+"Verkauf": {
+"Agricium": [
+9200,
+"2026-10-17"
+],
+"Altruciatoxin": [
+6200,
+"2026-10-17"
+],
+"Beryl": [
+19000,
+"2026-10-17"
+],
+"Bioplastic": [
+7700,
+"2026-10-17"
+],
+"Borase": [
+27000,
+"2026-10-17"
+],
+"Carbon": [
+330.0,
+"2026-10-17"
+],
+"Construction Materials": [
+12000,
+"2026-10-17"
+],
+"DynaFlex": [
+1900,
+"2026-10-17"
+],
+"Fluorine": [
+1200,
+"2026-10-17"
+],
+"Hephaestanite": [
+4500,
+"2026-10-21"
+],
+"Human Food Bars": [
+470.0,
+"2026-10-17"
+],
+"Iron": [
+3600,
+"2026-10-17"
+],
+"Lindinium": [
+46000,
+"2026-10-23"
+],
+"Methane": [
+3500,
+"2026-10-17"
+],
+"Neon": [
+17000,
+"2026-10-17"
+],
+"Nitrogen": [
+3000,
+"2026-10-21"
+],
+"Potassium": [
+530.0,
+"2026-10-17"
+],
+"Pressurized Ice": [
+5200,
+"2026-10-17"
+],
+"Processed Food": [
+1400,
+"2026-10-17"
+],
+"Scrap": [
+3500,
+"2026-10-17"
+],
+"Stims": [
+5000,
+"2026-10-17"
+],
+"Tin": [
+4300,
+"2026-10-17"
+],
+"Titanium": [
+8100,
+"2026-10-23"
+],
+"Tungsten": [
+12000,
+"2026-10-23"
+]
+},
+"Kauf": {
+"Aluminum": [
+2584.0,
+"2026-10-23"
+],
+"Ammonia": [
+747.0,
+"2026-10-23"
+],
+"Argon": [
+300,
+"2026-10-23"
+],
+"Copper": [
+2660.0,
+"2026-10-23"
+],
+"Hydrogen Fuel": [
+782.0,
+"2026-10-17"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-17"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-10-17"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-17"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-17"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-17"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-17"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-17"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-17"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-17"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-17"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-17"
+],
+"Silicon": [
+1777.0,
+"2026-10-23"
+],
+"Waste": [
+229.0,
+"2026-10-23"
+],
+"WiDoW": [
+5929.0,
+"2026-10-23"
+]
+}
+},
+"Admin Office|ARC-L3 Modern Express Station": {
+"Verkauf": {
+"Agricium": [
+9600,
+"2026-10-18"
+],
+"Astatine": [
+2649.0,
+"2026-08-25"
+],
+"Compboard": [
+27000,
+"2026-10-18"
+],
+"Construction Materials": [
+12000,
+"2026-10-18"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-18"
+],
+"Dolivine": [
+150000,
+"2026-10-18"
+],
+"Gold": [
+28928.0,
+"2026-08-25"
+],
+"Party Favors": [
+4900,
+"2026-10-18"
+],
+"Processed Food": [
+1500,
+"2026-10-18"
+],
+"Scrap": [
+2990.0,
+"2026-08-25"
+],
+"Stims": [
+5300,
+"2026-10-18"
+],
+"Thermalfoam": [
+6300,
+"2026-10-18"
+],
+"Titanium": [
+7700,
+"2026-10-18"
+],
+"Waste": [
+229.0,
+"2026-08-25"
+]
+},
+"Kauf": {
+"Astatine": [
+2649.0,
+"2026-10-18"
+],
+"Gold": [
+28928.0,
+"2026-10-18"
+],
+"Scrap": [
+2990.0,
+"2026-10-18"
+],
+"Waste": [
+229.0,
+"2026-10-18"
+]
+}
+},
+"Admin Office|ARC-L4 Faint Glen Station": {
+"Verkauf": {
+"Agricium": [
+9400,
+"2026-10-19"
+],
+"Compboard": [
+27000,
+"2026-10-19"
+],
+"Construction Materials": [
+12000,
+"2026-10-19"
+],
+"Degnous Root": [
+63000,
+"2026-10-19"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-19"
+],
+"Dolivine": [
+150000,
+"2026-10-19"
+],
+"Hephaestanite": [
+4800,
+"2026-10-19"
+],
+"Medical Supplies": [
+5500,
+"2026-10-19"
+],
+"Nitrogen": [
+2900,
+"2026-10-19"
+],
+"Omnapoxy": [
+5400,
+"2026-10-19"
+],
+"Party Favors": [
+4900,
+"2026-10-19"
+],
+"Processed Food": [
+1500,
+"2026-10-19"
+]
+},
+"Kauf": {
+"Scrap": [
+3265.0,
+"2026-10-19"
+],
+"Waste": [
+229.0,
+"2026-10-19"
+]
+}
+},
+"Admin Office|HUR-L3 Thundering Express Station": {
+"Verkauf": {
+"Agricium": [
+10000,
+"2026-10-22"
+],
+"Beryl": [
+23000,
+"2026-10-22"
+],
+"Borase": [
+28000,
+"2026-10-22"
+],
+"Compboard": [
+27000,
+"2026-10-22"
+],
+"Construction Materials": [
+12000,
+"2026-10-22"
+],
+"Degnous Root": [
+63000,
+"2026-10-22"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-22"
+],
+"Dolivine": [
+150000,
+"2026-10-22"
+],
+"Hydrogen": [
+1100,
+"2026-10-22"
+],
+"Medical Supplies": [
+4800,
+"2026-10-22"
+],
+"Nitrogen": [
+2561.0,
+"2026-07-05"
+],
+"Omnapoxy": [
+4500,
+"2026-10-22"
+],
+"Processed Food": [
+1500,
+"2026-10-22"
+],
+"Stims": [
+5800,
+"2026-10-22"
+],
+"Waste": [
+2500,
+"2026-07-27"
+]
+},
+"Kauf": {
+"Nitrogen": [
+2561.0,
+"2026-10-22"
+],
+"Waste": [
+229.0,
+"2026-10-22"
+]
+}
+},
+"Admin Office|HUR-L4 Melodic Fields Station": {
+"Verkauf": {
+"Agricium": [
+10000,
+"2026-10-24"
+],
+"Beryl": [
+22000,
+"2026-10-24"
+],
+"Compboard": [
+27000,
+"2026-10-14"
+],
+"Construction Materials": [
+12000,
+"2026-10-14"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-21"
+],
+"Dolivine": [
+150000,
+"2026-10-14"
+],
+"Hydrogen": [
+1100,
+"2026-10-21"
+],
+"Marok Gem": [
+63000,
+"2026-10-14"
+],
+"Medical Supplies": [
+5400,
+"2026-10-24"
+],
+"Nitrogen": [
+2900,
+"2026-10-24"
+],
+"Processed Food": [
+1500,
+"2026-10-21"
+],
+"Thermalfoam": [
+6600,
+"2026-10-21"
+]
+},
+"Kauf": {
+"Diamond": [
+6269.0,
+"2026-10-14"
+],
+"Mercury": [
+791.0,
+"2026-10-14"
+],
+"Waste": [
+229.0,
+"2026-10-14"
+]
+}
+},
+"Admin Office|Orbituary": {
+"Verkauf": {
+"Agricium": [
+9200,
+"2026-10-13"
+],
+"Altruciatoxin": [
+6200,
+"2026-10-13"
+],
+"Aluminum": [
+3600,
+"2026-10-13"
+],
+"Argon": [
+420.0,
+"2026-10-13"
+],
+"Beryl": [
+19000,
+"2026-10-13"
+],
+"Bioplastic": [
+8600,
+"2026-10-13"
+],
+"Borase": [
+27000,
+"2026-10-13"
+],
+"Construction Materials": [
+12000,
+"2026-10-13"
+],
+"Corundum": [
+4400,
+"2026-10-13"
+],
+"Fluorine": [
+1200,
+"2026-10-13"
+],
+"Hephaestanite": [
+4600,
+"2026-10-13"
+],
+"Human Food Bars": [
+470.0,
+"2026-10-13"
+],
+"Hydrogen": [
+1100,
+"2026-10-13"
+],
+"Laranite": [
+8500,
+"2026-10-13"
+],
+"Luminalia Gift": [
+5000000,
+"2026-10-13"
+],
+"Medical Supplies": [
+5200,
+"2026-10-13"
+],
+"Neon": [
+17000,
+"2026-10-13"
+],
+"Nitrogen": [
+3000,
+"2026-10-13"
+],
+"Omnapoxy": [
+4000,
+"2026-10-13"
+],
+"Pressurized Ice": [
+5200,
+"2026-10-13"
+],
+"Processed Food": [
+1400,
+"2026-10-13"
+],
+"Quartz": [
+4200,
+"2026-10-13"
+],
+"Scrap": [
+3500,
+"2026-10-13"
+],
+"Steel": [
+2000,
+"2026-10-13"
+],
+"Stims": [
+5000,
+"2026-10-13"
+],
+"Tin": [
+3800,
+"2026-10-13"
+],
+"Titanium": [
+8300,
+"2026-10-13"
+],
+"Waste": [
+450.0,
+"2026-10-13"
+],
+"Year of the Pig Envelope": [
+150000,
+"2026-01-20"
+]
+},
+"Kauf": {
+"Carbon": [
+235.0,
+"2026-10-13"
+],
+"Copper": [
+2893.0,
+"2026-10-13"
+],
+"Hydrogen Fuel": [
+782.0,
+"2026-10-13"
+],
+"Iron": [
+2480.0,
+"2026-10-02"
+],
+"Potassium": [
+396.0,
+"2026-10-13"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-13"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-10-13"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-13"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-13"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-13"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-13"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-13"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-13"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-13"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-13"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-13"
+]
+}
+},
+"Admin Office|Checkmate Station": {
+"Verkauf": {
+"Agricium": [
+9200,
+"2026-10-12"
+],
+"Altruciatoxin": [
+6200,
+"2026-10-12"
+],
+"Argon": [
+420.0,
+"2026-10-12"
+],
+"Beryl": [
+19000,
+"2026-10-12"
+],
+"Bioplastic": [
+8600,
+"2026-10-12"
+],
+"Borase": [
+27000,
+"2026-10-12"
+],
+"Construction Materials": [
+12000,
+"2026-10-12"
+],
+"Corundum": [
+3500,
+"2026-10-12"
+],
+"Fluorine": [
+1200,
+"2026-10-12"
+],
+"Helium": [
+727.0,
+"2026-08-27"
+],
+"Hephaestanite": [
+4600,
+"2026-10-12"
+],
+"Human Food Bars": [
+470.0,
+"2026-10-12"
+],
+"Hydrogen": [
+1100,
+"2026-10-12"
+],
+"Iron": [
+2480.0,
+"2026-08-27"
+],
+"Mercury": [
+715.0,
+"2026-08-27"
+],
+"Neon": [
+17000,
+"2026-10-12"
+],
+"Nitrogen": [
+3000,
+"2026-10-12"
+],
+"Omnapoxy": [
+4300,
+"2026-10-12"
+],
+"Pressurized Ice": [
+5200,
+"2026-10-12"
+],
+"Processed Food": [
+1400,
+"2026-10-12"
+],
+"Quartz": [
+4200,
+"2026-10-12"
+],
+"Revenant Tree Pollen": [
+1200,
+"2026-10-12"
+],
+"Scrap": [
+3500,
+"2026-10-12"
+],
+"Steel": [
+2000,
+"2026-10-12"
+],
+"Stims": [
+5000,
+"2026-10-12"
+],
+"Tin": [
+3000,
+"2026-10-12"
+],
+"Titanium": [
+8300,
+"2026-10-12"
+],
+"Waste": [
+229.0,
+"2026-08-27"
+]
+},
+"Kauf": {
+"Agricultural Supplies": [
+1108.0,
+"2026-10-18"
+],
+"Carbon": [
+235.0,
+"2026-10-18"
+],
+"Distilled Spirits": [
+1427.0,
+"2026-10-18"
+],
+"DynaFlex": [
+1235.0,
+"2026-10-18"
+],
+"Helium": [
+727.0,
+"2026-10-17"
+],
+"Hydrogen Fuel": [
+782.0,
+"2026-10-18"
+],
+"Iron": [
+2480.0,
+"2026-10-06"
+],
+"Mercury": [
+715.0,
+"2026-10-17"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-18"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-10-18"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-12"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-12"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-12"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-12"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-12"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-12"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-12"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-12"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-12"
+],
+"Waste": [
+229.0,
+"2026-10-12"
+]
+}
+},
+"Admin Office|Dudley & Daughters": {
+"Verkauf": {
+"Agricium": [
+9200,
+"2026-10-18"
+],
+"Altruciatoxin": [
+6400,
+"2026-10-16"
+],
+"Aluminum": [
+3900,
+"2026-10-18"
+],
+"Beryl": [
+19000,
+"2026-10-18"
+],
+"Bexalite": [
+30000,
+"2026-10-18"
+],
+"Borase": [
+27000,
+"2026-10-18"
+],
+"Carbon-Silk": [
+21000,
+"2026-10-18"
+],
+"Corundum": [
+3500,
+"2026-10-18"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-16"
+],
+"E'tam": [
+23000,
+"2026-10-16"
+],
+"Helium": [
+1200,
+"2026-10-16"
+],
+"Hephaestanite": [
+4600,
+"2026-10-16"
+],
+"Iron": [
+3600,
+"2026-10-16"
+],
+"Laranite": [
+9700,
+"2026-10-16"
+],
+"Medical Supplies": [
+5200,
+"2026-10-16"
+],
+"Neon": [
+19000,
+"2026-10-16"
+],
+"Nitrogen": [
+3000,
+"2026-10-16"
+],
+"Partillium": [
+90000,
+"2026-10-16"
+],
+"Pressurized Ice": [
+5200,
+"2026-10-16"
+],
+"Processed Food": [
+1400,
+"2026-10-16"
+],
+"Quartz": [
+4200,
+"2026-10-16"
+],
+"Recycled Material Composite": [
+7700,
+"2026-10-16"
+],
+"Riccite": [
+67000,
+"2026-10-16"
+],
+"Scrap": [
+3700,
+"2026-10-16"
+],
+"Silicon": [
+2300,
+"2026-10-16"
+],
+"SLAM": [
+36000,
+"2026-10-16"
+],
+"Stims": [
+4900,
+"2026-10-16"
+],
+"Tin": [
+4600,
+"2026-10-16"
+],
+"Titanium": [
+8300,
+"2026-10-16"
+]
+},
+"Kauf": {
+"Agricultural Supplies": [
+1015.0,
+"2026-10-18"
+],
+"Human Food Bars": [
+416.0,
+"2026-10-18"
+],
+"Hydrogen": [
+752.0,
+"2026-10-18"
+],
+"Methane": [
+2745.0,
+"2026-10-18"
+],
+"Omnapoxy": [
+3521.0,
+"2026-10-16"
+]
+}
+},
+"Admin Office|Patch City": {
+"Verkauf": {
+"Agricium": [
+9200,
+"2026-10-21"
+],
+"Altruciatoxin": [
+6400,
+"2026-10-21"
+],
+"Beryl": [
+19000,
+"2026-10-21"
+],
+"Bexalite": [
+30000,
+"2026-10-21"
+],
+"Borase": [
+27000,
+"2026-10-21"
+],
+"Carbon-Silk": [
+21000,
+"2026-10-24"
+],
+"Copper": [
+3700,
+"2026-10-24"
+],
+"E'tam": [
+23000,
+"2026-10-24"
+],
+"Helium": [
+1000,
+"2026-10-24"
+],
+"Hephaestanite": [
+4600,
+"2026-10-24"
+],
+"Hydrogen": [
+1000,
+"2026-10-24"
+],
+"Iron": [
+3200,
+"2026-10-24"
+],
+"Laranite": [
+8700,
+"2026-10-24"
+],
+"Medical Supplies": [
+5200,
+"2026-10-24"
+],
+"Methane": [
+3500,
+"2026-10-24"
+],
+"Neon": [
+19000,
+"2026-10-24"
+],
+"Nitrogen": [
+3000,
+"2026-10-24"
+],
+"Pressurized Ice": [
+5200,
+"2026-10-24"
+],
+"Processed Food": [
+1400,
+"2026-10-24"
+],
+"Quartz": [
+4600,
+"2026-10-24"
+],
+"Recycled Material Composite": [
+7700,
+"2026-10-24"
+],
+"Revenant Tree Pollen": [
+1200,
+"2026-10-21"
+],
+"Riccite": [
+67000,
+"2026-10-24"
+],
+"Scrap": [
+3700,
+"2026-10-24"
+],
+"Silicon": [
+2900,
+"2026-10-24"
+],
+"SLAM": [
+36000,
+"2026-10-24"
+],
+"Stims": [
+5000,
+"2026-10-21"
+],
+"Taranite": [
+25000,
+"2026-10-21"
+],
+"Tin": [
+3800,
+"2026-10-21"
+],
+"Titanium": [
+8300,
+"2026-10-21"
+]
+},
+"Kauf": {
+"DynaFlex": [
+1468.0,
+"2026-10-24"
+],
+"Fluorine": [
+987.0,
+"2026-10-24"
+],
+"Human Food Bars": [
+416.0,
+"2026-10-24"
+],
+"Omnapoxy": [
+3237.0,
+"2026-10-24"
+]
+}
+},
+"Admin Office|Rat´s Nest": {
+"Verkauf": {
+"Agricium": [
+9200,
+"2026-10-18"
+],
+"Altruciatoxin": [
+5304.0,
+"2026-05-17"
+],
+"Aluminum": [
+3600,
+"2026-10-18"
+],
+"Beryl": [
+19000,
+"2026-10-18"
+],
+"Bexalite": [
+34000,
+"2026-10-18"
+],
+"Bioplastic": [
+7700,
+"2026-10-18"
+],
+"Borase": [
+27000,
+"2026-10-18"
+],
+"Carbon-Silk": [
+19000,
+"2026-10-16"
+],
+"Copper": [
+4200,
+"2026-10-18"
+],
+"Corundum": [
+3500,
+"2026-10-18"
+],
+"Diamond": [
+6274.0,
+"2026-05-17"
+],
+"E'tam": [
+23000,
+"2026-10-18"
+],
+"Fluorine": [
+1130.0,
+"2026-04-09"
+],
+"Gold": [
+29000,
+"2026-10-18"
+],
+"Hephaestanite": [
+4600,
+"2026-10-18"
+],
+"Human Food Bars": [
+400,
+"2026-04-09"
+],
+"Iron": [
+3200,
+"2026-10-18"
+],
+"Laranite": [
+8700,
+"2026-10-18"
+],
+"Medical Supplies": [
+5200,
+"2026-10-18"
+],
+"Methane": [
+3500,
+"2026-10-18"
+],
+"Neon": [
+19000,
+"2026-10-18"
+],
+"Nitrogen": [
+3000,
+"2026-10-18"
+],
+"Omnapoxy": [
+4300,
+"2026-10-18"
+],
+"Partillium": [
+90000,
+"2026-10-18"
+],
+"Pressurized Ice": [
+5200,
+"2026-10-18"
+],
+"Processed Food": [
+1400,
+"2026-10-18"
+],
+"Recycled Material Composite": [
+7700,
+"2026-10-18"
+],
+"Revenant Tree Pollen": [
+1200,
+"2026-10-18"
+],
+"Scrap": [
+3700,
+"2026-10-18"
+],
+"Silicon": [
+2600,
+"2026-10-18"
+],
+"SLAM": [
+36000,
+"2026-10-18"
+],
+"Stims": [
+5600,
+"2026-10-18"
+],
+"Tin": [
+3800,
+"2026-10-18"
+],
+"Titanium": [
+8300,
+"2026-10-18"
+],
+"WiDoW": [
+5929.0,
+"2026-05-17"
+]
+},
+"Kauf": {
+"Altruciatoxin": [
+4814.0,
+"2026-10-18"
+],
+"Diamond": [
+5484.0,
+"2026-10-18"
+],
+"Fluorine": [
+987.0,
+"2026-10-18"
+],
+"Human Food Bars": [
+400,
+"2026-10-18"
+],
+"WiDoW": [
+5929.0,
+"2026-10-18"
+]
+}
+},
+"Admin Office|Rod´s Fuel ´N Supplies": {
+"Verkauf": {
+"Agricium": [
+9400,
+"2026-10-21"
+],
+"Altruciatoxin": [
+6400,
+"2026-10-21"
+],
+"Aluminum": [
+2004.0,
+"2026-07-10"
+],
+"Beryl": [
+24000,
+"2026-10-19"
+],
+"Bexalite": [
+30000,
+"2026-10-19"
+],
+"Borase": [
+30000,
+"2026-10-19"
+],
+"Carbon-Silk": [
+21000,
+"2026-10-19"
+],
+"Cobalt": [
+21000,
+"2026-10-21"
+],
+"Copper": [
+4700,
+"2026-10-21"
+],
+"Corundum": [
+4400,
+"2026-10-21"
+],
+"Diamond": [
+7700,
+"2026-10-21"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-19"
+],
+"E'tam": [
+22000,
+"2026-10-21"
+],
+"Helium": [
+1000,
+"2026-10-19"
+],
+"Iron": [
+3600,
+"2026-10-19"
+],
+"Laranite": [
+9700,
+"2026-10-21"
+],
+"Medical Supplies": [
+5200,
+"2026-10-19"
+],
+"Neon": [
+19000,
+"2026-10-21"
+],
+"Nitrogen": [
+3000,
+"2026-10-21"
+],
+"Omnapoxy": [
+4300,
+"2026-10-19"
+],
+"Pressurized Ice": [
+5200,
+"2026-10-19"
+],
+"Processed Food": [
+1400,
+"2026-10-19"
+],
+"Quartz": [
+4200,
+"2026-10-19"
+],
+"Recycled Material Composite": [
+7700,
+"2026-10-19"
+],
+"Revenant Tree Pollen": [
+1200,
+"2026-10-19"
+],
+"Riccite": [
+67000,
+"2026-10-19"
+],
+"Scrap": [
+3400,
+"2026-10-23"
+],
+"Silicon": [
+2300,
+"2026-10-19"
+],
+"SLAM": [
+36000,
+"2026-10-19"
+],
+"Taranite": [
+25000,
+"2026-10-19"
+],
+"Tin": [
+3800,
+"2026-10-19"
+],
+"Titanium": [
+8300,
+"2026-10-19"
+]
+},
+"Kauf": {
+"Aluminum": [
+2584.0,
+"2026-10-21"
+],
+"Gold": [
+27550.0,
+"2026-10-19"
+],
+"Hephaestanite": [
+3303.0,
+"2026-10-21"
+],
+"Human Food Bars": [
+416.0,
+"2026-10-19"
+],
+"Stims": [
+4467.0,
+"2026-10-21"
+],
+"Tungsten": [
+9025.0,
+"2026-10-19"
+],
+"Waste": [
+196.0,
+"2026-10-19"
+]
+}
+},
+"Admin Office|Starlight Service Station": {
+"Verkauf": {
+"Agricium": [
+9200,
+"2026-10-18"
+],
+"Agricultural Supplies": [
+1300,
+"2026-10-18"
+],
+"Altruciatoxin": [
+6400,
+"2026-10-18"
+],
+"Aluminum": [
+3600,
+"2026-10-18"
+],
+"Beryl": [
+19000,
+"2026-10-18"
+],
+"Bioplastic": [
+7700,
+"2026-10-18"
+],
+"Borase": [
+27000,
+"2026-10-18"
+],
+"Carbon-Silk": [
+21000,
+"2026-10-18"
+],
+"Copper": [
+3700,
+"2026-10-18"
+],
+"Corundum": [
+3500,
+"2026-10-18"
+],
+"Diamond": [
+7400,
+"2026-10-18"
+],
+"E'tam": [
+23000,
+"2026-10-18"
+],
+"Hephaestanite": [
+4600,
+"2026-10-18"
+],
+"Iron": [
+3200,
+"2026-10-18"
+],
+"Laranite": [
+8700,
+"2026-10-18"
+],
+"Medical Supplies": [
+5200,
+"2026-10-18"
+],
+"Methane": [
+3700,
+"2026-10-18"
+],
+"Neon": [
+17000,
+"2026-10-18"
+],
+"Nitrogen": [
+2439.0,
+"2026-07-18"
+],
+"Omnapoxy": [
+4300,
+"2026-10-18"
+],
+"Pressurized Ice": [
+5200,
+"2026-10-18"
+],
+"Processed Food": [
+1400,
+"2026-10-18"
+],
+"Recycled Material Composite": [
+7700,
+"2026-10-18"
+],
+"Revenant Tree Pollen": [
+1200,
+"2026-10-18"
+],
+"Scrap": [
+3700,
+"2026-10-18"
+],
+"Silicon": [
+2300,
+"2026-10-18"
+],
+"SLAM": [
+36000,
+"2026-10-18"
+],
+"Steel": [
+2000,
+"2026-10-18"
+],
+"Stims": [
+3886.0,
+"2026-07-18"
+],
+"Tin": [
+3800,
+"2026-10-18"
+],
+"Titanium": [
+9100,
+"2026-10-18"
+],
+"WiDoW": [
+7600,
+"2026-10-18"
+]
+},
+"Kauf": {
+"Cobalt": [
+18050.0,
+"2026-10-18"
+],
+"DynaFlex": [
+1350.0,
+"2026-10-18"
+],
+"Fluorine": [
+1134.0,
+"2026-10-18"
+],
+"Human Food Bars": [
+416.0,
+"2026-10-18"
+],
+"Nitrogen": [
+2439.0,
+"2026-10-18"
+],
+"Stims": [
+3886.0,
+"2026-10-18"
+]
+}
+},
+"Admin Office|Ruin Station": {
+"Verkauf": {
+"Agricium": [
+9200,
+"2026-10-24"
+],
+"Agricultural Supplies": [
+1300,
+"2026-10-24"
+],
+"Altruciatoxin": [
+6200,
+"2026-10-24"
+],
+"Aluminum": [
+3600,
+"2026-10-24"
+],
+"Ammonia": [
+910.0,
+"2026-10-24"
+],
+"Aphorite": [
+93000,
+"2026-10-24"
+],
+"Argon": [
+420.0,
+"2026-10-24"
+],
+"Aslarite": [
+5100,
+"2026-10-24"
+],
+"Beryl": [
+19000,
+"2026-10-24"
+],
+"Bioplastic": [
+6900,
+"2026-10-24"
+],
+"Borase": [
+27000,
+"2026-10-24"
+],
+"Carbon": [
+330.0,
+"2026-10-24"
+],
+"Chlorine": [
+1400,
+"2026-10-24"
+],
+"CK13-GID Seed Blend": [
+540.0,
+"2026-07-15"
+],
+"Compboard": [
+28000,
+"2026-10-24"
+],
+"Construction Materials": [
+12000,
+"2026-10-24"
+],
+"Copper": [
+3400,
+"2026-10-24"
+],
+"Corundum": [
+3500,
+"2026-10-23"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-24"
+],
+"Dolivine": [
+130000,
+"2026-10-24"
+],
+"Dymantium": [
+21000,
+"2026-10-24"
+],
+"DynaFlex": [
+1900,
+"2026-10-24"
+],
+"Fluorine": [
+1200,
+"2026-10-24"
+],
+"Fresh Food": [
+24000,
+"2026-10-24"
+],
+"Gasping Weevil Eggs": [
+56000,
+"2026-10-24"
+],
+"Golden Medmon": [
+54000,
+"2026-10-24"
+],
+"Hadanite": [
+480000,
+"2026-10-24"
+],
+"Heart of the Woods": [
+38000,
+"2026-10-24"
+],
+"Hephaestanite": [
+4600,
+"2026-10-24"
+],
+"HexaPolyMesh Coating": [
+1.0,
+"2026-10-24"
+],
+"Human Food Bars": [
+470.0,
+"2026-10-24"
+],
+"Hydrogen": [
+1000,
+"2026-10-24"
+],
+"Hydrogen Fuel": [
+740.0,
+"2026-10-24"
+],
+"Inert Material": [
+4.0,
+"2026-01-04"
+],
+"Iron": [
+3200,
+"2026-10-24"
+],
+"Janalite": [
+1500000,
+"2026-10-24"
+],
+"Laranite": [
+8700,
+"2026-10-24"
+],
+"Lindinium": [
+43000,
+"2026-10-24"
+],
+"Luminalia Gift": [
+4600000,
+"2026-10-24"
+],
+"Medical Supplies": [
+5500,
+"2026-10-24"
+],
+"Mercury": [
+1000,
+"2026-10-24"
+],
+"Methane": [
+3500,
+"2026-10-24"
+],
+"Neon": [
+17000,
+"2026-10-24"
+],
+"Nitrogen": [
+3000,
+"2026-10-24"
+],
+"Omnapoxy": [
+4200,
+"2026-10-24"
+],
+"Ouratite": [
+46000,
+"2026-10-24"
+],
+"Partillium": [
+85000,
+"2026-10-24"
+],
+"Pitambu": [
+53000,
+"2026-10-24"
+],
+"Pressurized Ice": [
+4536.0,
+"2026-06-14"
+],
+"Processed Food": [
+1500,
+"2026-08-24"
+],
+"Prota": [
+58000,
+"2026-10-24"
+],
+"Quantainium": [
+130000,
+"2026-10-24"
+],
+"Quantum Fuel": [
+1600,
+"2026-10-24"
+],
+"Quartz": [
+4200,
+"2026-10-24"
+],
+"Recycled Material Composite": [
+7200,
+"2026-10-24"
+],
+"Revenant Pod": [
+9100,
+"2026-10-24"
+],
+"Riccite": [
+59000,
+"2026-10-24"
+],
+"Savrilium": [
+110000,
+"2026-10-24"
+],
+"Scrap": [
+3400,
+"2026-10-24"
+],
+"Ship Ammunition": [
+9.0,
+"2026-10-23"
+],
+"Silicon": [
+1881.0,
+"2026-06-14"
+],
+"Steel": [
+1800,
+"2026-10-24"
+],
+"Stileron": [
+110000,
+"2026-10-24"
+],
+"Stims": [
+5000,
+"2026-10-24"
+],
+"Taranite": [
+22000,
+"2026-10-24"
+],
+"Tin": [
+3800,
+"2026-10-24"
+],
+"Titanium": [
+8300,
+"2026-10-24"
+],
+"Torite": [
+6900,
+"2026-10-24"
+],
+"Tungsten": [
+9700,
+"2026-10-24"
+],
+"Waste": [
+450.0,
+"2026-10-24"
+],
+"Xa'Pyen": [
+4600,
+"2026-10-24"
+],
+"Year of the Pig Envelope": [
+140250.0,
+"2026-01-20"
+]
+},
+"Kauf": {
+"Aluminum": [
+1413.0,
+"2026-03-21"
+],
+"Chlorine": [
+1162.0,
+"2026-07-05"
+],
+"Copper": [
+1362.0,
+"2026-03-21"
+],
+"Fluorine": [
+1090.0,
+"2026-07-05"
+],
+"Helium": [
+727.0,
+"2026-10-24"
+],
+"Hydrogen": [
+800,
+"2026-07-05"
+],
+"Hydrogen Fuel": [
+782.0,
+"2026-09-23"
+],
+"Nitrogen": [
+2561.0,
+"2026-08-07"
+],
+"Potassium": [
+430.0,
+"2026-10-24"
+],
+"Pressurized Ice": [
+4536.0,
+"2026-10-23"
+],
+"Processed Food": [
+1202.0,
+"2026-10-24"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-09-23"
+],
+"Revenant Tree Pollen": [
+967.0,
+"2026-10-24"
+],
+"Scrap": [
+2990.0,
+"2026-08-07"
+],
+"Ship Ammunition": [
+6868.0,
+"2026-07-22"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-17"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-23"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-17"
+],
+"Silicon": [
+1881.0,
+"2026-10-24"
+],
+"Waste": [
+229.0,
+"2026-08-07"
+]
+}
+},
+"Admin Office|Stanton Gateway (Nyx)": {
+"Verkauf": {
+"Agricium": [
+9800,
+"2026-10-19"
+],
+"Aluminum": [
+3800,
+"2026-10-19"
+],
+"Bexalite": [
+29000,
+"2026-10-19"
+],
+"Borase": [
+28000,
+"2026-10-19"
+],
+"Copper": [
+3700,
+"2026-10-19"
+],
+"Corundum": [
+3700,
+"2026-10-19"
+],
+"Iron": [
+3400,
+"2026-10-19"
+],
+"Laranite": [
+8600,
+"2026-10-19"
+],
+"Quantainium": [
+150000,
+"2026-10-19"
+],
+"Quartz": [
+4300,
+"2026-10-19"
+],
+"Taranite": [
+27000,
+"2026-10-19"
+],
+"Titanium": [
+8300,
+"2026-10-19"
+],
+"Tungsten": [
+10000,
+"2026-10-19"
+],
+"Waste": [
+380.0,
+"2026-10-19"
+]
+},
+"Kauf": {
+"Aluminum": [
+3128.0,
+"2026-04-27"
+],
+"Hydrogen Fuel": [
+782.0,
+"2026-10-19"
+],
+"Iron": [
+2850.0,
+"2026-04-27"
+],
+"Methane": [
+3312.0,
+"2026-10-19"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-19"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-10-19"
+],
+"Scrap": [
+3265.0,
+"2026-10-19"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-19"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-19"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-19"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-19"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-19"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-19"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-19"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-19"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-19"
+]
+}
+},
+"Admin Office|CRU-L5 Beautiful Glen Station": {
+"Verkauf": {
+"Agricium": [
+10000,
+"2026-10-24"
+],
+"Beryl": [
+20000,
+"2026-10-24"
+],
+"Compboard": [
+27000,
+"2026-10-24"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-24"
+],
+"Dolivine": [
+150000,
+"2026-10-24"
+],
+"Hephaestanite": [
+4800,
+"2026-10-24"
+],
+"Hydrogen": [
+1000,
+"2026-10-24"
+],
+"Processed Food": [
+1500,
+"2026-10-24"
+]
+},
+"Kauf": {
+"Gold": [
+26492.0,
+"2026-10-24"
+],
+"Nitrogen": [
+2803.0,
+"2026-10-24"
+],
+"Scrap": [
+2749.0,
+"2026-10-24"
+],
+"Waste": [
+229.0,
+"2026-10-24"
+]
+}
+},
+"Admin Office|CRU-L4 Shallow Fields Station": {
+"Verkauf": {
+"Agricium": [
+10000,
+"2026-10-23"
+],
+"Altruciatoxin": [
+7100,
+"2026-09-30"
+],
+"Aluminum": [
+2900,
+"2026-09-30"
+],
+"Compboard": [
+27000,
+"2026-10-23"
+],
+"Construction Materials": [
+13000,
+"2026-10-23"
+],
+"Copper": [
+3000,
+"2026-09-30"
+],
+"Degnous Root": [
+63000,
+"2026-10-23"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-23"
+],
+"Dolivine": [
+150000,
+"2026-10-23"
+],
+"E'tam": [
+26000,
+"2026-09-30"
+],
+"Gold": [
+23000,
+"2026-09-30"
+],
+"Helium": [
+770.0,
+"2026-09-30"
+],
+"Hephaestanite": [
+5600,
+"2026-10-23"
+],
+"Hydrogen": [
+1000,
+"2026-10-23"
+],
+"Maze": [
+230000,
+"2026-09-30"
+],
+"Medical Supplies": [
+5500,
+"2026-10-23"
+],
+"Neon": [
+19000,
+"2026-09-30"
+],
+"Nitrogen": [
+3000,
+"2026-10-23"
+],
+"Omnapoxy": [
+3600,
+"2026-10-23"
+],
+"Processed Food": [
+1500,
+"2026-10-23"
+],
+"SLAM": [
+46000,
+"2026-09-30"
+],
+"Stims": [
+5700,
+"2026-10-23"
+],
+"Sunset Berries": [
+69000,
+"2026-09-30"
+],
+"Taranite": [
+22000,
+"2026-09-30"
+],
+"Thermalfoam": [
+6200,
+"2026-10-23"
+],
+"Tungsten": [
+8200,
+"2026-09-30"
+],
+"WiDoW": [
+5700,
+"2026-09-30"
+]
+},
+"Kauf": {
+"Laranite": [
+7400,
+"2026-10-23"
+],
+"Waste": [
+229.0,
+"2026-10-23"
+]
+}
+},
+"Admin Office|CRU-L1 Ambitious Dream Station": {
+"Verkauf": {
+"Agricium": [
+10000,
+"2026-10-24"
+],
+"Astatine": [
+3500,
+"2026-10-24"
+],
+"Compboard": [
+27000,
+"2026-10-24"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-24"
+],
+"Dolivine": [
+150000,
+"2026-10-24"
+],
+"Hephaestanite": [
+4600,
+"2026-10-24"
+],
+"Hydrogen": [
+1000,
+"2026-10-24"
+],
+"Laranite": [
+8500,
+"2026-10-24"
+],
+"Medical Supplies": [
+4900,
+"2026-10-24"
+],
+"Methane": [
+3033.0,
+"2026-08-22"
+],
+"Party Favors": [
+4900,
+"2026-10-24"
+],
+"Processed Food": [
+1400,
+"2026-10-24"
+],
+"Scrap": [
+2990.0,
+"2026-08-22"
+],
+"Thermalfoam": [
+6300,
+"2026-10-24"
+],
+"Waste": [
+229.0,
+"2026-08-22"
+]
+},
+"Kauf": {
+"Methane": [
+3033.0,
+"2026-10-24"
+],
+"Nitrogen": [
+2561.0,
+"2026-10-24"
+],
+"Scrap": [
+2990.0,
+"2026-10-24"
+],
+"Waste": [
+229.0,
+"2026-10-24"
+]
+}
+},
+"Admin Office|HUR-L5 High Course Station": {
+"Verkauf": {
+"Agricium": [
+10000,
+"2026-10-24"
+],
+"Beryl": [
+22000,
+"2026-10-24"
+],
+"Compboard": [
+27000,
+"2026-10-22"
+],
+"Degnous Root": [
+69000,
+"2026-10-22"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-22"
+],
+"Dolivine": [
+150000,
+"2026-10-22"
+],
+"Hephaestanite": [
+4800,
+"2026-10-24"
+],
+"Hydrogen": [
+1000,
+"2026-10-22"
+],
+"Medical Supplies": [
+5300,
+"2026-10-24"
+],
+"Processed Food": [
+1500,
+"2026-10-22"
+],
+"Stims": [
+4900,
+"2026-10-22"
+],
+"Tin": [
+4900,
+"2026-07-23"
+]
+},
+"Kauf": {
+"Methane": [
+2789.0,
+"2026-10-20"
+],
+"Scrap": [
+2749.0,
+"2026-10-20"
+],
+"Waste": [
+229.0,
+"2026-10-20"
+]
+}
+},
+"Station Administration|People's Service Station Alpha": {
+"Verkauf": {
+"Agricium": [
+10000,
+"2026-04-14"
+],
+"Iodine": [
+12000,
+"2026-04-14"
+],
+"Iron": [
+3400,
+"2026-04-14"
+],
+"Medical Supplies": [
+5000,
+"2026-04-14"
+],
+"Organics": [
+13000,
+"2026-04-14"
+],
+"Processed Food": [
+1500,
+"2026-04-14"
+],
+"Stims": [
+5000,
+"2026-04-14"
+]
+},
+"Kauf": {
+"Compboard": [
+30023.0,
+"2026-04-14"
+],
+"Dymantium": [
+20528.0,
+"2026-04-14"
+]
+}
+},
+"Deakins Research Outpost|Deakins Research Outpost": {
+"Kauf": {
+"Agricultural Supplies": [
+1122.0,
+"2026-10-23"
+],
+"Bioplastic": [
+6538.0,
+"2026-10-24"
+],
+"Chlorine": [
+1314.0,
+"2026-10-23"
+],
+"Distilled Spirits": [
+1574.0,
+"2026-10-23"
+],
+"Iodine": [
+9334.0,
+"2026-10-23"
+],
+"Medical Supplies": [
+3376.0,
+"2026-10-24"
+],
+"Methane": [
+3312.0,
+"2026-10-23"
+],
+"Nitrogen": [
+2439.0,
+"2026-10-23"
+],
+"Omnapoxy": [
+4036.0,
+"2026-10-24"
+],
+"Stims": [
+4295.0,
+"2026-10-24"
+],
+"Thermalfoam": [
+5088.0,
+"2026-10-23"
+],
+"Waste": [
+229.0,
+"2026-10-23"
+]
+},
+"Verkauf": {
+"Amioshi Plague": [
+24000,
+"2026-10-23"
+],
+"Astatine": [
+3600,
+"2026-10-23"
+],
+"Organics": [
+11000,
+"2026-10-23"
+],
+"Quartz": [
+4000,
+"2026-10-23"
+],
+"Stileron": [
+150000,
+"2026-10-23"
+]
+}
+},
+"Hickes Research Outpost|Hickes Research Outpost": {
+"Kauf": {
+"Agricultural Supplies": [
+1122.0,
+"2026-10-24"
+],
+"Distilled Spirits": [
+1574.0,
+"2026-10-20"
+],
+"Iodine": [
+9334.0,
+"2026-10-24"
+],
+"Medical Supplies": [
+3409.0,
+"2026-10-24"
+],
+"Methane": [
+3312.0,
+"2026-10-20"
+],
+"Nitrogen": [
+2439.0,
+"2026-10-24"
+],
+"Stims": [
+4295.0,
+"2026-10-20"
+],
+"Thermalfoam": [
+5088.0,
+"2026-10-20"
+],
+"Tritium": [
+15769.0,
+"2026-10-20"
+],
+"Waste": [
+229.0,
+"2026-10-20"
+]
+},
+"Verkauf": {
+"Quartz": [
+4000,
+"2026-10-20"
+],
+"Stileron": [
+140000,
+"2026-10-20"
+]
+}
+},
+"Rayari Anvik Research Outpost|Rayari Anvik Research Outpost": {
+"Kauf": {
+"Agricultural Supplies": [
+1122.0,
+"2026-10-24"
+],
+"Bioplastic": [
+6299.0,
+"2026-10-24"
+],
+"Compboard": [
+26450.0,
+"2026-10-24"
+],
+"Distilled Spirits": [
+1574.0,
+"2026-10-24"
+],
+"Fresh Food": [
+21614.0,
+"2026-10-24"
+],
+"Medical Supplies": [
+3343.0,
+"2026-10-24"
+],
+"Methane": [
+3312.0,
+"2026-10-24"
+],
+"Nitrogen": [
+2439.0,
+"2026-10-24"
+],
+"Waste": [
+229.0,
+"2026-10-24"
+]
+},
+"Verkauf": {
+"Amioshi Plague": [
+24000,
+"2026-10-24"
+],
+"Aphorite": [
+100000,
+"2026-05-17"
+],
+"Astatine": [
+3600,
+"2026-10-24"
+],
+"Bioplastic": [
+7400,
+"2026-05-17"
+],
+"Dolivine": [
+140000,
+"2026-05-17"
+],
+"Neograph": [
+92000,
+"2026-05-17"
+],
+"Quartz": [
+4000,
+"2026-10-24"
+],
+"Stileron": [
+140000,
+"2026-10-24"
+]
+}
+},
+"Admin Office|Port Tressler": {
+"Kauf": {
+"Agricultural Supplies": [
+1122.0,
+"2026-10-22"
+],
+"Ammonia": [
+783.0,
+"2026-10-22"
+],
+"Copper": [
+3198.0,
+"2026-10-22"
+],
+"DynaFlex": [
+1716.0,
+"2026-10-22"
+],
+"Hydrogen Fuel": [
+782.0,
+"2026-10-21"
+],
+"Pressurized Ice": [
+4536.0,
+"2026-10-22"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-21"
+],
+"Quartz": [
+3563.0,
+"2026-10-22"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-10-21"
+],
+"Scrap": [
+3109.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 7": [
+8585.0,
+"2026-10-21"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-21"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-21"
+],
+"Waste": [
+200,
+"2026-10-22"
+]
+},
+"Verkauf": {
+"Aluminum": [
+3500,
+"2026-10-21"
+],
+"Aphorite": [
+100000,
+"2026-10-21"
+],
+"Audio Visual Equipment": [
+35000,
+"2026-06-04"
+],
+"Beradom": [
+150000,
+"2026-10-21"
+],
+"Carbon": [
+380.0,
+"2026-10-21"
+],
+"Chlorine": [
+1500,
+"2026-10-21"
+],
+"Construction Materials": [
+12000,
+"2026-10-21"
+],
+"Degnous Root": [
+63000,
+"2026-10-21"
+],
+"Dolivine": [
+150000,
+"2026-10-21"
+],
+"Feynmaline": [
+350000,
+"2026-10-21"
+],
+"Fluorine": [
+1300,
+"2026-10-21"
+],
+"Glacosite": [
+100000,
+"2026-10-21"
+],
+"Hadanite": [
+540000,
+"2026-10-21"
+],
+"Human Food Bars": [
+490.0,
+"2026-10-21"
+],
+"Hydrogen": [
+1200,
+"2026-10-21"
+],
+"Luminalia Gift": [
+5000000,
+"2026-10-21"
+],
+"Party Favors": [
+5100,
+"2026-10-21"
+],
+"Potassium": [
+620.0,
+"2026-10-21"
+],
+"Silicon": [
+2400,
+"2026-10-21"
+],
+"Souvenirs": [
+19000,
+"2026-10-21"
+],
+"Stims": [
+5700,
+"2026-10-21"
+],
+"Tin": [
+4500,
+"2026-10-21"
+],
+"Torite": [
+8500,
+"2026-10-21"
+],
+"Year of the Pig Envelope": [
+150000,
+"2026-01-25"
+]
+}
+},
+"Rayari Kaltag Research Outpost|Rayari Kaltag Research Outpost": {
+"Kauf": {
+"Agricultural Supplies": [
+1122.0,
+"2026-10-22"
+],
+"Bioplastic": [
+6299.0,
+"2026-10-22"
+],
+"Compboard": [
+26460.0,
+"2026-10-22"
+],
+"Distilled Spirits": [
+1574.0,
+"2026-10-22"
+],
+"Fresh Food": [
+21614.0,
+"2026-10-24"
+],
+"Medical Supplies": [
+3343.0,
+"2026-10-24"
+],
+"Methane": [
+3312.0,
+"2026-10-22"
+],
+"Nitrogen": [
+2439.0,
+"2026-10-24"
+],
+"Waste": [
+229.0,
+"2026-10-22"
+]
+},
+"Verkauf": {
+"Amioshi Plague": [
+24000,
+"2026-10-22"
+],
+"Astatine": [
+3600,
+"2026-10-22"
+],
+"Medical Supplies": [
+3343.0,
+"2026-09-09"
+],
+"Quartz": [
+4000,
+"2026-10-22"
+],
+"Stileron": [
+140000,
+"2026-10-22"
+]
+}
+},
+"Admin Office|Terra Gateway (Stanton)": {
+"Kauf": {
+"Agricultural Supplies": [
+1031.0,
+"2026-10-24"
+],
+"Distilled Spirits": [
+1685.0,
+"2026-10-24"
+],
+"Hephaestanite": [
+3966.0,
+"2026-10-24"
+],
+"Hydrogen": [
+782.0,
+"2026-10-24"
+],
+"Hydrogen Fuel": [
+782.0,
+"2026-10-24"
+],
+"Medical Supplies": [
+3971.0,
+"2026-10-24"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-24"
+],
+"Quartz": [
+3891.0,
+"2026-10-24"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-10-24"
+],
+"Scrap": [
+3172.0,
+"2026-10-24"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-20"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-22"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-22"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-24"
+]
+},
+"Verkauf": {
+"Aluminum": [
+4600,
+"2026-10-24"
+],
+"Astatine": [
+3700,
+"2026-10-24"
+],
+"Carbon": [
+430.0,
+"2026-10-22"
+],
+"Chlorine": [
+1600,
+"2026-10-24"
+],
+"Construction Materials": [
+12000,
+"2026-10-24"
+],
+"Copper": [
+3600,
+"2026-10-24"
+],
+"Corundum": [
+4100,
+"2026-10-22"
+],
+"Degnous Root": [
+63000,
+"2026-10-24"
+],
+"Fluorine": [
+1400,
+"2026-10-24"
+],
+"Iron": [
+4000,
+"2026-10-24"
+],
+"Luminalia Gift": [
+5000000,
+"2026-10-24"
+],
+"Silicon": [
+2300,
+"2026-10-22"
+],
+"Stims": [
+5600,
+"2026-10-24"
+],
+"Tungsten": [
+10000,
+"2026-10-22"
+],
+"Year of the Pig Envelope": [
+2000000,
+"2026-06-29"
+]
+}
+},
+"Terra Mills HydroFarm|Terra Mills HydroFarm": {
+"Verkauf": {
+"Agricultural Supplies": [
+1400,
+"2026-10-18"
+],
+"Bioplastic": [
+7500,
+"2026-10-23"
+],
+"Methane": [
+3700,
+"2026-10-23"
+],
+"Nitrogen": [
+3100,
+"2026-10-23"
+],
+"Ranta Dung": [
+41000,
+"2026-10-23"
+],
+"Recycled Material Composite": [
+8300,
+"2026-10-23"
+],
+"Stileron": [
+140000,
+"2026-10-23"
+]
+},
+"Kauf": {
+"Carbon-Silk": [
+17942.0,
+"2026-10-23"
+],
+"Fresh Food": [
+21614.0,
+"2026-10-23"
+],
+"Pressurized Ice": [
+4536.0,
+"2026-10-23"
+],
+"Revenant Tree Pollen": [
+1007.0,
+"2026-10-23"
+]
+}
+},
+"Admin Office|Seraphim Station": {
+"Verkauf": {
+"Agricultural Supplies": [
+1500,
+"2026-10-22"
+],
+"Amioshi Plague": [
+25000,
+"2026-10-22"
+],
+"Aphorite": [
+100000,
+"2026-10-22"
+],
+"Argon": [
+530.0,
+"2026-10-22"
+],
+"Astatine": [
+3400,
+"2026-10-22"
+],
+"Beradom": [
+150000,
+"2026-10-22"
+],
+"Carbon": [
+380.0,
+"2026-10-22"
+],
+"Dolivine": [
+150000,
+"2026-10-22"
+],
+"DynaFlex": [
+2500,
+"2026-10-22"
+],
+"Feynmaline": [
+350000,
+"2026-10-22"
+],
+"Glacosite": [
+100000,
+"2026-10-22"
+],
+"Golden Medmon": [
+64000,
+"2026-10-22"
+],
+"Hadanite": [
+540000,
+"2026-10-22"
+],
+"Human Food Bars": [
+490.0,
+"2026-10-22"
+],
+"Iodine": [
+11000,
+"2026-10-22"
+],
+"Janalite": [
+1800000,
+"2026-10-22"
+],
+"Luminalia Gift": [
+5000000,
+"2026-10-22"
+],
+"Omnapoxy": [
+5000,
+"2026-10-22"
+],
+"Pitambu": [
+63000,
+"2026-10-22"
+],
+"Processed Food": [
+1500,
+"2026-10-22"
+],
+"Prota": [
+68000,
+"2026-10-22"
+],
+"Quartz": [
+4700,
+"2026-10-22"
+],
+"Ranta Dung": [
+39000,
+"2026-10-22"
+],
+"Revenant Pod": [
+11000,
+"2026-10-22"
+],
+"Silicon": [
+2400,
+"2026-10-22"
+],
+"Steel": [
+2000,
+"2026-10-22"
+],
+"Stims": [
+5600,
+"2026-10-22"
+],
+"Year of the Pig Envelope": [
+150000,
+"2026-01-24"
+]
+},
+"Kauf": {
+"Aluminum": [
+3285.0,
+"2026-10-22"
+],
+"Ammonia": [
+783.0,
+"2026-10-22"
+],
+"Chlorine": [
+1162.0,
+"2026-10-22"
+],
+"Copper": [
+3198.0,
+"2026-10-22"
+],
+"Fluorine": [
+1090.0,
+"2026-10-22"
+],
+"Helium": [
+772.0,
+"2026-10-22"
+],
+"Hydrogen": [
+800,
+"2026-10-22"
+],
+"Hydrogen Fuel": [
+782.0,
+"2026-10-22"
+],
+"Potassium": [
+452.0,
+"2026-10-22"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-22"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-10-22"
+],
+"Scrap": [
+3109.0,
+"2026-10-22"
+],
+"Ship Ammunition": [
+7384.0,
+"2026-05-14"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-22"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-22"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-22"
+],
+"Waste": [
+198.0,
+"2026-10-22"
+]
+}
+},
+"Admin Office|Pyro Gateway (Stanton)": {
+"Verkauf": {
+"Agricultural Supplies": [
+1500,
+"2026-10-18"
+],
+"Astatine": [
+3700,
+"2026-10-18"
+],
+"Carbon": [
+350.0,
+"2026-10-18"
+],
+"Chlorine": [
+1400,
+"2026-10-18"
+],
+"Construction Materials": [
+12000,
+"2026-10-18"
+],
+"Copper": [
+3600,
+"2026-10-18"
+],
+"Distilled Spirits": [
+2000,
+"2026-10-18"
+],
+"Fluorine": [
+1400,
+"2026-10-18"
+],
+"Hephaestanite": [
+4239.0,
+"2026-04-20"
+],
+"Human Food Bars": [
+490.0,
+"2026-10-18"
+],
+"Hydrogen": [
+1100,
+"2026-10-18"
+],
+"Luminalia Gift": [
+5000000,
+"2026-10-18"
+],
+"Medical Supplies": [
+5200,
+"2026-10-18"
+],
+"Potassium": [
+550.0,
+"2026-10-17"
+],
+"Processed Food": [
+1400,
+"2026-10-18"
+],
+"Quartz": [
+4200,
+"2026-10-18"
+],
+"Scrap": [
+3500,
+"2026-10-18"
+],
+"Stims": [
+5600,
+"2026-10-18"
+],
+"Tungsten": [
+9900,
+"2026-10-18"
+],
+"Year of the Pig Envelope": [
+150000,
+"2026-01-26"
+]
+},
+"Kauf": {
+"Aluminum": [
+3128.0,
+"2026-10-18"
+],
+"Argon": [
+316.0,
+"2026-10-18"
+],
+"Hephaestanite": [
+4167.0,
+"2026-10-18"
+],
+"Hydrogen Fuel": [
+782.0,
+"2026-10-18"
+],
+"Iron": [
+2850.0,
+"2026-10-08"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-18"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-10-18"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-18"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-18"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-18"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-18"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-18"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-18"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-16"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-18"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-18"
+]
+}
+},
+"Sheperd´s Rest|Sheperd´s Rest": {
+"Verkauf": {
+"Agricultural Supplies": [
+1500,
+"2026-10-18"
+],
+"Audio Visual Equipment": [
+36000,
+"2026-06-03"
+],
+"Bioplastic": [
+5700,
+"2026-10-18"
+],
+"Nitrogen": [
+3000,
+"2026-10-18"
+],
+"Organics": [
+11000,
+"2026-10-18"
+],
+"Pressurized Ice": [
+5200,
+"2026-10-18"
+],
+"Processed Food": [
+1200,
+"2026-10-18"
+],
+"Ranta Dung": [
+45000,
+"2026-10-18"
+],
+"Revenant Pod": [
+11000,
+"2026-10-18"
+]
+},
+"Kauf": {
+"Carbon-Silk": [
+17284.0,
+"2026-10-18"
+],
+"Degnous Root": [
+44156.0,
+"2026-10-18"
+],
+"Fresh Food": [
+20821.0,
+"2026-10-18"
+],
+"Golden Medmon": [
+51415.0,
+"2026-10-18"
+],
+"Pitambu": [
+49114.0,
+"2026-10-18"
+],
+"Sunset Berries": [
+65626.0,
+"2026-10-18"
+]
+}
+},
+"Admin Office|Gaslight": {
+"Verkauf": {
+"Agricultural Supplies": [
+1400,
+"2026-10-24"
+],
+"Altruciatoxin": [
+6400,
+"2026-10-24"
+],
+"Aluminum": [
+3600,
+"2026-10-24"
+],
+"Argon": [
+420.0,
+"2026-10-22"
+],
+"Beryl": [
+19000,
+"2026-10-24"
+],
+"Borase": [
+33000,
+"2026-10-24"
+],
+"Carbon": [
+300,
+"2026-10-24"
+],
+"Carbon-Silk": [
+23000,
+"2026-10-24"
+],
+"Corundum": [
+3500,
+"2026-10-24"
+],
+"E'tam": [
+22000,
+"2026-10-24"
+],
+"Fluorine": [
+919.0,
+"2026-08-04"
+],
+"Helium": [
+1000,
+"2026-10-24"
+],
+"Hephaestanite": [
+4600,
+"2026-10-24"
+],
+"Human Food Bars": [
+416.0,
+"2026-04-10"
+],
+"Hydrogen": [
+700,
+"2026-04-10"
+],
+"Iron": [
+3900,
+"2026-10-24"
+],
+"Laranite": [
+8700,
+"2026-10-24"
+],
+"Medical Supplies": [
+5500,
+"2026-10-24"
+],
+"Methane": [
+2745.0,
+"2026-08-06"
+],
+"Neon": [
+19000,
+"2026-10-24"
+],
+"Omnapoxy": [
+4000,
+"2026-10-24"
+],
+"Partillium": [
+90000,
+"2026-10-24"
+],
+"Potassium": [
+530.0,
+"2026-10-24"
+],
+"Processed Food": [
+1400,
+"2026-10-24"
+],
+"Quartz": [
+4200,
+"2026-10-24"
+],
+"Recycled Material Composite": [
+7700,
+"2026-10-24"
+],
+"Riccite": [
+67000,
+"2026-10-24"
+],
+"Scrap": [
+3700,
+"2026-10-24"
+],
+"Silicon": [
+2600,
+"2026-10-24"
+],
+"SLAM": [
+36000,
+"2026-10-24"
+],
+"Tin": [
+4300,
+"2026-10-24"
+],
+"Titanium": [
+8300,
+"2026-10-24"
+],
+"Tritium": [
+34000,
+"2026-10-24"
+]
+},
+"Kauf": {
+"Distilled Spirits": [
+1312.0,
+"2026-10-24"
+],
+"Fluorine": [
+919.0,
+"2026-10-24"
+],
+"Human Food Bars": [
+416.0,
+"2026-10-24"
+],
+"Hydrogen": [
+700,
+"2026-10-22"
+],
+"Hydrogen Fuel": [
+702.0,
+"2026-10-22"
+],
+"Methane": [
+2745.0,
+"2026-10-22"
+],
+"Nitrogen": [
+2242.0,
+"2026-10-22"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-22"
+],
+"Ship Ammunition": [
+8505.0,
+"2026-09-30"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-24"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-24"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 5": [
+8328.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-22"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-22"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-22"
+],
+"Stims": [
+3886.0,
+"2026-10-22"
+],
+"Xa'Pyen": [
+3149.0,
+"2026-10-24"
+]
+}
+},
+"Admin Office|Stanton Gateway (Pyro)": {
+"Verkauf": {
+"Agricultural Supplies": [
+1500,
+"2026-10-21"
+],
+"Astatine": [
+3700,
+"2026-10-21"
+],
+"Carbon": [
+350.0,
+"2026-10-21"
+],
+"Chlorine": [
+1400,
+"2026-10-21"
+],
+"Construction Materials": [
+12000,
+"2026-10-21"
+],
+"Copper": [
+4400,
+"2026-10-21"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-24"
+],
+"Fluorine": [
+1500,
+"2026-10-21"
+],
+"Human Food Bars": [
+490.0,
+"2026-10-21"
+],
+"Hydrogen": [
+1100,
+"2026-10-21"
+],
+"Luminalia Gift": [
+5000000,
+"2026-10-21"
+],
+"Medical Supplies": [
+5200,
+"2026-10-21"
+],
+"Potassium": [
+560.0,
+"2026-10-21"
+],
+"Processed Food": [
+1400,
+"2026-10-21"
+],
+"Quartz": [
+5300,
+"2026-10-21"
+],
+"Scrap": [
+3500,
+"2026-10-21"
+],
+"Stims": [
+5100,
+"2026-10-24"
+],
+"Tungsten": [
+11000,
+"2026-10-21"
+],
+"Year of the Pig Envelope": [
+150000,
+"2026-01-19"
+]
+},
+"Kauf": {
+"Aluminum": [
+3128.0,
+"2026-10-21"
+],
+"Argon": [
+316.0,
+"2026-10-21"
+],
+"Hephaestanite": [
+4167.0,
+"2026-10-21"
+],
+"Hydrogen Fuel": [
+782.0,
+"2026-10-21"
+],
+"Iron": [
+2850.0,
+"2026-10-02"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-21"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-21"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-21"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-21"
+]
+}
+},
+"The Golden Riviera|The Golden Riviera": {
+"Kauf": {
+"Altruciatoxin": [
+5664.0,
+"2026-10-19"
+],
+"Bioplastic": [
+6538.0,
+"2026-10-19"
+],
+"E'tam": [
+17721.0,
+"2026-10-18"
+],
+"Osoian Hides": [
+283500,
+"2026-10-18"
+]
+},
+"Verkauf": {
+"Amioshi Plague": [
+24000,
+"2026-10-18"
+],
+"Bexalite": [
+28000,
+"2026-10-19"
+],
+"Bioplastic": [
+6530.0,
+"2026-07-11"
+],
+"Cobalt": [
+20000,
+"2026-10-19"
+],
+"Compboard": [
+33000,
+"2026-10-19"
+],
+"Degnous Root": [
+59000,
+"2026-10-19"
+],
+"Dymantium": [
+23000,
+"2026-10-19"
+],
+"Fresh Food": [
+25000,
+"2026-10-19"
+],
+"Gold": [
+28000,
+"2026-10-19"
+],
+"Golden Medmon": [
+62000,
+"2026-10-19"
+],
+"Human Food Bars": [
+520.0,
+"2026-10-19"
+],
+"Kopion Horn": [
+50000,
+"2026-10-19"
+],
+"Marok Gem": [
+50000,
+"2026-10-19"
+],
+"Maze": [
+230000,
+"2026-10-19"
+],
+"Neon": [
+19000,
+"2026-10-19"
+],
+"Osoian Hides": [
+201.0,
+"2026-07-11"
+],
+"Pressurized Ice": [
+5500,
+"2026-10-19"
+],
+"Processed Food": [
+1400,
+"2026-10-19"
+],
+"Quantainium": [
+160000,
+"2026-10-19"
+],
+"Recycled Material Composite": [
+7700,
+"2026-10-19"
+],
+"Riccite": [
+74000,
+"2026-10-19"
+],
+"Savrilium": [
+140000,
+"2026-10-19"
+],
+"SLAM": [
+39000,
+"2026-10-19"
+],
+"Stileron": [
+130000,
+"2026-10-19"
+],
+"Stims": [
+4900,
+"2026-10-19"
+],
+"Taranite": [
+25000,
+"2026-10-19"
+],
+"WiDoW": [
+8600,
+"2026-10-19"
+]
+}
+},
+"Trading Console|Reclamation & Disposal Orinth": {
+"Verkauf": {
+"Altruciatoxin": [
+6900,
+"2026-10-20"
+],
+"Beryl": [
+15000,
+"2026-10-20"
+],
+"Borase": [
+21000,
+"2026-10-20"
+],
+"Construction Materials": [
+10000,
+"2026-10-20"
+],
+"Copper": [
+2800,
+"2026-10-20"
+],
+"Corundum": [
+2600,
+"2026-10-20"
+],
+"Diamond": [
+5900,
+"2026-10-20"
+],
+"E'tam": [
+27000,
+"2026-10-20"
+],
+"Gasping Weevil Eggs": [
+68000,
+"2026-10-20"
+],
+"HexaPolyMesh Coating": [
+1.0,
+"2026-09-30"
+],
+"Hydrogen Fuel": [
+740.0,
+"2026-09-30"
+],
+"Maze": [
+230000,
+"2026-10-20"
+],
+"Medical Supplies": [
+3900,
+"2026-10-20"
+],
+"Neon": [
+21000,
+"2026-10-20"
+],
+"Party Favors": [
+3800,
+"2026-10-20"
+],
+"Quartz": [
+3100,
+"2026-10-20"
+],
+"Recycled Material Composite": [
+6200,
+"2026-10-20"
+],
+"Revenant Tree Pollen": [
+1000,
+"2026-10-20"
+],
+"Scrap": [
+2600,
+"2026-10-20"
+],
+"SLAM": [
+46000,
+"2026-10-20"
+],
+"Souvenirs": [
+15000,
+"2026-10-20"
+],
+"Taranite": [
+22000,
+"2026-09-30"
+],
+"Tin": [
+2900,
+"2026-10-10"
+],
+"Titanium": [
+6200,
+"2026-10-20"
+],
+"WiDoW": [
+8000,
+"2026-10-20"
+]
+}
+},
+"Versteckte Handelskonsole|CRU-L4 Shallow Fields Station": {
+"Verkauf": {
+"Altruciatoxin": [
+7100,
+"2026-10-23"
+],
+"Aluminum": [
+2900,
+"2026-10-23"
+],
+"Audio Visual Equipment": [
+31000,
+"2026-05-31"
+],
+"Copper": [
+3000,
+"2026-10-23"
+],
+"E'tam": [
+24000,
+"2026-10-23"
+],
+"Gold": [
+23000,
+"2026-10-23"
+],
+"Helium": [
+770.0,
+"2026-10-23"
+],
+"Hephaestanite": [
+3400,
+"2026-10-23"
+],
+"Maze": [
+230000,
+"2026-10-23"
+],
+"Neon": [
+19000,
+"2026-10-23"
+],
+"Processed Food": [
+1100,
+"2026-10-23"
+],
+"SLAM": [
+46000,
+"2026-10-23"
+],
+"Sunset Berries": [
+69000,
+"2026-10-23"
+],
+"Taranite": [
+22000,
+"2026-10-23"
+],
+"Tungsten": [
+8200,
+"2026-10-23"
+],
+"WiDoW": [
+5700,
+"2026-10-23"
+]
+}
+},
+"Ashland|Ashland": {
+"Verkauf": {
+"Altruciatoxin": [
+6200,
+"2026-10-12"
+],
+"Audio Visual Equipment": [
+35000,
+"2026-06-03"
+],
+"Bioplastic": [
+7700,
+"2026-10-12"
+],
+"Cobalt": [
+20000,
+"2026-10-12"
+],
+"Compboard": [
+33000,
+"2026-10-12"
+],
+"Degnous Root": [
+57000,
+"2026-10-12"
+],
+"Diamond Laminate": [
+95000,
+"2026-10-12"
+],
+"Elespo": [
+18000,
+"2026-10-12"
+],
+"Fresh Food": [
+25000,
+"2026-10-12"
+],
+"Gold": [
+27000,
+"2026-10-12"
+],
+"Golden Medmon": [
+62000,
+"2026-10-12"
+],
+"Human Food Bars": [
+520.0,
+"2026-10-12"
+],
+"Hydrogen": [
+155.0,
+"2025-10-08"
+],
+"Kopion Horn": [
+44000,
+"2026-10-12"
+],
+"Marok Gem": [
+50000,
+"2026-10-12"
+],
+"Maze": [
+230000,
+"2026-10-12"
+],
+"Omnapoxy": [
+4300,
+"2026-10-12"
+],
+"Pressurized Ice": [
+5500,
+"2026-10-12"
+],
+"Processed Food": [
+1400,
+"2026-10-12"
+],
+"Quantainium": [
+160000,
+"2026-10-12"
+],
+"Recycled Material Composite": [
+7700,
+"2026-10-12"
+],
+"Revenant Pod": [
+8200,
+"2026-10-12"
+],
+"Riccite": [
+84000,
+"2026-10-12"
+],
+"Silicon": [
+169.0,
+"2025-10-09"
+],
+"SLAM": [
+39000,
+"2026-10-12"
+],
+"Stileron": [
+130000,
+"2026-10-12"
+],
+"Stims": [
+4900,
+"2026-10-12"
+],
+"Sunset Berries": [
+86000,
+"2026-10-12"
+],
+"Taranite": [
+25000,
+"2026-10-12"
+],
+"WiDoW": [
+7200,
+"2026-10-12"
+]
+},
+"Kauf": {
+"Amioshi Plague": [
+17389.0,
+"2026-10-12"
+],
+"CK13-GID Seed Blend": [
+2500,
+"2026-10-12"
+],
+"E'tam": [
+16295.0,
+"2026-10-12"
+],
+"LifeCure Medsticks": [
+574.0,
+"2026-10-12"
+],
+"Neon": [
+15449.0,
+"2026-10-12"
+]
+}
+},
+"Fallow Field|Fallow Field": {
+"Verkauf": {
+"Altruciatoxin": [
+6200,
+"2026-10-14"
+],
+"Amioshi Plague": [
+24000,
+"2026-10-14"
+],
+"Bioplastic": [
+7700,
+"2026-10-14"
+],
+"Degnous Root": [
+58000,
+"2026-10-14"
+],
+"Fresh Food": [
+25000,
+"2026-10-14"
+],
+"Gold": [
+26000,
+"2026-10-14"
+],
+"Golden Medmon": [
+69000,
+"2026-10-14"
+],
+"Human Food Bars": [
+580.0,
+"2026-10-14"
+],
+"Kopion Horn": [
+44000,
+"2026-10-14"
+],
+"Marok Gem": [
+50000,
+"2026-10-14"
+],
+"Maze": [
+230000,
+"2026-10-14"
+],
+"Neon": [
+19000,
+"2026-10-14"
+],
+"Pressurized Ice": [
+5500,
+"2026-10-14"
+],
+"Processed Food": [
+1400,
+"2026-10-14"
+],
+"Quantainium": [
+170000,
+"2026-10-14"
+],
+"Recycled Material Composite": [
+7700,
+"2026-10-14"
+],
+"SLAM": [
+37000,
+"2026-10-14"
+],
+"Stileron": [
+130000,
+"2026-10-14"
+],
+"Stims": [
+4900,
+"2026-10-14"
+],
+"Sunset Berries": [
+88000,
+"2026-10-14"
+],
+"Taranite": [
+28000,
+"2026-10-14"
+],
+"WiDoW": [
+6800,
+"2026-10-14"
+]
+},
+"Kauf": {
+"Audio Visual Equipment": [
+25004.0,
+"2026-06-03"
+],
+"Bexalite": [
+23556.0,
+"2026-10-14"
+],
+"Compboard": [
+31422.0,
+"2026-10-14"
+],
+"E'tam": [
+19350.0,
+"2026-10-14"
+],
+"Gasping Weevil Eggs": [
+46408.0,
+"2026-10-14"
+],
+"Xa'Pyen": [
+3754.0,
+"2026-03-29"
+]
+}
+},
+"HDMS-Lathan|HDMS-Lathan": {
+"Kauf": {
+"Aluminum": [
+3105.0,
+"2026-10-22"
+],
+"Gold": [
+28928.0,
+"2026-10-22"
+],
+"Iron": [
+2708.0,
+"2026-10-03"
+],
+"Laranite": [
+7541.0,
+"2026-10-22"
+],
+"Titanium": [
+7034.0,
+"2026-10-22"
+]
+},
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-22"
+],
+"Audio Visual Equipment": [
+34000,
+"2026-05-31"
+],
+"Beradom": [
+170000,
+"2026-10-22"
+],
+"Dolivine": [
+150000,
+"2026-10-22"
+],
+"Feynmaline": [
+390000,
+"2026-10-22"
+],
+"Glacosite": [
+110000,
+"2026-10-22"
+],
+"Hadanite": [
+600000,
+"2026-10-22"
+],
+"Janalite": [
+1700000,
+"2026-10-22"
+],
+"Neograph": [
+97000,
+"2026-10-22"
+]
+}
+},
+"HDMS-Bezdek|HDMS-Bezdek": {
+"Kauf": {
+"Aluminum": [
+3106.0,
+"2026-10-24"
+],
+"Gold": [
+28928.0,
+"2026-10-24"
+],
+"Iron": [
+2708.0,
+"2026-10-08"
+],
+"Laranite": [
+7541.0,
+"2026-10-24"
+],
+"Titanium": [
+7034.0,
+"2026-10-24"
+]
+},
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-24"
+],
+"Audio Visual Equipment": [
+46000,
+"2026-05-31"
+],
+"Beradom": [
+170000,
+"2026-10-24"
+],
+"Dolivine": [
+150000,
+"2026-10-24"
+],
+"Feynmaline": [
+390000,
+"2026-10-24"
+],
+"Glacosite": [
+110000,
+"2026-10-24"
+],
+"Hadanite": [
+600000,
+"2026-10-24"
+],
+"Janalite": [
+1700000,
+"2026-10-24"
+],
+"Neograph": [
+97000,
+"2026-10-24"
+]
+}
+},
+"HDMS-Ryder|HDMS-Ryder": {
+"Kauf": {
+"Aluminum": [
+3105.0,
+"2026-10-22"
+],
+"Astatine": [
+2898.0,
+"2026-10-22"
+],
+"Iron": [
+2708.0,
+"2026-10-14"
+],
+"Taranite": [
+21924.0,
+"2026-10-22"
+],
+"Waste": [
+229.0,
+"2026-10-22"
+]
+},
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-22"
+],
+"Audio Visual Equipment": [
+37000,
+"2026-05-31"
+],
+"Beradom": [
+170000,
+"2026-10-22"
+],
+"Dolivine": [
+150000,
+"2026-10-22"
+],
+"Feynmaline": [
+390000,
+"2026-10-22"
+],
+"Glacosite": [
+110000,
+"2026-10-22"
+],
+"Hadanite": [
+600000,
+"2026-10-22"
+],
+"Processed Food": [
+1400,
+"2026-10-22"
+]
+}
+},
+"HDMS-Anderson|HDMS-Anderson": {
+"Kauf": {
+"Aluminum": [
+3106.0,
+"2026-10-20"
+],
+"Gold": [
+24360.0,
+"2026-10-20"
+],
+"Iron": [
+2708.0,
+"2026-10-14"
+],
+"Ranta Dung": [
+33206.0,
+"2026-10-20"
+]
+},
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-20"
+],
+"Audio Visual Equipment": [
+37000,
+"2026-05-23"
+],
+"Beradom": [
+170000,
+"2026-10-20"
+],
+"Compboard": [
+35000,
+"2026-10-20"
+],
+"Dolivine": [
+150000,
+"2026-10-20"
+],
+"Feynmaline": [
+390000,
+"2026-10-20"
+],
+"Glacosite": [
+110000,
+"2026-10-20"
+],
+"Hadanite": [
+600000,
+"2026-10-20"
+],
+"Jaclium (Ore)": [
+23000000,
+"2026-10-20"
+]
+}
+},
+"Shubin Mining Facility SM0-22|Shubin Mining Facility SM0-22": {
+"Kauf": {
+"Aluminum": [
+2958.0,
+"2026-10-17"
+],
+"Astatine": [
+2760.0,
+"2026-10-10"
+],
+"Cobalt": [
+19140.0,
+"2026-10-17"
+],
+"Copper": [
+3325.0,
+"2026-10-17"
+],
+"Quartz": [
+2964.0,
+"2026-10-17"
+],
+"Waste": [
+229.0,
+"2026-10-17"
+]
+},
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-10"
+],
+"Audio Visual Equipment": [
+37000,
+"2026-06-02"
+],
+"Compboard": [
+32000,
+"2026-10-10"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-10"
+],
+"Dolivine": [
+160000,
+"2026-10-10"
+],
+"Hadanite": [
+600000,
+"2026-10-07"
+],
+"Processed Food": [
+1400,
+"2026-10-10"
+]
+}
+},
+"Shubin Mining Facility SM0-18|Shubin Mining Facility SM0-18": {
+"Kauf": {
+"Aluminum": [
+2958.0,
+"2026-10-18"
+],
+"Astatine": [
+2760.0,
+"2026-10-20"
+],
+"Cobalt": [
+19140.0,
+"2026-10-20"
+],
+"Copper": [
+3325.0,
+"2026-10-20"
+],
+"Quartz": [
+2964.0,
+"2026-10-20"
+],
+"Waste": [
+229.0,
+"2026-10-20"
+]
+},
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-18"
+],
+"Audio Visual Equipment": [
+37000,
+"2026-05-17"
+],
+"Compboard": [
+36000,
+"2026-10-18"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-18"
+],
+"Dolivine": [
+160000,
+"2026-10-18"
+],
+"Hadanite": [
+600000,
+"2026-10-18"
+],
+"Processed Food": [
+1400,
+"2026-10-18"
+]
+}
+},
+"Shubin Mining Facility SM0-13|Shubin Mining Facility SM0-13": {
+"Kauf": {
+"Aluminum": [
+2958.0,
+"2026-10-20"
+],
+"Astatine": [
+2760.0,
+"2026-10-20"
+],
+"Cobalt": [
+19140.0,
+"2026-10-20"
+],
+"Copper": [
+3325.0,
+"2026-10-20"
+],
+"Quartz": [
+2964.0,
+"2026-10-16"
+],
+"Waste": [
+229.0,
+"2026-10-20"
+]
+},
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-20"
+],
+"Audio Visual Equipment": [
+37000,
+"2026-05-29"
+],
+"Compboard": [
+37000,
+"2026-10-20"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-20"
+],
+"Dolivine": [
+160000,
+"2026-10-20"
+],
+"Hadanite": [
+600000,
+"2026-10-20"
+],
+"Processed Food": [
+1400,
+"2026-10-20"
+]
+}
+},
+"Shubin Mining Facility SM0-10|Shubin Mining Facility SM0-10": {
+"Kauf": {
+"Aluminum": [
+2958.0,
+"2026-10-22"
+],
+"Astatine": [
+2760.0,
+"2026-10-22"
+],
+"Cobalt": [
+19140.0,
+"2026-10-22"
+],
+"Copper": [
+3325.0,
+"2026-10-22"
+],
+"Quartz": [
+2964.0,
+"2026-10-22"
+],
+"Waste": [
+229.0,
+"2026-10-22"
+]
+},
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-22"
+],
+"Audio Visual Equipment": [
+37000,
+"2026-06-02"
+],
+"Compboard": [
+37000,
+"2026-10-22"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-22"
+],
+"Dolivine": [
+160000,
+"2026-10-22"
+],
+"Hadanite": [
+600000,
+"2026-10-22"
+],
+"Processed Food": [
+1400,
+"2026-10-22"
+]
+}
+},
+"HDMS-Woodruff|HDMS-Woodruff": {
+"Kauf": {
+"Aluminum": [
+3106.0,
+"2026-10-22"
+],
+"Astatine": [
+2898.0,
+"2026-10-22"
+],
+"Iron": [
+2708.0,
+"2026-10-14"
+],
+"Taranite": [
+21924.0,
+"2026-10-22"
+],
+"Waste": [
+229.0,
+"2026-10-22"
+]
+},
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-14"
+],
+"Audio Visual Equipment": [
+37000,
+"2026-06-04"
+],
+"Beradom": [
+170000,
+"2026-10-14"
+],
+"Dolivine": [
+150000,
+"2026-10-14"
+],
+"Feynmaline": [
+390000,
+"2026-10-14"
+],
+"Glacosite": [
+110000,
+"2026-10-14"
+],
+"Hadanite": [
+600000,
+"2026-10-14"
+],
+"Processed Food": [
+1400,
+"2026-10-14"
+]
+}
+},
+"HDMS-Norgaard|HDMS-Norgaard": {
+"Kauf": {
+"Aluminum": [
+3106.0,
+"2026-10-20"
+],
+"Gold": [
+24360.0,
+"2026-10-20"
+],
+"Iron": [
+2708.0,
+"2026-10-14"
+],
+"Ranta Dung": [
+33206.0,
+"2026-10-20"
+]
+},
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-20"
+],
+"Audio Visual Equipment": [
+37000,
+"2026-05-23"
+],
+"Beradom": [
+170000,
+"2026-10-20"
+],
+"Compboard": [
+35000,
+"2026-10-20"
+],
+"Dolivine": [
+150000,
+"2026-10-20"
+],
+"Feynmaline": [
+390000,
+"2026-10-20"
+],
+"Glacosite": [
+110000,
+"2026-10-20"
+],
+"Hadanite": [
+600000,
+"2026-10-20"
+],
+"Jaclium": [
+23000000,
+"2026-09-24"
+],
+"Jaclium (Ore)": [
+23000000,
+"2026-10-20"
+]
+}
+},
+"Admin Office|Nyx Gateway (Stanton)": {
+"Kauf": {
+"Aluminum": [
+3441.0,
+"2026-10-23"
+],
+"Chlorine": [
+1446.0,
+"2026-10-23"
+],
+"Copper": [
+3658.0,
+"2026-10-23"
+],
+"Corundum": [
+3159.0,
+"2026-10-23"
+],
+"Fluorine": [
+1142.0,
+"2026-10-23"
+],
+"Hydrogen Fuel": [
+782.0,
+"2026-10-23"
+],
+"Mercury": [
+744.0,
+"2026-10-23"
+],
+"Processed Food": [
+1202.0,
+"2026-10-23"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-23"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-23"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-23"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-23"
+],
+"Steel": [
+1733.0,
+"2026-10-23"
+],
+"Tin": [
+3289.0,
+"2026-10-22"
+],
+"Waste": [
+232.0,
+"2026-10-23"
+]
+},
+"Verkauf": {
+"Astatine": [
+3400,
+"2026-10-23"
+],
+"Carbon": [
+380.0,
+"2026-10-23"
+],
+"Helium": [
+1300,
+"2026-10-22"
+],
+"Hydrogen": [
+1100,
+"2026-10-23"
+],
+"Iron": [
+3500,
+"2026-10-23"
+],
+"Luminalia Gift": [
+5500000,
+"2026-10-23"
+],
+"Medical Supplies": [
+4800,
+"2026-10-23"
+],
+"Potassium": [
+560.0,
+"2026-10-23"
+],
+"Quartz": [
+5500,
+"2026-10-22"
+],
+"Scrap": [
+3600,
+"2026-10-23"
+],
+"Stims": [
+5500,
+"2026-10-23"
+],
+"Tin": [
+5500,
+"2026-06-04"
+],
+"Tungsten": [
+11000,
+"2026-10-23"
+],
+"Year of the Pig Envelope": [
+2200000,
+"2026-08-10"
+]
+}
+},
+"Admin Office|Everus Harbor": {
+"Verkauf": {
+"Aluminum": [
+3900,
+"2026-10-22"
+],
+"Ammonia": [
+1000,
+"2026-10-22"
+],
+"Aphorite": [
+100000,
+"2026-10-22"
+],
+"Argon": [
+490.0,
+"2026-10-22"
+],
+"Audio Visual Equipment": [
+35000,
+"2026-10-22"
+],
+"Beradom": [
+150000,
+"2026-10-22"
+],
+"Carbon": [
+269.0,
+"2026-05-16"
+],
+"Construction Materials": [
+12000,
+"2026-10-22"
+],
+"Corundum": [
+3700,
+"2026-10-22"
+],
+"Dolivine": [
+150000,
+"2026-10-22"
+],
+"Feynmaline": [
+350000,
+"2026-10-22"
+],
+"Fluorine": [
+1300,
+"2026-10-22"
+],
+"Glacosite": [
+100000,
+"2026-10-22"
+],
+"Hadanite": [
+540000,
+"2026-10-22"
+],
+"Hephaestanite": [
+4600,
+"2026-10-22"
+],
+"Hydrogen": [
+1100,
+"2026-10-22"
+],
+"Iron": [
+2760.0,
+"2026-05-16"
+],
+"Luminalia Gift": [
+5000000,
+"2026-10-22"
+],
+"Mercury": [
+1000,
+"2026-10-22"
+],
+"Party Favors": [
+5100,
+"2026-10-22"
+],
+"Processed Food": [
+1500,
+"2026-10-22"
+],
+"Scrap": [
+2954.0,
+"2026-05-16"
+],
+"Souvenirs": [
+22000,
+"2026-10-22"
+],
+"Steel": [
+1376.0,
+"2026-05-16"
+],
+"Stims": [
+5700,
+"2026-10-22"
+],
+"Waste": [
+450.0,
+"2026-10-22"
+],
+"Year of the Pig Envelope": [
+150000,
+"2026-01-22"
+]
+},
+"Kauf": {
+"Carbon": [
+269.0,
+"2026-10-22"
+],
+"Hydrogen Fuel": [
+782.0,
+"2026-10-22"
+],
+"Iron": [
+3000,
+"2026-10-08"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-22"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-10-22"
+],
+"Scrap": [
+2954.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-21"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-22"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-22"
+],
+"Steel": [
+1376.0,
+"2026-10-22"
+],
+"Titanium": [
+7315.0,
+"2026-10-22"
+]
+}
+},
+"Versteckte Handelskonsole|CRU-L5 Beautiful Glen Station": {
+"Verkauf": {
+"Aluminum": [
+2900,
+"2026-10-24"
+],
+"Audio Visual Equipment": [
+31000,
+"2026-06-03"
+],
+"Beryl": [
+15000,
+"2026-10-24"
+],
+"Bexalite": [
+24000,
+"2026-10-24"
+],
+"Borase": [
+22000,
+"2026-10-24"
+],
+"Chlorine": [
+1300,
+"2026-10-24"
+],
+"Construction Materials": [
+9700,
+"2026-10-24"
+],
+"Copper": [
+3000,
+"2026-10-24"
+],
+"Corundum": [
+2100,
+"2026-10-24"
+],
+"Distilled Spirits": [
+1500,
+"2026-10-24"
+],
+"Fluorine": [
+1000,
+"2026-10-24"
+],
+"Helium": [
+770.0,
+"2026-10-24"
+],
+"Iodine": [
+9500,
+"2026-10-24"
+],
+"Laranite": [
+6500,
+"2026-10-24"
+],
+"Maze": [
+230000,
+"2026-10-24"
+],
+"Processed Food": [
+1100,
+"2026-10-24"
+],
+"Quantainium": [
+140000,
+"2026-10-24"
+],
+"Recycled Material Composite": [
+5700,
+"2026-10-24"
+],
+"SLAM": [
+48000,
+"2026-10-24"
+],
+"Tin": [
+2500,
+"2026-10-24"
+]
+}
+},
+"Rayari McGrath Research Outpost|Rayari McGrath Research Outpost": {
+"Verkauf": {
+"Amioshi Plague": [
+24000,
+"2026-10-23"
+],
+"Aphorite": [
+110000,
+"2026-10-23"
+],
+"Astatine": [
+3500,
+"2026-10-23"
+],
+"Bioplastic": [
+8500,
+"2026-10-23"
+],
+"Chlorine": [
+1700,
+"2026-10-23"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-23"
+],
+"Dolivine": [
+160000,
+"2026-10-23"
+],
+"Fluorine": [
+1200,
+"2026-10-23"
+],
+"Hadanite": [
+570000,
+"2026-10-23"
+],
+"Helium": [
+217.0,
+"2025-06-30"
+],
+"Hydrogen": [
+181.0,
+"2025-06-30"
+],
+"Iodine": [
+12000,
+"2026-10-23"
+],
+"Medical Supplies": [
+5500,
+"2026-10-23"
+],
+"Neograph": [
+100000,
+"2026-10-23"
+],
+"Processed Food": [
+1500,
+"2026-10-23"
+],
+"Thermalfoam": [
+6000,
+"2026-10-23"
+]
+},
+"Kauf": {
+"Stims": [
+4645.0,
+"2026-10-23"
+],
+"Waste": [
+229.0,
+"2026-10-23"
+]
+}
+},
+"Rayari Cantwell Research Outpost|Rayari Cantwell Research Outpost": {
+"Verkauf": {
+"Amioshi Plague": [
+24000,
+"2026-10-23"
+],
+"Aphorite": [
+110000,
+"2026-10-23"
+],
+"Astatine": [
+3500,
+"2026-10-23"
+],
+"Bioplastic": [
+8500,
+"2026-10-23"
+],
+"Chlorine": [
+1700,
+"2026-10-23"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-23"
+],
+"Dolivine": [
+160000,
+"2026-10-23"
+],
+"Fluorine": [
+1200,
+"2026-10-23"
+],
+"Hadanite": [
+570000,
+"2026-10-23"
+],
+"Iodine": [
+12000,
+"2026-10-23"
+],
+"Medical Supplies": [
+5500,
+"2026-10-23"
+],
+"Neograph": [
+100000,
+"2026-10-23"
+],
+"Processed Food": [
+1500,
+"2026-10-23"
+],
+"Thermalfoam": [
+5000,
+"2026-10-23"
+]
+},
+"Kauf": {
+"Stims": [
+4646.0,
+"2026-10-23"
+],
+"Waste": [
+229.0,
+"2026-10-23"
+]
+}
+},
+"Admin Office|Baijini Point": {
+"Verkauf": {
+"Ammonia": [
+1100,
+"2026-10-23"
+],
+"Aphorite": [
+100000,
+"2026-10-23"
+],
+"Audio Visual Equipment": [
+35000,
+"2026-06-05"
+],
+"Beradom": [
+150000,
+"2026-10-23"
+],
+"Copper": [
+3900,
+"2026-10-23"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-23"
+],
+"Dolivine": [
+150000,
+"2026-10-23"
+],
+"DynaFlex": [
+2000,
+"2026-10-23"
+],
+"Feynmaline": [
+350000,
+"2026-10-23"
+],
+"Glacosite": [
+100000,
+"2026-10-23"
+],
+"Hadanite": [
+540000,
+"2026-10-23"
+],
+"Hydrogen": [
+1100,
+"2026-10-23"
+],
+"Luminalia Gift": [
+5000000,
+"2026-10-23"
+],
+"Mercury": [
+1000,
+"2026-10-23"
+],
+"Party Favors": [
+5100,
+"2026-10-23"
+],
+"Pressurized Ice": [
+5000,
+"2026-10-23"
+],
+"Souvenirs": [
+22000,
+"2026-10-23"
+],
+"Stims": [
+5700,
+"2026-10-23"
+],
+"Tin": [
+4500,
+"2026-10-23"
+],
+"Year of the Pig Envelope": [
+150000,
+"2026-01-28"
+]
+},
+"Kauf": {
+"Carbon": [
+283.0,
+"2026-10-23"
+],
+"Corundum": [
+3015.0,
+"2026-10-23"
+],
+"Hephaestanite": [
+4453.0,
+"2026-10-23"
+],
+"Hydrogen Fuel": [
+782.0,
+"2026-10-23"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-23"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-10-23"
+],
+"Scrap": [
+3109.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-23"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-23"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-23"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-23"
+],
+"Silicon": [
+1964.0,
+"2026-10-23"
+],
+"Titanium": [
+7681.0,
+"2026-10-23"
+],
+"Waste": [
+189.0,
+"2026-10-23"
+]
+}
+},
+"ArcCorp Mining Area 056|ArcCorp Mining Area 056": {
+"Kauf": {
+"Aphorite": [
+110900,
+"2026-07-17"
+],
+"Astatine": [
+2760.0,
+"2026-10-18"
+],
+"Iodine": [
+9667.0,
+"2026-10-18"
+],
+"Laranite": [
+7047.0,
+"2026-10-18"
+],
+"Tungsten": [
+8265.0,
+"2026-10-18"
+],
+"Waste": [
+229.0,
+"2026-10-18"
+]
+},
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-18"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-18"
+],
+"Dolivine": [
+150000,
+"2026-10-18"
+],
+"Hadanite": [
+600000,
+"2026-10-18"
+],
+"Processed Food": [
+1400,
+"2026-10-18"
+],
+"Stims": [
+5600,
+"2026-10-18"
+]
+}
+},
+"Rayari Deltana Research Outpost|Rayari Deltana Research Outpost": {
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-23"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-23"
+],
+"Dolivine": [
+150000,
+"2026-10-23"
+],
+"Hadanite": [
+570000,
+"2026-10-23"
+],
+"Iodine": [
+12000,
+"2026-10-23"
+],
+"Medical Supplies": [
+5500,
+"2026-10-23"
+],
+"Neograph": [
+100000,
+"2026-10-23"
+],
+"Processed Food": [
+1500,
+"2026-10-23"
+],
+"Ranta Dung": [
+41000,
+"2026-10-23"
+],
+"Stims": [
+5800,
+"2026-10-23"
+],
+"Sunset Berries": [
+82000,
+"2026-10-22"
+],
+"Thermalfoam": [
+6000,
+"2026-10-23"
+]
+},
+"Kauf": {
+"Copper": [
+3325.0,
+"2026-10-23"
+],
+"Fluorine": [
+993.0,
+"2026-10-23"
+],
+"Waste": [
+229.0,
+"2026-10-23"
+]
+}
+},
+"Shubin Mining Facility SCD-1|Shubin Mining Facility SCD-1": {
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-22"
+],
+"Cobalt": [
+20000,
+"2026-10-22"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-22"
+],
+"Dolivine": [
+150000,
+"2026-10-22"
+],
+"Hadanite": [
+600000,
+"2026-10-22"
+],
+"Processed Food": [
+1400,
+"2026-10-22"
+],
+"Stims": [
+5600,
+"2026-10-22"
+]
+},
+"Kauf": {
+"Copper": [
+3325.0,
+"2026-10-22"
+],
+"Corundum": [
+2640.0,
+"2026-10-22"
+],
+"Gold": [
+27550.0,
+"2026-10-22"
+],
+"Tungsten": [
+8265.0,
+"2026-10-22"
+],
+"Waste": [
+229.0,
+"2026-10-22"
+]
+}
+},
+"ArcCorp Mining Area 157|ArcCorp Mining Area 157": {
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-15"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-15"
+],
+"Dolivine": [
+160000,
+"2026-10-15"
+],
+"Hadanite": [
+590000,
+"2026-10-15"
+],
+"Processed Food": [
+1500,
+"2026-10-15"
+],
+"Riccite": [
+91000,
+"2026-10-15"
+],
+"Stileron": [
+140000,
+"2026-10-15"
+],
+"Stims": [
+5800,
+"2026-10-15"
+]
+},
+"Kauf": {
+"Astatine": [
+2870.0,
+"2026-10-15"
+],
+"Waste": [
+187.0,
+"2026-10-15"
+]
+}
+},
+"Shubin Mining Facility SAL-5|Shubin Mining Facility SAL-5": {
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-19"
+],
+"Audio Visual Equipment": [
+46000,
+"2026-05-31"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-19"
+],
+"Dolivine": [
+150000,
+"2026-10-19"
+],
+"Hadanite": [
+600000,
+"2026-10-19"
+],
+"Neograph": [
+97000,
+"2026-10-19"
+],
+"Processed Food": [
+1400,
+"2026-10-19"
+]
+},
+"Kauf": {
+"Chlorine": [
+1204.0,
+"2026-10-19"
+],
+"Corundum": [
+2508.0,
+"2026-10-19"
+],
+"Dymantium": [
+21011.0,
+"2026-10-19"
+],
+"Hephaestanite": [
+3929.0,
+"2026-10-19"
+],
+"Quartz": [
+3705.0,
+"2026-10-19"
+],
+"Titanium": [
+6699.0,
+"2026-10-20"
+],
+"Waste": [
+229.0,
+"2026-10-19"
+]
+}
+},
+"ArcCorp Mining Area 045|ArcCorpMining Area 045": {
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-19"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-19"
+],
+"Dolivine": [
+150000,
+"2026-10-19"
+],
+"Hadanite": [
+600000,
+"2026-10-19"
+],
+"Jaclium (Ore)": [
+22000000,
+"2026-10-19"
+],
+"Processed Food": [
+1400,
+"2026-10-19"
+],
+"Saldynium (Ore)": [
+34000000,
+"2026-10-19"
+],
+"Stims": [
+5600,
+"2026-10-19"
+]
+},
+"Kauf": {
+"Laranite": [
+7400,
+"2026-10-19"
+],
+"Quartz": [
+3705.0,
+"2026-10-19"
+],
+"Tungsten": [
+8265.0,
+"2026-10-19"
+],
+"Waste": [
+229.0,
+"2026-10-19"
+]
+}
+},
+"ArcCorp Mining Area 048|ArcCorpMining Area 048": {
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-16"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-16"
+],
+"Dolivine": [
+150000,
+"2026-10-16"
+],
+"Hadanite": [
+600000,
+"2026-10-16"
+],
+"Processed Food": [
+1400,
+"2026-10-16"
+],
+"Stims": [
+5600,
+"2026-10-16"
+]
+},
+"Kauf": {
+"Waste": [
+229.0,
+"2026-10-16"
+]
+}
+},
+"ArcCorp Mining Area 061|ArcCorpMining Area 061": {
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-20"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-20"
+],
+"Dolivine": [
+150000,
+"2026-10-20"
+],
+"Hadanite": [
+600000,
+"2026-10-20"
+],
+"Iodine": [
+9667.0,
+"2026-05-23"
+],
+"Processed Food": [
+1400,
+"2026-10-20"
+],
+"Stims": [
+5600,
+"2026-10-20"
+],
+"Tungsten": [
+8265.0,
+"2026-05-23"
+]
+},
+"Kauf": {
+"Astatine": [
+2760.0,
+"2026-10-22"
+],
+"Borase": [
+5520.0,
+"2026-09-26"
+],
+"Borase (Ore)": [
+5520.0,
+"2026-10-22"
+],
+"Iodine": [
+9667.0,
+"2026-10-22"
+],
+"Tungsten": [
+8265.0,
+"2026-10-22"
+],
+"Waste": [
+229.0,
+"2026-10-22"
+]
+}
+},
+"HDMS-Hahn|HDMS-Hahn": {
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-23"
+],
+"Compboard": [
+37000,
+"2026-10-23"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-23"
+],
+"Dolivine": [
+150000,
+"2026-10-23"
+],
+"Hadanite": [
+600000,
+"2026-10-23"
+],
+"Iron": [
+3200,
+"2026-10-23"
+],
+"Processed Food": [
+1400,
+"2026-10-23"
+],
+"Scrap": [
+3600,
+"2026-10-23"
+],
+"Stims": [
+5600,
+"2026-10-23"
+]
+},
+"Kauf": {
+"Chlorine": [
+1204.0,
+"2026-10-23"
+],
+"Gold": [
+28928.0,
+"2026-10-23"
+],
+"Waste": [
+229.0,
+"2026-10-23"
+]
+}
+},
+"HDMS-Perlman|HDMS-Perlman": {
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-24"
+],
+"Compboard": [
+37000,
+"2026-10-24"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-24"
+],
+"Dolivine": [
+150000,
+"2026-10-24"
+],
+"Hadanite": [
+600000,
+"2026-10-24"
+],
+"Iron": [
+3200,
+"2026-10-24"
+],
+"Processed Food": [
+1400,
+"2026-10-24"
+],
+"Scrap": [
+3700,
+"2026-10-24"
+],
+"Stims": [
+5600,
+"2026-10-24"
+]
+},
+"Kauf": {
+"Chlorine": [
+1204.0,
+"2026-10-24"
+],
+"Gold": [
+28928.0,
+"2026-10-24"
+],
+"Waste": [
+229.0,
+"2026-10-24"
+]
+}
+},
+"HDMS-Hadley|HDMS-Hadley": {
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-13"
+],
+"Audio Visual Equipment": [
+35000,
+"2026-05-22"
+],
+"Dolivine": [
+150000,
+"2026-10-13"
+],
+"Feynmaline": [
+380000,
+"2026-10-13"
+],
+"Fresh Food": [
+27000,
+"2026-10-13"
+],
+"Glacosite": [
+110000,
+"2026-10-13"
+],
+"Hadanite": [
+580000,
+"2026-10-13"
+],
+"Janalite": [
+1800000,
+"2026-10-13"
+]
+},
+"Kauf": {
+"Bexalite": [
+23940.0,
+"2026-10-13"
+],
+"Iron": [
+2708.0,
+"2026-10-03"
+]
+}
+},
+"HDMS-Thedus|HDMS-Thedus": {
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-21"
+],
+"Audio Visual Equipment": [
+37000,
+"2026-09-11"
+],
+"Dolivine": [
+150000,
+"2026-10-21"
+],
+"Feynmaline": [
+380000,
+"2026-10-21"
+],
+"Fresh Food": [
+29000,
+"2026-10-21"
+],
+"Glacosite": [
+110000,
+"2026-10-21"
+],
+"Hadanite": [
+580000,
+"2026-10-21"
+],
+"Janalite": [
+1800000,
+"2026-10-21"
+]
+},
+"Kauf": {
+"Bexalite": [
+23940.0,
+"2026-10-21"
+],
+"Iron": [
+2708.0,
+"2026-10-05"
+]
+}
+},
+"HDMS-Oparei|HDMS-Oparei": {
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-14"
+],
+"Atlasium": [
+87000,
+"2026-10-14"
+],
+"Beradom": [
+170000,
+"2026-10-14"
+],
+"Compboard": [
+35000,
+"2026-10-14"
+],
+"Dolivine": [
+150000,
+"2026-10-14"
+],
+"Feynmaline": [
+390000,
+"2026-10-14"
+],
+"Glacosite": [
+120000,
+"2026-10-14"
+],
+"Hadanite": [
+580000,
+"2026-10-14"
+],
+"Janalite": [
+1700000,
+"2026-10-14"
+],
+"Neograph": [
+97000,
+"2026-10-14"
+]
+},
+"Kauf": {
+"Cobalt": [
+18270.0,
+"2026-10-14"
+],
+"Dymantium": [
+22943.0,
+"2026-10-14"
+],
+"Iron": [
+2708.0,
+"2026-10-14"
+]
+}
+},
+"HDMS-Edmond|HDMS-Edmond": {
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-15"
+],
+"Atlasium": [
+87000,
+"2026-10-15"
+],
+"Beradom": [
+170000,
+"2026-10-15"
+],
+"Compboard": [
+35000,
+"2026-10-15"
+],
+"Dolivine": [
+150000,
+"2026-10-15"
+],
+"Feynmaline": [
+390000,
+"2026-10-15"
+],
+"Glacosite": [
+120000,
+"2026-10-15"
+],
+"Hadanite": [
+580000,
+"2026-10-15"
+],
+"Janalite": [
+1700000,
+"2026-10-15"
+],
+"Neograph": [
+97000,
+"2026-10-15"
+]
+},
+"Kauf": {
+"Cobalt": [
+18270.0,
+"2026-10-15"
+],
+"Dymantium": [
+22943.0,
+"2026-10-15"
+],
+"Iron": [
+2708.0,
+"2026-10-04"
+]
+}
+},
+"HDMS-Pinewood|HDMS-Pinewood": {
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-23"
+],
+"Audio Visual Equipment": [
+37000,
+"2026-06-03"
+],
+"Dolivine": [
+150000,
+"2026-10-23"
+],
+"Feynmaline": [
+380000,
+"2026-10-23"
+],
+"Fresh Food": [
+28000,
+"2026-10-23"
+],
+"Glacosite": [
+110000,
+"2026-10-23"
+],
+"Hadanite": [
+580000,
+"2026-10-23"
+],
+"Janalite": [
+1800000,
+"2026-10-23"
+]
+},
+"Kauf": {
+"Bexalite": [
+23940.0,
+"2026-10-23"
+],
+"Iron": [
+2708.0,
+"2026-10-03"
+]
+}
+},
+"HDMS-Stanhope|HDMS-Stanhope": {
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-21"
+],
+"Audio Visual Equipment": [
+37000,
+"2026-06-03"
+],
+"Dolivine": [
+150000,
+"2026-10-21"
+],
+"Feynmaline": [
+380000,
+"2026-10-21"
+],
+"Fresh Food": [
+29000,
+"2026-10-21"
+],
+"Glacosite": [
+110000,
+"2026-10-21"
+],
+"Hadanite": [
+580000,
+"2026-10-21"
+],
+"Janalite": [
+1800000,
+"2026-10-21"
+]
+},
+"Kauf": {
+"Bexalite": [
+23940.0,
+"2026-10-21"
+],
+"Iron": [
+2708.0,
+"2026-10-05"
+]
+}
+},
+"Shubin Mining Facility SAL-2|Shubin Mining Facility SAL-2": {
+"Verkauf": {
+"Aphorite": [
+110000,
+"2026-10-20"
+],
+"Audio Visual Equipment": [
+37000,
+"2026-06-01"
+],
+"Distilled Spirits": [
+1800,
+"2026-10-20"
+],
+"Dolivine": [
+150000,
+"2026-10-20"
+],
+"Hadanite": [
+600000,
+"2026-10-20"
+],
+"Neograph": [
+97000,
+"2026-10-14"
+],
+"Processed Food": [
+1400,
+"2026-10-20"
+]
+},
+"Kauf": {
+"Chlorine": [
+1204.0,
+"2026-10-14"
+],
+"Corundum": [
+2640.0,
+"2026-10-20"
+],
+"Dymantium": [
+21011.0,
+"2026-10-14"
+],
+"Hephaestanite": [
+3929.0,
+"2026-10-14"
+],
+"Quartz": [
+3120.0,
+"2026-10-20"
+],
+"Titanium": [
+6699.0,
+"2026-10-14"
+],
+"Waste": [
+229.0,
+"2026-10-20"
+]
+}
+},
+"Orison Municipal Services|Orison": {
+"Verkauf": {
+"Aslarite": [
+5100,
+"2026-09-29"
+],
+"Beryl": [
+20000,
+"2026-09-27"
+],
+"Bexalite": [
+29000,
+"2026-09-27"
+],
+"Borase": [
+25000,
+"2026-09-27"
+],
+"Chlorine": [
+1500,
+"2026-09-29"
+],
+"Copper": [
+3700,
+"2026-09-29"
+],
+"Corundum": [
+3700,
+"2026-09-29"
+],
+"Diamond": [
+7700,
+"2026-09-29"
+],
+"Distilled Spirits": [
+1900,
+"2026-09-29"
+],
+"Luminalia Gift": [
+5500000,
+"2026-09-29"
+],
+"Ouratite": [
+46000,
+"2026-09-29"
+],
+"Sadaryx": [
+500000,
+"2026-09-29"
+]
+},
+"Kauf": {
+"Hydrogen Fuel": [
+782.0,
+"2026-10-17"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-17"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-10-17"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-17"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-17"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-17"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-17"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-17"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-17"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-17"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-17"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-17"
+],
+"Waste": [
+240.0,
+"2026-10-17"
+]
+}
+},
+"Admin Office|MIC-L1 Shallow Frontier Station": {
+"Kauf": {
+"Astatine": [
+2881.0,
+"2026-10-24"
+],
+"Medical Supplies": [
+3607.0,
+"2026-10-24"
+],
+"Scrap": [
+2749.0,
+"2026-10-24"
+],
+"Waste": [
+115.0,
+"2026-10-24"
+]
+},
+"Verkauf": {
+"Borase": [
+31000,
+"2026-10-23"
+],
+"Compboard": [
+27000,
+"2026-10-23"
+],
+"Construction Materials": [
+12000,
+"2026-10-23"
+],
+"Degnous Root": [
+63000,
+"2026-10-23"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-23"
+],
+"Dolivine": [
+150000,
+"2026-10-23"
+],
+"Hydrogen": [
+1000,
+"2026-10-23"
+],
+"Marok Gem": [
+60000,
+"2026-10-23"
+],
+"Methane": [
+4100,
+"2026-10-23"
+],
+"Nitrogen": [
+2900,
+"2026-10-23"
+],
+"Party Favors": [
+5100,
+"2026-10-23"
+],
+"Processed Food": [
+1500,
+"2026-10-23"
+]
+}
+},
+"Admin Office|MIC-L2 Long Forest Station": {
+"Kauf": {
+"Astatine": [
+2649.0,
+"2026-10-21"
+],
+"Diamond": [
+5759.0,
+"2026-10-24"
+],
+"Medical Supplies": [
+3541.0,
+"2026-10-24"
+],
+"Scrap": [
+2990.0,
+"2026-10-24"
+],
+"Waste": [
+115.0,
+"2026-10-24"
+]
+},
+"Verkauf": {
+"Compboard": [
+27000,
+"2026-10-18"
+],
+"Construction Materials": [
+12000,
+"2026-10-18"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-18"
+],
+"Dolivine": [
+150000,
+"2026-10-18"
+],
+"Hydrogen": [
+1000,
+"2026-10-18"
+],
+"Marok Gem": [
+60000,
+"2026-10-18"
+],
+"Party Favors": [
+5100,
+"2026-10-18"
+],
+"Processed Food": [
+1500,
+"2026-10-18"
+]
+}
+},
+"Admin Office|ARC-L2 Lively Pathway Station": {
+"Verkauf": {
+"Astatine": [
+3900,
+"2026-10-24"
+],
+"Compboard": [
+27000,
+"2026-10-24"
+],
+"Degnous Root": [
+63000,
+"2026-10-24"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-24"
+],
+"Dolivine": [
+150000,
+"2026-10-24"
+],
+"Methane": [
+4100,
+"2026-10-24"
+],
+"Nitrogen": [
+3500,
+"2026-10-24"
+],
+"Party Favors": [
+4900,
+"2026-10-24"
+],
+"Processed Food": [
+1500,
+"2026-10-24"
+]
+},
+"Kauf": {
+"Medical Supplies": [
+4401.0,
+"2026-10-24"
+],
+"Scrap": [
+2990.0,
+"2026-10-24"
+],
+"Waste": [
+229.0,
+"2026-10-24"
+]
+}
+},
+"Admin Office|ARC-L1 Wide Forest Station": {
+"Verkauf": {
+"Astatine": [
+3900,
+"2026-10-23"
+],
+"Compboard": [
+27000,
+"2026-10-23"
+],
+"Construction Materials": [
+12000,
+"2026-10-23"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-23"
+],
+"Dolivine": [
+150000,
+"2026-10-23"
+],
+"Gold": [
+30000,
+"2026-10-23"
+],
+"Laranite": [
+7400,
+"2026-05-24"
+],
+"Medical Supplies": [
+4400,
+"2026-10-23"
+],
+"Methane": [
+3400,
+"2026-10-23"
+],
+"Nitrogen": [
+2900,
+"2026-10-23"
+],
+"Omnapoxy": [
+4700,
+"2026-10-23"
+],
+"Party Favors": [
+4900,
+"2026-10-20"
+],
+"Processed Food": [
+1500,
+"2026-10-23"
+],
+"Stims": [
+5300,
+"2026-10-23"
+],
+"Waste": [
+229.0,
+"2026-05-24"
+]
+},
+"Kauf": {
+"Laranite": [
+7400,
+"2026-10-22"
+],
+"Waste": [
+229.0,
+"2026-10-22"
+]
+}
+},
+"Rustville|Rustville": {
+"Kauf": {
+"Atlasium": [
+72214.0,
+"2026-10-12"
+],
+"Construction Materials": [
+10023.0,
+"2026-10-12"
+],
+"Dymantium": [
+17480.0,
+"2026-10-12"
+],
+"Neon": [
+14206.0,
+"2026-10-12"
+],
+"Organics": [
+9257.0,
+"2026-10-12"
+],
+"Scrap": [
+3109.0,
+"2026-10-12"
+]
+},
+"Verkauf": {
+"Atlasium": [
+72214.0,
+"2026-06-20"
+],
+"Audio Visual Equipment": [
+35000,
+"2026-05-23"
+],
+"Bioplastic": [
+7800,
+"2026-10-12"
+],
+"Compboard": [
+33000,
+"2026-10-12"
+],
+"Construction Materials": [
+10023.0,
+"2026-06-20"
+],
+"Dymantium": [
+17400,
+"2026-06-20"
+],
+"Fresh Food": [
+25000,
+"2026-10-12"
+],
+"Neon": [
+14206.0,
+"2026-06-20"
+],
+"Organics": [
+9257.0,
+"2026-06-20"
+],
+"Pressurized Ice": [
+5500,
+"2026-10-12"
+],
+"Recycled Material Composite": [
+7700,
+"2026-10-12"
+],
+"Scrap": [
+3109.0,
+"2026-06-20"
+],
+"Stims": [
+4900,
+"2026-10-12"
+]
+}
+},
+"Chawla´s Beach|Chawla´s Beach": {
+"Kauf": {
+"Atlasium": [
+73394.0,
+"2026-10-22"
+],
+"Construction Materials": [
+10023.0,
+"2026-10-22"
+],
+"Elespo": [
+6000,
+"2026-10-22"
+],
+"Scrap": [
+3109.0,
+"2026-10-22"
+]
+},
+"Verkauf": {
+"Audio Visual Equipment": [
+35000,
+"2026-05-30"
+],
+"Bioplastic": [
+8100,
+"2026-10-22"
+],
+"CK13-GID Seed Blend": [
+8000,
+"2026-10-22"
+],
+"Compboard": [
+33000,
+"2026-10-22"
+],
+"Fresh Food": [
+25000,
+"2026-10-22"
+],
+"LifeCure Medsticks": [
+1400,
+"2026-10-22"
+],
+"Pressurized Ice": [
+5500,
+"2026-10-22"
+]
+}
+},
+"Bueno Ravine|Bueno Ravine": {
+"Verkauf": {
+"Atlasium": [
+87373.0,
+"2026-10-21"
+],
+"Audio Visual Equipment": [
+35000,
+"2026-06-03"
+],
+"Cobalt": [
+17600,
+"2026-06-28"
+],
+"Diamond": [
+6561.0,
+"2026-06-28"
+],
+"Dymantium": [
+25000,
+"2026-10-21"
+],
+"Fresh Food": [
+25000,
+"2026-10-12"
+],
+"Hephaestanite": [
+4494.0,
+"2026-06-28"
+],
+"Iron": [
+2640.0,
+"2026-06-28"
+],
+"Partillium": [
+86000,
+"2026-10-23"
+],
+"Pressurized Ice": [
+5200,
+"2026-10-12"
+],
+"Ranta Dung": [
+34260.0,
+"2026-06-28"
+],
+"Savrilium": [
+130000,
+"2026-10-12"
+],
+"Stileron": [
+122050.0,
+"2026-06-28"
+]
+},
+"Kauf": {
+"Bexalite": [
+23556.0,
+"2026-10-12"
+],
+"Cobalt": [
+17600,
+"2026-10-12"
+],
+"Diamond": [
+6561.0,
+"2026-10-12"
+],
+"Hephaestanite": [
+4494.0,
+"2026-10-12"
+],
+"Iron": [
+2640.0,
+"2026-10-04"
+],
+"Ranta Dung": [
+36260.0,
+"2026-10-12"
+],
+"Stileron": [
+122850.0,
+"2026-10-12"
+]
+}
+},
+"Seer´s Canyon|Seer´s Canyon": {
+"Verkauf": {
+"Atlasium": [
+94000,
+"2026-10-14"
+],
+"Compboard": [
+33000,
+"2026-10-14"
+],
+"Fresh Food": [
+25000,
+"2026-10-14"
+],
+"Pressurized Ice": [
+5500,
+"2026-10-14"
+],
+"Recycled Material Composite": [
+8500,
+"2026-10-14"
+],
+"Stims": [
+4900,
+"2026-10-14"
+]
+},
+"Kauf": {
+"Audio Visual Equipment": [
+25004.0,
+"2026-06-01"
+],
+"Construction Materials": [
+10023.0,
+"2026-10-14"
+],
+"Dymantium": [
+20758.0,
+"2026-10-19"
+],
+"Scrap": [
+3109.0,
+"2026-10-14"
+]
+}
+},
+"Last Landings|Last Landings": {
+"Verkauf": {
+"Atlasium": [
+92000,
+"2026-10-12"
+],
+"Bioplastic": [
+8100,
+"2026-10-12"
+],
+"Compboard": [
+33000,
+"2026-10-12"
+],
+"Fresh Food": [
+25000,
+"2026-10-12"
+],
+"Pressurized Ice": [
+5500,
+"2026-10-12"
+],
+"Recycled Material Composite": [
+7700,
+"2026-10-12"
+],
+"Stims": [
+4900,
+"2026-10-12"
+]
+},
+"Kauf": {
+"Construction Materials": [
+10023.0,
+"2026-10-12"
+],
+"Dymantium": [
+21050.0,
+"2026-10-12"
+],
+"Neon": [
+14206.0,
+"2026-10-12"
+],
+"Scrap": [
+3109.0,
+"2026-10-12"
+]
+}
+},
+"Station Administration|People's Service Station Lambda": {
+"Kauf": {
+"Audio Visual Equipment": [
+31048.0,
+"2026-04-14"
+],
+"Compboard": [
+31335.0,
+"2026-04-14"
+],
+"Dymantium": [
+20528.0,
+"2026-10-20"
+]
+},
+"Verkauf": {
+"Degnous Root": [
+63000,
+"2026-04-14"
+],
+"Iodine": [
+12000,
+"2026-04-14"
+],
+"Iron": [
+3500,
+"2026-04-14"
+],
+"Medical Supplies": [
+4800,
+"2026-04-14"
+],
+"Organics": [
+14000,
+"2026-04-14"
+],
+"Processed Food": [
+1500,
+"2026-04-14"
+],
+"Stims": [
+5400,
+"2026-04-14"
+],
+"Sunset Berries": [
+94000,
+"2026-04-14"
+],
+"Tungsten": [
+10000,
+"2026-04-14"
+]
+}
+},
+"Jackson´s Swap|Jackson´s Swap": {
+"Verkauf": {
+"Audio Visual Equipment": [
+35000,
+"2026-05-22"
+],
+"Bexalite": [
+30000,
+"2026-10-12"
+],
+"Bioplastic": [
+7700,
+"2026-10-12"
+],
+"Carbon-Silk": [
+20000,
+"2026-10-12"
+],
+"Degnous Root": [
+56000,
+"2026-10-12"
+],
+"Diamond": [
+6200,
+"2026-10-12"
+],
+"Diamond Laminate": [
+100000,
+"2026-10-12"
+],
+"Fresh Food": [
+25000,
+"2026-10-12"
+],
+"Gold": [
+26000,
+"2026-10-12"
+],
+"Golden Medmon": [
+64000,
+"2026-10-12"
+],
+"Hadanite": [
+570000,
+"2026-10-12"
+],
+"Medical Supplies": [
+5200,
+"2026-10-12"
+],
+"Omnapoxy": [
+4300,
+"2026-10-12"
+],
+"Partillium": [
+88000,
+"2026-10-12"
+],
+"Pitambu": [
+62000,
+"2026-10-12"
+],
+"Pressurized Ice": [
+5500,
+"2026-10-12"
+],
+"Processed Food": [
+1400,
+"2026-10-12"
+],
+"Prota": [
+68000,
+"2026-10-12"
+],
+"Stileron": [
+130000,
+"2026-10-12"
+],
+"Taranite": [
+25000,
+"2026-10-12"
+]
+},
+"Kauf": {
+"Compboard": [
+31422.0,
+"2026-10-12"
+],
+"Recycled Material Composite": [
+5998.0,
+"2026-10-12"
+],
+"Waste": [
+229.0,
+"2026-10-12"
+]
+}
+},
+"Station Administration|People's Service Station Thetha": {
+"Verkauf": {
+"Audio Visual Equipment": [
+37000,
+"2026-04-14"
+],
+"Beryl": [
+20000,
+"2026-04-14"
+],
+"Iodine": [
+12000,
+"2026-04-14"
+],
+"Iron": [
+3500,
+"2026-04-14"
+],
+"Medical Supplies": [
+4800,
+"2026-04-14"
+],
+"Organics": [
+14000,
+"2026-04-14"
+],
+"Processed Food": [
+1500,
+"2026-04-14"
+],
+"Stims": [
+5400,
+"2026-04-14"
+]
+},
+"Kauf": {
+"Compboard": [
+30778.0,
+"2026-04-14"
+],
+"Degnous Root": [
+54554.0,
+"2026-04-14"
+],
+"Dymantium": [
+21737.0,
+"2026-04-14"
+],
+"Sunset Berries": [
+79762.0,
+"2026-04-14"
+]
+}
+},
+"Admin Office|MIC-L5 Modern Icarus Station": {
+"Verkauf": {
+"Beryl": [
+20000,
+"2026-10-21"
+],
+"Compboard": [
+30000,
+"2026-10-21"
+],
+"Construction Materials": [
+12000,
+"2026-10-21"
+],
+"Distilled Spirits": [
+2000,
+"2026-10-21"
+],
+"Dolivine": [
+150000,
+"2026-10-21"
+],
+"Hephaestanite": [
+5700,
+"2026-10-21"
+],
+"Hydrogen": [
+1000,
+"2026-10-21"
+],
+"Nitrogen": [
+3700,
+"2026-10-21"
+],
+"Party Favors": [
+5100,
+"2026-10-21"
+],
+"Processed Food": [
+1500,
+"2026-10-21"
+]
+},
+"Kauf": {
+"Scrap": [
+3265.0,
+"2026-10-21"
+],
+"Waste": [
+115.0,
+"2026-10-21"
+]
+}
+},
+"Canard View|Canard View": {
+"Verkauf": {
+"Bexalite": [
+30000,
+"2026-10-20"
+],
+"Bioplastic": [
+8500,
+"2026-10-20"
+],
+"Carbon-Silk": [
+21000,
+"2026-10-20"
+],
+"Cobalt": [
+21000,
+"2026-10-20"
+],
+"Compboard": [
+33000,
+"2026-10-20"
+],
+"Diamond": [
+6200,
+"2026-10-20"
+],
+"Fresh Food": [
+25000,
+"2026-10-20"
+],
+"Gold": [
+26000,
+"2026-10-20"
+],
+"Medical Supplies": [
+5200,
+"2026-10-20"
+],
+"Omnapoxy": [
+4300,
+"2026-10-20"
+],
+"Partillium": [
+98000,
+"2026-10-20"
+],
+"Pitambu": [
+63000,
+"2026-10-20"
+],
+"Pressurized Ice": [
+5500,
+"2026-10-20"
+],
+"Prota": [
+68000,
+"2026-10-20"
+],
+"Quantainium": [
+170000,
+"2026-10-20"
+],
+"Riccite": [
+67000,
+"2026-10-20"
+],
+"Stileron": [
+130000,
+"2026-10-20"
+],
+"Taranite": [
+25000,
+"2026-10-20"
+]
+},
+"Kauf": {
+"Degnous Root": [
+44156.0,
+"2026-10-20"
+],
+"Diamond Laminate": [
+66880.0,
+"2026-10-20"
+],
+"Processed Food": [
+1202.0,
+"2026-10-20"
+],
+"Recycled Material Composite": [
+6212.0,
+"2026-10-20"
+]
+}
+},
+"Sacren´s Plot|Sacren´s Plot": {
+"Verkauf": {
+"Bexalite": [
+27000,
+"2026-10-24"
+],
+"Bioplastic": [
+7700,
+"2026-10-24"
+],
+"Compboard": [
+33000,
+"2026-10-24"
+],
+"Diamond": [
+6200,
+"2026-10-24"
+],
+"Diamond Laminate": [
+95000,
+"2026-10-24"
+],
+"Fresh Food": [
+25000,
+"2026-10-24"
+],
+"Gold": [
+26000,
+"2026-10-24"
+],
+"Medical Supplies": [
+5200,
+"2026-10-24"
+],
+"Pitambu": [
+65000,
+"2026-10-24"
+],
+"Pressurized Ice": [
+5500,
+"2026-10-24"
+],
+"Processed Food": [
+1400,
+"2026-10-24"
+],
+"Prota": [
+68000,
+"2026-10-21"
+],
+"Riccite": [
+74000,
+"2026-10-21"
+],
+"Savrilium": [
+130000,
+"2026-10-21"
+],
+"Stileron": [
+130000,
+"2026-10-21"
+],
+"Sunset Berries": [
+98000,
+"2026-10-21"
+],
+"Taranite": [
+25000,
+"2026-10-21"
+]
+},
+"Kauf": {
+"Carbon-Silk": [
+17204.0,
+"2026-10-24"
+],
+"Partillium": [
+82192.0,
+"2026-10-24"
+],
+"Recycled Material Composite": [
+6523.0,
+"2026-10-24"
+]
+}
+},
+"Sunset Mesa|Sunset Mesa": {
+"Verkauf": {
+"Bioplastic": [
+8100,
+"2026-10-12"
+],
+"Compboard": [
+33000,
+"2026-10-12"
+],
+"Construction Materials": [
+10023.0,
+"2026-08-03"
+],
+"Fresh Food": [
+25000,
+"2026-10-12"
+],
+"Pressurized Ice": [
+5500,
+"2026-10-12"
+],
+"Scrap": [
+3109.0,
+"2026-08-03"
+]
+},
+"Kauf": {
+"Construction Materials": [
+10023.0,
+"2026-10-12"
+],
+"Scrap": [
+3109.0,
+"2026-10-12"
+]
+}
+},
+"Admin Office|ARC-L5 Yellow Core Station": {
+"Verkauf": {
+"Borase": [
+28000,
+"2026-10-22"
+],
+"Compboard": [
+27000,
+"2026-10-22"
+],
+"Diamond": [
+7100,
+"2026-10-22"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-22"
+],
+"Dolivine": [
+150000,
+"2026-10-22"
+],
+"Hephaestanite": [
+4800,
+"2026-10-22"
+],
+"Medical Supplies": [
+5500,
+"2026-10-22"
+],
+"Party Favors": [
+4900,
+"2026-10-22"
+],
+"Processed Food": [
+1500,
+"2026-10-22"
+],
+"Stims": [
+5300,
+"2026-10-22"
+],
+"Thermalfoam": [
+6300,
+"2026-10-22"
+],
+"Titanium": [
+8300,
+"2026-10-22"
+]
+},
+"Kauf": {
+"Nitrogen": [
+2561.0,
+"2026-10-22"
+],
+"Scrap": [
+2990.0,
+"2026-10-22"
+],
+"Waste": [
+229.0,
+"2026-10-22"
+]
+}
+},
+"Admin Office|MIC-L3 Endless Odyssey Station": {
+"Verkauf": {
+"Borase": [
+31000,
+"2026-10-22"
+],
+"Compboard": [
+30000,
+"2026-10-22"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-22"
+],
+"Dolivine": [
+150000,
+"2026-10-22"
+],
+"Hydrogen": [
+1000,
+"2026-10-22"
+],
+"Party Favors": [
+5100,
+"2026-10-22"
+],
+"Processed Food": [
+1500,
+"2026-10-22"
+],
+"Xa'Pyen": [
+6400,
+"2026-10-22"
+]
+},
+"Kauf": {
+"Scrap": [
+2990.0,
+"2026-10-22"
+],
+"Titanium": [
+7034.0,
+"2026-10-22"
+],
+"Waste": [
+115.0,
+"2026-10-22"
+]
+}
+},
+"Station Administration|People's Service Station Delta": {
+"Kauf": {
+"Compboard": [
+28568.0,
+"2026-04-14"
+],
+"Dymantium": [
+22428.0,
+"2026-04-14"
+]
+},
+"Verkauf": {
+"Iodine": [
+12000,
+"2026-04-14"
+],
+"Iron": [
+3500,
+"2026-04-14"
+],
+"Medical Supplies": [
+5000,
+"2026-04-14"
+],
+"Organics": [
+14000,
+"2026-04-14"
+],
+"Partillium": [
+98000,
+"2026-04-14"
+],
+"Processed Food": [
+1500,
+"2026-04-14"
+],
+"Savrilium": [
+120000,
+"2026-04-14"
+],
+"Stims": [
+5500,
+"2026-04-14"
+]
+}
+},
+"Platinum Bay|Nyx Gateway (Pyro)": {
+"Kauf": {
+"Compboard": [
+10710.0,
+"2026-06-20"
+],
+"Recycled Material Composite": [
+10710.0,
+"2026-07-09"
+]
+}
+},
+"Admin Office|HUR-L2 Faithful Dream Station": {
+"Verkauf": {
+"Compboard": [
+27000,
+"2026-10-21"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-21"
+],
+"Dolivine": [
+150000,
+"2026-10-21"
+],
+"Hydrogen": [
+1100,
+"2026-10-21"
+],
+"Laranite": [
+8500,
+"2026-10-21"
+],
+"Marok Gem": [
+60000,
+"2026-10-21"
+],
+"Medical Supplies": [
+5000,
+"2026-10-21"
+],
+"Nitrogen": [
+3500,
+"2026-10-21"
+],
+"Party Favors": [
+5000,
+"2026-10-21"
+],
+"Processed Food": [
+1500,
+"2026-10-21"
+]
+},
+"Kauf": {
+"Hephaestanite": [
+3929.0,
+"2026-10-21"
+],
+"Scrap": [
+2990.0,
+"2026-10-21"
+],
+"Waste": [
+229.0,
+"2026-10-21"
+]
+}
+},
+"Admin Office|MIC-L4 Red Crossroads Station": {
+"Verkauf": {
+"Compboard": [
+30000,
+"2026-10-22"
+],
+"Construction Materials": [
+12000,
+"2026-10-22"
+],
+"Degnous Root": [
+63000,
+"2026-10-22"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-22"
+],
+"Dolivine": [
+150000,
+"2026-10-22"
+],
+"Hephaestanite": [
+4515.0,
+"2026-10-24"
+],
+"Hydrogen": [
+1000,
+"2026-10-22"
+],
+"Marok Gem": [
+63000,
+"2026-10-22"
+],
+"Omnapoxy": [
+5000,
+"2026-10-22"
+],
+"Party Favors": [
+5100,
+"2026-10-22"
+],
+"Processed Food": [
+1500,
+"2026-10-22"
+],
+"Stims": [
+5300,
+"2026-10-22"
+],
+"Thermalfoam": [
+6700,
+"2026-10-22"
+]
+},
+"Kauf": {
+"Scrap": [
+2961.0,
+"2026-10-22"
+],
+"Waste": [
+115.0,
+"2026-10-22"
+]
+}
+},
+"Dunboro|Dunboro": {
+"Verkauf": {
+"Construction Materials": [
+12000,
+"2026-10-16"
+],
+"Copper (Ore)": [
+1200,
+"2026-10-16"
+],
+"Diamond": [
+7700,
+"2026-10-16"
+],
+"Iron (Ore)": [
+1000,
+"2026-10-16"
+],
+"Scrap": [
+3700,
+"2026-10-16"
+],
+"Waste": [
+210.0,
+"2026-10-16"
+]
+},
+"Kauf": {
+"Recycled Material Composite": [
+7144.0,
+"2026-10-16"
+]
+}
+},
+"Admin Office|Pyro Gateway (Nyx)": {
+"Verkauf": {
+"Construction Materials": [
+11000,
+"2026-10-20"
+],
+"Distilled Spirits": [
+1900,
+"2026-10-20"
+],
+"Gold": [
+31000,
+"2026-10-20"
+],
+"Organics": [
+11000,
+"2026-10-20"
+],
+"Recycled Material Composite": [
+7100,
+"2026-10-20"
+],
+"Ship Ammunition": [
+11.0,
+"2026-10-12"
+],
+"Tin": [
+4000,
+"2026-10-20"
+],
+"Waste": [
+370.0,
+"2026-10-20"
+]
+},
+"Kauf": {
+"Hydrogen Fuel": [
+782.0,
+"2026-10-20"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-20"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-12"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-12"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-12"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-12"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-12"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-12"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-12"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-20"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-20"
+]
+}
+},
+"Trading Konsole|Picker´s Field": {
+"Verkauf": {
+"Construction Materials": [
+12000,
+"2026-10-16"
+],
+"Copper": [
+1200,
+"2026-09-26"
+],
+"Copper (Ore)": [
+1200,
+"2026-10-16"
+],
+"Diamond": [
+7700,
+"2026-10-16"
+],
+"Iron": [
+1000,
+"2026-09-26"
+],
+"Iron (Ore)": [
+1000,
+"2026-10-16"
+],
+"Scrap": [
+3700,
+"2026-10-16"
+],
+"Waste": [
+210.0,
+"2026-10-16"
+]
+},
+"Kauf": {
+"Recycled Material Composite": [
+7144.0,
+"2026-10-16"
+]
+}
+},
+"Rappel|Rappel": {
+"Verkauf": {
+"Construction Materials": [
+12000,
+"2026-10-16"
+],
+"Copper": [
+1200,
+"2026-09-26"
+],
+"Copper (Ore)": [
+1200,
+"2026-10-16"
+],
+"Diamond": [
+7700,
+"2026-10-16"
+],
+"Iron": [
+1000,
+"2026-09-26"
+],
+"Iron (Ore)": [
+1000,
+"2026-10-16"
+],
+"Scrap": [
+3700,
+"2026-10-16"
+],
+"Waste": [
+210.0,
+"2026-10-16"
+]
+},
+"Kauf": {
+"Recycled Material Composite": [
+7144.0,
+"2026-10-16"
+]
+}
+},
+"IO North Tower|Area 18": {
+"Kauf": {
+"Hydrogen Fuel": [
+782.0,
+"2026-10-22"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-22"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-22"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-22"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-22"
+],
+"Waste": [
+240.0,
+"2026-10-22"
+]
+}
+},
+"Admin Office|Nyx Gateway (Pyro)": {
+"Kauf": {
+"Hydrogen Fuel": [
+782.0,
+"2026-10-16"
+],
+"Quantainium": [
+2444.0,
+"2026-05-14"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-16"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-10-16"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-16"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-16"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-16"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-16"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-16"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-16"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-16"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-16"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-16"
+]
+},
+"Verkauf": {
+"Medical Supplies": [
+5800,
+"2026-10-22"
+],
+"Processed Food": [
+1500,
+"2026-10-22"
+],
+"Stileron": [
+140000,
+"2026-10-22"
+],
+"Stims": [
+5500,
+"2026-10-22"
+],
+"Waste": [
+240.0,
+"2026-10-22"
+]
+}
+},
+"Admin Office|Lorville": {
+"Kauf": {
+"Hydrogen Fuel": [
+782.0,
+"2026-10-21"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-21"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-11"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-11"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-11"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-11"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-11"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-21"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-21"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-21"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-21"
+],
+"Waste": [
+229.0,
+"2026-10-11"
+]
+}
+},
+"MT Planetary Services|New Babbage": {
+"Kauf": {
+"Hydrogen Fuel": [
+782.0,
+"2026-10-22"
+],
+"Quantum Fuel": [
+1760.0,
+"2026-10-22"
+],
+"Recycled Material Composite": [
+7587.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 1": [
+6868.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 2": [
+7126.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 3": [
+7384.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 4": [
+7641.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 5": [
+7985.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 6": [
+8328.0,
+"2026-10-22"
+],
+"Ship Ammunition - Size 7": [
+8671.0,
+"2026-10-22"
+],
+"Ship Decoy Countermeasures": [
+4293.0,
+"2026-10-22"
+],
+"Ship Noise Countermeasures": [
+8585.0,
+"2026-10-22"
+],
+"Waste": [
+240.0,
+"2026-10-22"
+]
+}
+},
+"Dumper´s Depot|Area 18": {
+"Kauf": {
+"Processed Food": [
+1202.0,
+"2026-02-01"
+],
+"Recycled Material Composite": [
+10710.0,
+"2026-07-04"
+]
+}
+},
+"Platinum Bay|Port Tressler": {
+"Kauf": {
+"Recycled Material Composite": [
+10710.0,
+"2026-07-10"
+]
+}
+},
+"Platinum Bay|Pyro Gateway (Stanton)": {
+"Kauf": {
+"Recycled Material Composite": [
+10710.0,
+"2026-07-15"
+]
+}
+},
+"Platinum Bay|Terra Gateway (Stanton)": {
+"Kauf": {
+"Recycled Material Composite": [
+10710.0,
+"2026-07-03"
+]
+}
+},
+"Platinum Bay|Nyx Gateway (Stanton)": {
+"Kauf": {
+"Recycled Material Composite": [
+10710.0,
+"2026-07-11"
+]
+}
+},
+"Platinum Bay|Baijini Point": {
+"Kauf": {
+"Recycled Material Composite": [
+10710.0,
+"2026-07-10"
+]
+}
+},
+"Platinum Bay|ARC-L1 Wide Forest Station": {
+"Kauf": {
+"Recycled Material Composite": [
+10710.0,
+"2026-07-11"
+]
+}
+},
+"Dumper´s Depot|Grim HEX": {
+"Kauf": {
+"Recycled Material Composite": [
+10710.0,
+"2026-07-15"
+]
+}
+},
+"Platinum Bay|CRU-L1 Ambitious Dream Station": {
+"Kauf": {
+"Recycled Material Composite": [
+10710.0,
+"2026-07-10"
+]
+}
+},
+"Platinum Bay|CRU-L4 Shallow Fields Station": {
+"Kauf": {
+"Recycled Material Composite": [
+10710.0,
+"2026-07-12"
+]
+}
+},
+"Platinum Bay|CRU-L5 Beautiful Glen Station": {
+"Kauf": {
+"Recycled Material Composite": [
+10710.0,
+"2026-07-09"
+]
+}
+},
+"Platinum Bay|Everus Harbor": {
+"Kauf": {
+"Recycled Material Composite": [
+8925.0,
+"2025-12-18"
+]
+}
+},
+"Platinum Bay|HUR-L2 Faithful Dream Station": {
+"Kauf": {
+"Recycled Material Composite": [
+10710.0,
+"2026-07-09"
+]
+}
+},
+"Platinum Bay|HUR-L3 Thundering Express Station": {
+"Kauf": {
+"Recycled Material Composite": [
+10710.0,
+"2026-07-13"
+]
+}
+},
+"Platinum Bay|HUR-L5 High Course Station": {
+"Kauf": {
+"Recycled Material Composite": [
+10710.0,
+"2026-07-13"
+]
+}
+},
+"Platinum Bay|Stanton Gateway (Pyro)": {
+"Kauf": {
+"Recycled Material Composite": [
+10710.0,
+"2026-07-10"
+]
+}
+},
+"Platinum Bay|Stanton Gateway (Nyx)": {
+"Kauf": {
+"Recycled Material Composite": [
+10710.0,
+"2026-07-04"
+]
+}
+},
+"Platinum Bay|Pyro Gateway (Nyx)": {
+"Kauf": {
+"Recycled Material Composite": [
+10710.0,
+"2026-07-11"
+]
+}
+},
+"Scarper´s Turn|Scarper´s Turn": {
+"Kauf": {
+"Taranite": [
+19380.0,
+"2026-10-17"
+]
+}
+}
+}
+}

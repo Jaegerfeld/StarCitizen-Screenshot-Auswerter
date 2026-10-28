@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SC Screenshot-Auswerter – Prüftabelle</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700;800&family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4f6f8; --panel:#ffffff; --panel2:#eef1f5; --ink:#141922; --muted:#5a6472;
+    --line:#d5dbe3; --accent:#0e7c86; --accent2:#c9822a; --ok:#2e8b57; --bad:#b3452f; --warn:#b8860b;
+    --glow:rgba(14,124,134,.12); --warnbg:rgba(201,130,42,.14); --shadow:0 2px 12px rgba(20,30,40,.08);
+    --disp:'Rajdhani',system-ui,sans-serif; --body:'Exo 2',system-ui,sans-serif;
+  }
+  :root[data-theme="dark"]{
+    --bg:#0a0e14; --panel:#121822; --panel2:#0e131c; --ink:#e8edf4; --muted:#8b97a8;
+    --line:#243040; --accent:#3fd0dd; --accent2:#f0a94a; --ok:#57c98a; --bad:#e8785c; --warn:#f0a94a;
+    --glow:rgba(63,208,221,.12); --warnbg:rgba(240,169,74,.14); --shadow:0 4px 22px rgba(0,0,0,.5);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+  .hazard{height:5px;background:repeating-linear-gradient(45deg,var(--accent2) 0 14px,transparent 14px 28px);opacity:.9}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 16px 60px}
+  header{padding:22px 0 10px}
+  .eyebrow{font-family:var(--disp);font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-size:11px;margin:0 0 4px}
+  h1{font-family:var(--disp);font-weight:800;font-size:clamp(22px,3.5vw,32px);margin:0;letter-spacing:.01em}
+  h2{font-family:var(--disp);font-weight:700;font-size:20px;margin:0}
+  .lede{color:var(--muted);margin:6px 0 0;font-size:14px}
+  .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0 4px}
+  .btn{font-family:var(--disp);font-weight:600;font-size:14px;letter-spacing:.04em;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 14px;min-height:36px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  .btn:hover{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}
+  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .en{display:none} [data-lang="en"] .de{display:none} [data-lang="en"] .en{display:inline}
+  .stat{font-size:13px;color:var(--muted);margin:10px 0 0}
+  .stat b{color:var(--ink)}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:16px;margin:16px 0}
+  .head{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
+  .head .meta{font-size:13px;color:var(--muted)}
+  .pill{display:inline-block;font-family:var(--disp);font-weight:700;font-size:12px;letter-spacing:.06em;border-radius:20px;padding:2px 10px;border:1px solid var(--line);margin-left:6px}
+  .pill.kauf{color:var(--ok);border-color:var(--ok)} .pill.verkauf{color:var(--accent2);border-color:var(--accent2)}
+  .warn{background:var(--warnbg);border:1px solid var(--accent2);border-radius:8px;padding:8px 12px;font-size:14px;margin:10px 0}
+  .warn b{color:var(--accent2)}
+  label.sel{display:inline-flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted)}
+  select{font-family:var(--body);font-size:14px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px;min-height:36px;min-width:240px}
+  .tablewrap{overflow:auto;margin-top:12px}
+  table{border-collapse:collapse;width:100%;font-size:14px}
+  th{text-align:left;font-family:var(--disp);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--line);padding:8px 10px;white-space:nowrap}
+  td{border-bottom:1px solid var(--line);padding:7px 10px;vertical-align:top}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  td[contenteditable]{cursor:text;border-radius:6px;position:relative;padding-right:22px}
+  td[contenteditable]::after{content:"✎";position:absolute;right:6px;top:7px;font-size:11px;color:var(--muted);opacity:.7}
+  td[contenteditable]:focus{outline:2px solid var(--accent);background:var(--panel2)}
+  tr.chk td{background:var(--warnbg)}
+  tr.chk td:first-child{box-shadow:inset 4px 0 0 var(--accent2)}
+  td.flag{font-size:13px;color:var(--muted);max-width:420px}
+  td.flag .tag{display:inline-block;font-family:var(--disp);font-weight:700;font-size:11px;letter-spacing:.06em;color:var(--accent2);margin-right:6px}
+  tr.edited td.ware,tr.edited td.preis,tr.edited td.bestand{font-weight:700}
+  .edited-mark{display:none;font-family:var(--disp);font-size:11px;color:var(--ok);letter-spacing:.06em}
+  tr.edited .edited-mark{display:inline}
+  details{margin-top:10px;font-size:13px;color:var(--muted)} summary{cursor:pointer;font-family:var(--disp);font-weight:600;letter-spacing:.04em}
+  .empty{padding:24px;text-align:center;color:var(--muted)}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-family:var(--disp);font-weight:600;letter-spacing:.04em;opacity:0;transition:opacity .2s;pointer-events:none}
+  .toast.show{opacity:1}
+  .rm{background:none;border:1px solid var(--line);color:var(--muted);border-radius:6px;min-height:28px;padding:2px 8px;cursor:pointer;font-size:12px}
+  .rm:hover{color:var(--bad);border-color:var(--bad)}
+</style>
+</head>
+<body>
+<div class="hazard"></div>
+<div class="wrap">
+<header>
+  <p class="eyebrow">Star Citizen · Handelskonsolen · OCR</p>
+  <h1><span class="de">Prüftabelle</span><span class="en">Review table</span></h1>
+  <p class="lede"><span class="de">Gelb markierte Zeilen bitte gegen den Screenshot prüfen und direkt in der Tabelle korrigieren. Dann JSON oder CSV herunterladen.</span><span class="en">Check the highlighted rows against the screenshot and correct them in place. Then download JSON or CSV.</span></p>
+  <div class="toolbar">
+    <button class="btn" id="langBtn" type="button">EN / DE</button>
+    <button class="btn" id="themeBtn" type="button"><span class="de">Hell / Dunkel</span><span class="en">Light / Dark</span></button>
+    <button class="btn primary" type="button" data-dl="json">⬇ JSON</button>
+    <button class="btn primary" type="button" data-dl="csv">⬇ CSV</button>
+    <a class="btn" href="https://github.com/Jaegerfeld/StarCitizen-Screenshot-Auswerter" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+  <p class="stat" id="stat"></p>
+</header>
+<main id="main"></main>
+<div class="toolbar"><button class="btn primary" type="button" data-dl="json">⬇ JSON</button><button class="btn primary" type="button" data-dl="csv">⬇ CSV</button></div>
+<p class="stat"><span class="de">Erzeugt mit SC Screenshot-Auswerter {{VERSION}} · Daten lokal per Windows-OCR gelesen · Referenz star-head.de</span><span class="en">Generated by SC Screenshot-Auswerter {{VERSION}} · read locally with Windows OCR · reference star-head.de</span></p>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const D=/*DATA*/;
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt=n=>n==null||n===''?'':Number(n).toLocaleString('de-DE');
+let lang=localStorage.getItem('sca_lang')||'de', theme=localStorage.getItem('sca_theme')||'dark';
+const T={de:{ware:'Ware',preis:'Preis ¤/SCU',bestand:'Bestand SCU',status:'Status',stand:'Stand',bild:'Bild',hinweis:'Hinweise',pruefen:'PRÜFEN',edited:'geändert',
+  shop:'Shop (star-head)',noloc:'Standort nicht erkannt – Shop bitte wählen. Tipp: Vor dem Screenshot im Feld „Deine Inventare“ den Standort auswählen, dann steht er im Bild.',
+  pics:'Bilder',rows:'Zeilen',chk:'zu prüfen',none:'Keine Waren erkannt.',del:'Zeile entfernen',dl:'heruntergeladen',unknown:'unbekannt',series:'Serien'},
+ en:{ware:'Commodity',preis:'Price ¤/SCU',bestand:'Stock SCU',status:'Status',stand:'As of',bild:'Image',hinweis:'Notes',pruefen:'CHECK',edited:'edited',
+  shop:'Shop (star-head)',noloc:'Location not recognised – please pick the shop. Tip: select the location in “Your inventories” before taking the screenshot.',
+  pics:'images',rows:'rows',chk:'to check',none:'No commodities recognised.',del:'Remove row',dl:'downloaded',unknown:'unknown',series:'series'}};
+const t=k=>T[lang][k];
+function render(){
+  document.documentElement.dataset.lang=lang; document.documentElement.dataset.theme=theme;
+  const main=$('#main'); main.innerHTML='';
+  let total=0,chk=0;
+  D.serien.forEach((s,si)=>{
+    total+=s.zeilen.length; chk+=s.zeilen.filter(r=>r.konfidenz==='pruefen').length;
+    const kauf=s.art==='Kauf';
+    const cands=s.shop_kandidaten.length?s.shop_kandidaten:D.shops; const sel=`<label class="sel">${t('shop')}<select data-si="${si}">${s.shop_kandidaten.length?'':`<option value="">– ${t('unknown')} –</option>`}${cands.map(c=>`<option value="${esc(c.shop+'|'+c.ort)}"${s.shop&&c.shop===s.shop.shop&&c.ort===s.shop.ort?' selected':''}>${esc(c.shop)} (${esc(c.ort)}, ${esc(c.system)})</option>`).join('')}</select></label>`;
+    const rows=s.zeilen.map((r,ri)=>`<tr class="${r.konfidenz==='pruefen'?'chk':''}" data-si="${si}" data-ri="${ri}">
+      <td class="ware" contenteditable="true" spellcheck="false">${esc(r.ware||r.roh)}</td>
+      <td class="num preis" contenteditable="true">${fmt(r.preis)}</td>
+      ${kauf?`<td class="num bestand" contenteditable="true">${fmt(r.bestand_scu)}</td>`:''}
+      <td>${esc(r.status)}</td>
+      <td>${esc(r.stand).replace('T',' ')}</td>
+      <td><a href="${esc(s.bilder.find(b=>b.datei===r.bild)?.pfad||'#')}" target="_blank" rel="noopener">${esc(r.bild)}</a></td>
+      <td class="flag">${r.konfidenz==='pruefen'?`<span class="tag">${t('pruefen')}</span>`:''}${esc(r.hinweise.join(' · '))} <span class="edited-mark">✓ ${t('edited')}</span></td>
+      <td><button class="rm" type="button" title="${t('del')}" data-rm>✕</button></td></tr>`).join('');
+    main.insertAdjacentHTML('beforeend',`<section class="panel">
+      <div class="head"><div><h2>${esc(s.ort||s.standort||'?')}${s.ort&&s.standort&&s.ort.toUpperCase()!==s.standort.toUpperCase()?` <small style="color:var(--muted);font-weight:400">(gelesen: ${esc(s.standort)})</small>`:''}<span class="pill ${kauf?'kauf':'verkauf'}">${kauf?'KAUFEN · Shop verkauft':'LOKALER MARKTWERT · Shop kauft'}</span></h2>
+        <div class="meta">${s.bilder.length} ${t('pics')} · ${s.zeilen.length} ${t('rows')} · <b>${s.zeilen.filter(r=>r.konfidenz==='pruefen').length}</b> ${t('chk')}</div></div>${sel}</div>
+      ${!s.standort?`<div class="warn"><b>⚠</b> ${t('noloc')}${s.standort_hinweis?' ('+esc(s.standort_hinweis)+')':''}</div>`:''}
+      ${s.zeilen.length?`<div class="tablewrap"><table><thead><tr><th>${t('ware')}</th><th class="num">${t('preis')}</th>${kauf?`<th class="num">${t('bestand')}</th>`:''}<th>${t('status')}</th><th>${t('stand')}</th><th>${t('bild')}</th><th>${t('hinweis')}</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`:`<div class="empty">${t('none')}</div>`}
+      <details><summary>${t('pics')}</summary><ul>${s.bilder.map(b=>`<li><a href="${esc(b.pfad)}" target="_blank" rel="noopener">${esc(b.datei)}</a> · ${esc(b.stand).replace('T',' ')} · ${b.n} ${t('rows')}</li>`).join('')}</ul></details>
+    </section>`);
+  });
+  $('#stat').innerHTML=`<b>${D.serien.length}</b> ${t('series')} · <b>${total}</b> ${t('rows')} · <b>${chk}</b> ${t('chk')} · ${esc(D.meta.generated).replace('T',' ')} · Patch ${esc(D.meta.patch)}`;
+}
+// ---- Werte aus der Tabelle (inkl. Korrekturen) einsammeln ----
+function collect(){
+  const out=[];
+  $$('tbody tr').forEach(tr=>{
+    const s=D.serien[+tr.dataset.si], r=s.zeilen[+tr.dataset.ri];
+    const selv=$(`select[data-si="${tr.dataset.si}"]`).value, shop=(s.shop_kandidaten.length?s.shop_kandidaten:D.shops).find(c=>c.shop+'|'+c.ort===selv)||null;
+    const num=td=>{const v=(td?.textContent||'').replace(/[^0-9]/g,'');return v?+v:null;};
+    out.push({system:shop?.system||'',ort:shop?.ort||s.standort||'',shop:shop?.shop||'',standort_im_bild:s.standort||'',art:s.art,
+      ware:tr.querySelector('.ware').textContent.trim(),preis_auec_scu:num(tr.querySelector('.preis')),bestand_scu:s.art==='Kauf'?num(tr.querySelector('.bestand')):null,
+      status:r.status,stand:r.stand,bild:r.bild,konfidenz:tr.classList.contains('edited')?'korrigiert':r.konfidenz,hinweise:r.hinweise.join('; ')});
+  });
+  return out;
+}
+function download(kind){
+  const rows=collect(); let blob,name;
+  if(kind==='json'){blob=new Blob([JSON.stringify(Object.assign({},D.meta,{eintraege:rows}),null,1)],{type:'application/json'});name='sc_konsolen_export.json';}
+  else{const cols=Object.keys(rows[0]||{ware:''});const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+    blob=new Blob(['﻿'+[cols.join(';'),...rows.map(r=>cols.map(c=>q(r[c])).join(';'))].join('\r\n')],{type:'text/csv'});name='sc_konsolen_export.csv';}
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+  toast(`${name} ${t('dl')} (${rows.length} ${t('rows')})`);
+}
+let tt;function toast(m){const e=$('#toast');e.textContent=m;e.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('show'),2500);}
+document.addEventListener('click',e=>{
+  const dl=e.target.closest('[data-dl]'); if(dl){download(dl.dataset.dl);return;}
+  if(e.target.closest('[data-rm]')){const tr=e.target.closest('tr'); tr.remove(); toast(t('del'));return;}
+  if(e.target.id==='langBtn'){lang=lang==='de'?'en':'de';localStorage.setItem('sca_lang',lang);render();}
+  if(e.target.closest('#themeBtn')){theme=theme==='dark'?'light':'dark';localStorage.setItem('sca_theme',theme);document.documentElement.dataset.theme=theme;}
+});
+document.addEventListener('input',e=>{const tr=e.target.closest('tr');if(tr){tr.classList.add('edited');tr.classList.remove('chk');}});
+render();
+</script>
+</body>
+</html>
