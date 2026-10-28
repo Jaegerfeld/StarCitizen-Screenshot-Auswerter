@@ -1,6 +1,10 @@
-# Ausgaben der Auswertung liegen beim Nutzer, nicht im Repo
-Auswertung/
+# Gebaute App (wird auf GitHub Pages veroeffentlicht, lokal per auswerter_bauen.py erzeugt)
+SC_Screenshot_Auswerter.html
+_site/
+
+# Ausgaben der Windows-OCR liegen beim Nutzer
 ocr_words.json
+Auswertung/
 
 # Python
 __pycache__/

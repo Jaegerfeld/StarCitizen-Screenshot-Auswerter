@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SC Screenshot-Auswerter</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700;800&family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
+<style>
+  :root{
+    --bg:#f4f6f8; --panel:#ffffff; --panel2:#eef1f5; --ink:#141922; --muted:#5a6472;
+    --line:#d5dbe3; --accent:#0e7c86; --accent2:#c9822a; --ok:#2e8b57; --bad:#b3452f;
+    --glow:rgba(14,124,134,.12); --warnbg:rgba(201,130,42,.14); --shadow:0 2px 12px rgba(20,30,40,.08);
+    --disp:'Rajdhani',system-ui,sans-serif; --body:'Exo 2',system-ui,sans-serif;
+  }
+  :root[data-theme="dark"]{
+    --bg:#0a0e14; --panel:#121822; --panel2:#0e131c; --ink:#e8edf4; --muted:#8b97a8;
+    --line:#243040; --accent:#3fd0dd; --accent2:#f0a94a; --ok:#57c98a; --bad:#e8785c;
+    --glow:rgba(63,208,221,.12); --warnbg:rgba(240,169,74,.14); --shadow:0 4px 22px rgba(0,0,0,.5);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+  .hazard{height:5px;background:repeating-linear-gradient(45deg,var(--accent2) 0 14px,transparent 14px 28px);opacity:.9}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 16px 60px}
+  header{padding:22px 0 10px}
+  .eyebrow{font-family:var(--disp);font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-size:11px;margin:0 0 4px}
+  h1{font-family:var(--disp);font-weight:800;font-size:clamp(22px,3.5vw,32px);margin:0;letter-spacing:.01em}
+  h2{font-family:var(--disp);font-weight:700;font-size:20px;margin:0}
+  h3{font-family:var(--disp);font-weight:700;font-size:16px;margin:0 0 6px}
+  .lede{color:var(--muted);margin:6px 0 0;font-size:14px}
+  .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0 4px}
+  .btn{font-family:var(--disp);font-weight:600;font-size:14px;letter-spacing:.04em;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 14px;min-height:36px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  .btn:hover{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}
+  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .btn[disabled]{opacity:.5;cursor:default;box-shadow:none}
+  .en{display:none} [data-lang="en"] .de{display:none} [data-lang="en"] .en{display:inline}
+  .stat{font-size:13px;color:var(--muted);margin:10px 0 0} .stat b{color:var(--ink)}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:16px;margin:16px 0}
+  .drop{border:2px dashed var(--line);border-radius:12px;padding:28px 20px;text-align:center;cursor:pointer;transition:border-color .15s,background .15s}
+  .drop.over,.drop:hover{border-color:var(--accent);background:var(--glow)}
+  .drop .big{font-family:var(--disp);font-weight:700;font-size:20px;margin:0 0 6px}
+  .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin:14px 0 0;text-align:left}
+  .rule{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14px}
+  .rule b{font-family:var(--disp);color:var(--accent2);letter-spacing:.04em}
+  .progress{height:10px;background:var(--panel2);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin:8px 0}
+  .progress i{display:block;height:100%;background:var(--accent);width:0;transition:width .2s}
+  .files{font-size:13px;color:var(--muted);columns:2;column-gap:24px} .files li{break-inside:avoid}
+  .files .ok{color:var(--ok)} .files .bad{color:var(--bad)}
+  .head{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
+  .head .meta{font-size:13px;color:var(--muted)}
+  .pill{display:inline-block;font-family:var(--disp);font-weight:700;font-size:12px;letter-spacing:.06em;border-radius:20px;padding:2px 10px;border:1px solid var(--line);margin-left:6px}
+  .pill.kauf{color:var(--ok);border-color:var(--ok)} .pill.verkauf{color:var(--accent2);border-color:var(--accent2)}
+  .warn{background:var(--warnbg);border:1px solid var(--accent2);border-radius:8px;padding:8px 12px;font-size:14px;margin:10px 0} .warn b{color:var(--accent2)}
+  .err{background:rgba(179,69,47,.12);border:1px solid var(--bad);border-radius:8px;padding:8px 12px;font-size:14px;margin:10px 0}
+  label.sel{display:inline-flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted)}
+  select{font-family:var(--body);font-size:14px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px;min-height:36px;min-width:240px}
+  .tablewrap{overflow:auto;margin-top:12px}
+  table{border-collapse:collapse;width:100%;font-size:14px}
+  th{text-align:left;font-family:var(--disp);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--line);padding:8px 10px;white-space:nowrap}
+  td{border-bottom:1px solid var(--line);padding:7px 10px;vertical-align:top}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  td[contenteditable]{cursor:text;border-radius:6px;position:relative;padding-right:22px}
+  td[contenteditable]::after{content:"✎";position:absolute;right:6px;top:7px;font-size:11px;color:var(--muted);opacity:.7}
+  td[contenteditable]:focus{outline:2px solid var(--accent);background:var(--panel2)}
+  tr.chk td{background:var(--warnbg)} tr.chk td:first-child{box-shadow:inset 4px 0 0 var(--accent2)}
+  td.flag{font-size:13px;color:var(--muted);max-width:420px}
+  td.flag .tag{display:inline-block;font-family:var(--disp);font-weight:700;font-size:11px;letter-spacing:.06em;color:var(--accent2);margin-right:6px}
+  tr.edited td.ware,tr.edited td.preis,tr.edited td.bestand{font-weight:700}
+  .edited-mark{display:none;font-family:var(--disp);font-size:11px;color:var(--ok);letter-spacing:.06em} tr.edited .edited-mark{display:inline}
+  details{margin-top:10px;font-size:13px;color:var(--muted)} summary{cursor:pointer;font-family:var(--disp);font-weight:600;letter-spacing:.04em}
+  .empty{padding:24px;text-align:center;color:var(--muted)}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-family:var(--disp);font-weight:600;letter-spacing:.04em;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}
+  .toast.show{opacity:1}
+  .rm{background:none;border:1px solid var(--line);color:var(--muted);border-radius:6px;min-height:28px;padding:2px 8px;cursor:pointer;font-size:12px} .rm:hover{color:var(--bad);border-color:var(--bad)}
+  .hide{display:none!important}
+  .thumb{max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="hazard"></div>
+<div class="wrap">
+<header>
+  <p class="eyebrow">Star Citizen · Handelskonsolen · OCR</p>
+  <h1>SC Screenshot-Auswerter</h1>
+  <p class="lede"><span class="de">Screenshots der Handelskonsole hineinziehen – die Seite liest Ort, Reiter, Waren, Preise und Bestände im Browser, du prüfst die Tabelle und lädst JSON oder CSV herunter. Nichts verlässt deinen Rechner.</span><span class="en">Drop screenshots of the trade terminal – the page reads place, tab, commodities, prices and stock in your browser; you check the table and download JSON or CSV. Nothing leaves your computer.</span></p>
+  <div class="toolbar">
+    <button class="btn" id="langBtn" type="button">EN / DE</button>
+    <button class="btn" id="themeBtn" type="button"><span class="de">Hell / Dunkel</span><span class="en">Light / Dark</span></button>
+    <button class="btn" id="refBtn" type="button" title="Referenz (Waren, Shops, Preise) vom Handels-Planer auf GitHub Pages laden">🔄 <span class="de">Neuesten Stand laden (GitHub)</span><span class="en">Load latest reference (GitHub)</span></button>
+    <a class="btn" href="https://jaegerfeld.github.io/StarCitizen-Handels-Planer/" target="_blank" rel="noopener">📈 <span class="de">Handels-Planer</span><span class="en">Trade Planner</span></a>
+    <a class="btn" href="https://jaegerfeld.github.io/sc-guides/" target="_blank" rel="noopener">📚 <span class="de">Guides-Übersicht</span><span class="en">Guides overview</span></a>
+    <a class="btn" href="https://github.com/Jaegerfeld/StarCitizen-Screenshot-Auswerter" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+  <p class="stat" id="refStat"></p>
+</header>
+
+<section class="panel" id="intake">
+  <div class="drop" id="drop" tabindex="0" role="button">
+    <p class="big"><span class="de">Screenshots hierher ziehen</span><span class="en">Drop screenshots here</span></p>
+    <p class="lede"><span class="de">PNG oder JPG, einzeln oder ein ganzer Ordner – lange Listen gern als mehrere Scroll-Screenshots. Auch <code>ocr_words.json</code> der Windows-OCR.</span><span class="en">PNG or JPG, single files or a whole folder – long lists as several scroll screenshots. Also <code>ocr_words.json</code> from the Windows OCR.</span></p>
+    <div class="toolbar" style="justify-content:center"><button class="btn primary" type="button" id="pickBtn"><span class="de">Bilder wählen</span><span class="en">Choose images</span></button><button class="btn" type="button" id="pickDirBtn"><span class="de">Ordner wählen</span><span class="en">Choose folder</span></button></div>
+    <div class="rules">
+      <div class="rule"><b>1 ·</b> <span class="de">Vor dem Screenshot links unter „Deine Inventare“ den <b>Standort auswählen</b> – sonst steht nur „Standort wählen“ im Bild und der Ort fehlt.</span><span class="en">Before the screenshot, <b>select the location</b> under “Your inventories” on the left – otherwise the image only says “Select location”.</span></div>
+      <div class="rule"><b>2 ·</b> <span class="de"><b>Frontal</b> auf die Konsole schauen. Schräge Aufnahmen liest die Texterkennung schlecht. Die Screenshot-Taste des Spiels (F12) reicht.</span><span class="en">Look at the terminal <b>squarely</b>. Angled shots read poorly. The game's screenshot key (F12) is fine.</span></div>
+    </div>
+  </div>
+  <input type="file" id="fileIn" class="hide" multiple accept="image/png,image/jpeg,.json">
+  <input type="file" id="dirIn" class="hide" webkitdirectory>
+  <div id="prog" class="hide">
+    <p class="stat" id="progText"></p>
+    <div class="progress"><i id="progBar"></i></div>
+    <ul class="files" id="fileList"></ul>
+  </div>
+</section>
+
+<div id="resultHead" class="toolbar hide">
+  <button class="btn primary" type="button" data-dl="json">⬇ JSON</button>
+  <button class="btn primary" type="button" data-dl="csv">⬇ CSV</button>
+  <button class="btn" type="button" id="resetBtn"><span class="de">Alles zurücksetzen</span><span class="en">Reset all</span></button>
+  <span class="stat" id="stat"></span>
+</div>
+<main id="main"></main>
+<div id="resultFoot" class="toolbar hide"><button class="btn primary" type="button" data-dl="json">⬇ JSON</button><button class="btn primary" type="button" data-dl="csv">⬇ CSV</button></div>
+<p class="stat"><span class="de">SC Screenshot-Auswerter {{VERSION}} · Texterkennung im Browser (Tesseract.js) · Referenz: star-head.de über den Handels-Planer · Inoffizielles Fan-Projekt, Star Citizen® ist eine Marke von CIG.</span><span class="en">SC Screenshot-Auswerter {{VERSION}} · OCR in the browser (Tesseract.js) · reference: star-head.de via the Trade Planner · unofficial fan project, Star Citizen® is a trademark of CIG.</span></p>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+'use strict';
+const VERSION='{{VERSION}}', SCHEMA='sc-konsole-export/1';
+const REF_URL='https://jaegerfeld.github.io/StarCitizen-Handels-Planer/data.json';
+let REF=/*__REF__*/{};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt=n=>n==null||n===''?'':Number(n).toLocaleString('de-DE');
+let lang=localStorage.getItem('sca_lang')||'de', theme=localStorage.getItem('sca_theme')||'dark';
+const T={de:{ware:'Ware',preis:'Preis ¤/SCU',bestand:'Bestand SCU',status:'Status',stand:'Stand',bild:'Bild',hinweis:'Hinweise',pruefen:'PRÜFEN',edited:'geändert',
+  shop:'Shop (star-head)',noloc:'Standort nicht erkannt – Shop bitte wählen. Tipp: Vor dem Screenshot im Feld „Deine Inventare“ den Standort auswählen.',
+  pics:'Bilder',rows:'Zeilen',chk:'zu prüfen',none:'Keine Waren erkannt – ist das ein Screenshot der Handelskonsole (Reiter Kaufen / Lokaler Marktwert)?',del:'Zeile entfernen',dl:'heruntergeladen',unknown:'unbekannt',series:'Serien',
+  loading:'Texterkennung wird geladen …',reading:'Lese',of:'von',pass:'Lesung',done:'Fertig',ref:'Referenz',refOk:'Referenz aktualisiert.',refSame:'Referenz ist schon aktuell.',refErr:'GitHub nicht erreichbar – eingebaute Referenz bleibt.',
+  notext:'kein Konsolentext gefunden',imgErr:'Bild nicht lesbar',jsonErr:'JSON ohne OCR-Wörter',kaufen:'KAUFEN · Shop verkauft',markt:'LOKALER MARKTWERT · Shop kauft',read:'gelesen',waren:'Waren',shops:'Shops',patch:'Patch',
+  n_ware:'Ware nicht erkannt',n_unsure:'Name unsicher',n_price:'Preis nicht lesbar',n_dev:'Preis weicht stark vom letzten star-head-Wert ab',n_new:'neu für diesen Shop',n_stock:'Bestand nicht lesbar',n_two:'zwei Lesungen',n_diff:'unterschiedlich in',n_prefix:'Preis ohne/mit Vorziffer unklar'},
+ en:{ware:'Commodity',preis:'Price ¤/SCU',bestand:'Stock SCU',status:'Status',stand:'As of',bild:'Image',hinweis:'Notes',pruefen:'CHECK',edited:'edited',
+  shop:'Shop (star-head)',noloc:'Location not recognised – please pick the shop. Tip: select the location in “Your inventories” before the screenshot.',
+  pics:'images',rows:'rows',chk:'to check',none:'No commodities recognised – is this a screenshot of the trade terminal (tab Buy / Local market value)?',del:'Remove row',dl:'downloaded',unknown:'unknown',series:'series',
+  loading:'Loading OCR …',reading:'Reading',of:'of',pass:'pass',done:'Done',ref:'Reference',refOk:'Reference updated.',refSame:'Reference already up to date.',refErr:'GitHub unreachable – built-in reference kept.',
+  notext:'no terminal text found',imgErr:'image unreadable',jsonErr:'JSON without OCR words',kaufen:'BUY · shop sells',markt:'LOCAL MARKET VALUE · shop buys',read:'read',waren:'commodities',shops:'shops',patch:'patch',
+  n_ware:'commodity not recognised',n_unsure:'name uncertain',n_price:'price unreadable',n_dev:'price far from last star-head value',n_new:'new for this shop',n_stock:'stock unreadable',n_two:'two readings',n_diff:'differs in',n_prefix:'price with/without leading digit unclear'}};
+const t=k=>T[lang][k];
+
+// =====================================================================
+// Parser (Konsolen-Texte, deutscher Client) – eine Logik für Tesseract- und Windows-OCR-Wörter
+// =====================================================================
+const HEADERS={'AUF LAGER':'lager','NICHT VORRÄTIG':'nicht_vorraetig','VERKAUFBARE FRACHT':'eigene_fracht','NACHGEFRAGT':'nachgefragt','KEINE NACHFRAGE':'keine_nachfrage','KANN NICHT VERKAUFT WERDEN':'unverkaeuflich'};
+const IGNORE=['HANDELSWAREN','INVENTAR','KAUFEN','LOKALER MARKTWERT','KAUFEN LOKALER MARKTWERT','VERFÜGBARE CONTAINERGRÖSSE (SCU)','VERFÜGBARE CONTAINERGRÖSSE','AKTUELLER KONTOSTAND:','AUEC','DEINE INVENTARE','DER SHOP KAUFT GEGENSTÄNDE DIESER GRÖSSE ODER KLEINER:','BITTE EIN GÜLTIGES INVENTAR AUSWÄHLEN,','UM DIE TRANSAKTION DURCHZUFÜHREN.'];
+const STATUS=['AUSVERKAUFT','SEHR NIEDRIGE BESTÄNDE','NIEDRIGE BESTÄNDE','MITTLERE BESTÄNDE','HOHE BESTÄNDE','SEHR HOHE BESTÄNDE','MAXIMALE BESTÄNDE','KEINE NACHFRAGE','NIEDRIGE NACHFRAGE','MITTLERE NACHFRAGE','HOHE NACHFRAGE','SEHR HOHE NACHFRAGE'];
+const NO_LOCATION=['STANDORT WÄHLEN','WÄHLE EINE UNTERKATEGORIE'];
+const KAUF_SECTIONS=new Set(['lager','nicht_vorraetig']);
+const D='0-9OoIlS';
+const PRICE_RE=new RegExp(`[¤#nmNMa]?\\s*([${D}][${D} .,]*)\\s*/\\s*[S58]`);
+const SCU_TAIL_RE=new RegExp(`([${D}][${D} .,]*)\\s*[S5][CG][UJ]\\s*$`,'i');
+const PREFIX_RE=new RegExp(`^[¤nmNM]?\\s*[${D}]{1,3}\\s*[,.]?\\s*$`), TAIL_PREFIX_RE=new RegExp(`[¤nmNM]\\s*[${D}]{1,3}\\s*[,.]?\\s*$`);
+const DIGIT_FIX={O:'0',o:'0',I:'1',l:'1',S:'5'};
+const norm=s=>String(s||'').toUpperCase().replace(/ß|ẞ/g,'SS').replace(/[^A-Z0-9ÄÖÜ&'\- ]+/g,' ').replace(/\s+/g,' ').trim();
+function lev(a,b){const m=a.length,n=b.length;if(!m)return n;if(!n)return m;let prev=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const cur=[i];for(let j=1;j<=n;j++)cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));prev=cur;}return prev[n];}
+const ratio=(a,b)=>{const x=norm(a),y=norm(b),L=Math.max(x.length,y.length);return L?1-lev(x,y)/L:0;};
+function best(text,cands,cutoff,shortCut){const n=norm(text);if(!n)return[null,0];let top=null,score=0;for(const c of cands){const r=ratio(n,c);if(r>score&&r>=(shortCut&&norm(c).length<6?shortCut:cutoff)){top=c;score=r;}}return top?[top,score]:[null,score];}
+const toInt=s=>{const d=String(s).replace(/[OoIlS]/g,c=>DIGIT_FIX[c]).replace(/[^0-9]/g,'');return d?parseInt(d,10):null;};
+
+function linesOf(words){
+  const lines=[];
+  for(const w of [...words].sort((a,b)=>a.y-b.y||a.x-b.x)){
+    const ln=lines.find(L=>Math.abs(L.y-w.y)<Math.max(w.h,8)*0.6);
+    if(ln)ln.w.push(w);else lines.push({y:w.y,h:w.h,w:[w]});
+  }
+  const out=[];
+  for(const L of lines.sort((a,b)=>a.y-b.y)){const ws=L.w.sort((a,b)=>a.x-b.x);out.push({y:L.y,h:L.h,x:ws[0].x,text:ws.map(w=>w.text).join(' ')});}
+  const merged=[];
+  for(const ln of out){const prev=merged[merged.length-1];
+    if(prev&&ln.text.includes('/')&&ln.y-prev.y<prev.h*1.6&&(PREFIX_RE.test(prev.text)||TAIL_PREFIX_RE.test(prev.text))){prev.text=prev.text.trimEnd()+' '+ln.text.trimStart();continue;}
+    merged.push(ln);}
+  return merged;
+}
+function parseLocation(words){
+  const texts=linesOf(words).map(l=>l.text);
+  const isHead=x=>ratio(x,'DEINE INVENTARE')>=0.75||x.split(/\s+/).some(w=>ratio(w,'INVENTARE')>=0.8||ratio(w,'DEINE')>=0.8);
+  const start=texts.findIndex(isHead);
+  if(start<0)return[null,'Panel „Deine Inventare“ nicht gefunden'];
+  for(const x of texts.slice(start+1,start+6)){
+    if(isHead(x))continue;
+    if(['NACHGEFRAGT','KEINE NACHFRAGE','KANN NICHT VERKAUFT WERDEN'].some(h=>ratio(x,h)>=0.75))break;
+    if(NO_LOCATION.some(n=>ratio(x,n)>=0.7))return[null,'Standort nicht gewählt'];
+    const clean=x.replace(/[^A-Za-zÄÖÜäöü0-9&'\- ]+/g,' ').replace(/\s+[A-Za-z]$/,'').trim();
+    if(norm(clean).length>=3)return[clean,''];
+  }
+  return[null,'Standort nicht lesbar'];
+}
+function classify(text){
+  const [h]=best(text,Object.keys(HEADERS),0.78); if(h)return['header',HEADERS[h]];
+  const n=norm(text);
+  if(ratio(text,'BESTAND')>=0.8)return['bestand',null];
+  if(IGNORE.some(i=>ratio(text,i)>=0.8)||n.includes('CONTAINER')||n.includes('GEGENST'))return['ignore',null];
+  const frag=['SEHR','NIEDRIGE','BESTÄNDE','MITTLERE','HOHE','MAXIMALE','NACHFRAGE','KEINE','AUSVERKAUFT'];
+  const toks=n.split(' ').filter(w=>/[A-Z]{3,}/.test(w)); if(toks.length&&toks.every(w=>frag.some(f=>ratio(w,f)>=0.7)))return['ignore',null];
+  if(toks.length<=2&&toks.length&&frag.some(f=>ratio(toks[0],f)>=0.6))return['ignore',null];
+  const [st]=best(text,STATUS,0.72); if(st)return['status',st];
+  let m=SCU_TAIL_RE.exec(text); if(m&&norm(text.slice(0,m.index)).length<3)return['scu',toInt(m[1])];
+  m=PRICE_RE.exec(text); if(m&&text.includes('/'))return['price',{v:toInt(m[1]),raw:m[0].trim()}];
+  return['text',text];
+}
+const garbage=roh=>{const n=norm(roh);return n.replace(/[^A-Z]/g,'').length<5||/\bS?CU\b|^\W/.test(n);};
+function parseItems(words,wares){
+  const items=[];let section=null,cur=null,bestandSeen=false;
+  for(const ln of linesOf(words)){
+    const text=ln.text,[kind,val]=classify(text);
+    if(kind==='header'){section=val;cur=null;}
+    else if(kind==='bestand')bestandSeen=true;
+    else if(kind==='ignore'){}
+    else if(kind==='status'&&cur)cur.status=val;
+    else if(kind==='price'&&cur&&val.v!=null){if(cur.preis==null){cur.preis=val.v;cur.preisRaw=val.raw;}else cur=null;}
+    else if(kind==='scu'&&cur)cur.scu=val;
+    else if(kind==='text'){
+      let tt=text.replace(/\bBESTAND\b/ig,' '); if(/\bBESTAND\b/i.test(text))bestandSeen=true;
+      const m=SCU_TAIL_RE.exec(tt), scu=m?toInt(m[1]):null, namePart=(m?tt.slice(0,m.index):tt).trim();
+      let name=null,score=0,roh=namePart;
+      const toks=namePart.split(/\s+/).filter((w,i,arr)=>!(i===arr.length-1&&/^[0-9OoIlS.,|]+$/.test(w)));   // Zahl/Strich am Ende ist kein Namensteil
+      for(const k of [0,1,2,3]){if(k>=toks.length)break;const cand=toks.slice(k).join(' ');const [nm,sc]=best(cand,wares,0.6,0.75);if(nm&&sc>score){name=nm;score=sc;roh=cand;}}
+      if(!name&&norm(namePart).length>=4){const [nm,sc]=best(norm(namePart).slice(1),wares,0.6,0.75);if(nm){name=nm;score=sc;}}
+      if(!name&&garbage(namePart))continue;
+      cur={ware:name,roh:name?roh:namePart,score:Math.round(score*100)/100,section,preis:null,preisRaw:'',scu,status:''};
+      items.push(cur);
+    }
+  }
+  return[items.filter(i=>i.ware||i.preis!=null),bestandSeen];
+}
+function pickNumber(a,b,notes,label,rawA,rawB,ocr){
+  if(a==null||b==null||a===b)return a!=null?a:b;
+  if(a===0||b===0)return a||b;
+  const sa=String(a),sb=String(b);
+  if(sa.endsWith(sb)||sb.endsWith(sa)){
+    if(rawA&&rawA.startsWith('¤'))return a; if(rawB&&rawB.startsWith('¤'))return b;
+    return ocr==='windows'?Math.max(a,b):Math.min(a,b);   // Windows-OCR verliert Vorziffern, Tesseract erfindet sie (¤)
+  }
+  notes.push(`${label}: ${t('n_two')} (${fmt(a)} / ${fmt(b)})`);return a;
+}
+function mergeItems(dest,items,art,ocr){
+  for(const it of items){const key=it.ware||it.roh;
+    if(!dest.has(key)){dest.set(key,Object.assign({},it,{hinweise:[...(it.hinweise||[])]}));continue;}
+    const o=dest.get(key);
+    o.preis=pickNumber(o.preis,it.preis,o.hinweise,'Preis',o.preisRaw,it.preisRaw,ocr);
+    if(art==='Kauf')o.scu=pickNumber(o.scu,it.scu,o.hinweise,'Bestand');
+    o.status=o.status||it.status;o.section=o.section||it.section;
+    if(it.score>o.score){o.roh=it.roh;o.score=it.score;}
+    if(!o.preisRaw)o.preisRaw=it.preisRaw;
+    o.hinweise=[...new Set([...o.hinweise,...(it.hinweise||[])])];
+  }
+  return dest;
+}
+function decideArt(page,items,bestandSeen,prevArt){
+  const k=page.tabs?.kaufen,m=page.tabs?.markt;
+  if(k!=null&&m!=null&&Math.abs(k-m)>Math.max(k,m)*0.15)return[k>m?'Kauf':'Verkauf','Reiter'];
+  const secs=new Set(items.map(i=>i.section).filter(Boolean));
+  if([...secs].some(s=>KAUF_SECTIONS.has(s)))return['Kauf','Abschnitt'];
+  if(secs.size)return['Verkauf','Abschnitt'];
+  if(bestandSeen)return['Kauf','Bestand'];
+  if(prevArt)return[prevArt,'Vorbild'];
+  return['?',''];
+}
+function matchOrt(location){
+  if(!location)return[null,0];
+  const orte=[...new Set([...REF.shops.map(s=>s.ort),...REF.shops.map(s=>s.shop)])];
+  return best(location,orte,0.7);
+}
+function matchShop(ort,art,seen){
+  if(!ort)return[null,[]];
+  const cands=REF.shops.filter(s=>s.ort===ort||s.shop===ort);
+  const ranked=cands.map(s=>{const known=REF.angebot[`${s.shop}|${s.ort}`]?.[art]||{};return{o:Object.keys(known).filter(w=>seen.includes(w)).length,k:Object.keys(known).length>0,s};})
+    .sort((a,b)=>b.o-a.o||(b.k-a.k)||a.s.shop.localeCompare(b.s.shop));
+  return[ranked[0]?.s||null,ranked.map(r=>r.s)];
+}
+const STAMP_RE=/ScreenShot-(\d{4}-\d{2}-\d{2})_(\d{2})-(\d{2})-(\d{2})/i;
+function stampOf(page){const m=STAMP_RE.exec(page.file);return m?`${m[1]}T${m[2]}:${m[3]}:${m[4]}`:(page.mtime||'').slice(0,19);}
+
+function evaluate(pages){
+  const wares=REF.waren, series=new Map(), prev=new Map();
+  for(const page of [...pages].sort((a,b)=>a.file.localeCompare(b.file))){
+    const v={};for(const x of page.variants)v[x.tag]=x.words;
+    const [location,locNote]=parseLocation(v.L||[]), [ort]=matchOrt(location);
+    const [ia,b1]=parseItems(v.R||[],wares),[ib,b2]=parseItems(v.RB||[],wares);
+    const [art,artQ]=decideArt(page,[...ia,...ib],b1||b2,prev.get(ort||location));
+    const merged=mergeItems(mergeItems(new Map(),ia,art,page.ocr),ib,art,page.ocr);
+    const key=`${ort||location||'?'}|${art}`;
+    if(!series.has(key))series.set(key,{standort:location,ort,standort_hinweis:locNote,art,art_quelle:artQ,bilder:[],items:new Map()});
+    const s=series.get(key);
+    if(location&&(!s.standort||(ort&&ratio(location,ort)>ratio(s.standort,ort))))s.standort=location;
+    if(s.standort_hinweis&&!locNote)s.standort_hinweis='';
+    s.bilder.push({datei:page.file,url:page.url||'',stand:stampOf(page),n:merged.size});
+    for(const it of merged.values()){it.bild=page.file;it.stand=stampOf(page);}
+    mergeItems(s.items,[...merged.values()],art,page.ocr);
+    if(ort||location)prev.set(ort||location,art!=='?'?art:prev.get(ort||location));
+  }
+  const out=[];
+  for(const s of series.values()){
+    const seen=[...s.items.values()].filter(i=>i.ware).map(i=>i.ware);
+    const [shop,cands]=matchShop(s.ort,s.art,seen);
+    const known=shop?(REF.angebot[`${shop.shop}|${shop.ort}`]?.[s.art]||{}):{};
+    const rows=[];
+    for(const it of s.items.values()){
+      const notes=[...it.hinweise],info=[];
+      if(!it.ware)notes.push(`${t('n_ware')} (${t('read')}: „${it.roh}“)`);
+      else if(it.score<0.85)notes.push(`${t('n_unsure')} (${t('read')}: „${it.roh}“)`);
+      let preis=it.preis;
+      if(preis==null)notes.push(t('n_price'));
+      else if(it.ware&&known[it.ware]){
+        // Vorziffer-Falle: das ¤-Zeichen wird mal als Ziffer gelesen (¤10.000 -> 110.000). Referenzpreis entscheidet.
+        const refp=known[it.ware][0], alt=String(preis).length>=2?parseInt(String(preis).slice(1),10):null;
+        const dev=x=>Math.abs(Math.log(x/refp));
+        if(refp&&alt&&dev(alt)<dev(preis)&&dev(alt)<Math.log(2)&&/^[0-9]/.test(it.preisRaw||'')){preis=alt;info.push(`${t('n_prefix')} → ${fmt(alt)}`);}
+        if(refp&&!(preis/refp>=0.5&&preis/refp<=2))notes.push(`${t('n_dev')} (${fmt(refp)})`);
+      }else if(shop&&it.ware)info.push(t('n_new'));
+      if(s.art==='Kauf'&&it.scu==null)notes.push(t('n_stock'));
+      rows.push({ware:it.ware||'',roh:it.roh,art:s.art,preis,bestand_scu:s.art==='Kauf'?it.scu:null,status:(it.status||'').toLowerCase().replace(/(^|\s)\S/g,c=>c.toUpperCase()),
+        abschnitt:it.section||'',bild:it.bild,stand:it.stand,konfidenz:notes.length?'pruefen':'ok',hinweise:[...notes,...info]});
+    }
+    rows.sort((a,b)=>(a.konfidenz!=='pruefen')-(b.konfidenz!=='pruefen')||(a.ware||a.roh).localeCompare(b.ware||b.roh));
+    out.push({standort:s.standort,ort:s.ort,standort_hinweis:s.standort_hinweis,art:s.art,art_quelle:s.art_quelle,shop,shop_kandidaten:cands,bilder:s.bilder,zeilen:rows});
+  }
+  return out.sort((a,b)=>(a.ort||a.standort||'~').localeCompare(b.ort||b.standort||'~')||a.art.localeCompare(b.art));
+}
+
+// =====================================================================
+// OCR im Browser (Tesseract.js): Ausschnitte wie in ocr_engine.ps1, Wörter in Originalkoordinaten
+// =====================================================================
+let worker=null;
+async function getWorker(){
+  if(worker)return worker;
+  setProg(t('loading'),0);
+  worker=await Tesseract.createWorker('deu+eng',1,{logger:m=>{if(m.status==='loading language traineddata'||m.status==='initializing api')setProg(t('loading'),0);}});
+  return worker;
+}
+function cropCanvas(img,x0,y0,w,h,scale,contrast){
+  const c=document.createElement('canvas');c.width=Math.max(1,Math.round(w*scale));c.height=Math.max(1,Math.round(h*scale));
+  const g=c.getContext('2d',{willReadFrequently:true});g.imageSmoothingQuality='high';g.drawImage(img,x0,y0,w,h,0,0,c.width,c.height);
+  const d=g.getImageData(0,0,c.width,c.height),p=d.data;
+  for(let i=0;i<p.length;i+=4){let v=0.299*p[i]+0.587*p[i+1]+0.114*p[i+2];v=(v-128)*contrast+128;p[i]=p[i+1]=p[i+2]=v<0?0:v>255?255:v;}
+  g.putImageData(d,0,0);return c;
+}
+async function ocrWords(wk,canvas,x0,y0,scale){
+  const r=await wk.recognize(canvas);
+  return r.data.words.filter(w=>w.text.trim()).map(w=>{
+    let text=w.text.trim();
+    // Währungszeichen ¤ vor dem Preis: Tesseract liest es als 1, 5, n, m … – die Glyphe ist aber fast quadratisch
+    // und niedriger als eine Ziffer; ein verschmolzenes "¤1" ist doppelt so breit (dann bleibt die 1).
+    if(/^[0-9OoIlSnmNMa#][0-9OoIlS .,]*\/[S58]/.test(text)&&w.symbols&&w.symbols.length>3){
+      const s0=w.symbols[0],s1=w.symbols[1],a=(s0.bbox.x1-s0.bbox.x0)/Math.max(1,s0.bbox.y1-s0.bbox.y0),h1=s1.bbox.y1-s1.bbox.y0;
+      if(a>=0.8&&a<1.3&&((s0.bbox.y1-s0.bbox.y0)<h1*0.95||a>=0.9))text='¤'+text.slice(1);
+      else if(a>=1.3)text='¤'+text;
+    }
+    return{text,x:x0+w.bbox.x0/scale,y:y0+w.bbox.y0/scale,w:(w.bbox.x1-w.bbox.x0)/scale,h:(w.bbox.y1-w.bbox.y0)/scale};});
+}
+function meanBrightness(img,x,y,w,h){
+  const c=document.createElement('canvas');const cw=Math.max(1,Math.round(w)),ch=Math.max(1,Math.round(h));c.width=cw;c.height=ch;
+  const g=c.getContext('2d');g.drawImage(img,Math.max(0,x),Math.max(0,y),cw,ch,0,0,cw,ch);
+  const p=g.getImageData(0,0,cw,ch).data;let s=0,n=0;for(let i=0;i<p.length;i+=4){s+=0.299*p[i]+0.587*p[i+1]+0.114*p[i+2];n++;}return n?s/n:null;
+}
+async function ocrImage(file,idx,total){
+  const img=await createImageBitmap(file).catch(()=>null);
+  if(!img)throw new Error(t('imgErr'));
+  const W=img.width,H=img.height,wk=await getWorker();
+  const step=(k,txt)=>setProg(`${t('reading')} ${idx+1} ${t('of')} ${total}: ${file.name} · ${t('pass')} ${k}/4${txt?' · '+txt:''}`,(idx+(k-1)/4)/total);
+  // 1) rechte Hälfte grob lesen: Reiter finden, Panel eingrenzen
+  step(1);const rx=Math.floor(W*0.55);
+  const rough=await ocrWords(wk,cropCanvas(img,rx,0,W-rx,H,2,1.3),rx,0,2);
+  const kf=rough.find(w=>/^KAUF/i.test(w.text)), mk=rough.find(w=>/^(LOKAL|MARKT|MRKT)/i.test(w.text));
+  const tabs={kaufen:kf?meanBrightness(img,kf.x-kf.w*0.3,kf.y-kf.h*0.3,kf.w*1.6,kf.h*1.6):null,markt:mk?meanBrightness(img,mk.x-mk.w*0.3,mk.y-mk.h*0.3,mk.w*1.6,mk.h*1.6):null};
+  let px0=rx,px1=W,py0=0;
+  if(kf){px0=Math.max(0,kf.x-W*0.02);py0=Math.max(0,kf.y-kf.h*0.5);px1=Math.min(W,Math.max(mk?mk.x+mk.w+W*0.03:0,kf.x+W*0.22));}
+  // 2+3) Panel in zwei Lesungen
+  step(2);const R=await ocrWords(wk,cropCanvas(img,px0,py0,px1-px0,H-py0,3,1.3),px0,py0,3);
+  step(3);const RB=await ocrWords(wk,cropCanvas(img,px0,py0,px1-px0,H-py0,4,3.0),px0,py0,4);
+  // 4) linkes Panel: "Deine Inventare" suchen, Standort-Zeile fein lesen
+  step(4);const lx=Math.floor(W*0.45);
+  let L=await ocrWords(wk,cropCanvas(img,0,0,lx,H,2,1.3),0,0,2);
+  const di=linesOf(L).find(l=>ratio(l.text,'DEINE INVENTARE')>=0.7);
+  if(di){const x0=Math.max(0,di.x-di.h),y0=di.y+di.h*1.1,w=Math.min(W-x0,W*0.14),h=di.h*5;
+    let bestL=null,bestS=-1;
+    await wk.setParameters({tessedit_pageseg_mode:'6'});
+    for(const [sc,ct] of [[4,1.5],[5,2.5]]){const cand=await ocrWords(wk,cropCanvas(img,x0,y0,w,h,sc,ct),x0,y0,sc);
+      const loc=linesOf(cand).map(l=>l.text.replace(/[^A-Za-zÄÖÜäöü0-9&'\- ]+/g,' ').trim()).find(x=>norm(x).length>=3)||null;
+      const [ort,score]=matchOrt(loc);const sc2=ort?score:(loc&&NO_LOCATION.some(n=>ratio(loc,n)>=0.7)?0.5:-0.5);
+      if(sc2>bestS){bestS=sc2;bestL=cand;}}
+    await wk.setParameters({tessedit_pageseg_mode:'3'});
+    // Kopfzeile "DEINE INVENTARE" künstlich voranstellen, damit parseLocation die Zeile darunter nimmt
+    if(bestL&&bestS>-0.5)L=[{text:'DEINE',x:di.x,y:di.y,w:di.h*3,h:di.h},{text:'INVENTARE',x:di.x+di.h*3.5,y:di.y,w:di.h*5,h:di.h},...bestL];}
+  img.close&&img.close();
+  return{file:file.name,url:URL.createObjectURL(file),imgW:W,imgH:H,mtime:new Date(file.lastModified).toISOString(),ocr:'tesseract',tabs,variants:[{tag:'L',words:L},{tag:'R',words:R},{tag:'RB',words:RB}]};
+}
+
+// =====================================================================
+// Ablauf: Dateien -> Seiten -> Serien -> Tabelle
+// =====================================================================
+let PAGES=[], SERIEN=[];
+function setProg(txt,frac){$('#prog').classList.remove('hide');$('#progText').textContent=txt;$('#progBar').style.width=Math.round(Math.min(1,frac)*100)+'%';}
+async function handleFiles(list){
+  const files=[...list].filter(f=>/\.(png|jpe?g|json)$/i.test(f.name)).sort((a,b)=>a.name.localeCompare(b.name));
+  if(!files.length)return;
+  const ul=$('#fileList');
+  for(let i=0;i<files.length;i++){
+    const f=files[i],li=document.createElement('li');li.textContent=f.name;ul.appendChild(li);
+    try{
+      if(/\.json$/i.test(f.name)){const d=JSON.parse(await f.text());if(!d.pages)throw new Error(t('jsonErr'));
+        for(const p of d.pages)PAGES.push(Object.assign({url:'',ocr:'windows'},p));li.innerHTML=`<span class="ok">✓</span> ${esc(f.name)} (${d.pages.length} ${t('pics')})`;}
+      else{const page=await ocrImage(f,i,files.length);PAGES.push(page);
+        const n=page.variants.find(v=>v.tag==='R').words.length;li.innerHTML=`<span class="${n?'ok':'bad'}">${n?'✓':'✗'}</span> ${esc(f.name)}${n?'':' – '+t('notext')}`;}
+    }catch(e){li.innerHTML=`<span class="bad">✗</span> ${esc(f.name)} – ${esc(e.message)}`;}
+    SERIEN=evaluate(PAGES);render();
+  }
+  setProg(`${t('done')}: ${PAGES.length} ${t('pics')}`,1);
+}
+function render(){
+  document.documentElement.dataset.lang=lang;document.documentElement.dataset.theme=theme;
+  $('#refStat').innerHTML=REF.waren?`${t('ref')}: star-head · ${esc(REF.stand)} · ${t('patch')} ${esc(REF.patch)} · ${REF.waren.length} ${t('waren')} · ${REF.shops.length} ${t('shops')}`:'';
+  const main=$('#main');main.innerHTML='';
+  const has=SERIEN.length>0;$('#resultHead').classList.toggle('hide',!has);$('#resultFoot').classList.toggle('hide',!has);
+  let total=0,chk=0;
+  SERIEN.forEach((s,si)=>{
+    total+=s.zeilen.length;chk+=s.zeilen.filter(r=>r.konfidenz==='pruefen').length;
+    const kauf=s.art==='Kauf', cands=s.shop_kandidaten.length?s.shop_kandidaten:REF.shops;
+    const sel=`<label class="sel">${t('shop')}<select data-si="${si}">${s.shop_kandidaten.length?'':`<option value="">– ${t('unknown')} –</option>`}${cands.map(c=>`<option value="${esc(c.shop+'|'+c.ort)}"${s.shop&&c.shop===s.shop.shop&&c.ort===s.shop.ort?' selected':''}>${esc(c.shop)} (${esc(c.ort)}, ${esc(c.system)})</option>`).join('')}</select></label>`;
+    const img=b=>b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.datei)}</a>`:esc(b.datei);
+    const rows=s.zeilen.map((r,ri)=>`<tr class="${r.konfidenz==='pruefen'?'chk':''}" data-si="${si}" data-ri="${ri}">
+      <td class="ware" contenteditable="true" spellcheck="false">${esc(r.ware||r.roh)}</td>
+      <td class="num preis" contenteditable="true">${fmt(r.preis)}</td>
+      ${kauf?`<td class="num bestand" contenteditable="true">${fmt(r.bestand_scu)}</td>`:''}
+      <td>${esc(r.status)}</td><td>${esc(r.stand).replace('T',' ')}</td><td>${img(s.bilder.find(b=>b.datei===r.bild)||{datei:r.bild})}</td>
+      <td class="flag">${r.konfidenz==='pruefen'?`<span class="tag">${t('pruefen')}</span>`:''}${esc(r.hinweise.join(' · '))} <span class="edited-mark">✓ ${t('edited')}</span></td>
+      <td><button class="rm" type="button" title="${t('del')}" data-rm>✕</button></td></tr>`).join('');
+    main.insertAdjacentHTML('beforeend',`<section class="panel">
+      <div class="head"><div><h2>${esc(s.ort||s.standort||'?')}${s.ort&&s.standort&&s.ort.toUpperCase()!==s.standort.toUpperCase()?` <small style="color:var(--muted);font-weight:400">(${t('read')}: ${esc(s.standort)})</small>`:''}<span class="pill ${kauf?'kauf':'verkauf'}">${kauf?t('kaufen'):s.art==='Verkauf'?t('markt'):'?'}</span></h2>
+        <div class="meta">${s.bilder.length} ${t('pics')} · ${s.zeilen.length} ${t('rows')} · <b>${s.zeilen.filter(r=>r.konfidenz==='pruefen').length}</b> ${t('chk')}</div></div>${sel}</div>
+      ${!s.standort?`<div class="warn"><b>⚠</b> ${t('noloc')}${s.standort_hinweis?' ('+esc(s.standort_hinweis)+')':''}</div>`:''}
+      ${s.zeilen.length?`<div class="tablewrap"><table><thead><tr><th>${t('ware')}</th><th class="num">${t('preis')}</th>${kauf?`<th class="num">${t('bestand')}</th>`:''}<th>${t('status')}</th><th>${t('stand')}</th><th>${t('bild')}</th><th>${t('hinweis')}</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`:`<div class="empty">${t('none')}</div>`}
+      <details><summary>${t('pics')}</summary><ul>${s.bilder.map(b=>`<li>${img(b)} · ${esc(b.stand).replace('T',' ')} · ${b.n} ${t('rows')}</li>`).join('')}</ul></details>
+    </section>`);
+  });
+  if(has)$('#stat').innerHTML=`<b>${SERIEN.length}</b> ${t('series')} · <b>${total}</b> ${t('rows')} · <b>${chk}</b> ${t('chk')}`;
+}
+function collect(){
+  const out=[];
+  $$('tbody tr').forEach(tr=>{
+    const s=SERIEN[+tr.dataset.si],r=s.zeilen[+tr.dataset.ri];
+    const selv=$(`select[data-si="${tr.dataset.si}"]`).value,shop=(s.shop_kandidaten.length?s.shop_kandidaten:REF.shops).find(c=>c.shop+'|'+c.ort===selv)||null;
+    const num=td=>{const v=(td?.textContent||'').replace(/[^0-9]/g,'');return v?+v:null;};
+    out.push({system:shop?.system||'',ort:shop?.ort||s.ort||s.standort||'',shop:shop?.shop||'',standort_im_bild:s.standort||'',art:s.art,
+      ware:tr.querySelector('.ware').textContent.trim(),preis_auec_scu:num(tr.querySelector('.preis')),bestand_scu:s.art==='Kauf'?num(tr.querySelector('.bestand')):null,
+      status:r.status,stand:r.stand,bild:r.bild,konfidenz:tr.classList.contains('edited')?'korrigiert':r.konfidenz,hinweise:r.hinweise.join('; ')});
+  });
+  return out;
+}
+function download(kind){
+  const rows=collect(),meta={schema:SCHEMA,generator:`SC Screenshot-Auswerter ${VERSION} (Browser)`,generated:new Date().toISOString().slice(0,19),client:'de',ocr:'tesseract.js deu+eng',referenz_stand:REF.stand,patch:REF.patch};
+  let blob,name;
+  if(kind==='json'){blob=new Blob([JSON.stringify(Object.assign(meta,{eintraege:rows}),null,1)],{type:'application/json'});name='auswertung.json';}
+  else{const cols=Object.keys(rows[0]||{ware:''}),q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+    blob=new Blob(['﻿'+[cols.join(';'),...rows.map(r=>cols.map(c=>q(r[c])).join(';'))].join('\r\n')],{type:'text/csv'});name='auswertung.csv';}
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+  toast(`${name} ${t('dl')} (${rows.length} ${t('rows')})`);
+}
+function buildRef(d){
+  const wares=d.wares.map(w=>w.w),shops=new Map(),angebot={};
+  for(const [idx,art,preis,shop,ort,system,,,stand] of d.rows){shops.set(shop+'|'+ort,{shop,ort,system});(angebot[shop+'|'+ort]??={})[art?'Verkauf':'Kauf']??={};angebot[shop+'|'+ort][art?'Verkauf':'Kauf'][wares[idx]]=[preis,stand];}
+  return{schema:'sc-auswerter-referenz/1',quelle:d.source||'star-head.de',stand:d.generated||'',patch:d.patch||'',waren:wares,shops:[...shops.values()].sort((a,b)=>a.shop.localeCompare(b.shop)),angebot};
+}
+async function refreshRef(){
+  const b=$('#refBtn');b.disabled=true;
+  try{const r=await fetch(REF_URL,{cache:'no-store'});if(!r.ok)throw new Error(r.status);const d=await r.json();
+    if(d.generated===REF.stand)toast(t('refSame'));else{REF=buildRef(d);localStorage.setItem('sca_ref',JSON.stringify(REF));toast(t('refOk'));SERIEN=evaluate(PAGES);render();}
+  }catch(e){toast(t('refErr'));}
+  b.disabled=false;
+}
+let tt;function toast(m){const e=$('#toast');e.textContent=m;e.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('show'),2500);}
+document.addEventListener('click',e=>{
+  const dl=e.target.closest('[data-dl]');if(dl){download(dl.dataset.dl);return;}
+  if(e.target.closest('[data-rm]')){e.target.closest('tr').remove();toast(t('del'));return;}
+  if(e.target.closest('#langBtn')){lang=lang==='de'?'en':'de';localStorage.setItem('sca_lang',lang);render();}
+  if(e.target.closest('#themeBtn')){theme=theme==='dark'?'light':'dark';localStorage.setItem('sca_theme',theme);document.documentElement.dataset.theme=theme;}
+  if(e.target.closest('#refBtn'))refreshRef();
+  if(e.target.closest('#pickBtn'))$('#fileIn').click();
+  if(e.target.closest('#pickDirBtn'))$('#dirIn').click();
+  if(e.target.closest('#resetBtn')){PAGES=[];SERIEN=[];$('#fileList').innerHTML='';$('#prog').classList.add('hide');render();}
+  if(e.target===$('#drop')||($('#drop').contains(e.target)&&!e.target.closest('button')))$('#fileIn').click();
+});
+document.addEventListener('input',e=>{const tr=e.target.closest('tr');if(tr){tr.classList.add('edited');tr.classList.remove('chk');}});
+$('#fileIn').addEventListener('change',e=>{handleFiles(e.target.files);e.target.value='';});
+$('#dirIn').addEventListener('change',e=>{handleFiles(e.target.files);e.target.value='';});
+const drop=$('#drop');
+['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over');}));
+['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('over');}));
+drop.addEventListener('drop',e=>handleFiles(e.dataTransfer.files));
+try{const saved=localStorage.getItem('sca_ref');if(saved){const r=JSON.parse(saved);if(r.stand>REF.stand)REF=r;}}catch(e){}
+render();
+</script>
+</body>
+</html>
