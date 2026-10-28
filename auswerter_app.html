@@ -222,8 +222,8 @@ function parseItems(words,wares){
       let tt=text.replace(/\bBESTAND\b/ig,' '); if(/\bBESTAND\b/i.test(text))bestandSeen=true;
       const m=SCU_TAIL_RE.exec(tt), scu=m?toInt(m[1]):null, namePart=(m?tt.slice(0,m.index):tt).trim();
       let name=null,score=0,roh=namePart;
-      const toks=namePart.split(/\s+/);
-      for(const k of [0,1,2]){if(k>=toks.length)break;const cand=toks.slice(k).join(' ');const [nm,sc]=best(cand,wares,0.6,0.75);if(nm&&sc>score){name=nm;score=sc;roh=cand;}}
+      const toks=namePart.split(/\s+/).filter((w,i,arr)=>!(i===arr.length-1&&/^[0-9OoIlS.,|]+$/.test(w)));   // Zahl/Strich am Ende ist kein Namensteil
+      for(const k of [0,1,2,3]){if(k>=toks.length)break;const cand=toks.slice(k).join(' ');const [nm,sc]=best(cand,wares,0.6,0.75);if(nm&&sc>score){name=nm;score=sc;roh=cand;}}
       if(!name&&norm(namePart).length>=4){const [nm,sc]=best(norm(namePart).slice(1),wares,0.6,0.75);if(nm){name=nm;score=sc;}}
       if(!name&&garbage(namePart))continue;
       cur={ware:name,roh:name?roh:namePart,score:Math.round(score*100)/100,section,preis:null,preisRaw:'',scu,status:''};
