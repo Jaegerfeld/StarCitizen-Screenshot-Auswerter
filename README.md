@@ -14,7 +14,7 @@ Two purposes:
 ## How to
 
 1. **Before the screenshot:** in the left panel "Your inventories" **select the location**. The place is then visible in the image and can be matched.
-2. **Face the terminal squarely** and capture with the SC screenshot key (default **F12**, file `ScreenShot-YYYY-MM-DD_hh-mm-ss-xxx.jpg` in `StarCitizen\LIVE\screenshots`) or any tool. Long lists: scroll and take several screenshots, they are merged.
+2. **Face the terminal squarely** and capture with the SC screenshot key (**Print**, file `ScreenShot-YYYY-MM-DD_hh-mm-ss-xxx.jpg` in `StarCitizen\LIVE\screenshots`) or any tool. Long lists: scroll and take several screenshots, they are merged.
 3. **Open the page** (online or `SC_Screenshot_Auswerter.html` by double-click) and drop the images – single files or a whole folder. About 15 seconds per image; series appear as soon as they are read.
 4. **Review:** check highlighted rows against the screenshot (link in the "Image" column). Values right: click **✓** (or "Confirm all open rows in this series"). Values wrong: edit commodity, price or stock in place. Not a commodity at all (icon noise): **✕** removes the row from the export. The counter "still to check" shows when you are done; the export asks before leaving yellow rows in. If the place is ambiguous (e.g. Orison: TDD or Municipal Services) pick the shop in the series header.
 5. **Download:** "JSON" or "CSV" – with the reviewed values.
@@ -35,10 +35,11 @@ Two purposes:
 
 The built-in Windows OCR reads slightly better than the browser engine but needs Windows. Drop a folder or images onto `Windows_OCR_lesen.bat`: `ocr_engine.ps1` writes `ocr_words.json` next to the screenshots; drop that file into the page. Evaluation, review table and export are the same.
 
-## Limits (0.2.0)
+## Limits (0.5.0)
 
 - **Terminals captured at an angle** (up to about 30°): the page straightens the right panel from four corners (found automatically or clicked by you) and isolates the text by threshold. Still noticeably worse than a square shot; the place is often not recognised then, so pick the shop by hand. Standing square in front remains best.
-- German game client only for now; English terminal texts follow once screenshots are available.
+- German and English game clients are recognised (tabs, sections, status, location field); the file list shows the detected client per image. No other languages.
+- If the terminal shows the price per container (`/UNITS`, when a container size is selected in game), the page converts to per SCU via the star-head reference price and notes the divisor; without a reference the row stays flagged.
 - Single prices may stay unreadable (e.g. an icon touching the number); they are flagged, not guessed.
 
 ## File format

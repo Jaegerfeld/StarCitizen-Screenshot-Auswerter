@@ -2,6 +2,15 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [0.5.0] – 2026-10-29
+
+### Hinzugefügt
+- **Englischer Spiel-Client:** Reiter BUY / LOCAL MARKET VALUE, Abschnitte IN STOCK / OUT OF STOCK / SELLABLE CARGO / IN DEMAND / NO DEMAND / CANNOT SELL, Statuszeilen (VERY LOW … MAX INVENTORY, … DEMAND), SHOP QUANTITY, YOUR INVENTORIES / SELECT LOCATION. Deutsch und Englisch laufen durch dieselbe Logik; die Dateiliste zeigt je Bild den erkannten Client, der Export trägt ihn im Feld `client`.
+- **Preis je Container** (`¤ …/UNITS`, wenn im Spiel eine Containergröße angewählt ist): Umrechnung auf je SCU über den star-head-Referenzpreis (Teiler 2–32 wird vermerkt), sonst Markierung „zu prüfen“.
+
+### Geändert
+- Hinweistext und README: Screenshots im Spiel mit **Druck** (englisch **Print**), nicht F12.
+
 ## [0.4.0] – 2026-10-28
 
 ### Hinzugefügt
