@@ -105,7 +105,7 @@
     <div class="toolbar" style="justify-content:center"><button class="btn primary" type="button" id="pickBtn"><span class="de">Bilder wählen</span><span class="en">Choose images</span></button><button class="btn" type="button" id="pickDirBtn"><span class="de">Ordner wählen</span><span class="en">Choose folder</span></button></div>
     <div class="rules">
       <div class="rule"><b>1 ·</b> <span class="de">Vor dem Screenshot links unter „Deine Inventare“ den <b>Standort auswählen</b> – sonst steht nur „Standort wählen“ im Bild und der Ort fehlt.</span><span class="en">Before the screenshot, <b>select the location</b> under “Your inventories” on the left – otherwise the image only says “Select location”.</span></div>
-      <div class="rule"><b>2 ·</b> <span class="de"><b>Frontal</b> auf die Konsole schauen. Schräge Aufnahmen liest die Texterkennung schlecht. Die Screenshot-Taste des Spiels (F12) reicht.</span><span class="en">Look at the terminal <b>squarely</b>. Angled shots read poorly. The game's screenshot key (F12) is fine.</span></div>
+      <div class="rule"><b>2 ·</b> <span class="de"><b>Frontal</b> auf die Konsole schauen. Schräge Aufnahmen liest die Texterkennung schlecht. Die Screenshot-Taste des Spiels (<b>Druck</b>) reicht. Deutscher und englischer Client werden erkannt.</span><span class="en">Look at the terminal <b>squarely</b>. Angled shots read poorly. The game's screenshot key (<b>Print</b>) is fine. German and English clients are both recognised.</span></div>
     </div>
   </div>
   <input type="file" id="fileIn" class="hide" multiple accept="image/png,image/jpeg,.json">
@@ -149,26 +149,30 @@ const T={de:{ware:'Ware',preis:'Preis ¤/SCU',bestand:'Bestand SCU',status:'Stat
   pics:'Bilder',rows:'Zeilen',chk:'noch zu prüfen',okb:'Zeile bestätigen (Werte passen)',okAll:'Alle offenen in dieser Serie bestätigen',confirmed:'bestätigt',exportAsk:'Zeilen sind noch nicht geprüft (gelb). Trotzdem exportieren?',none:'Keine Waren erkannt – ist das ein Screenshot der Handelskonsole (Reiter Kaufen / Lokaler Marktwert)?',del:'Zeile entfernen',dl:'heruntergeladen',unknown:'unbekannt',series:'Serien',
   loading:'Texterkennung wird geladen …',reading:'Lese',of:'von',pass:'Lesung',done:'Fertig',ref:'Referenz',refOk:'Referenz aktualisiert.',refSame:'Referenz ist schon aktuell.',refErr:'GitHub nicht erreichbar – eingebaute Referenz bleibt.',
   notext:'kein Konsolentext gefunden',skewed:'schräg – entzerrt gelesen',skipped:'übersprungen',cornerAsk:'Bitte vier Ecken anklicken',cTL:'oben links',cTR:'oben rechts',cBR:'unten rechts',cBL:'unten links',imgErr:'Bild nicht lesbar',jsonErr:'JSON ohne OCR-Wörter',kaufen:'KAUFEN · Shop verkauft',markt:'LOKALER MARKTWERT · Shop kauft',read:'gelesen',waren:'Waren',shops:'Shops',patch:'Patch',
-  n_ware:'Ware nicht erkannt',n_unsure:'Name unsicher',n_price:'Preis nicht lesbar',n_dev:'Preis weicht stark vom letzten star-head-Wert ab',n_new:'neu für diesen Shop',n_stock:'Bestand nicht lesbar',n_two:'zwei Lesungen',n_diff:'unterschiedlich in',n_prefix:'Preis ohne/mit Vorziffer unklar'},
+  n_ware:'Ware nicht erkannt',n_unsure:'Name unsicher',n_price:'Preis nicht lesbar',n_dev:'Preis weicht stark vom letzten star-head-Wert ab',n_new:'neu für diesen Shop',n_stock:'Bestand nicht lesbar',n_two:'zwei Lesungen',n_diff:'unterschiedlich in',n_prefix:'Preis ohne/mit Vorziffer unklar',n_unit:'Preis je Container (/UNITS), nicht je SCU',client_de:'deutscher Client',client_en:'englischer Client',glass:'Glas-Kiosk – per Schwellwert gelesen'},
  en:{ware:'Commodity',preis:'Price ¤/SCU',bestand:'Stock SCU',status:'Status',stand:'As of',bild:'Image',hinweis:'Notes',pruefen:'CHECK',edited:'edited',
   shop:'Shop (star-head)',noloc:'Location not recognised – please pick the shop. Tip: select the location in “Your inventories” before the screenshot.',
   pics:'images',rows:'rows',chk:'still to check',okb:'Confirm row (values are right)',okAll:'Confirm all open rows in this series',confirmed:'confirmed',exportAsk:'rows are still unchecked (yellow). Export anyway?',none:'No commodities recognised – is this a screenshot of the trade terminal (tab Buy / Local market value)?',del:'Remove row',dl:'downloaded',unknown:'unknown',series:'series',
   loading:'Loading OCR …',reading:'Reading',of:'of',pass:'pass',done:'Done',ref:'Reference',refOk:'Reference updated.',refSame:'Reference already up to date.',refErr:'GitHub unreachable – built-in reference kept.',
   notext:'no terminal text found',skewed:'angled – read after straightening',skipped:'skipped',cornerAsk:'Please click four corners',cTL:'top-left',cTR:'top-right',cBR:'bottom-right',cBL:'bottom-left',imgErr:'image unreadable',jsonErr:'JSON without OCR words',kaufen:'BUY · shop sells',markt:'LOCAL MARKET VALUE · shop buys',read:'read',waren:'commodities',shops:'shops',patch:'patch',
-  n_ware:'commodity not recognised',n_unsure:'name uncertain',n_price:'price unreadable',n_dev:'price far from last star-head value',n_new:'new for this shop',n_stock:'stock unreadable',n_two:'two readings',n_diff:'differs in',n_prefix:'price with/without leading digit unclear'}};
+  n_ware:'commodity not recognised',n_unsure:'name uncertain',n_price:'price unreadable',n_dev:'price far from last star-head value',n_new:'new for this shop',n_stock:'stock unreadable',n_two:'two readings',n_diff:'differs in',n_prefix:'price with/without leading digit unclear',n_unit:'price per container (/UNITS), not per SCU',client_de:'German client',client_en:'English client',glass:'glass kiosk – read by threshold'}};
 const t=k=>T[lang][k];
 
 // =====================================================================
-// Parser (Konsolen-Texte, deutscher Client) – eine Logik für Tesseract- und Windows-OCR-Wörter
+// Parser (Konsolen-Texte, deutscher und englischer Client) – eine Logik für Tesseract- und Windows-OCR-Wörter
 // =====================================================================
-const HEADERS={'AUF LAGER':'lager','NICHT VORRÄTIG':'nicht_vorraetig','VERKAUFBARE FRACHT':'eigene_fracht','NACHGEFRAGT':'nachgefragt','KEINE NACHFRAGE':'keine_nachfrage','KANN NICHT VERKAUFT WERDEN':'unverkaeuflich'};
-const IGNORE=['HANDELSWAREN','INVENTAR','KAUFEN','LOKALER MARKTWERT','KAUFEN LOKALER MARKTWERT','VERFÜGBARE CONTAINERGRÖSSE (SCU)','VERFÜGBARE CONTAINERGRÖSSE','AKTUELLER KONTOSTAND:','AUEC','DEINE INVENTARE','DER SHOP KAUFT GEGENSTÄNDE DIESER GRÖSSE ODER KLEINER:','BITTE EIN GÜLTIGES INVENTAR AUSWÄHLEN,','UM DIE TRANSAKTION DURCHZUFÜHREN.'];
-const STATUS=['AUSVERKAUFT','SEHR NIEDRIGE BESTÄNDE','NIEDRIGE BESTÄNDE','MITTLERE BESTÄNDE','HOHE BESTÄNDE','SEHR HOHE BESTÄNDE','MAXIMALE BESTÄNDE','KEINE NACHFRAGE','NIEDRIGE NACHFRAGE','MITTLERE NACHFRAGE','HOHE NACHFRAGE','SEHR HOHE NACHFRAGE'];
-const NO_LOCATION=['STANDORT WÄHLEN','WÄHLE EINE UNTERKATEGORIE'];
+const HEADERS={'AUF LAGER':'lager','NICHT VORRÄTIG':'nicht_vorraetig','VERKAUFBARE FRACHT':'eigene_fracht','NACHGEFRAGT':'nachgefragt','KEINE NACHFRAGE':'keine_nachfrage','KANN NICHT VERKAUFT WERDEN':'unverkaeuflich',
+  'IN STOCK':'lager','OUT OF STOCK':'nicht_vorraetig','SELLABLE CARGO':'eigene_fracht','IN DEMAND':'nachgefragt','NO DEMAND':'keine_nachfrage','CANNOT SELL':'unverkaeuflich'};
+const IGNORE=['HANDELSWAREN','INVENTAR','KAUFEN','LOKALER MARKTWERT','KAUFEN LOKALER MARKTWERT','VERFÜGBARE CONTAINERGRÖSSE (SCU)','VERFÜGBARE CONTAINERGRÖSSE','AKTUELLER KONTOSTAND:','AUEC','DEINE INVENTARE','DER SHOP KAUFT GEGENSTÄNDE DIESER GRÖSSE ODER KLEINER:','BITTE EIN GÜLTIGES INVENTAR AUSWÄHLEN,','UM DIE TRANSAKTION DURCHZUFÜHREN.',
+  'COMMODITIES','SHOP INVENTORY','BUY','LOCAL MARKET VALUE','BUY LOCAL MARKET VALUE','AVAILABLE CARGO SIZE (SCU)','AVAILABLE CARGO SIZE','CURRENT BALANCE:','YOUR INVENTORIES','SELECT SUB-CATEGORY','SELECT LOCATION','PLEASE SELECT A VALID INVENTORY','TO MAKE A TRANSACTION','QUALITY 0','SHOP QUANTITY'];
+const STATUS=['AUSVERKAUFT','SEHR NIEDRIGE BESTÄNDE','NIEDRIGE BESTÄNDE','MITTLERE BESTÄNDE','HOHE BESTÄNDE','SEHR HOHE BESTÄNDE','MAXIMALE BESTÄNDE','KEINE NACHFRAGE','NIEDRIGE NACHFRAGE','MITTLERE NACHFRAGE','HOHE NACHFRAGE','SEHR HOHE NACHFRAGE',
+  'OUT OF STOCK','VERY LOW INVENTORY','LOW INVENTORY','MEDIUM INVENTORY','HIGH INVENTORY','VERY HIGH INVENTORY','MAX INVENTORY','NO DEMAND','LOW DEMAND','MEDIUM DEMAND','HIGH DEMAND','VERY HIGH DEMAND'];
+const NO_LOCATION=['STANDORT WÄHLEN','WÄHLE EINE UNTERKATEGORIE','SELECT LOCATION','SELECT SUB-CATEGORY'];
 const KAUF_SECTIONS=new Set(['lager','nicht_vorraetig']);
 const D='0-9OoIlS';
-const PRICE_RE=new RegExp(`[¤#nmNMa]?\\s*([${D}][${D} .,]*)\\s*/\\s*[S58936]`);
-const SCU_TAIL_RE=new RegExp(`([${D}][${D} .,]*)\\s*[S53][CG][UJYH]\\s*$`,'i');
+const PRICE_RE=new RegExp(`[¤#nmNMa]?\\s*([${D}][${D} .,]*)\\s*/\\s*([S58936]|U)`,'i');   // "/SCU" oder "/UNITS" (Preis je gewählter Containergröße)
+const SCU_TAIL_RE=new RegExp(`([${D}][${D} .,]*)\\s*[S53][CG][UJYHV]\\s*$`,'i');
+const SCU_ANY_RE=new RegExp(`([${D}][${D} .,]*)\\s*[S53][CG][UJYHV](?=\\s|$)`,'i');   // wie SCU_TAIL_RE, aber Müll dahinter erlaubt (Glas-Kioske)
 const PREFIX_RE=new RegExp(`^[¤nmNM]?\\s*[${D}]{1,3}\\s*[,.]?\\s*$`), TAIL_PREFIX_RE=new RegExp(`[¤nmNM]\\s*[${D}]{1,3}\\s*[,.]?\\s*$`);
 const DIGIT_FIX={O:'0',o:'0',I:'1',l:'1',S:'5'};
 const norm=s=>String(s||'').toUpperCase().replace(/ß|ẞ/g,'SS').replace(/[^A-Z0-9ÄÖÜ&'\- ]+/g,' ').replace(/\s+/g,' ').trim();
@@ -191,16 +195,17 @@ function linesOf(words){
     merged.push(ln);}
   return merged;
 }
+const isLocHead=x=>ratio(x,'DEINE INVENTARE')>=0.75||ratio(x,'YOUR INVENTORIES')>=0.75||x.split(/\s+/).some(w=>ratio(w,'INVENTARE')>=0.8||ratio(w,'DEINE')>=0.8||ratio(w,'INVENTORIES')>=0.8||ratio(w,'YOUR')>=0.8);
 function parseLocation(words){
   const texts=linesOf(words).map(l=>l.text);
-  const isHead=x=>ratio(x,'DEINE INVENTARE')>=0.75||x.split(/\s+/).some(w=>ratio(w,'INVENTARE')>=0.8||ratio(w,'DEINE')>=0.8);
+  const isHead=isLocHead;
   const start=texts.findIndex(isHead);
-  if(start<0)return[null,'Panel „Deine Inventare“ nicht gefunden'];
+  if(start<0)return[null,'Panel „Deine Inventare“ / “Your inventories” nicht gefunden'];
   for(const x of texts.slice(start+1,start+6)){
     if(isHead(x))continue;
-    if(['NACHGEFRAGT','KEINE NACHFRAGE','KANN NICHT VERKAUFT WERDEN'].some(h=>ratio(x,h)>=0.75))break;
+    if(['NACHGEFRAGT','KEINE NACHFRAGE','KANN NICHT VERKAUFT WERDEN','IN DEMAND','NO DEMAND','CANNOT SELL'].some(h=>ratio(x,h)>=0.75))break;
     if(NO_LOCATION.some(n=>ratio(x,n)>=0.7))return[null,'Standort nicht gewählt'];
-    const clean=x.replace(/[^A-Za-zÄÖÜäöü0-9&'\- ]+/g,' ').replace(/\s+[A-Za-z]$/,'').trim();
+    const clean=x.replace(/[^A-Za-zÄÖÜäöü0-9&'\- ]+/g,' ').replace(/\s+[A-Za-z0-9]$/,'').trim();
     if(norm(clean).length>=3)return[clean,''];
   }
   return[null,'Standort nicht lesbar'];
@@ -208,14 +213,15 @@ function parseLocation(words){
 function classify(text){
   const [h]=best(text,Object.keys(HEADERS),0.78); if(h)return['header',HEADERS[h]];
   const n=norm(text);
-  if(ratio(text,'BESTAND')>=0.8)return['bestand',null];
-  if(IGNORE.some(i=>ratio(text,i)>=0.8)||n.includes('CONTAINER')||n.includes('GEGENST'))return['ignore',null];
-  const frag=['SEHR','NIEDRIGE','BESTÄNDE','MITTLERE','HOHE','MAXIMALE','NACHFRAGE','KEINE','AUSVERKAUFT'];
+  if(ratio(text,'BESTAND')>=0.8||ratio(text,'SHOP QUANTITY')>=0.8)return['bestand',null];
+  if(IGNORE.some(i=>ratio(text,i)>=0.8)||n.includes('CONTAINER')||n.includes('GEGENST')||n.includes('CARGO SIZE'))return['ignore',null];
+  // Preis vor den Status-Bruchstücken prüfen: im englischen Client stehen Status und Preis oft in einer Zeile ("LOW INVENTORY ¤3,106/SCU")
+  let m=PRICE_RE.exec(text); if(m&&text.includes('/'))return['price',{v:toInt(m[1]),raw:m[0].trim(),unit:/^u/i.test(m[2]),pre:text.slice(0,m.index)}];
+  m=SCU_TAIL_RE.exec(text); if(m&&norm(text.slice(0,m.index)).length<3)return['scu',toInt(m[1])];
+  const frag=['SEHR','NIEDRIGE','BESTÄNDE','MITTLERE','HOHE','MAXIMALE','NACHFRAGE','KEINE','AUSVERKAUFT','VERY','LOW','MEDIUM','HIGH','MAX','INVENTORY','DEMAND','STOCK','OUT','AVAILABLE','CARGO','SIZE','SELLABLE','SHOP','QUANTITY','INVENTORIES','CURRENT','BALANCE'];
   const toks=n.split(' ').filter(w=>/[A-Z]{3,}/.test(w)); if(toks.length&&toks.every(w=>frag.some(f=>ratio(w,f)>=0.7)))return['ignore',null];
-  if(toks.length<=2&&toks.length&&frag.some(f=>ratio(toks[0],f)>=0.6))return['ignore',null];
+  if(toks.length<=2&&toks.length&&frag.some(f=>ratio(toks[0],f)>=0.75))return['ignore',null];
   const [st]=best(text,STATUS,0.72); if(st)return['status',st];
-  let m=SCU_TAIL_RE.exec(text); if(m&&norm(text.slice(0,m.index)).length<3)return['scu',toInt(m[1])];
-  m=PRICE_RE.exec(text); if(m&&text.includes('/'))return['price',{v:toInt(m[1]),raw:m[0].trim()}];
   return['text',text];
 }
 const garbage=roh=>{const n=norm(roh);const L=n.replace(/[^A-Z]/g,'');return L.length<5||/\bS?CU\b|^\W/.test(n)||n.split(' ').filter(w=>/^[A-Z]{3,}$/.test(w)).length===0;};
@@ -223,19 +229,34 @@ function parseItems(words,wares){
   const items=[];let section=null,cur=null,bestandSeen=false;
   for(const ln of linesOf(words)){
     const text=ln.text,[kind,val]=classify(text);
+    // EN: "OUT OF STOCK" ist im Verkaufsreiter eine Statuszeile unter der Ware (vor dem Preis), im Kaufreiter die Abschnittsüberschrift (nach dem letzten Preis)
+    if(kind==='header'&&val==='nicht_vorraetig'&&cur&&cur.preis==null&&section!=='lager'){cur.status='OUT OF STOCK';continue;}
     if(kind==='header'){section=val;cur=null;}
     else if(kind==='bestand')bestandSeen=true;
     else if(kind==='ignore'){}
     else if(kind==='status'&&cur)cur.status=val;
-    else if(kind==='price'&&cur&&val.v!=null){if(cur.preis==null){cur.preis=val.v;cur.preisRaw=val.raw;}else cur=null;}
+    else if(kind==='price'&&val.v!=null){
+      // Warenname auf der Preiszeile ("HADANITE ¤600,000/SCU") oder über zwei Zeilen verteilt ("EQUIPMENT 0 SCU" + "AUDIO-VISUAL ¤37,000/SCU")
+      const pre=(val.pre||'').split(/\s+/).filter(w=>/[A-Za-zÄÖÜäöü]{3,}/.test(w));
+      if(pre.length){const cands=[];for(const k of [0,1,2])if(k<pre.length)cands.push(pre.slice(k).join(' '));
+        const combo=cur&&cur.preis==null&&cur.roh;if(combo)cands.push(pre.join(' ')+' '+cur.roh,cur.roh+' '+pre.join(' '));
+        let nm=null,sc=0,roh='';for(const c of cands){const [n2,s2]=best(c,wares,0.6,0.75);if(n2&&s2>sc){nm=n2;sc=s2;roh=c;}}
+        if(nm&&!(cur&&cur.ware===nm)){
+          if(combo&&(!cur.ware||sc>cur.score)){cur.ware=nm;cur.roh=roh;cur.score=Math.round(sc*100)/100;}
+          else{cur={ware:nm,roh,score:Math.round(sc*100)/100,section,preis:null,preisRaw:'',scu:null,status:''};items.push(cur);}}}
+      if(cur){if(cur.preis==null){cur.preis=val.v;cur.preisRaw=val.raw;cur.preisUnit=!!val.unit;}else cur=null;}}
     else if(kind==='scu'&&cur)cur.scu=val;
     else if(kind==='text'){
-      let tt=text.replace(/\bBESTAND\b/ig,' '); if(/\bBESTAND\b/i.test(text))bestandSeen=true;
-      const m=SCU_TAIL_RE.exec(tt), scu=m?toInt(m[1]):null, namePart=(m?tt.slice(0,m.index):tt).trim();
+      let tt=text.replace(/\bBESTAND\b|\bSHOP\s+QUA\w*/ig,' '); if(/\bBESTAND\b|\bSHOP\s+QUA\w*/i.test(text))bestandSeen=true;
+      const m=SCU_ANY_RE.exec(tt), scu=m?toInt(m[1]):null, namePart=(m?tt.slice(0,m.index):tt).trim();
       let name=null,score=0,roh=namePart;
       const toks=namePart.split(/\s+/).filter((w,i,arr)=>!(i===arr.length-1&&/^[0-9OoIlS.,|]+$/.test(w)));   // Zahl/Strich am Ende ist kein Namensteil
       for(const k of [0,1,2,3]){if(k>=toks.length)break;const cand=toks.slice(k).join(' ');const [nm,sc]=best(cand,wares,0.6,0.75);if(nm&&sc>score){name=nm;score=sc;roh=cand;}}
       if(!name&&norm(namePart).length>=4){const [nm,sc]=best(norm(namePart).slice(1),wares,0.6,0.75);if(nm){name=nm;score=sc;}}
+      // zerrissener Name über zwei Zeilen ("N RECYCLED" + "MATERIAL COMPOSITE 0 SCU"): Verbund passt besser als beide Teile -> vorige Zeile ergänzen
+      if(cur&&cur.preis==null&&cur.roh&&norm(namePart).length>=3){let bn=null,bs=Math.max(score,cur.score||0),br='';
+        for(const c of [cur.roh+' '+namePart,namePart+' '+cur.roh]){const [n2,s2]=best(c,wares,0.6,0.75);if(n2&&s2>bs){bn=n2;bs=s2;br=c;}}
+        if(bn){cur.ware=bn;cur.roh=br;cur.score=Math.round(bs*100)/100;if(cur.scu==null)cur.scu=scu;continue;}}
       if(!name&&garbage(namePart))continue;
       cur={ware:name,roh:name?roh:namePart,score:Math.round(score*100)/100,section,preis:null,preisRaw:'',scu,status:''};
       items.push(cur);
@@ -261,7 +282,7 @@ function mergeItems(dest,items,art,ocr){
     if(art==='Kauf')o.scu=pickNumber(o.scu,it.scu,o.hinweise,'Bestand');
     o.status=o.status||it.status;o.section=o.section||it.section;
     if(it.score>o.score){o.roh=it.roh;o.score=it.score;}
-    if(!o.preisRaw)o.preisRaw=it.preisRaw;
+    if(!o.preisRaw){o.preisRaw=it.preisRaw;o.preisUnit=it.preisUnit;}
     o.hinweise=[...new Set([...o.hinweise,...(it.hinweise||[])])];
   }
   return dest;
@@ -279,7 +300,9 @@ function decideArt(page,items,bestandSeen,prevArt){
 function matchOrt(location){
   if(!location)return[null,0];
   const orte=[...new Set([...REF.shops.map(s=>s.ort),...REF.shops.map(s=>s.shop)])];
-  return best(location,orte,0.7);
+  const r=best(location,orte,0.7); if(r[0])return r;
+  const n=norm(location); if(n.length>=10){const part=orte.find(o=>norm(o).includes(n));if(part)return[part,0.75];}   // abgeschnittener Anfang ("SON'S SALVAGE CENTER")
+  return r;
 }
 function matchShop(ort,art,seen){
   if(!ort)return[null,[]];
@@ -320,6 +343,11 @@ function evaluate(pages){
       if(!it.ware)notes.push(`${t('n_ware')} (${t('read')}: „${it.roh}“)`);
       else if(it.score<0.85)notes.push(`${t('n_unsure')} (${t('read')}: „${it.roh}“)`);
       let preis=it.preis;
+      if(preis!=null&&it.preisUnit){   // "/UNITS": Preis je gewählter Containergröße – über den Referenzpreis auf je SCU umrechnen
+        const refp=it.ware&&known[it.ware]?known[it.ware][0]:null;
+        const k=refp?[2,4,8,16,24,32].find(k=>Math.abs(Math.log(preis/k/refp))<Math.log(1.15)):null;
+        if(k){preis=Math.round(preis/k);info.push(`${t('n_unit')} ÷ ${k} → ${fmt(preis)}`);}else notes.push(t('n_unit'));
+      }
       if(preis==null)notes.push(t('n_price'));
       else if(it.ware&&known[it.ware]){
         // Vorziffer-Falle: das ¤-Zeichen wird mal als Ziffer gelesen (¤10.000 -> 110.000). Referenzpreis entscheidet.
@@ -368,6 +396,13 @@ async function ocrWords(wk,canvas,x0,y0,scale){
     }
     return{text,x:x0+w.bbox.x0/scale,y:y0+w.bbox.y0/scale,w:(w.bbox.x1-w.bbox.x0)/scale,h:(w.bbox.y1-w.bbox.y0)/scale};});
 }
+function tabBrightness(img,kf,mk){ // Helligkeit hinter den Reiter-Beschriftungen; fehlt ein Reiter-Wort, Lage aus dem anderen schätzen (Maß: Worthöhe)
+  const box=w=>[w.x-w.w*0.3,w.y-w.h*0.3,w.w*1.6,w.h*1.6];
+  let kb=kf?box(kf):null,mb=mk?box(mk):null;
+  if(!kb&&mk){const h=mk.h;kb=[mk.x-9*h,mk.y-0.3*h,6*h,1.6*h];}
+  if(!mb&&kf){const h=kf.h;mb=[kf.x+9*h,kf.y-0.3*h,10*h,1.6*h];}
+  return{kaufen:kb?meanBrightness(img,...kb):null,markt:mb?meanBrightness(img,...mb):null};
+}
 function meanBrightness(img,x,y,w,h){
   const c=document.createElement('canvas');const cw=Math.max(1,Math.round(w)),ch=Math.max(1,Math.round(h));c.width=cw;c.height=ch;
   const g=c.getContext('2d');g.drawImage(img,Math.max(0,x),Math.max(0,y),cw,ch,0,0,cw,ch);
@@ -380,8 +415,15 @@ async function ocrImage(file,idx,total){
   const step=(k,txt)=>setProg(`${t('reading')} ${idx+1} ${t('of')} ${total}: ${file.name} · ${t('pass')} ${k}/4${txt?' · '+txt:''}`,(idx+(k-1)/4)/total);
   // 1) rechte Hälfte grob lesen: Reiter finden, Panel eingrenzen
   step(1);const rx=Math.floor(W*0.55);
-  const rough=await ocrWords(wk,cropCanvas(img,rx,0,W-rx,H,2,1.3),rx,0,2);
-  const kf=rough.find(w=>/^KAUF/i.test(w.text)), mk=rough.find(w=>/^(LOKAL|MARKT|MRKT)/i.test(w.text));
+  let rough=await ocrWords(wk,cropCanvas(img,rx,0,W-rx,H,2,1.3),rx,0,2);
+  let kf=rough.find(w=>TAB_KAUF.test(w.text)), mk=rough.find(w=>TAB_MARKT.test(w.text)), glass=false;
+  if(!kf&&!mk&&vocabScore(rough)<3){   // frontaler Glas-Kiosk (weißer Text auf hellem Panel)? Schwellwert statt Kontrast
+    const r2=await ocrWords(wk,thresholdCanvas(cropCanvas(img,rx,0,W-rx,H,2,1.0),205),rx,0,2);
+    const k2=r2.find(w=>TAB_KAUF.test(w.text)),m2=r2.find(w=>TAB_MARKT.test(w.text));
+    if(k2||m2||vocabScore(r2)>=3){rough=r2;kf=k2;mk=m2;glass=true;}
+  }
+  const client=clientOf(rough);
+  const prep=(x0,y0,w,h,sc,ct,th)=>glass?thresholdCanvas(cropCanvas(img,x0,y0,w,h,sc,1.0),th):cropCanvas(img,x0,y0,w,h,sc,ct);
   if(!kf&&!mk&&vocabScore(rough)<3){   // frontal nichts gefunden -> schräge Aufnahme: entzerren
     step(2,t('skewed'));
     let res=null,quad=null;
@@ -395,30 +437,38 @@ async function ocrImage(file,idx,total){
     if(lq){const lc=warpQuad(img,lq,2.5);L=await ocrWords(wk,thresholdCanvas(lc,205),0,0,1);}
     else{const lx=Math.floor(W*0.45);L=await ocrWords(wk,cropCanvas(img,0,0,lx,H,2,1.3),0,0,2);}
     img.close&&img.close();
-    return{file:file.name,url:URL.createObjectURL(file),imgW:W,imgH:H,mtime:new Date(file.lastModified).toISOString(),ocr:'tesseract',skewed:true,tabs:res.tabs,variants:[{tag:'L',words:L},{tag:'R',words:res.R},{tag:'RB',words:res.RB}]};
+    return{file:file.name,url:URL.createObjectURL(file),imgW:W,imgH:H,mtime:new Date(file.lastModified).toISOString(),ocr:'tesseract',skewed:true,client:clientOf([...res.R,...res.RB]),tabs:res.tabs,variants:[{tag:'L',words:L},{tag:'R',words:res.R},{tag:'RB',words:res.RB}]};
   }
-  const tabs={kaufen:kf?meanBrightness(img,kf.x-kf.w*0.3,kf.y-kf.h*0.3,kf.w*1.6,kf.h*1.6):null,markt:mk?meanBrightness(img,mk.x-mk.w*0.3,mk.y-mk.h*0.3,mk.w*1.6,mk.h*1.6):null};
   let px0=rx,px1=W,py0=0;
-  if(kf){px0=Math.max(0,kf.x-W*0.02);py0=Math.max(0,kf.y-kf.h*0.5);px1=Math.min(W,Math.max(mk?mk.x+mk.w+W*0.03:0,kf.x+W*0.22));}
+  // Panelbreite: rechter Rand liegt etwa 0,08–0,12 W rechts vom Wort LOCAL/LOKALER bzw. 0,2 W rechts von BUY/KAUFEN
+  if(kf){px0=Math.max(0,kf.x-W*0.02);py0=Math.max(0,kf.y-kf.h*0.5);px1=Math.min(W,Math.max(mk?mk.x+W*0.16:0,kf.x+W*0.22));}
+  else if(mk){px0=Math.max(0,mk.x-W*0.06);py0=Math.max(0,mk.y-mk.h*0.5);px1=Math.min(W,mk.x+W*0.16);}
   // 2+3) Panel in zwei Lesungen
-  step(2);const R=await ocrWords(wk,cropCanvas(img,px0,py0,px1-px0,H-py0,3,1.3),px0,py0,3);
-  step(3);const RB=await ocrWords(wk,cropCanvas(img,px0,py0,px1-px0,H-py0,4,3.0),px0,py0,4);
+  step(2);let R=await ocrWords(wk,prep(px0,py0,px1-px0,H-py0,3,1.3,205),px0,py0,3);
+  step(3);let RB=await ocrWords(wk,prep(px0,py0,px1-px0,H-py0,4,3.0,225),px0,py0,4);
+  // Reiter: fehlt einer in der groben Lesung, in den feinen Lesungen suchen; fehlt er weiter, Lage aus dem anderen schätzen
+  let fine=[...R,...RB];kf=kf||fine.find(w=>TAB_KAUF.test(w.text));mk=mk||fine.find(w=>TAB_MARKT.test(w.text));
+  let tabs=tabBrightness(img,kf,mk),skewed=false;
+  if(glass){   // Glas-Kiosk mit wenig Treffern: vielleicht doch schräg -> entzerrt lesen und das bessere Ergebnis nehmen
+    const sc=vocabScore(R)+vocabScore(RB);
+    if(sc<8){const q=autoQuad(img,'R');if(q){const r=await readWarped(wk,img,q);if(r.score>sc){R=r.R;RB=r.RB;fine=[...R,...RB];tabs=r.tabs;skewed=true;lastQuad=q;lastDims=W+'x'+H;}}}
+  }
   // 4) linkes Panel: "Deine Inventare" suchen, Standort-Zeile fein lesen
   step(4);const lx=Math.floor(W*0.45);
-  let L=await ocrWords(wk,cropCanvas(img,0,0,lx,H,2,1.3),0,0,2);
-  const di=linesOf(L).find(l=>ratio(l.text,'DEINE INVENTARE')>=0.7);
-  if(di){const x0=Math.max(0,di.x-di.h),y0=di.y+di.h*1.1,w=Math.min(W-x0,W*0.14),h=di.h*5;
+  let L=await ocrWords(wk,prep(0,0,lx,H,2,1.3,205),0,0,2);
+  const di=linesOf(L).find(l=>ratio(l.text,'DEINE INVENTARE')>=0.7||ratio(l.text,'YOUR INVENTORIES')>=0.7);
+  if(di){const x0=Math.max(0,di.x-di.h*3),y0=di.y+di.h*1.1,w=Math.min(W-x0,W*0.17),h=di.h*5;
     let bestL=null,bestS=-1;
     await wk.setParameters({tessedit_pageseg_mode:'6'});
-    for(const [sc,ct] of [[4,1.5],[5,2.5]]){const cand=await ocrWords(wk,cropCanvas(img,x0,y0,w,h,sc,ct),x0,y0,sc);
-      const loc=linesOf(cand).map(l=>l.text.replace(/[^A-Za-zÄÖÜäöü0-9&'\- ]+/g,' ').trim()).find(x=>norm(x).length>=3)||null;
+    for(const [sc,ct,th] of [[4,1.5,205],[5,2.5,225]]){const cand=await ocrWords(wk,prep(x0,y0,w,h,sc,ct,th),x0,y0,sc);
+      const loc=linesOf(cand).map(l=>l.text.replace(/[^A-Za-zÄÖÜäöü0-9&'\- ]+/g,' ').trim()).find(x=>norm(x).length>=3&&!isLocHead(x))||null;
       const [ort,score]=matchOrt(loc);const sc2=ort?score:(loc&&NO_LOCATION.some(n=>ratio(loc,n)>=0.7)?0.5:-0.5);
       if(sc2>bestS){bestS=sc2;bestL=cand;}}
     await wk.setParameters({tessedit_pageseg_mode:'3'});
     // Kopfzeile "DEINE INVENTARE" künstlich voranstellen, damit parseLocation die Zeile darunter nimmt
     if(bestL&&bestS>-0.5)L=[{text:'DEINE',x:di.x,y:di.y,w:di.h*3,h:di.h},{text:'INVENTARE',x:di.x+di.h*3.5,y:di.y,w:di.h*5,h:di.h},...bestL];}
   img.close&&img.close();
-  return{file:file.name,url:URL.createObjectURL(file),imgW:W,imgH:H,mtime:new Date(file.lastModified).toISOString(),ocr:'tesseract',tabs,variants:[{tag:'L',words:L},{tag:'R',words:R},{tag:'RB',words:RB}]};
+  return{file:file.name,url:URL.createObjectURL(file),imgW:W,imgH:H,mtime:new Date(file.lastModified).toISOString(),ocr:'tesseract',client:client||clientOf(fine),glass:glass&&!skewed,skewed,tabs,variants:[{tag:'L',words:L},{tag:'R',words:R},{tag:'RB',words:RB}]};
 }
 
 
@@ -465,14 +515,16 @@ function autoQuad(img,side){ // größte grau-helle Fläche (Glas-Panel) in eine
   if(!(wq>0&&hq>0)||wq/hq<0.3||wq/hq>1.4)return null;
   return q;
 }
-const VOCAB=()=>[...REF.waren,...Object.keys(HEADERS),...STATUS,'INVENTAR','KAUFEN','LOKALER','MARKTWERT','BESTAND','VERFÜGBARE','CONTAINERGRÖSSE','SCU'];
+const VOCAB=()=>[...REF.waren,...Object.keys(HEADERS),...STATUS,'INVENTAR','KAUFEN','LOKALER','MARKTWERT','BESTAND','VERFÜGBARE','CONTAINERGRÖSSE','SCU','INVENTORY','LOCAL','MARKET','VALUE','QUANTITY','AVAILABLE','CARGO'];
+const TAB_KAUF=/^(KAUF|BUY$)/i, TAB_MARKT=/^(LOKAL|MARKT|MRKT|LOCAL|MARKET)/i;
+// Client-Sprache am Reiter-Text: "BUY"/"LOCAL"/"MARKET" -> englisch, "KAUFEN"/"LOKALER"/"MARKTWERT" -> deutsch
+function clientOf(words){let de=0,en=0;for(const w of words){if(/^(KAUF|LOKAL|MARKTW|BEST[AÄ]ND|INVENTARE)/i.test(w.text))de++;if(/^(BUY$|LOCAL|MARKET|QUANTITY|INVENTORIES)/i.test(w.text))en++;}return en>de?'en':de>en?'de':'';}
 function vocabScore(words){const v=VOCAB();let n=0;for(const w of words){if(w.text.length<3)continue;const [m]=best(w.text,v,0.75);if(m)n++;}return n;}
 async function readWarped(wk,img,quad){ // entzerrtes Panel in zwei Schwellwert-Lesungen; Reiter-Helligkeit aus dem entzerrten Farbbild
   const wc=warpQuad(img,quad,2.5);
   const R=await ocrWords(wk,thresholdCanvas(wc,205),0,0,1),RB=await ocrWords(wk,thresholdCanvas(wc,225),0,0,1);
-  const all=[...R,...RB],kf=all.find(w=>/^KAUF/i.test(w.text)),mk=all.find(w=>/^(LOKAL|MARKT|MRKT)/i.test(w.text));
-  const mb=(w)=>meanBrightness(wc,w.x-w.w*0.3,w.y-w.h*0.3,w.w*1.6,w.h*1.6);
-  return{R,RB,tabs:{kaufen:kf?mb(kf):null,markt:mk?mb(mk):null},score:vocabScore(R)+vocabScore(RB)};
+  const all=[...R,...RB],kf=all.find(w=>TAB_KAUF.test(w.text)),mk=all.find(w=>TAB_MARKT.test(w.text));
+  return{R,RB,tabs:tabBrightness(wc,kf,mk),score:vocabScore(R)+vocabScore(RB)};
 }
 let lastQuad=null,lastDims='';
 function askCorners(img,file){ // Ecken-Wähler: löst mit Quad (TL,TR,BR,BL) oder null (überspringen) auf
@@ -512,7 +564,7 @@ async function handleFiles(list){
       if(/\.json$/i.test(f.name)){const d=JSON.parse(await f.text());if(!d.pages)throw new Error(t('jsonErr'));
         for(const p of d.pages)PAGES.push(Object.assign({url:'',ocr:'windows'},p));li.innerHTML=`<span class="ok">✓</span> ${esc(f.name)} (${d.pages.length} ${t('pics')})`;}
       else{const page=await ocrImage(f,i,files.length);PAGES.push(page);
-        const n=page.variants.find(v=>v.tag==='R').words.length;li.innerHTML=`<span class="${n?'ok':'bad'}">${n?'✓':'✗'}</span> ${esc(f.name)}${n?(page.skewed?' – '+t('skewed'):''):' – '+t('notext')}`;}
+        const n=page.variants.find(v=>v.tag==='R').words.length;li.innerHTML=`<span class="${n?'ok':'bad'}">${n?'✓':'✗'}</span> ${esc(f.name)}${n?(page.client?' – '+t('client_'+page.client):'')+(page.skewed?' – '+t('skewed'):page.glass?' – '+t('glass'):''):' – '+t('notext')}`;}
     }catch(e){li.innerHTML=`<span class="bad">✗</span> ${esc(f.name)} – ${esc(e.message)}`;}
     SERIEN=evaluate(PAGES);render();
   }
@@ -566,7 +618,7 @@ function collect(){
 }
 function download(kind){
   const open=$$('tbody tr.chk').length; if(open&&!confirm(`${open} ${t('exportAsk')}`))return;
-  const rows=collect(),meta={schema:SCHEMA,generator:`SC Screenshot-Auswerter ${VERSION} (Browser)`,generated:new Date().toISOString().slice(0,19),client:'de',ocr:'tesseract.js deu+eng',referenz_stand:REF.stand,patch:REF.patch};
+  const rows=collect(),meta={schema:SCHEMA,generator:`SC Screenshot-Auswerter ${VERSION} (Browser)`,generated:new Date().toISOString().slice(0,19),client:[...new Set(PAGES.map(p=>p.client).filter(Boolean))].join('+')||'?',ocr:'tesseract.js deu+eng',referenz_stand:REF.stand,patch:REF.patch};
   let blob,name;
   if(kind==='json'){blob=new Blob([JSON.stringify(Object.assign(meta,{eintraege:rows}),null,1)],{type:'application/json'});name='auswertung.json';}
   else{const cols=Object.keys(rows[0]||{ware:''}),q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';

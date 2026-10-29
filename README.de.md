@@ -12,7 +12,7 @@ Gedacht für zwei Dinge:
 ## So geht's
 
 1. **Vor dem Screenshot im Spiel:** links unter „Deine Inventare" den **Standort auswählen**. Dann steht der Ort im Bild und wird zugeordnet. Ohne Auswahl zeigt das Feld nur „Standort wählen".
-2. **Frontal auf die Konsole schauen** und per SC-Screenshot-Taste (Standard **F12**, Datei `ScreenShot-JJJJ-MM-TT_hh-mm-ss-xxx.jpg` im Ordner `StarCitizen\LIVE\screenshots`) oder einem beliebigen Tool aufnehmen. Lange Listen: scrollen und mehrere Screenshots machen, die Auswertung führt sie zusammen.
+2. **Frontal auf die Konsole schauen** und per SC-Screenshot-Taste (**Druck**, Datei `ScreenShot-JJJJ-MM-TT_hh-mm-ss-xxx.jpg` im Ordner `StarCitizen\LIVE\screenshots`) oder einem beliebigen Tool aufnehmen. Lange Listen: scrollen und mehrere Screenshots machen, die Auswertung führt sie zusammen.
 3. **Seite öffnen** (online oder `SC_Screenshot_Auswerter.html` per Doppelklick) und die Bilder hineinziehen – einzeln oder ein ganzer Ordner. Je Bild dauert die Erkennung etwa 15 Sekunden; die Serien erscheinen, sobald sie gelesen sind.
 4. **Prüfen:** Gelb markierte Zeilen gegen den Screenshot prüfen (Link in der Spalte „Bild"). Passen die Werte: **✓** klicken (oder „Alle offenen in dieser Serie bestätigen"). Passen sie nicht: Ware, Preis oder Bestand direkt in der Zelle korrigieren. Ist die Zeile keine Ware (Icon-Müll): **✕** entfernt sie aus dem Export. Der Zähler „noch zu prüfen" zeigt, wann alles durchgesehen ist; beim Export fragt die Seite nach, wenn noch gelbe Zeilen offen sind. Bei mehrdeutigem Ort (z. B. Orison: TDD oder Municipal Services) den Shop im Kopf der Serie wählen.
 5. **Herunterladen:** „JSON" oder „CSV" – die Datei enthält die geprüften Werte.
@@ -33,10 +33,11 @@ Gedacht für zwei Dinge:
 
 Die eingebaute Windows-OCR liest etwas genauer als die Browser-Erkennung, braucht aber Windows. Ordner oder Bilder auf `Windows_OCR_lesen.bat` ziehen: `ocr_engine.ps1` schreibt `ocr_words.json` neben die Screenshots; diese Datei dann in die Seite ziehen. Auswertung, Prüftabelle und Export sind dieselben.
 
-## Grenzen (Stand 0.2.0)
+## Grenzen (Stand 0.5.0)
 
 - **Schräg aufgenommene Konsolen** (bis etwa 30° Verkantung): Die Seite entzerrt das rechte Panel über vier Ecken (automatisch gefunden oder von dir angeklickt) und stellt den Text per Schwellwert frei. Das liest spürbar schlechter als frontal; der Standort wird dabei oft nicht erkannt, dann den Shop von Hand wählen. Frontal davorstellen bleibt der beste Weg.
-- Deutscher Spiel-Client. Englische Konsolentexte folgen, sobald Screenshots vorliegen.
+- Deutscher und englischer Spiel-Client werden erkannt (Reiter, Abschnitte, Status, Standort-Feld); die Dateiliste zeigt je Bild den erkannten Client. Andere Sprachen nicht.
+- Zeigt die Konsole den Preis „je Container“ (`/UNITS`, wenn im Spiel eine Containergröße angewählt ist), rechnet die Seite über den star-head-Referenzpreis auf je SCU um und vermerkt den Teiler; ohne Referenz bleibt die Zeile zu prüfen.
 - Einzelne Preise bleiben unlesbar (z. B. wenn ein Icon in die Zahl ragt); sie sind markiert, nicht geraten.
 
 ## Dateiformat
