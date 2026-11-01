@@ -1,8 +1,29 @@
-"""Baut SC_Screenshot_Auswerter.html: die App-Vorlage (auswerter_app.html) mit eingebetteter
-Referenz (referenz.json: Waren, Shops, letzte Preise aus der data.json des Handels-Planers).
+# =============================================================================
+# Autor:          Robert Seebauer
+# Repository:     https://github.com/Jaegerfeld/StarCitizen-Screenshot-Auswerter
+# KI-Unterstützung: Erstellt mit Unterstützung von Claude (Anthropic)
+# Erstellt:       28.10.2026
+# Geändert:       01.11.2026
+# Lizenz:         BSD-3-Clause (siehe LICENSE)
+#
+# Fachliche Funktion:
+#   Baut die auslieferbare Einzeldatei SC_Screenshot_Auswerter.html. Grundlage
+#   ist die Vorlage auswerter_app.html (OCR-Pipeline und Parser im Browser); in
+#   sie werden die gemeinsame Kopfzeile, der „Was ist neu?“-Dialog und der
+#   Changelog (kopfzeile.py), das gemeinsame Design (sc_design.py), die
+#   Versionsnummer (version.py) und die Referenzdaten (referenz.json: Waren,
+#   Shops, letzte Preise aus der data.json des Handels-Planers) eingesetzt.
+#
+#   Die Referenz ist fest eingebettet, damit die Seite ohne Server und offline
+#   arbeitet; die Seite kann sie bei Bedarf selbst von GitHub Pages
+#   nachladen. Mit --referenz wird referenz.json vor dem Bau frisch gezogen
+#   (referenz_aktualisieren.py). Bewusst nur Standardbibliothek.
+# =============================================================================
+"""Build SC_Screenshot_Auswerter.html: the app template (auswerter_app.html) with the reference
+data (referenz.json: commodities, shops, last prices from the Handels-Planer's data.json) embedded.
 
-Start:  python auswerter_bauen.py            (nutzt referenz.json wie vorhanden)
-        python auswerter_bauen.py --referenz (zieht vorher die Referenz frisch von GitHub Pages)
+Start:  python auswerter_bauen.py            (uses referenz.json as it is)
+        python auswerter_bauen.py --referenz (first pulls a fresh reference from GitHub Pages)
 """
 import json
 import pathlib
@@ -12,15 +33,30 @@ import kopfzeile as kz
 import sc_design as sd
 from version import VERSION
 
+#: Folder of this script; all inputs and the output live next to it.
 HERE = pathlib.Path(__file__).resolve().parent
+#: Page template with the OCR pipeline, parser and build placeholders.
 TEMPLATE = HERE / "auswerter_app.html"
+#: Reference data embedded into the page (see referenz_aktualisieren.py).
 REF = HERE / "referenz.json"
+#: Built single-file page that users open in the browser.
 OUT = HERE / "SC_Screenshot_Auswerter.html"
 
 
 
 def fill_header(html):
-    """Gemeinsame Kopfzeile, „Was ist neu?“-Dialog und Changelog einsetzen (kopfzeile.py)."""
+    """Insert the shared header, the "What's new?" dialog and the changelog.
+
+    Replaces the header, CSS, JS, font and dialog placeholders of the template with the
+    shared building blocks from kopfzeile.py and sc_design.py. The header gets an extra
+    button that reloads the reference from the Handels-Planer on GitHub Pages.
+
+    Args:
+        html: Template text of auswerter_app.html.
+
+    Returns:
+        The template text with all shared header/design placeholders filled in.
+    """
     refresh = ('<button class="btn fh-btn" id="refBtn" type="button" title="Referenz (Waren, Shops, Preise) '
                'vom Handels-Planer auf GitHub Pages laden">'
                f'🔄 {kz.bi("Neuesten Stand laden (GitHub)", "Load latest reference (GitHub)")}</button>')
@@ -43,6 +79,20 @@ def fill_header(html):
 
 
 def main(argv):
+    """Build the page and write SC_Screenshot_Auswerter.html.
+
+    Args:
+        argv: Command-line arguments without the program name; ``--referenz`` refreshes
+            referenz.json from GitHub Pages before building.
+
+    Returns:
+        Process exit code (0 on success).
+
+    Raises:
+        OSError: If the template or referenz.json cannot be read or the output not written.
+        json.JSONDecodeError: If referenz.json is not valid JSON.
+        KeyError: If referenz.json lacks the ``waren`` or ``shops`` list.
+    """
     if "--referenz" in argv:
         import referenz_aktualisieren
         referenz_aktualisieren.main([])
