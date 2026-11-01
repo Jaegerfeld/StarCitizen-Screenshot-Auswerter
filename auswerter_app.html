@@ -1,4 +1,33 @@
 <!doctype html>
+<!-- ============================================================================= -->
+<!-- Autor:          Robert Seebauer -->
+<!-- Repository:     https://github.com/Jaegerfeld/StarCitizen-Screenshot-Auswerter -->
+<!-- KI-Unterstützung: Erstellt mit Unterstützung von Claude (Anthropic) -->
+<!-- Erstellt:       28.10.2026 -->
+<!-- Geändert:       01.11.2026 -->
+<!-- Lizenz:         BSD-3-Clause (siehe LICENSE) -->
+<!-- -->
+<!-- Fachliche Funktion: -->
+<!--   Seitenvorlage des Screenshot-Auswerters: liest Screenshots der Star-Citizen- -->
+<!--   Handelskonsole aus – Standort, aktiver Reiter (Kaufen = Shop verkauft, -->
+<!--   Lokaler Marktwert = Shop kauft), Waren, Preise je SCU und Bestände. -->
+<!--   Die Texterkennung läuft lokal im Browser (Tesseract.js, deu+eng); -->
+<!--   alternativ wird die ocr_words.json der Windows-OCR (ocr_engine.ps1 über -->
+<!--   Windows_OCR_lesen.bat) eingelesen. Ein gemeinsamer Parser versteht -->
+<!--   deutschen und englischen Client. -->
+<!--   Schräge Aufnahmen werden über die vier Panel-Ecken (automatisch gefunden -->
+<!--   oder per Klick) mit einer Homographie entzerrt; frontale Glas-Kioske -->
+<!--   (heller Text auf hellem Glas) werden per Schwellwert gelesen. -->
+<!--   Die Referenzdaten aus dem Handels-Planer (Waren, Shops, letzte -->
+<!--   star-head-Preise; beim Bau eingebettet, auf Wunsch von GitHub Pages -->
+<!--   nachgeladen) dienen dem Namensabgleich, der Shop-Wahl und der -->
+<!--   Plausibilitätsprüfung (Vorziffer-Falle durch das ¤-Zeichen, /UNITS-Preise). -->
+<!--   Unsichere Zeilen stehen gelb in der Prüftabelle; der Nutzer korrigiert, -->
+<!--   bestätigt oder entfernt sie und lädt JSON (Schema sc-konsole-export/1) -->
+<!--   oder CSV herunter – für star-head-Beitragende und den Handels-Planer. -->
+<!--   Nichts verlässt den Rechner. Kopfzeile, Design, Version und Referenz -->
+<!--   setzt auswerter_bauen.py beim Bau in die Platzhalter dieser Vorlage ein. -->
+<!-- ============================================================================= -->
 <html lang="de" data-theme="dark">
 <head>
 <meta charset="utf-8">
@@ -130,7 +159,9 @@ const VERSION='{{VERSION}}', SCHEMA='sc-konsole-export/1';
 const REF_URL='https://jaegerfeld.github.io/StarCitizen-Handels-Planer/data.json';
 let REF=/*__REF__*/{};
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+// Escapes text for safe insertion into HTML.
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+// Formats a number with German digit grouping; empty for null/empty.
 const fmt=n=>n==null||n===''?'':Number(n).toLocaleString('de-DE');
 let lang=localStorage.getItem('sca_lang')||'de', theme=localStorage.getItem('sca_theme')||'dark';
 const T={de:{ware:'Ware',preis:'Preis ¤/SCU',bestand:'Bestand SCU',status:'Status',stand:'Stand',bild:'Bild',hinweis:'Hinweise',pruefen:'PRÜFEN',edited:'geändert',
@@ -145,31 +176,49 @@ const T={de:{ware:'Ware',preis:'Preis ¤/SCU',bestand:'Bestand SCU',status:'Stat
   loading:'Loading OCR …',reading:'Reading',of:'of',pass:'pass',done:'Done',ref:'Reference',refOk:'Reference updated.',refSame:'Reference already up to date.',refErr:'GitHub unreachable – built-in reference kept.',
   notext:'no terminal text found',skewed:'angled – read after straightening',skipped:'skipped',cornerAsk:'Please click four corners',cTL:'top-left',cTR:'top-right',cBR:'bottom-right',cBL:'bottom-left',imgErr:'image unreadable',jsonErr:'JSON without OCR words',kaufen:'BUY · shop sells',markt:'LOCAL MARKET VALUE · shop buys',read:'read',waren:'commodities',shops:'shops',patch:'patch',
   n_ware:'commodity not recognised',n_unsure:'name uncertain',n_price:'price unreadable',n_dev:'price far from last star-head value',n_new:'new for this shop',n_stock:'stock unreadable',n_two:'two readings',n_diff:'differs in',n_prefix:'price with/without leading digit unclear',n_unit:'price per container (/UNITS), not per SCU',client_de:'German client',client_en:'English client',glass:'glass kiosk – read by threshold'}};
+// Looks up a UI string in the current language.
 const t=k=>T[lang][k];
 
 // =====================================================================
-// Parser (Konsolen-Texte, deutscher und englischer Client) – eine Logik für Tesseract- und Windows-OCR-Wörter
+// Parser (terminal texts, German and English client) – one logic for Tesseract and Windows OCR words
 // =====================================================================
+// Section headings of the commodity list (German and English client) -> internal section key.
 const HEADERS={'AUF LAGER':'lager','NICHT VORRÄTIG':'nicht_vorraetig','VERKAUFBARE FRACHT':'eigene_fracht','NACHGEFRAGT':'nachgefragt','KEINE NACHFRAGE':'keine_nachfrage','KANN NICHT VERKAUFT WERDEN':'unverkaeuflich',
   'IN STOCK':'lager','OUT OF STOCK':'nicht_vorraetig','SELLABLE CARGO':'eigene_fracht','IN DEMAND':'nachgefragt','NO DEMAND':'keine_nachfrage','CANNOT SELL':'unverkaeuflich'};
+// Fixed UI labels that are never commodities.
 const IGNORE=['HANDELSWAREN','INVENTAR','KAUFEN','LOKALER MARKTWERT','KAUFEN LOKALER MARKTWERT','VERFÜGBARE CONTAINERGRÖSSE (SCU)','VERFÜGBARE CONTAINERGRÖSSE','AKTUELLER KONTOSTAND:','AUEC','DEINE INVENTARE','DER SHOP KAUFT GEGENSTÄNDE DIESER GRÖSSE ODER KLEINER:','BITTE EIN GÜLTIGES INVENTAR AUSWÄHLEN,','UM DIE TRANSAKTION DURCHZUFÜHREN.',
   'COMMODITIES','SHOP INVENTORY','BUY','LOCAL MARKET VALUE','BUY LOCAL MARKET VALUE','AVAILABLE CARGO SIZE (SCU)','AVAILABLE CARGO SIZE','CURRENT BALANCE:','YOUR INVENTORIES','SELECT SUB-CATEGORY','SELECT LOCATION','PLEASE SELECT A VALID INVENTORY','TO MAKE A TRANSACTION','QUALITY 0','SHOP QUANTITY'];
+// Stock/demand status lines (German and English client).
 const STATUS=['AUSVERKAUFT','SEHR NIEDRIGE BESTÄNDE','NIEDRIGE BESTÄNDE','MITTLERE BESTÄNDE','HOHE BESTÄNDE','SEHR HOHE BESTÄNDE','MAXIMALE BESTÄNDE','KEINE NACHFRAGE','NIEDRIGE NACHFRAGE','MITTLERE NACHFRAGE','HOHE NACHFRAGE','SEHR HOHE NACHFRAGE',
   'OUT OF STOCK','VERY LOW INVENTORY','LOW INVENTORY','MEDIUM INVENTORY','HIGH INVENTORY','VERY HIGH INVENTORY','MAX INVENTORY','NO DEMAND','LOW DEMAND','MEDIUM DEMAND','HIGH DEMAND','VERY HIGH DEMAND'];
+// Placeholders shown when no location was selected before the screenshot.
 const NO_LOCATION=['STANDORT WÄHLEN','WÄHLE EINE UNTERKATEGORIE','SELECT LOCATION','SELECT SUB-CATEGORY'];
+// Sections that only exist on the buy tab (shop sells).
 const KAUF_SECTIONS=new Set(['lager','nicht_vorraetig']);
+// Characters OCR may return for digits (O/o, I/l, S are fixed later by toInt).
 const D='0-9OoIlS';
+// Price ending in "/SCU" or "/UNITS" (price per selected container size); ¤ is often read as #, n, m or a
 const PRICE_RE=new RegExp(`[¤#nmNMa]?\\s*([${D}][${D} .,]*)\\s*/\\s*([S58936]|U)`,'i');   // "/SCU" oder "/UNITS" (Preis je gewählter Containergröße)
+// Stock at the end of a line (e.g. 1,234 SCU) with typical OCR misreads of SCU.
 const SCU_TAIL_RE=new RegExp(`([${D}][${D} .,]*)\\s*[S53][CG][UJYHV]\\s*$`,'i');
-const SCU_ANY_RE=new RegExp(`([${D}][${D} .,]*)\\s*[S53][CG][UJYHV](?=\\s|$)`,'i');   // wie SCU_TAIL_RE, aber Müll dahinter erlaubt (Glas-Kioske)
+// Like SCU_TAIL_RE, but allows trailing garbage after SCU (glass kiosks)
+const SCU_ANY_RE=new RegExp(`([${D}][${D} .,]*)\\s*[S53][CG][UJYHV](?=\\s|$)`,'i');
+// Torn price line: a line holding only ¤ plus 1–3 digits whose rest follows on the next line.
 const PREFIX_RE=new RegExp(`^[¤nmNM]?\\s*[${D}]{1,3}\\s*[,.]?\\s*$`), TAIL_PREFIX_RE=new RegExp(`[¤nmNM]\\s*[${D}]{1,3}\\s*[,.]?\\s*$`);
+// OCR letter -> digit corrections.
 const DIGIT_FIX={O:'0',o:'0',I:'1',l:'1',S:'5'};
+// Normalises text for comparisons: upper case, ß -> SS, only letters/digits/& ' -, single spaces.
 const norm=s=>String(s||'').toUpperCase().replace(/ß|ẞ/g,'SS').replace(/[^A-Z0-9ÄÖÜ&'\- ]+/g,' ').replace(/\s+/g,' ').trim();
+// Levenshtein edit distance between two strings.
 function lev(a,b){const m=a.length,n=b.length;if(!m)return n;if(!n)return m;let prev=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const cur=[i];for(let j=1;j<=n;j++)cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));prev=cur;}return prev[n];}
+// Similarity 0..1 of two texts after normalising (1 - edit distance / longer length).
 const ratio=(a,b)=>{const x=norm(a),y=norm(b),L=Math.max(x.length,y.length);return L?1-lev(x,y)/L:0;};
+// Best fuzzy match of text among cands above cutoff (shortCut for candidates shorter than 6 chars); returns [match|null, score].
 function best(text,cands,cutoff,shortCut){const n=norm(text);if(!n)return[null,0];let top=null,score=0;for(const c of cands){const r=ratio(n,c);if(r>score&&r>=(shortCut&&norm(c).length<6?shortCut:cutoff)){top=c;score=r;}}return top?[top,score]:[null,score];}
+// Parses an OCR number: fixes letter digits, drops separators; null if no digit.
 const toInt=s=>{const d=String(s).replace(/[OoIlS]/g,c=>DIGIT_FIX[c]).replace(/[^0-9]/g,'');return d?parseInt(d,10):null;};
 
+// Groups OCR words into text lines by y position and rejoins torn price lines (¤ prefix on its own line).
 function linesOf(words){
   const lines=[];
   for(const w of [...words].sort((a,b)=>a.y-b.y||a.x-b.x)){
@@ -184,7 +233,9 @@ function linesOf(words){
     merged.push(ln);}
   return merged;
 }
+// True if a line is the "Deine Inventare"/"Your inventories" heading (also partly read).
 const isLocHead=x=>ratio(x,'DEINE INVENTARE')>=0.75||ratio(x,'YOUR INVENTORIES')>=0.75||x.split(/\s+/).some(w=>ratio(w,'INVENTARE')>=0.8||ratio(w,'DEINE')>=0.8||ratio(w,'INVENTORIES')>=0.8||ratio(w,'YOUR')>=0.8);
+// Reads the location from the line(s) below the inventories heading; returns [location|null, note].
 function parseLocation(words){
   const texts=linesOf(words).map(l=>l.text);
   const isHead=isLocHead;
@@ -199,12 +250,13 @@ function parseLocation(words){
   }
   return[null,'Standort nicht lesbar'];
 }
+// Classifies a line as header, bestand, ignore, price, scu, status or text; returns [kind, value].
 function classify(text){
   const [h]=best(text,Object.keys(HEADERS),0.78); if(h)return['header',HEADERS[h]];
   const n=norm(text);
   if(ratio(text,'BESTAND')>=0.8||ratio(text,'SHOP QUANTITY')>=0.8)return['bestand',null];
   if(IGNORE.some(i=>ratio(text,i)>=0.8)||n.includes('CONTAINER')||n.includes('GEGENST')||n.includes('CARGO SIZE'))return['ignore',null];
-  // Preis vor den Status-Bruchstücken prüfen: im englischen Client stehen Status und Preis oft in einer Zeile ("LOW INVENTORY ¤3,106/SCU")
+  // Check the price before the status fragments: the English client often puts status and price on one line ("LOW INVENTORY ¤3,106/SCU")
   let m=PRICE_RE.exec(text); if(m&&text.includes('/'))return['price',{v:toInt(m[1]),raw:m[0].trim(),unit:/^u/i.test(m[2]),pre:text.slice(0,m.index)}];
   m=SCU_TAIL_RE.exec(text); if(m&&norm(text.slice(0,m.index)).length<3)return['scu',toInt(m[1])];
   const frag=['SEHR','NIEDRIGE','BESTÄNDE','MITTLERE','HOHE','MAXIMALE','NACHFRAGE','KEINE','AUSVERKAUFT','VERY','LOW','MEDIUM','HIGH','MAX','INVENTORY','DEMAND','STOCK','OUT','AVAILABLE','CARGO','SIZE','SELLABLE','SHOP','QUANTITY','INVENTORIES','CURRENT','BALANCE'];
@@ -213,19 +265,21 @@ function classify(text){
   const [st]=best(text,STATUS,0.72); if(st)return['status',st];
   return['text',text];
 }
+// True if unmatched text is OCR noise rather than a possible commodity name.
 const garbage=roh=>{const n=norm(roh);const L=n.replace(/[^A-Z]/g,'');return L.length<5||/\bS?CU\b|^\W/.test(n)||n.split(' ').filter(w=>/^[A-Z]{3,}$/.test(w)).length===0;};
+// Turns the words of the right panel into commodity items (name, price, stock, status, section); returns [items, stock column seen].
 function parseItems(words,wares){
   const items=[];let section=null,cur=null,bestandSeen=false;
   for(const ln of linesOf(words)){
     const text=ln.text,[kind,val]=classify(text);
-    // EN: "OUT OF STOCK" ist im Verkaufsreiter eine Statuszeile unter der Ware (vor dem Preis), im Kaufreiter die Abschnittsüberschrift (nach dem letzten Preis)
+    // EN: "OUT OF STOCK" is a status line below the commodity (before the price) on the sell tab, but the section heading (after the last price) on the buy tab
     if(kind==='header'&&val==='nicht_vorraetig'&&cur&&cur.preis==null&&section!=='lager'){cur.status='OUT OF STOCK';continue;}
     if(kind==='header'){section=val;cur=null;}
     else if(kind==='bestand')bestandSeen=true;
     else if(kind==='ignore'){}
     else if(kind==='status'&&cur)cur.status=val;
     else if(kind==='price'&&val.v!=null){
-      // Warenname auf der Preiszeile ("HADANITE ¤600,000/SCU") oder über zwei Zeilen verteilt ("EQUIPMENT 0 SCU" + "AUDIO-VISUAL ¤37,000/SCU")
+      // Commodity name on the price line ("HADANITE ¤600,000/SCU") or torn across two lines ("EQUIPMENT 0 SCU" + "AUDIO-VISUAL ¤37,000/SCU")
       const pre=(val.pre||'').split(/\s+/).filter(w=>/[A-Za-zÄÖÜäöü]{3,}/.test(w));
       if(pre.length){const cands=[];for(const k of [0,1,2])if(k<pre.length)cands.push(pre.slice(k).join(' '));
         const combo=cur&&cur.preis==null&&cur.roh;if(combo)cands.push(pre.join(' ')+' '+cur.roh,cur.roh+' '+pre.join(' '));
@@ -239,10 +293,11 @@ function parseItems(words,wares){
       let tt=text.replace(/\bBESTAND\b|\bSHOP\s+QUA\w*/ig,' '); if(/\bBESTAND\b|\bSHOP\s+QUA\w*/i.test(text))bestandSeen=true;
       const m=SCU_ANY_RE.exec(tt), scu=m?toInt(m[1]):null, namePart=(m?tt.slice(0,m.index):tt).trim();
       let name=null,score=0,roh=namePart;
-      const toks=namePart.split(/\s+/).filter((w,i,arr)=>!(i===arr.length-1&&/^[0-9OoIlS.,|]+$/.test(w)));   // Zahl/Strich am Ende ist kein Namensteil
+      // A trailing number or bar is not part of the name
+      const toks=namePart.split(/\s+/).filter((w,i,arr)=>!(i===arr.length-1&&/^[0-9OoIlS.,|]+$/.test(w)));
       for(const k of [0,1,2,3]){if(k>=toks.length)break;const cand=toks.slice(k).join(' ');const [nm,sc]=best(cand,wares,0.6,0.75);if(nm&&sc>score){name=nm;score=sc;roh=cand;}}
       if(!name&&norm(namePart).length>=4){const [nm,sc]=best(norm(namePart).slice(1),wares,0.6,0.75);if(nm){name=nm;score=sc;}}
-      // zerrissener Name über zwei Zeilen ("N RECYCLED" + "MATERIAL COMPOSITE 0 SCU"): Verbund passt besser als beide Teile -> vorige Zeile ergänzen
+      // Name torn across two lines ("N RECYCLED" + "MATERIAL COMPOSITE 0 SCU"): if the joined text matches better than either part, complete the previous row
       if(cur&&cur.preis==null&&cur.roh&&norm(namePart).length>=3){let bn=null,bs=Math.max(score,cur.score||0),br='';
         for(const c of [cur.roh+' '+namePart,namePart+' '+cur.roh]){const [n2,s2]=best(c,wares,0.6,0.75);if(n2&&s2>bs){bn=n2;bs=s2;br=c;}}
         if(bn){cur.ware=bn;cur.roh=br;cur.score=Math.round(bs*100)/100;if(cur.scu==null)cur.scu=scu;continue;}}
@@ -253,16 +308,19 @@ function parseItems(words,wares){
   }
   return[items.filter(i=>i.ware||i.preis!=null),bestandSeen];
 }
+// Reconciles two readings of the same number; notes a conflict and keeps the first if they truly differ.
 function pickNumber(a,b,notes,label,rawA,rawB,ocr){
   if(a==null||b==null||a===b)return a!=null?a:b;
   if(a===0||b===0)return a||b;
   const sa=String(a),sb=String(b);
   if(sa.endsWith(sb)||sb.endsWith(sa)){
     if(rawA&&rawA.startsWith('¤'))return a; if(rawB&&rawB.startsWith('¤'))return b;
-    return ocr==='windows'?Math.max(a,b):Math.min(a,b);   // Windows-OCR verliert Vorziffern, Tesseract erfindet sie (¤)
+    // One reading is a suffix of the other: Windows OCR drops leading digits, Tesseract invents them (¤ read as a digit)
+    return ocr==='windows'?Math.max(a,b):Math.min(a,b);
   }
   notes.push(`${label}: ${t('n_two')} (${fmt(a)} / ${fmt(b)})`);return a;
 }
+// Merges items into dest (Map by commodity), reconciling price and stock of repeated readings.
 function mergeItems(dest,items,art,ocr){
   for(const it of items){const key=it.ware||it.roh;
     if(!dest.has(key)){dest.set(key,Object.assign({},it,{hinweise:[...(it.hinweise||[])]}));continue;}
@@ -276,6 +334,7 @@ function mergeItems(dest,items,art,ocr){
   }
   return dest;
 }
+// Decides buy or sell tab: tab brightness, then sections, stock column, previous image; returns [art, source].
 function decideArt(page,items,bestandSeen,prevArt){
   const k=page.tabs?.kaufen,m=page.tabs?.markt;
   if(k!=null&&m!=null&&Math.abs(k-m)>Math.max(k,m)*0.15)return[k>m?'Kauf':'Verkauf','Reiter'];
@@ -286,13 +345,16 @@ function decideArt(page,items,bestandSeen,prevArt){
   if(prevArt)return[prevArt,'Vorbild'];
   return['?',''];
 }
+// Matches the read location to a known place or shop name from the reference; returns [name|null, score].
 function matchOrt(location){
   if(!location)return[null,0];
   const orte=[...new Set([...REF.shops.map(s=>s.ort),...REF.shops.map(s=>s.shop)])];
   const r=best(location,orte,0.7); if(r[0])return r;
+  // Cut-off start of the name (e.g. SON'S SALVAGE CENTER): accept a known place that contains it
   const n=norm(location); if(n.length>=10){const part=orte.find(o=>norm(o).includes(n));if(part)return[part,0.75];}   // abgeschnittener Anfang ("SON'S SALVAGE CENTER")
   return r;
 }
+// Ranks the shops at a place by overlap of known commodities with the ones seen; returns [best shop, candidates].
 function matchShop(ort,art,seen){
   if(!ort)return[null,[]];
   const cands=REF.shops.filter(s=>s.ort===ort||s.shop===ort);
@@ -300,9 +362,12 @@ function matchShop(ort,art,seen){
     .sort((a,b)=>b.o-a.o||(b.k-a.k)||a.s.shop.localeCompare(b.s.shop));
   return[ranked[0]?.s||null,ranked.map(r=>r.s)];
 }
+// Timestamp in the file name of the game's screenshots.
 const STAMP_RE=/ScreenShot-(\d{4}-\d{2}-\d{2})_(\d{2})-(\d{2})-(\d{2})/i;
+// Capture time of a page: from the screenshot file name, else the file modification time.
 function stampOf(page){const m=STAMP_RE.exec(page.file);return m?`${m[1]}T${m[2]}:${m[3]}:${m[4]}`:(page.mtime||'').slice(0,19);}
 
+// Groups pages into series (place + tab), merges their items and builds review rows with notes and confidence.
 function evaluate(pages){
   const wares=REF.waren, series=new Map(), prev=new Map();
   for(const page of [...pages].sort((a,b)=>a.file.localeCompare(b.file))){
@@ -332,6 +397,7 @@ function evaluate(pages){
       if(!it.ware)notes.push(`${t('n_ware')} (${t('read')}: „${it.roh}“)`);
       else if(it.score<0.85)notes.push(`${t('n_unsure')} (${t('read')}: „${it.roh}“)`);
       let preis=it.preis;
+      // "/UNITS": price per selected container size – convert to per SCU via the reference price
       if(preis!=null&&it.preisUnit){   // "/UNITS": Preis je gewählter Containergröße – über den Referenzpreis auf je SCU umrechnen
         const refp=it.ware&&known[it.ware]?known[it.ware][0]:null;
         const k=refp?[2,4,8,16,24,32].find(k=>Math.abs(Math.log(preis/k/refp))<Math.log(1.15)):null;
@@ -339,8 +405,9 @@ function evaluate(pages){
       }
       if(preis==null)notes.push(t('n_price'));
       else if(it.ware&&known[it.ware]){
-        // Vorziffer-Falle: das ¤-Zeichen wird mal als Ziffer gelesen (¤10.000 -> 110.000). Referenzpreis entscheidet.
+        // Leading-digit trap: the ¤ sign is sometimes read as a digit (¤10.000 -> 110.000). The reference price decides.
         const refp=known[it.ware][0], alt=String(preis).length>=2?parseInt(String(preis).slice(1),10):null;
+        // Log distance to the reference price (symmetric for too high and too low).
         const dev=x=>Math.abs(Math.log(x/refp));
         if(refp&&alt&&dev(alt)<dev(preis)&&dev(alt)<Math.log(2)&&/^[0-9]/.test(it.preisRaw||'')){preis=alt;info.push(`${t('n_prefix')} → ${fmt(alt)}`);}
         if(refp&&!(preis/refp>=0.5&&preis/refp<=2))notes.push(`${t('n_dev')} (${fmt(refp)})`);
@@ -356,15 +423,17 @@ function evaluate(pages){
 }
 
 // =====================================================================
-// OCR im Browser (Tesseract.js): Ausschnitte wie in ocr_engine.ps1, Wörter in Originalkoordinaten
+// OCR in the browser (Tesseract.js): crops as in ocr_engine.ps1, words in original image coordinates
 // =====================================================================
 let worker=null;
+// Creates the Tesseract worker (German + English) once and reuses it.
 async function getWorker(){
   if(worker)return worker;
   setProg(t('loading'),0);
   worker=await Tesseract.createWorker('deu+eng',1,{logger:m=>{if(m.status==='loading language traineddata'||m.status==='initializing api')setProg(t('loading'),0);}});
   return worker;
 }
+// Crops and upscales a region and converts it to greyscale with contrast stretched around mid grey.
 function cropCanvas(img,x0,y0,w,h,scale,contrast){
   const c=document.createElement('canvas');c.width=Math.max(1,Math.round(w*scale));c.height=Math.max(1,Math.round(h*scale));
   const g=c.getContext('2d',{willReadFrequently:true});g.imageSmoothingQuality='high';g.drawImage(img,x0,y0,w,h,0,0,c.width,c.height);
@@ -372,12 +441,13 @@ function cropCanvas(img,x0,y0,w,h,scale,contrast){
   for(let i=0;i<p.length;i+=4){let v=0.299*p[i]+0.587*p[i+1]+0.114*p[i+2];v=(v-128)*contrast+128;p[i]=p[i+1]=p[i+2]=v<0?0:v>255?255:v;}
   g.putImageData(d,0,0);return c;
 }
+// Runs OCR on a canvas and maps the words back to original image coordinates, repairing a misread ¤ sign.
 async function ocrWords(wk,canvas,x0,y0,scale){
   const r=await wk.recognize(canvas);
   return r.data.words.filter(w=>w.text.trim()).map(w=>{
     let text=w.text.trim();
-    // Währungszeichen ¤ vor dem Preis: Tesseract liest es als 1, 5, n, m … – die Glyphe ist aber fast quadratisch
-    // und niedriger als eine Ziffer; ein verschmolzenes "¤1" ist doppelt so breit (dann bleibt die 1).
+    // Currency sign ¤ before the price: Tesseract reads it as 1, 5, n, m … – but the glyph is almost square
+    // and lower than a digit; a merged "¤1" is twice as wide (then the 1 is kept).
     if(/^[0-9OoIlSnmNMa#][0-9OoIlS .,]*\/[S58936]/.test(text)&&w.symbols&&w.symbols.length>3){
       const s0=w.symbols[0],s1=w.symbols[1],a=(s0.bbox.x1-s0.bbox.x0)/Math.max(1,s0.bbox.y1-s0.bbox.y0),h1=s1.bbox.y1-s1.bbox.y0;
       if(a>=0.8&&a<1.3&&((s0.bbox.y1-s0.bbox.y0)<h1*0.95||a>=0.9))text='¤'+text.slice(1);
@@ -385,35 +455,43 @@ async function ocrWords(wk,canvas,x0,y0,scale){
     }
     return{text,x:x0+w.bbox.x0/scale,y:y0+w.bbox.y0/scale,w:(w.bbox.x1-w.bbox.x0)/scale,h:(w.bbox.y1-w.bbox.y0)/scale};});
 }
-function tabBrightness(img,kf,mk){ // Helligkeit hinter den Reiter-Beschriftungen; fehlt ein Reiter-Wort, Lage aus dem anderen schätzen (Maß: Worthöhe)
+// Brightness behind the tab labels (the active tab is lit); if one tab word is missing, estimate its box from the other (unit: word height)
+function tabBrightness(img,kf,mk){
+  // Box around a tab word, a bit larger than the word itself.
   const box=w=>[w.x-w.w*0.3,w.y-w.h*0.3,w.w*1.6,w.h*1.6];
   let kb=kf?box(kf):null,mb=mk?box(mk):null;
   if(!kb&&mk){const h=mk.h;kb=[mk.x-9*h,mk.y-0.3*h,6*h,1.6*h];}
   if(!mb&&kf){const h=kf.h;mb=[kf.x+9*h,kf.y-0.3*h,10*h,1.6*h];}
   return{kaufen:kb?meanBrightness(img,...kb):null,markt:mb?meanBrightness(img,...mb):null};
 }
+// Mean luminance of an image rectangle.
 function meanBrightness(img,x,y,w,h){
   const c=document.createElement('canvas');const cw=Math.max(1,Math.round(w)),ch=Math.max(1,Math.round(h));c.width=cw;c.height=ch;
   const g=c.getContext('2d');g.drawImage(img,Math.max(0,x),Math.max(0,y),cw,ch,0,0,cw,ch);
   const p=g.getImageData(0,0,cw,ch).data;let s=0,n=0;for(let i=0;i<p.length;i+=4){s+=0.299*p[i]+0.587*p[i+1]+0.114*p[i+2];n++;}return n?s/n:null;
 }
+// Reads one screenshot in up to four passes (rough, panel, high contrast, location), with glass-kiosk and angled-shot fallbacks.
 async function ocrImage(file,idx,total){
   const img=await createImageBitmap(file).catch(()=>null);
   if(!img)throw new Error(t('imgErr'));
   const W=img.width,H=img.height,wk=await getWorker();
+  // Progress text and bar for pass k of 4.
   const step=(k,txt)=>setProg(`${t('reading')} ${idx+1} ${t('of')} ${total}: ${file.name} · ${t('pass')} ${k}/4${txt?' · '+txt:''}`,(idx+(k-1)/4)/total);
-  // 1) rechte Hälfte grob lesen: Reiter finden, Panel eingrenzen
+  // 1) Rough read of the right half: find the tabs, narrow down the panel
   step(1);const rx=Math.floor(W*0.55);
   let rough=await ocrWords(wk,cropCanvas(img,rx,0,W-rx,H,2,1.3),rx,0,2);
   let kf=rough.find(w=>TAB_KAUF.test(w.text)), mk=rough.find(w=>TAB_MARKT.test(w.text)), glass=false;
-  if(!kf&&!mk&&vocabScore(rough)<3){   // frontaler Glas-Kiosk (weißer Text auf hellem Panel)? Schwellwert statt Kontrast
+  // Frontal glass kiosk (white text on a bright panel)? Use a threshold instead of contrast
+  if(!kf&&!mk&&vocabScore(rough)<3){
     const r2=await ocrWords(wk,thresholdCanvas(cropCanvas(img,rx,0,W-rx,H,2,1.0),205),rx,0,2);
     const k2=r2.find(w=>TAB_KAUF.test(w.text)),m2=r2.find(w=>TAB_MARKT.test(w.text));
     if(k2||m2||vocabScore(r2)>=3){rough=r2;kf=k2;mk=m2;glass=true;}
   }
   const client=clientOf(rough);
+  // Prepares a crop: threshold on glass kiosks, contrast otherwise.
   const prep=(x0,y0,w,h,sc,ct,th)=>glass?thresholdCanvas(cropCanvas(img,x0,y0,w,h,sc,1.0),th):cropCanvas(img,x0,y0,w,h,sc,ct);
-  if(!kf&&!mk&&vocabScore(rough)<3){   // frontal nichts gefunden -> schräge Aufnahme: entzerren
+  // Nothing found frontally -> angled shot: straighten it
+  if(!kf&&!mk&&vocabScore(rough)<3){
     step(2,t('skewed'));
     let res=null,quad=null;
     const dims=W+'x'+H;
@@ -429,20 +507,21 @@ async function ocrImage(file,idx,total){
     return{file:file.name,url:URL.createObjectURL(file),imgW:W,imgH:H,mtime:new Date(file.lastModified).toISOString(),ocr:'tesseract',skewed:true,client:clientOf([...res.R,...res.RB]),tabs:res.tabs,variants:[{tag:'L',words:L},{tag:'R',words:res.R},{tag:'RB',words:res.RB}]};
   }
   let px0=rx,px1=W,py0=0;
-  // Panelbreite: rechter Rand liegt etwa 0,08–0,12 W rechts vom Wort LOCAL/LOKALER bzw. 0,2 W rechts von BUY/KAUFEN
+  // Panel width: the right edge lies about 0.08–0.12 W right of the word LOCAL/LOKALER, or 0.2 W right of BUY/KAUFEN
   if(kf){px0=Math.max(0,kf.x-W*0.02);py0=Math.max(0,kf.y-kf.h*0.5);px1=Math.min(W,Math.max(mk?mk.x+W*0.16:0,kf.x+W*0.22));}
   else if(mk){px0=Math.max(0,mk.x-W*0.06);py0=Math.max(0,mk.y-mk.h*0.5);px1=Math.min(W,mk.x+W*0.16);}
-  // 2+3) Panel in zwei Lesungen
+  // 2+3) Read the panel in two passes (normal and high contrast)
   step(2);let R=await ocrWords(wk,prep(px0,py0,px1-px0,H-py0,3,1.3,205),px0,py0,3);
   step(3);let RB=await ocrWords(wk,prep(px0,py0,px1-px0,H-py0,4,3.0,225),px0,py0,4);
-  // Reiter: fehlt einer in der groben Lesung, in den feinen Lesungen suchen; fehlt er weiter, Lage aus dem anderen schätzen
+  // Tabs: if one is missing in the rough read, look in the fine reads; if still missing, estimate its position from the other
   let fine=[...R,...RB];kf=kf||fine.find(w=>TAB_KAUF.test(w.text));mk=mk||fine.find(w=>TAB_MARKT.test(w.text));
   let tabs=tabBrightness(img,kf,mk),skewed=false;
-  if(glass){   // Glas-Kiosk mit wenig Treffern: vielleicht doch schräg -> entzerrt lesen und das bessere Ergebnis nehmen
+  // Glass kiosk with few hits: maybe angled after all -> read straightened and keep the better result
+  if(glass){
     const sc=vocabScore(R)+vocabScore(RB);
     if(sc<8){const q=autoQuad(img,'R');if(q){const r=await readWarped(wk,img,q);if(r.score>sc){R=r.R;RB=r.RB;fine=[...R,...RB];tabs=r.tabs;skewed=true;lastQuad=q;lastDims=W+'x'+H;}}}
   }
-  // 4) linkes Panel: "Deine Inventare" suchen, Standort-Zeile fein lesen
+  // 4) Left panel: find "Deine Inventare"/"Your inventories", read the location line finely
   step(4);const lx=Math.floor(W*0.45);
   let L=await ocrWords(wk,prep(0,0,lx,H,2,1.3,205),0,0,2);
   const di=linesOf(L).find(l=>ratio(l.text,'DEINE INVENTARE')>=0.7||ratio(l.text,'YOUR INVENTORIES')>=0.7);
@@ -454,7 +533,7 @@ async function ocrImage(file,idx,total){
       const [ort,score]=matchOrt(loc);const sc2=ort?score:(loc&&NO_LOCATION.some(n=>ratio(loc,n)>=0.7)?0.5:-0.5);
       if(sc2>bestS){bestS=sc2;bestL=cand;}}
     await wk.setParameters({tessedit_pageseg_mode:'3'});
-    // Kopfzeile "DEINE INVENTARE" künstlich voranstellen, damit parseLocation die Zeile darunter nimmt
+    // Prepend a synthetic "DEINE INVENTARE" heading so that parseLocation takes the line below it
     if(bestL&&bestS>-0.5)L=[{text:'DEINE',x:di.x,y:di.y,w:di.h*3,h:di.h},{text:'INVENTARE',x:di.x+di.h*3.5,y:di.y,w:di.h*5,h:di.h},...bestL];}
   img.close&&img.close();
   return{file:file.name,url:URL.createObjectURL(file),imgW:W,imgH:H,mtime:new Date(file.lastModified).toISOString(),ocr:'tesseract',client:client||clientOf(fine),glass:glass&&!skewed,skewed,tabs,variants:[{tag:'L',words:L},{tag:'R',words:R},{tag:'RB',words:RB}]};
@@ -462,15 +541,18 @@ async function ocrImage(file,idx,total){
 
 
 // =====================================================================
-// Schräge Aufnahmen: Panel-Ecken finden (automatisch oder per Klick), entzerren, Text per Schwellwert freistellen
+// Angled shots: find the panel corners (automatically or by click), straighten, isolate text by threshold
 // =====================================================================
-function homography(src,dst){ // src = H * dst (4 Punktpaare), Gauss-Elimination
+// Solves the 3x3 homography with src = H * dst from 4 point pairs (Gaussian elimination); returns its 9 entries
+function homography(src,dst){
   const A=[],b=[];for(let i=0;i<4;i++){const [x,y]=dst[i],[u,v]=src[i];A.push([x,y,1,0,0,0,-u*x,-u*y]);b.push(u);A.push([0,0,0,x,y,1,-v*x,-v*y]);b.push(v);}
   for(let c=0;c<8;c++){let p=c;for(let r=c+1;r<8;r++)if(Math.abs(A[r][c])>Math.abs(A[p][c]))p=r;[A[c],A[p]]=[A[p],A[c]];[b[c],b[p]]=[b[p],b[c]];
     for(let r=0;r<8;r++){if(r===c)continue;const f=A[r][c]/A[c][c];for(let k=c;k<8;k++)A[r][k]-=f*A[c][k];b[r]-=f*b[c];}}
   return [...b.map((v,i)=>v/A[i][i]),1];
 }
-function warpQuad(img,quad,scale){ // quad TL,TR,BR,BL (Bildkoordinaten) -> frontales Canvas
+// Warps the quad TL,TR,BR,BL (image coordinates) into a frontal canvas, scaled by scale
+function warpQuad(img,quad,scale){
+  // Distance between two points.
   const d=(p,q)=>Math.hypot(p[0]-q[0],p[1]-q[1]);const [tl,tr,br,bl]=quad;
   const W_=Math.max(8,Math.round((d(tl,tr)+d(bl,br))/2*scale)),H_=Math.max(8,Math.round((d(tl,bl)+d(tr,br))/2*scale));
   const H=homography(quad,[[0,0],[W_,0],[W_,H_],[0,H_]]);
@@ -480,23 +562,27 @@ function warpQuad(img,quad,scale){ // quad TL,TR,BR,BL (Bildkoordinaten) -> fron
     if(ui>=0&&ui<img.width&&vi>=0&&vi<img.height){const i=(vi*img.width+ui)*4;op[o]=sp[i];op[o+1]=sp[i+1];op[o+2]=sp[i+2];}op[o+3]=255;}
   og.putImageData(od,0,0);return out;
 }
-function thresholdCanvas(c,th){ // helle Textpixel (Rot-Kanal > th) als schwarz auf weiß
+// Bright text pixels (red channel > th) become black on white; used for glass kiosks and straightened panels
+function thresholdCanvas(c,th){
   const g=c.getContext('2d',{willReadFrequently:true});const d=g.getImageData(0,0,c.width,c.height),p=d.data;
   for(let i=0;i<p.length;i+=4){const v=p[i]>th?0:255;p[i]=p[i+1]=p[i+2]=v;}
   const o=document.createElement('canvas');o.width=c.width;o.height=c.height;o.getContext('2d').putImageData(d,0,0);return o;
 }
-function autoQuad(img,side){ // größte grau-helle Fläche (Glas-Panel) in einer Bildhälfte -> Eckpunkte
+// Finds the largest grey-bright area (glass panel) in one image half and returns its corners TL,TR,BR,BL, or null
+function autoQuad(img,side){
   const k=4,w=Math.floor(img.width/k),h=Math.floor(img.height/k);
   const c=document.createElement('canvas');c.width=w;c.height=h;const g=c.getContext('2d',{willReadFrequently:true});g.drawImage(img,0,0,w,h);const p=g.getImageData(0,0,w,h).data;
   const m=new Uint8Array(w*h);const x0=side==='R'?Math.floor(w/2):0,x1=side==='R'?w:Math.floor(w/2);
   for(let y=0;y<h;y++)for(let x=x0;x<x1;x++){const i=(y*w+x)*4;if(Math.min(p[i],p[i+1],p[i+2])>110)m[y*w+x]=1;}
-  const e=new Uint8Array(w*h);     // Erosion 5x5: dünne Verbindungen kappen
+  // 5x5 erosion: cut thin connections between areas
+  const e=new Uint8Array(w*h);
   for(let y=2;y<h-2;y++)for(let x=2;x<w-2;x++){let ok=1;for(let dy=-2;dy<=2&&ok;dy++)for(let dx=-2;dx<=2;dx++)if(!m[(y+dy)*w+x+dx]){ok=0;break;}e[y*w+x]=ok;}
   const seen=new Uint8Array(w*h);let best=[];
   for(let s=0;s<w*h;s++){if(!e[s]||seen[s])continue;const comp=[];const st=[s];seen[s]=1;
     while(st.length){const i=st.pop();comp.push(i);const x=i%w,y=(i-x)/w;for(const [nx,ny] of [[x+1,y],[x-1,y],[x,y+1],[x,y-1]]){if(nx<0||ny<0||nx>=w||ny>=h)continue;const j=ny*w+nx;if(e[j]&&!seen[j]){seen[j]=1;st.push(j);}}}
     if(comp.length>best.length)best=comp;}
   if(best.length<w*h*0.03)return null;
+  // Index in the downscaled mask -> [x, y].
   const pt=i=>[i%w,(i-i%w)/w];let tl,tr,br,bl,a=1e9,b=-1e9,cc=-1e9,d=1e9;
   for(const i of best){const [x,y]=pt(i);if(x+y<a){a=x+y;tl=[x,y];}if(x+y>b){b=x+y;br=[x,y];}if(x-y>cc){cc=x-y;tr=[x,y];}if(x-y<d){d=x-y;bl=[x,y];}}
   const q=[tl,tr,br,bl].map(([x,y])=>[x*k,y*k]);
@@ -504,45 +590,58 @@ function autoQuad(img,side){ // größte grau-helle Fläche (Glas-Panel) in eine
   if(!(wq>0&&hq>0)||wq/hq<0.3||wq/hq>1.4)return null;
   return q;
 }
+// Words that indicate terminal text; used to score whether a reading found the panel.
 const VOCAB=()=>[...REF.waren,...Object.keys(HEADERS),...STATUS,'INVENTAR','KAUFEN','LOKALER','MARKTWERT','BESTAND','VERFÜGBARE','CONTAINERGRÖSSE','SCU','INVENTORY','LOCAL','MARKET','VALUE','QUANTITY','AVAILABLE','CARGO'];
+// Tab words: BUY/KAUFEN and LOCAL MARKET VALUE/LOKALER MARKTWERT (also misread as MRKT).
 const TAB_KAUF=/^(KAUF|BUY$)/i, TAB_MARKT=/^(LOKAL|MARKT|MRKT|LOCAL|MARKET)/i;
-// Client-Sprache am Reiter-Text: "BUY"/"LOCAL"/"MARKET" -> englisch, "KAUFEN"/"LOKALER"/"MARKTWERT" -> deutsch
+// Client language from the tab texts: "BUY"/"LOCAL"/"MARKET" -> English, "KAUFEN"/"LOKALER"/"MARKTWERT" -> German
 function clientOf(words){let de=0,en=0;for(const w of words){if(/^(KAUF|LOKAL|MARKTW|BEST[AÄ]ND|INVENTARE)/i.test(w.text))de++;if(/^(BUY$|LOCAL|MARKET|QUANTITY|INVENTORIES)/i.test(w.text))en++;}return en>de?'en':de>en?'de':'';}
+// Counts words that fuzzily match the terminal vocabulary.
 function vocabScore(words){const v=VOCAB();let n=0;for(const w of words){if(w.text.length<3)continue;const [m]=best(w.text,v,0.75);if(m)n++;}return n;}
-async function readWarped(wk,img,quad){ // entzerrtes Panel in zwei Schwellwert-Lesungen; Reiter-Helligkeit aus dem entzerrten Farbbild
+// Reads the straightened panel in two threshold passes; tab brightness comes from the straightened colour image
+async function readWarped(wk,img,quad){
   const wc=warpQuad(img,quad,2.5);
   const R=await ocrWords(wk,thresholdCanvas(wc,205),0,0,1),RB=await ocrWords(wk,thresholdCanvas(wc,225),0,0,1);
   const all=[...R,...RB],kf=all.find(w=>TAB_KAUF.test(w.text)),mk=all.find(w=>TAB_MARKT.test(w.text));
   return{R,RB,tabs:tabBrightness(wc,kf,mk),score:vocabScore(R)+vocabScore(RB)};
 }
+// Last used corners and image size; reused for following images of the same size.
 let lastQuad=null,lastDims='';
-function askCorners(img,file){ // Ecken-Wähler: löst mit Quad (TL,TR,BR,BL) oder null (überspringen) auf
+// Corner picker: resolves with a quad (TL,TR,BR,BL) or null (skip image)
+function askCorners(img,file){
   return new Promise(resolve=>{
     const box=$('#corner'),cv=$('#cornerCanvas'),maxW=Math.min(1100,document.documentElement.clientWidth-64);
     const sc=Math.min(1,maxW/img.width);cv.width=Math.round(img.width*sc);cv.height=Math.round(img.height*sc);
     const g=cv.getContext('2d');let pts=[];
     const labels=[t('cTL'),t('cTR'),t('cBR'),t('cBL')];
+    // Redraws the image, the clicked corners and the step labels.
     const draw=()=>{g.drawImage(img,0,0,cv.width,cv.height);g.lineWidth=3;g.strokeStyle='#3fd0dd';g.fillStyle='#f0a94a';
       pts.forEach((p,i)=>{g.beginPath();g.arc(p[0]*sc,p[1]*sc,7,0,7);g.fill();g.font='bold 14px sans-serif';g.fillText(String(i+1),p[0]*sc+10,p[1]*sc-8);});
       if(pts.length>1){g.beginPath();g.moveTo(pts[0][0]*sc,pts[0][1]*sc);for(const p of pts.slice(1))g.lineTo(p[0]*sc,p[1]*sc);if(pts.length===4)g.closePath();g.stroke();}
       $('#cornerSteps').innerHTML=labels.map((l,i)=>`<span class="${i<pts.length?'done':i===pts.length?'next':''}">${i+1} · ${l}</span>`).join('');
       $('#cornerGo').disabled=pts.length!==4;};
+    // Adds a clicked corner in original image coordinates (up to four).
     const onClick=e=>{if(pts.length>=4)return;const r=cv.getBoundingClientRect();pts.push([(e.clientX-r.left)*cv.width/r.width/sc,(e.clientY-r.top)*cv.height/r.height/sc]);draw();};
+    // Removes the handlers, hides the picker and resolves with the quad or null.
     const finish=q=>{cv.removeEventListener('click',onClick);$('#cornerGo').onclick=$('#cornerReset').onclick=$('#cornerSkip').onclick=null;box.classList.add('hide');resolve(q);};
     cv.addEventListener('click',onClick);
     $('#cornerGo').onclick=()=>finish(pts.map(p=>[Math.round(p[0]),Math.round(p[1])]));
     $('#cornerReset').onclick=()=>{pts=[];draw();};
     $('#cornerSkip').onclick=()=>finish(null);
     box.classList.remove('hide');draw();box.scrollIntoView({behavior:'smooth',block:'start'});
-    window.__cornerResolve=finish;   // für Tests
+    // Hook for automated tests
+    window.__cornerResolve=finish;
   });
 }
 
 // =====================================================================
-// Ablauf: Dateien -> Seiten -> Serien -> Tabelle
+// Flow: files -> pages -> series -> table
 // =====================================================================
+// Read pages (OCR words per image) and the evaluated series shown in the table.
 let PAGES=[], SERIEN=[];
+// Shows the progress text and bar (frac 0..1).
 function setProg(txt,frac){$('#prog').classList.remove('hide');$('#progText').textContent=txt;$('#progBar').style.width=Math.round(Math.min(1,frac)*100)+'%';}
+// Reads dropped or picked files (images via Tesseract, ocr_words.json from Windows OCR) and re-evaluates after each.
 async function handleFiles(list){
   const files=[...list].filter(f=>/\.(png|jpe?g|json)$/i.test(f.name)).sort((a,b)=>a.name.localeCompare(b.name));
   if(!files.length)return;
@@ -559,6 +658,7 @@ async function handleFiles(list){
   }
   setProg(`${t('done')}: ${PAGES.length} ${t('pics')}`,1);
 }
+// Renders the reference status and one review table per series.
 function render(){
   document.documentElement.dataset.lang=lang;document.documentElement.dataset.theme=theme;
   $('#refStat').innerHTML=REF.waren?`${t('ref')}: star-head · ${esc(REF.stand)} · ${t('patch')} ${esc(REF.patch)} · ${REF.waren.length} ${t('waren')} · ${REF.shops.length} ${t('shops')}`:'';
@@ -569,6 +669,7 @@ function render(){
     total+=s.zeilen.length;chk+=s.zeilen.filter(r=>r.konfidenz==='pruefen').length;
     const kauf=s.art==='Kauf', cands=s.shop_kandidaten.length?s.shop_kandidaten:REF.shops;
     const sel=`<label class="sel">${t('shop')}<select data-si="${si}">${s.shop_kandidaten.length?'':`<option value="">– ${t('unknown')} –</option>`}${cands.map(c=>`<option value="${esc(c.shop+'|'+c.ort)}"${s.shop&&c.shop===s.shop.shop&&c.ort===s.shop.ort?' selected':''}>${esc(c.shop)} (${esc(c.ort)}, ${esc(c.system)})</option>`).join('')}</select></label>`;
+    // Link to the screenshot (object URL) or just its name.
     const img=b=>b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.datei)}</a>`:esc(b.datei);
     const rows=s.zeilen.map((r,ri)=>`<tr class="${r.konfidenz==='pruefen'?'chk':''}" data-si="${si}" data-ri="${ri}">
       <td class="ware" contenteditable="true" spellcheck="false">${esc(r.ware||r.roh)}</td>
@@ -587,17 +688,21 @@ function render(){
   });
   if(has)updateCounts();
 }
+// Updates the counters of rows and rows still to check, and hides confirm-all where nothing is open.
 function updateCounts(){
   const rows=$$('tbody tr').length,chk=$$('tbody tr.chk').length;
   $('#stat').innerHTML=`<b>${SERIEN.length}</b> ${t('series')} · <b>${rows}</b> ${t('rows')} · <b>${chk}</b> ${t('chk')}`;
   $$('[data-chk]').forEach(b=>{const n=$$(`tbody tr.chk[data-si="${b.dataset.chk}"]`).length;b.textContent=n;const ba=$(`[data-okall="${b.dataset.chk}"]`);if(ba)ba.classList.toggle('hide',n===0);});
 }
+// Marks a row as checked by the user.
 function confirmRow(tr){tr.classList.remove('chk');tr.classList.add('confirmed');}
+// Collects the export rows from the table, including the user's edits and the chosen shop.
 function collect(){
   const out=[];
   $$('tbody tr').forEach(tr=>{
     const s=SERIEN[+tr.dataset.si],r=s.zeilen[+tr.dataset.ri];
     const selv=$(`select[data-si="${tr.dataset.si}"]`).value,shop=(s.shop_kandidaten.length?s.shop_kandidaten:REF.shops).find(c=>c.shop+'|'+c.ort===selv)||null;
+    // Number from an edited table cell (digits only).
     const num=td=>{const v=(td?.textContent||'').replace(/[^0-9]/g,'');return v?+v:null;};
     out.push({system:shop?.system||'',ort:shop?.ort||s.ort||s.standort||'',shop:shop?.shop||'',standort_im_bild:s.standort||'',art:s.art,
       ware:tr.querySelector('.ware').textContent.trim(),preis_auec_scu:num(tr.querySelector('.preis')),bestand_scu:s.art==='Kauf'?num(tr.querySelector('.bestand')):null,
@@ -605,6 +710,7 @@ function collect(){
   });
   return out;
 }
+// Exports the rows as JSON (schema sc-konsole-export/1) or CSV (UTF-8 BOM, semicolons for Excel); asks if rows are unchecked.
 function download(kind){
   const open=$$('tbody tr.chk').length; if(open&&!confirm(`${open} ${t('exportAsk')}`))return;
   const rows=collect(),meta={schema:SCHEMA,generator:`SC Screenshot-Auswerter ${VERSION} (Browser)`,generated:new Date().toISOString().slice(0,19),client:[...new Set(PAGES.map(p=>p.client).filter(Boolean))].join('+')||'?',ocr:'tesseract.js deu+eng',referenz_stand:REF.stand,patch:REF.patch};
@@ -615,11 +721,13 @@ function download(kind){
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);
   toast(`${name} ${t('dl')} (${rows.length} ${t('rows')})`);
 }
+// Builds the reference structure from the Handels-Planer data.json (same as build() in referenz_aktualisieren.py).
 function buildRef(d){
   const wares=d.wares.map(w=>w.w),shops=new Map(),angebot={};
   for(const [idx,art,preis,shop,ort,system,,,stand] of d.rows){shops.set(shop+'|'+ort,{shop,ort,system});(angebot[shop+'|'+ort]??={})[art?'Verkauf':'Kauf']??={};angebot[shop+'|'+ort][art?'Verkauf':'Kauf'][wares[idx]]=[preis,stand];}
   return{schema:'sc-auswerter-referenz/1',quelle:d.source||'star-head.de',stand:d.generated||'',patch:d.patch||'',waren:wares,shops:[...shops.values()].sort((a,b)=>a.shop.localeCompare(b.shop)),angebot};
 }
+// Loads the latest reference from GitHub Pages, stores it locally and re-evaluates; keeps the built-in one on failure.
 async function refreshRef(){
   const b=$('#refBtn');b.disabled=true;
   try{const r=await fetch(REF_URL,{cache:'no-store'});if(!r.ok)throw new Error(r.status);const d=await r.json();
@@ -627,7 +735,9 @@ async function refreshRef(){
   }catch(e){toast(t('refErr'));}
   b.disabled=false;
 }
+// Shows a short message at the bottom for 2.5 s.
 let tt;function toast(m){const e=$('#toast');e.textContent=m;e.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('show'),2500);}
+// Click handling for downloads, row confirm/remove, language, theme, reference reload, file pickers and reset.
 document.addEventListener('click',e=>{
   const dl=e.target.closest('[data-dl]');if(dl){download(dl.dataset.dl);return;}
   if(e.target.closest('[data-rm]')){e.target.closest('tr').remove();updateCounts();toast(t('del'));return;}
@@ -641,6 +751,7 @@ document.addEventListener('click',e=>{
   if(e.target.closest('#resetBtn')){PAGES=[];SERIEN=[];$('#fileList').innerHTML='';$('#prog').classList.add('hide');render();}
   if(e.target===$('#drop')||($('#drop').contains(e.target)&&!e.target.closest('button')))$('#fileIn').click();
 });
+// An edited cell marks its row as corrected (no longer to check or confirmed).
 document.addEventListener('input',e=>{const tr=e.target.closest('tr');if(tr){tr.classList.add('edited');tr.classList.remove('chk','confirmed');updateCounts();}});
 $('#fileIn').addEventListener('change',e=>{handleFiles(e.target.files);e.target.value='';});
 $('#dirIn').addEventListener('change',e=>{handleFiles(e.target.files);e.target.value='';});
@@ -648,6 +759,7 @@ const drop=$('#drop');
 ['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over');}));
 ['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('over');}));
 drop.addEventListener('drop',e=>handleFiles(e.dataTransfer.files));
+// Use a reference reloaded earlier if it is newer than the embedded one.
 try{const saved=localStorage.getItem('sca_ref');if(saved){const r=JSON.parse(saved);if(r.stand>REF.stand)REF=r;}}catch(e){}
 render();
 /*FH_JS*/
