@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SC Screenshot-Auswerter</title>
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700;800&family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
 <style>
   :root{
@@ -78,25 +78,13 @@
   #cornerWrap{position:relative;display:inline-block;max-width:100%} #cornerCanvas{max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;cursor:crosshair;display:block}
   .corner-steps{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0} .corner-steps span{font-family:var(--disp);font-size:12px;letter-spacing:.06em;border:1px solid var(--line);border-radius:20px;padding:2px 10px;color:var(--muted)} .corner-steps span.done{color:var(--ok);border-color:var(--ok)} .corner-steps span.next{color:var(--accent2);border-color:var(--accent2)}
   .thumb{max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:8px}
+/*FH_CSS*/
 </style>
 </head>
 <body>
 <div class="hazard"></div>
 <div class="wrap">
-<header>
-  <p class="eyebrow">Star Citizen · Handelskonsolen · OCR</p>
-  <h1>SC Screenshot-Auswerter</h1>
-  <p class="lede"><span class="de">Screenshots der Handelskonsole hineinziehen – die Seite liest Ort, Reiter, Waren, Preise und Bestände im Browser, du prüfst die Tabelle und lädst JSON oder CSV herunter. Nichts verlässt deinen Rechner.</span><span class="en">Drop screenshots of the trade terminal – the page reads place, tab, commodities, prices and stock in your browser; you check the table and download JSON or CSV. Nothing leaves your computer.</span></p>
-  <div class="toolbar">
-    <button class="btn" id="langBtn" type="button">EN / DE</button>
-    <button class="btn" id="themeBtn" type="button"><span class="de">Hell / Dunkel</span><span class="en">Light / Dark</span></button>
-    <button class="btn" id="refBtn" type="button" title="Referenz (Waren, Shops, Preise) vom Handels-Planer auf GitHub Pages laden">🔄 <span class="de">Neuesten Stand laden (GitHub)</span><span class="en">Load latest reference (GitHub)</span></button>
-    <a class="btn" href="https://jaegerfeld.github.io/StarCitizen-Handels-Planer/" target="_blank" rel="noopener">📈 <span class="de">Handels-Planer</span><span class="en">Trade Planner</span></a>
-    <a class="btn" href="https://jaegerfeld.github.io/sc-guides/" target="_blank" rel="noopener">📚 <span class="de">Guides-Übersicht</span><span class="en">Guides overview</span></a>
-    <a class="btn" href="https://github.com/Jaegerfeld/StarCitizen-Screenshot-Auswerter" target="_blank" rel="noopener">GitHub ↗</a>
-  </div>
-  <p class="stat" id="refStat"></p>
-</header>
+<!--FH_HEADER-->
 
 <section class="panel" id="intake">
   <div class="drop" id="drop" tabindex="0" role="button">
@@ -644,7 +632,7 @@ document.addEventListener('click',e=>{
   if(e.target.closest('[data-rm]')){e.target.closest('tr').remove();updateCounts();toast(t('del'));return;}
   if(e.target.closest('[data-ok]')){confirmRow(e.target.closest('tr'));updateCounts();return;}
   const oa=e.target.closest('[data-okall]');if(oa){$$(`tbody tr.chk[data-si="${oa.dataset.okall}"]`).forEach(confirmRow);updateCounts();toast(t('confirmed'));return;}
-  if(e.target.closest('#langBtn')){lang=lang==='de'?'en':'de';localStorage.setItem('sca_lang',lang);render();}
+  const lb=e.target.closest('#langBtn [data-lang]');if(lb&&lb.dataset.lang!==lang){lang=lb.dataset.lang;localStorage.setItem('sca_lang',lang);render();}
   if(e.target.closest('#themeBtn')){theme=theme==='dark'?'light':'dark';localStorage.setItem('sca_theme',theme);document.documentElement.dataset.theme=theme;}
   if(e.target.closest('#refBtn'))refreshRef();
   if(e.target.closest('#pickBtn'))$('#fileIn').click();
@@ -661,6 +649,8 @@ const drop=$('#drop');
 drop.addEventListener('drop',e=>handleFiles(e.dataTransfer.files));
 try{const saved=localStorage.getItem('sca_ref');if(saved){const r=JSON.parse(saved);if(r.stand>REF.stand)REF=r;}}catch(e){}
 render();
+/*FH_JS*/
 </script>
+<!--FH_DIALOG-->
 </body>
 </html>
