@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SC Screenshot-Auswerter</title>
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
+<!--SD_FONTS-->
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
 <style>
   :root{
@@ -78,6 +78,7 @@
   #cornerWrap{position:relative;display:inline-block;max-width:100%} #cornerCanvas{max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;cursor:crosshair;display:block}
   .corner-steps{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0} .corner-steps span{font-family:var(--disp);font-size:12px;letter-spacing:.06em;border:1px solid var(--line);border-radius:20px;padding:2px 10px;color:var(--muted)} .corner-steps span.done{color:var(--ok);border-color:var(--ok)} .corner-steps span.next{color:var(--accent2);border-color:var(--accent2)}
   .thumb{max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:8px}
+  @media(max-width:600px){select{min-width:0;max-width:100%}.tablewrap table{font-size:13px}}
 /*FH_CSS*/
 </style>
 </head>
