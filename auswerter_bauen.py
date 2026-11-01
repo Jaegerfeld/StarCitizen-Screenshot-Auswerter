@@ -9,6 +9,7 @@ import pathlib
 import sys
 
 import kopfzeile as kz
+import sc_design as sd
 from version import VERSION
 
 HERE = pathlib.Path(__file__).resolve().parent
@@ -35,7 +36,8 @@ def fill_header(html):
               "computer."),
         version=VERSION, refresh=refresh, data='<span id="refStat"></span>')
     html = html.replace("<!--FH_HEADER-->", head)
-    html = html.replace("/*FH_CSS*/", kz.CSS).replace("/*FH_JS*/", kz.JS)
+    html = html.replace("/*FH_CSS*/", kz.CSS + sd.CSS).replace("/*FH_JS*/", kz.JS + sd.JS)
+    html = html.replace("<!--SD_FONTS-->", sd.FONTS)
     return html.replace("<!--FH_DIALOG-->", kz.dialog_html("auswerter", VERSION) + "\n"
                         + kz.changelog_script(HERE / "CHANGELOG.md"))
 
