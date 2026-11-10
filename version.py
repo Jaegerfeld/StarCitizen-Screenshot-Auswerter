@@ -3,7 +3,7 @@
 # Repository:     https://github.com/Jaegerfeld/StarCitizen-Screenshot-Auswerter
 # KI-Unterstützung: Erstellt mit Unterstützung von Claude (Anthropic)
 # Erstellt:       28.10.2026
-# Geändert:       01.11.2026
+# Geändert:       10.11.2026
 # Lizenz:         BSD-3-Clause (siehe LICENSE)
 #
 # Fachliche Funktion:
@@ -14,4 +14,4 @@
 """Single source of the Screenshot-Auswerter version number."""
 
 #: Current release of the reader (semantic versioning); shown on the page and in exports.
-VERSION = "0.7.1"
+VERSION = "0.7.2"
