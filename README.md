@@ -40,6 +40,7 @@ The built-in Windows OCR reads slightly better than the browser engine but needs
 - **Terminals captured at an angle** (up to about 30°): the page straightens the right panel from four corners (found automatically or clicked by you) and isolates the text by threshold. Still noticeably worse than a square shot; the place is often not recognised then, so pick the shop by hand. Standing square in front remains best.
 - German and English game clients are recognised (tabs, sections, status, location field); the file list shows the detected client per image. No other languages.
 - If the terminal shows the price per container (`/UNITS`, when a container size is selected in game), the page converts to per SCU via the star-head reference price and notes the divisor; without a reference the row stays flagged.
+- Commodity names come only from the reference list. A reading is matched to one of these names (also through a word that occurs in only one name) or left open as “commodity not recognised”. A brand-new commodity is missing until the reference knows it (`python auswerter_bauen.py --referenz` or the “load latest data” button).
 - Single prices may stay unreadable (e.g. an icon touching the number); they are flagged, not guessed.
 
 ## File format

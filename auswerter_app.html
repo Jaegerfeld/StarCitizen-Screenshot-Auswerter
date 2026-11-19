@@ -266,12 +266,62 @@ function classify(text){
   return['text',text];
 }
 // True if unmatched text is OCR noise rather than a possible commodity name.
-const garbage=roh=>{const n=norm(roh);const L=n.replace(/[^A-Z]/g,'');return L.length<5||/\bS?CU\b|^\W/.test(n)||n.split(' ').filter(w=>/^[A-Z]{3,}$/.test(w)).length===0;};
+const garbage=roh=>{const n=norm(roh);const L=n.replace(/[^A-Z]/g,'');return L.length<5||/\bAUEC\b/.test(n)||/\bS?CU\b|^\W/.test(n)||n.split(' ').filter(w=>/^[A-Z]{3,}$/.test(w)).length===0;};
+// Commodity names form a closed list (whitelist): the console shows only these names, so a reading is snapped to one of them or left open.
+// True for a trailing token that is not part of a name: a "BESTAND" variant glued to the line ("COBALT BESTAUD"), a stray digit or letter, "SCU" after a number ("O SUI").
+const STOCK_WORDS=['BESTAND','BESTÄNDE','BESTANDE'];
+const junkTail=(w,prev)=>{const n=norm(w),L=n.replace(/[^A-ZÄÖÜ]/g,'');
+  return L.length<3||STOCK_WORDS.some(s=>ratio(n,s)>=0.5)||(/^S[A-Z]{2}$/.test(n)&&/^[0-9OoQD]+$/.test(prev||''));};
+let UNIQ=null;
+// Words that occur in exactly one commodity name ("SPIRITS" → Distilled Spirits, "CONSTRUCTION" → Construction Materials); built once per list.
+function uniqWords(wares){if(UNIQ&&UNIQ.src===wares)return UNIQ.map;const cnt=new Map();
+  for(const w of new Set(wares))for(const tk of new Set(norm(w).split(' ')))if(tk.replace(/[^A-Z]/g,'').length>=4)cnt.set(tk,(cnt.get(tk)||new Set()).add(w));
+  const map=new Map([...cnt].filter(([,v])=>v.size===1).map(([tk,v])=>[tk,[...v][0]]));UNIQ={src:wares,map};return map;}
+// Best whitelist name for a text; tries the text without leading words and without junk at the end, then a word found in only one name; returns [name|null, score, text used, junk dropped].
+function matchWare(text,wares){
+  const toks=String(text||'').split(/\s+/).filter(Boolean);let end=toks.length;
+  while(end>1&&junkTail(toks[end-1],toks[end-2]))end--;
+  let name=null,score=0,roh=toks.slice(0,end).join(' ')||String(text||'');
+  // Full text first, so a longer name wins a tie ("SHIP AMMUNITION - SIZE 1", "HYDROGEN FUEL")
+  for(const e of end<toks.length?[toks.length,end]:[end])for(const k of [0,1,2,3]){if(k>=e)break;
+    const cand=toks.slice(k,e).join(' ');const [nm,sc]=best(cand,wares,0.6,0.75);if(nm&&sc>score){name=nm;score=sc;roh=cand;}}
+  if(!name&&norm(roh).length>=4){const [nm,sc]=best(norm(roh).slice(1),wares,0.6,0.75);if(nm){name=nm;score=sc;}}
+  if(!name||score<0.75){const map=uniqWords(wares),hits=new Map();
+    for(const w of norm(roh).split(' ')){if(w.replace(/[^A-Z]/g,'').length<4)continue;
+      for(const [tk,ware] of map){const r=ratio(w,tk);if(r>=0.8&&r>(hits.get(ware)||0))hits.set(ware,r);}}
+    if(hits.size===1){const [[ware,r]]=[...hits];if(r>score){name=ware;score=r;}}}
+  return[name,score,roh,end<toks.length];
+}
+let WWORDS=null;
+// All words of the commodity names except filler words (SIZE, THE, OF); built once per list.
+function wareWords(wares){if(WWORDS&&WWORDS.src===wares)return WWORDS.set;const set=new Set();
+  for(const w of wares)for(const tk of norm(w).split(' '))if(tk.replace(/[^A-Z]/g,'').length>=4&&tk!=='SIZE')set.add(tk);WWORDS={src:wares,set};return set;}
+// Status for a line without a commodity name ("MITTLERE BESTÄNDE 107 SCU", "NICHT VORRÄTIG 0 SCU", "MAXIMALE" read as "NAXINATE"); '' = stock line without status, null = no stock line.
+function stockLine(namePart,wares){
+  if(!norm(namePart)||matchWare(namePart,wares)[1]>=0.8)return null;
+  // A word of a commodity name ("SHIP BESTAND": SHIP is close to SHOP) means a torn name, not a stock line
+  const toks=norm(namePart).split(' ').filter(w=>w.replace(/[^A-Z]/g,'').length>=4&&!STOCK_WORDS.some(s=>ratio(w,s)>=0.5));
+  if(toks.some(w=>[...wareWords(wares)].some(c=>ratio(w,c)>=0.8)))return null;
+  const [k,v]=classify(namePart);if(k==='status')return v;if(k==='ignore'||k==='bestand'||k==='header')return '';
+  const L=norm(namePart).replace(/[^A-Z]/g,'');if(L.length>=6&&L.length<=9&&ratio(L,'MAXIMALE')>=0.5)return 'MAXIMALE BESTÄNDE';
+  if(L.length>=5&&L.length<=9&&STOCK_WORDS.some(s=>ratio(L,s)>=0.6))return '';
+  return null;
+}
+// "SIZE S3" on a line below "SHIP AMMUNITION" completes the name ("Ship Ammunition - Size 3"); true if the line was such a size line.
+function sizeSuffix(cur,text,wares){
+  if(!cur||!/^Ship Ammunition/.test(cur.ware||''))return false;
+  const m=/^\W*SIZE\s*S?\s*([1-7lI|])(?![0-9])/i.exec(String(text||'').trim());if(!m)return false;
+  const nm='Ship Ammunition - Size '+m[1].replace(/[lI|]/,'1');if(wares.includes(nm)){cur.ware=nm;cur.roh=(cur.roh+' '+m[0].trim()).trim();}
+  return true;
+}
 // Turns the words of the right panel into commodity items (name, price, stock, status, section); returns [items, stock column seen].
 function parseItems(words,wares){
   const items=[];let section=null,cur=null,bestandSeen=false;
   for(const ln of linesOf(words)){
-    const text=ln.text,[kind,val]=classify(text);
+    const text=ln.text;let [kind,val]=classify(text);
+    // An exact word of a commodity name is never a fragment of a heading ("SHIP BESTAND": SHIP looks like SHOP)
+    if(kind==='ignore'&&norm(text).split(' ').some(w=>wareWords(wares).has(w)))[kind,val]=['text',text];
+    if(kind!=='price'&&kind!=='header'&&sizeSuffix(cur,text,wares))continue;
     // EN: "OUT OF STOCK" is a status line below the commodity (before the price) on the sell tab, but the section heading (after the last price) on the buy tab
     if(kind==='header'&&val==='nicht_vorraetig'&&cur&&cur.preis==null&&section!=='lager'){cur.status='OUT OF STOCK';continue;}
     if(kind==='header'){section=val;cur=null;}
@@ -281,28 +331,29 @@ function parseItems(words,wares){
     else if(kind==='price'&&val.v!=null){
       // Commodity name on the price line ("HADANITE ¤600,000/SCU") or torn across two lines ("EQUIPMENT 0 SCU" + "AUDIO-VISUAL ¤37,000/SCU")
       const pre=(val.pre||'').split(/\s+/).filter(w=>/[A-Za-zÄÖÜäöü]{3,}/.test(w));
-      if(pre.length){const cands=[];for(const k of [0,1,2])if(k<pre.length)cands.push(pre.slice(k).join(' '));
+      if(!sizeSuffix(cur,val.pre,wares)&&pre.length){const cands=[];for(const k of [0,1,2])if(k<pre.length)cands.push(pre.slice(k).join(' '));
         const combo=cur&&cur.preis==null&&cur.roh;if(combo)cands.push(pre.join(' ')+' '+cur.roh,cur.roh+' '+pre.join(' '));
-        let nm=null,sc=0,roh='';for(const c of cands){const [n2,s2]=best(c,wares,0.6,0.75);if(n2&&s2>sc){nm=n2;sc=s2;roh=c;}}
+        let nm=null,sc=0,roh='';for(const c of cands){const [n2,s2,r2]=matchWare(c,wares);if(n2&&s2>sc){nm=n2;sc=s2;roh=r2;}}
         if(nm&&!(cur&&cur.ware===nm)){
           if(combo&&(!cur.ware||sc>cur.score)){cur.ware=nm;cur.roh=roh;cur.score=Math.round(sc*100)/100;}
           else{cur={ware:nm,roh,score:Math.round(sc*100)/100,section,preis:null,preisRaw:'',scu:null,status:''};items.push(cur);}}}
       if(cur){if(cur.preis==null){cur.preis=val.v;cur.preisRaw=val.raw;cur.preisUnit=!!val.unit;}else cur=null;}}
     else if(kind==='scu'&&cur)cur.scu=val;
     else if(kind==='text'){
+      if(/\bAUEC\b/.test(norm(text)))continue;   // account balance, never a commodity
       let tt=text.replace(/\bBESTAND\b|\bSHOP\s+QUA\w*/ig,' '); if(/\bBESTAND\b|\bSHOP\s+QUA\w*/i.test(text))bestandSeen=true;
       const m=SCU_ANY_RE.exec(tt), scu=m?toInt(m[1]):null, namePart=(m?tt.slice(0,m.index):tt).trim();
-      let name=null,score=0,roh=namePart;
-      // A trailing number or bar is not part of the name
-      const toks=namePart.split(/\s+/).filter((w,i,arr)=>!(i===arr.length-1&&/^[0-9OoIlS.,|]+$/.test(w)));
-      for(const k of [0,1,2,3]){if(k>=toks.length)break;const cand=toks.slice(k).join(' ');const [nm,sc]=best(cand,wares,0.6,0.75);if(nm&&sc>score){name=nm;score=sc;roh=cand;}}
-      if(!name&&norm(namePart).length>=4){const [nm,sc]=best(norm(namePart).slice(1),wares,0.6,0.75);if(nm){name=nm;score=sc;}}
+      // A stock line belongs to the row above; it must not open a row of its own and take that row's price
+      const st=stockLine(namePart,wares);
+      if(st!==null){if(cur&&cur.preis==null){if(scu!=null&&cur.scu==null)cur.scu=scu;if(st&&!cur.status)cur.status=st;}continue;}
+      let [name,score,roh,cut]=matchWare(namePart,wares);if(cut&&STOCK_WORDS.some(s=>ratio(namePart.split(/\s+/).pop(),s)>=0.5))bestandSeen=true;
       // Name torn across two lines ("N RECYCLED" + "MATERIAL COMPOSITE 0 SCU"): if the joined text matches better than either part, complete the previous row
       if(cur&&cur.preis==null&&cur.roh&&norm(namePart).length>=3){let bn=null,bs=Math.max(score,cur.score||0),br='';
-        for(const c of [cur.roh+' '+namePart,namePart+' '+cur.roh]){const [n2,s2]=best(c,wares,0.6,0.75);if(n2&&s2>bs){bn=n2;bs=s2;br=c;}}
+        for(const c of [cur.roh+' '+roh,roh+' '+cur.roh]){const [n2,s2,r2]=matchWare(c,wares);if(n2&&(s2>bs||(n2===cur.ware&&s2>=0.75&&(!name||name===cur.ware)))){bn=n2;bs=Math.max(s2,cur.score||0);br=r2;}}
         if(bn){cur.ware=bn;cur.roh=br;cur.score=Math.round(bs*100)/100;if(cur.scu==null)cur.scu=scu;continue;}}
-      if(!name&&garbage(namePart))continue;
-      cur={ware:name,roh:name?roh:namePart,score:Math.round(score*100)/100,section,preis:null,preisRaw:'',scu,status:''};
+      // A short first half of a torn name ("SHIP" + "AMMUNITION") is kept for the next line
+      if(!name&&garbage(namePart)&&!norm(namePart).split(' ').some(w=>wareWords(wares).has(w)))continue;
+      cur={ware:name,roh,score:Math.round(score*100)/100,section,preis:null,preisRaw:'',scu,status:''};
       items.push(cur);
     }
   }

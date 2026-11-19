@@ -38,6 +38,7 @@ Die eingebaute Windows-OCR liest etwas genauer als die Browser-Erkennung, brauch
 - **Schräg aufgenommene Konsolen** (bis etwa 30° Verkantung): Die Seite entzerrt das rechte Panel über vier Ecken (automatisch gefunden oder von dir angeklickt) und stellt den Text per Schwellwert frei. Das liest spürbar schlechter als frontal; der Standort wird dabei oft nicht erkannt, dann den Shop von Hand wählen. Frontal davorstellen bleibt der beste Weg.
 - Deutscher und englischer Spiel-Client werden erkannt (Reiter, Abschnitte, Status, Standort-Feld); die Dateiliste zeigt je Bild den erkannten Client. Andere Sprachen nicht.
 - Zeigt die Konsole den Preis „je Container“ (`/UNITS`, wenn im Spiel eine Containergröße angewählt ist), rechnet die Seite über den star-head-Referenzpreis auf je SCU um und vermerkt den Teiler; ohne Referenz bleibt die Zeile zu prüfen.
+- Warennamen kommen nur aus der Warenliste der Referenz. Eine Lesung wird einem dieser Namen zugeordnet (auch über ein Wort, das nur in einem Namen vorkommt) oder bleibt als „Ware nicht erkannt“ offen. Eine brandneue Ware fehlt, bis die Referenz sie kennt (`python auswerter_bauen.py --referenz` oder „Neuesten Stand laden“).
 - Einzelne Preise bleiben unlesbar (z. B. wenn ein Icon in die Zahl ragt); sie sind markiert, nicht geraten.
 
 ## Dateiformat
