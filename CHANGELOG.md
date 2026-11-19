@@ -2,6 +2,12 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [0.8.1] – 2026-11-19
+
+### Behoben
+- **Preis 0 galt als Preis.** Preise sind immer positiv. Fehlten beim Lesen die vorderen Ziffern („OOO/SCU“), stand bisher 0 in der Tabelle, teils sogar als „ok“. Jetzt heißt es „Preis nicht lesbar“ mit der gelesenen Zeichenfolge; eine zweite, gute Lesung desselben Bildes gewinnt. Ein von Hand eingetragener Preis 0 wird als leer exportiert.
+- Testlauf mit den 56 Testerbildern: 12 Zeilen mit Preis 0 → 0.
+
 ## [0.8.0] – 2026-11-19
 
 ### Geändert

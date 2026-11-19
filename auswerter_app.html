@@ -337,7 +337,8 @@ function parseItems(words,wares){
         if(nm&&!(cur&&cur.ware===nm)){
           if(combo&&(!cur.ware||sc>cur.score)){cur.ware=nm;cur.roh=roh;cur.score=Math.round(sc*100)/100;}
           else{cur={ware:nm,roh,score:Math.round(sc*100)/100,section,preis:null,preisRaw:'',scu:null,status:''};items.push(cur);}}}
-      if(cur){if(cur.preis==null){cur.preis=val.v;cur.preisRaw=val.raw;cur.preisUnit=!!val.unit;}else cur=null;}}
+      // Prices are always positive: 0 means the leading digits were lost ("OOO/SCU"); the row's price slot is still used up
+      if(cur){if(cur.preis==null&&!cur.preisLeer){if(val.v>0){cur.preis=val.v;cur.preisRaw=val.raw;cur.preisUnit=!!val.unit;}else{cur.preisLeer=true;cur.preisRaw=val.raw;}}else cur=null;}}
     else if(kind==='scu'&&cur)cur.scu=val;
     else if(kind==='text'){
       if(/\bAUEC\b/.test(norm(text)))continue;   // account balance, never a commodity
@@ -454,7 +455,8 @@ function evaluate(pages){
         const k=refp?[2,4,8,16,24,32].find(k=>Math.abs(Math.log(preis/k/refp))<Math.log(1.15)):null;
         if(k){preis=Math.round(preis/k);info.push(`${t('n_unit')} ÷ ${k} → ${fmt(preis)}`);}else notes.push(t('n_unit'));
       }
-      if(preis==null)notes.push(t('n_price'));
+      if(preis!=null&&!(preis>0))preis=null;   // prices are always positive
+      if(preis==null)notes.push(it.preisRaw?`${t('n_price')} (${t('read')}: „${it.preisRaw}“)`:t('n_price'));
       else if(it.ware&&known[it.ware]){
         // Leading-digit trap: the ¤ sign is sometimes read as a digit (¤10.000 -> 110.000). The reference price decides.
         const refp=known[it.ware][0], alt=String(preis).length>=2?parseInt(String(preis).slice(1),10):null;
@@ -756,7 +758,7 @@ function collect(){
     // Number from an edited table cell (digits only).
     const num=td=>{const v=(td?.textContent||'').replace(/[^0-9]/g,'');return v?+v:null;};
     out.push({system:shop?.system||'',ort:shop?.ort||s.ort||s.standort||'',shop:shop?.shop||'',standort_im_bild:s.standort||'',art:s.art,
-      ware:tr.querySelector('.ware').textContent.trim(),preis_auec_scu:num(tr.querySelector('.preis')),bestand_scu:s.art==='Kauf'?num(tr.querySelector('.bestand')):null,
+      ware:tr.querySelector('.ware').textContent.trim(),preis_auec_scu:num(tr.querySelector('.preis'))||null,bestand_scu:s.art==='Kauf'?num(tr.querySelector('.bestand')):null,
       status:r.status,stand:r.stand,bild:r.bild,konfidenz:tr.classList.contains('edited')?'korrigiert':tr.classList.contains('confirmed')?'bestaetigt':r.konfidenz,hinweise:r.hinweise.join('; ')});
   });
   return out;
