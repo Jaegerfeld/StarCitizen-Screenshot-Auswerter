@@ -2,6 +2,19 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [0.8.0] – 2026-11-19
+
+### Geändert
+- **Warennamen nur noch aus der Warenliste.** Die Konsole zeigt ausschließlich die Waren aus der Referenz; die Seite ordnet jede Lesung einem dieser Namen zu oder lässt sie offen. Neu dabei:
+  - Ein Wort, das nur in einem einzigen Warennamen vorkommt, genügt („!Spirits“ → Distilled Spirits, „LUMINALIA GESCHENK“ → Luminalia Gift, „CONSTRUCTION“ → Construction Materials).
+  - Angeklebte Reste der Spalte „Bestand“ und Größenangaben am Zeilenende stören nicht mehr („COBALT BESTAUD“ → Cobalt, „COPPER BESTRO“ → Copper statt Copper (Ore), „HADANITE O SUI“ → Hadanite).
+  - Die Größe in der Zeile unter „SHIP AMMUNITION“ („SIZE S3“) gehört zum Namen: Die Munitionsgrößen 1–7 erscheinen als eigene Zeilen statt zusammengelegt.
+
+### Behoben
+- **Bestandszeilen wurden als eigene Ware gelesen** und nahmen der Ware darüber Preis und Bestand weg („MITTLERE BESTÄNDE 107 SCU“, „NICHT VORRÄTIG 0 SCU“, „MAXIMALE“ gelesen als „NAXINATE“, das bisher als Carinite galt). Sie gehören jetzt zur Ware darüber.
+- Die Kontostand-Zeile („… AUEC“) wird nie mehr als Ware gelesen.
+- Testlauf mit 56 Bildern eines Testers (Windows-OCR): Zeilen ohne erkannte Ware von 25 auf 3, zu prüfende Zeilen von 113 auf 83; die übrigen Hinweise sind echte Zweifel (z. B. „STIN“: Tin oder Stims?).
+
 ## [0.7.2] – 2026-11-10
 
 ### Geändert
