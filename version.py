@@ -14,4 +14,4 @@
 """Single source of the Screenshot-Auswerter version number."""
 
 #: Current release of the reader (semantic versioning); shown on the page and in exports.
-VERSION = "0.8.1"
+VERSION = "0.9.0"
