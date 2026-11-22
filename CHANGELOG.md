@@ -2,6 +2,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [0.9.1] – 2026-11-22
+
+### Behoben
+- Kopfzeile sagte „Nichts verlässt deinen Rechner“, die Texterkennung (Tesseract.js) und ihre Sprachdaten kommen aber aus dem Internet. Jetzt steht dort genau das: Die Screenshots bleiben auf dem Rechner, nur Texterkennung und auf Wunsch die Referenz werden geladen.
+
 ## [0.9.0] – 2026-11-21
 
 ### Hinzugefügt

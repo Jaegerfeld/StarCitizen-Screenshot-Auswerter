@@ -65,11 +65,13 @@ def fill_header(html):
         eyebrow=("Star Citizen · Handelskonsolen · OCR", "Star Citizen · Trade terminals · OCR"),
         title=("SC Screenshot-Auswerter", "SC Screenshot Reader"),
         lede=("Screenshots der Handelskonsole hineinziehen – die Seite liest Ort, Reiter, Waren, Preise und "
-              "Bestände im Browser, du prüfst die Tabelle und lädst JSON oder CSV herunter. Nichts verlässt "
-              "deinen Rechner.",
+              "Bestände im Browser, du prüfst die Tabelle und lädst JSON oder CSV herunter. Deine Screenshots "
+              "bleiben auf deinem Rechner; nur die Texterkennung (Tesseract.js) und auf Wunsch die Referenz "
+              "kommen aus dem Internet.",
               "Drop screenshots of the trade terminal – the page reads place, tab, commodities, prices and "
-              "stock in your browser; you check the table and download JSON or CSV. Nothing leaves your "
-              "computer."),
+              "stock in your browser; you check the table and download JSON or CSV. Your screenshots stay "
+              "on your computer; only the text recognition (Tesseract.js) and, on request, the reference "
+              "data are loaded from the internet."),
         version=VERSION, refresh=refresh, data='<span id="refStat"></span>')
     html = html.replace("<!--FH_HEADER-->", head)
     html = html.replace("/*FH_CSS*/", kz.CSS + sd.CSS).replace("/*FH_JS*/", kz.JS + sd.JS)
