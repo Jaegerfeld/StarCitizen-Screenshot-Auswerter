@@ -4,7 +4,7 @@
 
 Reads **screenshots of Star Citizen trade terminals** (tabs "Buy" and "Local market value") **in the browser** and turns them into a **review table** plus **JSON/CSV**: commodity, price per SCU, stock, status, location, timestamp. Nothing is uploaded; OCR runs on your machine.
 
-**🌐 Online version:** https://jaegerfeld.github.io/StarCitizen-Screenshot-Auswerter/
+**🌐 Online version:** in the SC Cockpit: https://jaegerfeld.github.io/sc-cockpit/#/fracht/auswerter · single page: https://jaegerfeld.github.io/StarCitizen-Screenshot-Auswerter/app.html
 
 Two purposes:
 
