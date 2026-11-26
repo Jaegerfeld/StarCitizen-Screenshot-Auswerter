@@ -2,6 +2,12 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [0.9.2] – 2026-11-26
+
+### Geändert
+- **Die Adresse dieses Tools leitet ins SC Cockpit weiter.** Der Screenshot-Auswerter ist ins [SC Cockpit](https://jaegerfeld.github.io/sc-cockpit/) eingezogen: Fracht (Auswerter). Wer https://jaegerfeld.github.io/StarCitizen-Screenshot-Auswerter/ öffnet, landet dort im passenden Bereich; online sind deine Daten dieselben, weil Cockpit und Tool denselben Browser-Speicher nutzen.
+- Diese Seite selbst bleibt erreichbar: https://jaegerfeld.github.io/StarCitizen-Screenshot-Auswerter/app.html. Am Tool hat sich nichts geändert.
+
 ## [0.9.1] – 2026-11-22
 
 ### Behoben

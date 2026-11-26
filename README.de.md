@@ -2,7 +2,7 @@
 
 Liest **Screenshots der Handelskonsolen** in Star Citizen (Reiter „Kaufen" und „Lokaler Marktwert") direkt **im Browser** aus und macht daraus eine **Prüftabelle** plus **JSON/CSV**: Ware, Preis je SCU, Bestand, Status, Ort, Zeitpunkt. Nichts wird hochgeladen, die Texterkennung läuft auf deinem Rechner.
 
-**🌐 Online-Version:** https://jaegerfeld.github.io/StarCitizen-Screenshot-Auswerter/
+**🌐 Online-Version:** im SC Cockpit: https://jaegerfeld.github.io/sc-cockpit/#/fracht/auswerter · Einzelseite: https://jaegerfeld.github.io/StarCitizen-Screenshot-Auswerter/app.html
 
 Gedacht für zwei Dinge:
 
